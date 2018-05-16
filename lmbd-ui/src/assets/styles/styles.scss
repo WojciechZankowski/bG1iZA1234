@@ -1,0 +1,24 @@
+@import "common/_colors";
+@import "common/variables";
+
+html {
+  min-width: $min-width;
+  min-height: $min-height;
+  overflow: auto;
+
+  .app-wrapper {
+    width: $full-width;
+    height: $full-height;
+  }
+}
+
+body {
+  font-family: 'Roboto', 'Helvetica', sans-serif;
+  color: $font-color;
+  margin: 0;
+  padding: 0;
+}
+
+* {
+  box-sizing: border-box;
+}

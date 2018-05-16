@@ -1,0 +1,33 @@
+$font-size-tiny: 0.75rem;
+$font-size-small: 0.875rem;
+$font-size-medium: 1rem;
+$font-size-large: 1.25rem;
+$font-size-huge: 1.5rem;
+$font-size-giant: 2.25rem;
+
+$line-height-tiny: 1.3;
+$line-height-small: 1.428;
+$line-height-large: 1.388;
+
+@mixin tiny() {
+  font-size: $font-size-tiny;
+  line-height: $line-height-tiny;
+}
+
+@mixin small() {
+  font-size: $font-size-small;
+  line-height: $line-height-small;
+}
+
+@mixin medium() {
+  font-size: $font-size-medium;
+}
+
+@mixin large() {
+  font-size: $font-size-large;
+  line-height: $line-height-large;
+}
+
+@mixin huge() {
+  font-size: $font-size-huge;
+}

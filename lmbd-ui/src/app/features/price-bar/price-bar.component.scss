@@ -1,0 +1,20 @@
+@import "../../../assets/styles/main";
+
+.price-bar {
+
+  .price-bar-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .price-bar-row-item {
+    padding: $default-padding;
+  }
+
+  .price-bar-row-divider {
+    border-left: 1px solid $dark-grey;
+  }
+
+}

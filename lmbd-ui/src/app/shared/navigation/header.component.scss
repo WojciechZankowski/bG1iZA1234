@@ -1,0 +1,15 @@
+@import '../../../assets/styles/main';
+
+.header {
+
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: center;
+  flex: 0 0 100%;
+  background-color: $grey;
+
+  width: $full-width;
+  height: 50px;
+
+}

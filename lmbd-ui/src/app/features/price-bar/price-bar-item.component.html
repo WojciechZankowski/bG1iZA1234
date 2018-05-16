@@ -1,0 +1,18 @@
+<div class="price-bar-item">
+  <div class="price-bar-item-container">
+    <div class="price-bar-item-title">
+      {{'COMMODITIES.'+tickData.ticker | translate}}
+    </div>
+  </div>
+  <div class="price-bar-item-container">
+    <div class="price-bar-item-price">
+      {{convertPriceToGrams(tickData.price) | lmbdMoney}}/{{'COMMODITIES.GRAM' | translate}}
+    </div>
+    <div class="price-bar-item-change" [ngClass]="getColor(tickData.change)">
+      {{tickData.change | lmbdDecimal}}
+    </div>
+    <div class="price-bar-item-change-pct" [ngClass]="getColor(tickData.change)">
+      {{tickData.changeInPercentage | lmbdPercentage}}
+    </div>
+  </div>
+</div>
