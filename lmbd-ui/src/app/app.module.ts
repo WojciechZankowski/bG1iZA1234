@@ -3,12 +3,12 @@ import {NgModule} from '@angular/core';
 
 import {AppComponent} from './app.component';
 import {ServiceModule} from "./services/service.module";
-import {PriceBarComponent} from "./features/price-bar/price-bar.component";
-import {PriceBarItemComponent} from "./features/price-bar/price-bar-item.component";
 import {SharedModule} from "./shared/shared.module";
 import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
 import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {TranslateHttpLoader} from "@ngx-translate/http-loader";
+import {AppRoutingModule} from "./app.routing.module";
+import {FeaturesModule} from "./features/features.module";
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -17,8 +17,6 @@ export function HttpLoaderFactory(http: HttpClient) {
 @NgModule({
   declarations: [
     AppComponent,
-    PriceBarComponent,
-    PriceBarItemComponent
   ],
   imports: [
     BrowserModule,
@@ -30,6 +28,8 @@ export function HttpLoaderFactory(http: HttpClient) {
         deps: [HttpClient]
       }
     }),
+    AppRoutingModule,
+    FeaturesModule,
     ServiceModule,
     SharedModule
   ],

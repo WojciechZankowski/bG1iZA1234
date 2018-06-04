@@ -18,13 +18,13 @@ public class CommoditiesWebSocketHandler implements WebSocketHandler {
 
     public static final String COMMODITIES_PATH = "/ws-commodities";
 
-    private final CommoditiesService commoditiesService;
+    private final DefaultCommoditiesService commoditiesService;
     private final LmbdObjectMapperProvider lmbdObjectMapperProvider;
 
     private Flux<TickDataTO> messageFlux;
 
     @Autowired
-    public CommoditiesWebSocketHandler(final CommoditiesService commoditiesService,
+    public CommoditiesWebSocketHandler(final DefaultCommoditiesService commoditiesService,
             final LmbdObjectMapperProvider lmbdObjectMapperProvider) {
         this.commoditiesService = commoditiesService;
         this.lmbdObjectMapperProvider = lmbdObjectMapperProvider;

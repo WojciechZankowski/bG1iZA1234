@@ -1,7 +1,39 @@
 {
+  "ACCOUNT": {
+    "FORM": {
+      "LOGIN": {
+        "TITLE": "Login",
+        "PLACEHOLDER": "Twój login"
+      },
+      "EMAIL": {
+        "TITLE": "Email",
+        "PLACEHOLDER": "Twój email"
+      },
+      "PASSWORD": {
+        "TITLE": "Hasło",
+        "PLACEHOLDER": "Twoje hasło"
+      },
+      "CONFIRM_PASSWORD": {
+        "TITLE": "Potwierdzenie hasła",
+        "PLACEHOLDER": "Potwierdź swoje hasło"
+      },
+      "FIRST_NAME": "Imię",
+      "FIRST_NAME.PLACEHOLDER": "Twoje imię",
+      "LAST_NAME": "Nazwisko",
+      "LAST_NAME.PLACEHOLDER": "Twoje nazwisko"
+    }
+  },
   "COMMODITIES": {
     "XAU/PLN": "ZŁOTO",
     "XAG/PLN": "SREBRO",
     "GRAM": "g"
+  },
+  "MENU": {
+    "DASHBOARD": "Podsumowanie",
+    "LOANS": "Umowy",
+    "HISTORY": "Historia",
+    "PROFILE": {
+      "SETTINGS": "Ustawienia"
+    }
   }
 }

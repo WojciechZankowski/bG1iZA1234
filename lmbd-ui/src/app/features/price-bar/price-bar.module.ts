@@ -1,14 +1,14 @@
 import {NgModule} from "@angular/core";
-import {BrowserModule} from "@angular/platform-browser";
 
 import {PriceBarComponent} from "./price-bar.component";
 import {PriceBarItemComponent} from "./price-bar-item.component";
 import {SharedModule} from "../../shared/shared.module";
+import {BrowserModule} from "@angular/platform-browser";
 
 @NgModule({
   imports: [
-    SharedModule,
-    BrowserModule
+    BrowserModule,
+    SharedModule
   ],
   declarations: [
     PriceBarComponent,

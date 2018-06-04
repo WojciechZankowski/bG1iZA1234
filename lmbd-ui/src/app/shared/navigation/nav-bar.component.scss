@@ -1,0 +1,61 @@
+@import '../../../assets/styles/main';
+
+.nav-bar-active {
+  color: $main-color;
+}
+
+.nav-bar-profile {
+  @include medium;
+  font-weight: 300;
+
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+
+  .nav-bar-profile-logo {
+    color: #333;
+  }
+
+  .nav-bar-profile-links {
+    display: inline;
+  }
+
+  .nav-bar-profile-links ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+  }
+
+  .nav-bar-profile-links li {
+    display: inline;
+  }
+
+  .nav-bar-profile-links li:not(:first-child):before {
+    content: " | ";
+    padding-left: $default-padding;
+    padding-right: $default-padding;
+    font-weight: 100;
+  }
+}
+
+.nav-bar-menu {
+  @include large;
+  font-weight: 300;
+}
+
+.nav-bar-menu ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-bar-menu li {
+  display: inline;
+}
+
+.nav-bar-menu li:not(:first-child):before {
+  content: " | ";
+  padding-left: $default-padding;
+  padding-right: $default-padding;
+  font-weight: 100;
+}

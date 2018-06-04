@@ -1,0 +1,31 @@
+<mat-toolbar>
+  <mat-toolbar-row class="nav-bar-profile">
+    <div class="nav-bar-profile-logo">
+      LOGO
+    </div>
+    <div class="nav-bar-profile-links">
+      <ul>
+        <li *ngFor="let item of profileItems">
+          <a [routerLink]="item.url" routerLinkActive="nav-bar-active" [routerLinkActiveOptions]="routerActiveOptions">
+            {{item.name | translate}}
+          </a>
+        </li>
+        <li>
+          <a [routerLink]="profilePath" routerLinkActive="nav-bar-active"
+             [routerLinkActiveOptions]="routerActiveOptions">Wojciech Zankowski
+          </a>
+        </li>
+      </ul>
+    </div>
+  </mat-toolbar-row>
+
+  <mat-toolbar-row class="nav-bar-menu">
+    <ul>
+      <li *ngFor="let item of menuItems">
+        <a [routerLink]="item.url" routerLinkActive="nav-bar-active" [routerLinkActiveOptions]="routerActiveOptions">
+          {{item.name | translate}}
+        </a>
+      </li>
+    </ul>
+  </mat-toolbar-row>
+</mat-toolbar>

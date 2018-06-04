@@ -27,7 +27,13 @@ export class PriceBarComponent implements OnInit {
         this.priceBarItems.push(data);
       }
       this.priceBarItems = [...this.priceBarItems];
-    })
+    });
+
+    this.priceBarService.getSymbols().subscribe((symbols: string[]) => {
+      this.priceBarService.getTickData(symbols).subscribe((tickData) => {
+        this.priceBarItems = tickData;
+      });
+    });
   }
 
 }
