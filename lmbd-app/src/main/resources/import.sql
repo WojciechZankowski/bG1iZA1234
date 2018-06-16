@@ -1,0 +1,1 @@
+INSERT INTO lmbd_authority (name) VALUES ('ROLE_USER'), ('ROLE_ADMIN');

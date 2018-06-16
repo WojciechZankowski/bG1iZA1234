@@ -22,19 +22,22 @@ public class AbstractAuditingEntity implements Serializable {
 
     @CreatedBy
     @Column(name = "created_by", nullable = false, length = 50, updatable = false)
-    private final String createdBy;
+    private String createdBy;
 
     @CreatedDate
     @Column(name = "created_date", nullable = false)
-    private final Instant createdDate;
+    private Instant createdDate;
 
     @LastModifiedBy
     @Column(name = "last_modified_by", length = 50)
-    private final String lastModifiedBy;
+    private String lastModifiedBy;
 
     @LastModifiedDate
     @Column(name = "last_modified_date")
-    private final Instant lastModifiedDate;
+    private Instant lastModifiedDate;
+
+    public AbstractAuditingEntity() {
+    }
 
     public AbstractAuditingEntity(
             final String createdBy,

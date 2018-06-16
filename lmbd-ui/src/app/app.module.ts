@@ -9,6 +9,7 @@ import {HttpClient, HttpClientModule} from "@angular/common/http";
 import {TranslateHttpLoader} from "@ngx-translate/http-loader";
 import {AppRoutingModule} from "./app.routing.module";
 import {FeaturesModule} from "./features/features.module";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -20,6 +21,7 @@ export function HttpLoaderFactory(http: HttpClient) {
   ],
   imports: [
     BrowserModule,
+    BrowserAnimationsModule,
     HttpClientModule,
     TranslateModule.forRoot({
       loader: {

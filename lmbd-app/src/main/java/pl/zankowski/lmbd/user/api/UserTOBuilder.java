@@ -7,7 +7,7 @@ import java.time.Instant;
 import java.util.Set;
 import java.util.stream.Collectors;
 
-public final class UserTOBuilder {
+public class UserTOBuilder {
 
     private String login;
     private String firstName;
@@ -44,9 +44,17 @@ public final class UserTOBuilder {
         }
     }
 
+    public String getLogin() {
+        return login;
+    }
+
     public UserTOBuilder withLogin(final String login) {
         this.login = login;
         return this;
+    }
+
+    public String getFirstName() {
+        return firstName;
     }
 
     public UserTOBuilder withFirstName(final String firstName) {
@@ -54,9 +62,17 @@ public final class UserTOBuilder {
         return this;
     }
 
+    public String getLastName() {
+        return lastName;
+    }
+
     public UserTOBuilder withLastName(final String lastName) {
         this.lastName = lastName;
         return this;
+    }
+
+    public String getEmail() {
+        return email;
     }
 
     public UserTOBuilder withEmail(final String email) {
@@ -64,9 +80,17 @@ public final class UserTOBuilder {
         return this;
     }
 
+    public boolean isActivated() {
+        return activated;
+    }
+
     public UserTOBuilder withActivated(final boolean activated) {
         this.activated = activated;
         return this;
+    }
+
+    public String getLangKey() {
+        return langKey;
     }
 
     public UserTOBuilder withLangKey(final String langKey) {
@@ -74,9 +98,17 @@ public final class UserTOBuilder {
         return this;
     }
 
+    public String getImageUrl() {
+        return imageUrl;
+    }
+
     public UserTOBuilder withImageUrl(final String imageUrl) {
         this.imageUrl = imageUrl;
         return this;
+    }
+
+    public String getCreatedBy() {
+        return createdBy;
     }
 
     public UserTOBuilder withCreatedBy(final String createdBy) {
@@ -84,9 +116,17 @@ public final class UserTOBuilder {
         return this;
     }
 
+    public Instant getCreatedDate() {
+        return createdDate;
+    }
+
     public UserTOBuilder withCreatedDate(final Instant createdDate) {
         this.createdDate = createdDate;
         return this;
+    }
+
+    public String getLastModifiedBy() {
+        return lastModifiedBy;
     }
 
     public UserTOBuilder withLastModifiedBy(final String lastModifiedBy) {
@@ -94,9 +134,17 @@ public final class UserTOBuilder {
         return this;
     }
 
+    public Instant getLastModifiedDate() {
+        return lastModifiedDate;
+    }
+
     public UserTOBuilder withLastModifiedDate(final Instant lastModifiedDate) {
         this.lastModifiedDate = lastModifiedDate;
         return this;
+    }
+
+    public Set<String> getAuthorities() {
+        return authorities;
     }
 
     public UserTOBuilder withAuthorities(final Set<String> authorities) {

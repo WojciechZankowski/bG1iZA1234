@@ -1,7 +1,7 @@
 {
   "ACCOUNT": {
     "FORM": {
-      "LOGIN": {
+      "USERNAME": {
         "TITLE": "Login",
         "PLACEHOLDER": "Twój login"
       },
@@ -14,7 +14,9 @@
       "FIRST_NAME": "Imię",
       "FIRST_NAME.PLACEHOLDER": "Twoje imię",
       "LAST_NAME": "Nazwisko",
-      "LAST_NAME.PLACEHOLDER": "Twoje nazwisko"
+      "LAST_NAME.PLACEHOLDER": "Twoje nazwisko",
+      "REGISTER": "Zarejestruj",
+      "LOGIN": "Zaloguj"
     }
   },
   "COMMODITIES": {

@@ -3,6 +3,7 @@ package pl.zankowski.lmbd.user.entity;
 import com.google.common.base.Objects;
 import org.hibernate.annotations.Immutable;
 import pl.zankowski.lmbd.core.IEntity;
+import pl.zankowski.lmbd.user.AuthorityRepository;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -22,11 +23,13 @@ public class AuthorityEntity implements IEntity {
     @Size(min = 0, max = 50)
     @Id
     @Column(length = 50)
-    private final String name;
+    private String name;
 
     public AuthorityEntity(final String name) {
         this.name = name;
     }
+
+    private AuthorityEntity() {}
 
     public String getName() {
         return name;

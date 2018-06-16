@@ -1,7 +1,7 @@
 import {NgModule} from "@angular/core";
 import {Route, RouterModule} from "@angular/router";
 import {RegisterComponent} from "./register/register.component";
-import {ProfileComponent} from "../features/profile/profile.component";
+import {LoginComponent} from "./login/login.component";
 
 const routes: Array<Route> = [
   {
@@ -11,6 +11,10 @@ const routes: Array<Route> = [
   {
     path: 'register',
     component: RegisterComponent
+  },
+  {
+    path: 'login',
+    component: LoginComponent
   }
 ];
 

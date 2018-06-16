@@ -1,5 +1,5 @@
 import {Injectable} from "@angular/core";
-import {HttpClient, HttpParams} from "@angular/common/http";
+import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
 import {ErrorObservable} from "rxjs/observable/ErrorObservable";
 import {Observable} from "rxjs/Observable";
 import {environment} from "../../environments/environment";
@@ -8,30 +8,33 @@ import {catchError} from "rxjs/operators";
 @Injectable()
 export class ApiService {
 
-  constructor(
-    private http: HttpClient,
-  ) {}
+  private readonly headers: HttpHeaders = new HttpHeaders().set('Content-Type', 'application/json');
+
+  constructor(private http: HttpClient) {
+  }
 
   private formatErrors(error: any) {
     return new ErrorObservable(error.error);
   }
 
   get(path: string, params: HttpParams = new HttpParams()): Observable<any> {
-    return this.http.get(`${environment.restApiUrl}${path}`, { params })
+    return this.http.get(`${environment.restApiUrl}${path}`, {params})
       .pipe(catchError(this.formatErrors));
   }
 
   put(path: string, body: Object = {}): Observable<any> {
     return this.http.put(
       `${environment.restApiUrl}${path}`,
-      JSON.stringify(body)
+      JSON.stringify(body),
+      {headers: this.headers}
     ).pipe(catchError(this.formatErrors));
   }
 
   post(path: string, body: Object = {}): Observable<any> {
     return this.http.post(
       `${environment.restApiUrl}${path}`,
-      JSON.stringify(body)
+      JSON.stringify(body),
+      {headers: this.headers}
     ).pipe(catchError(this.formatErrors));
   }
 

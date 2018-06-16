@@ -32,11 +32,16 @@ public final class UserEntityBuilder {
     public UserEntityBuilder(final AccountTO account) {
         if (account != null) {
             this.login = account.getLogin();
+            this.password = account.getPassword();
             this.firstName = account.getFirstName();
             this.lastName = account.getLastName();
             this.email = account.getEmail();
             this.imageUrl = account.getImageUrl();
             this.langKey = account.getLangKey();
+            this.createdBy = account.getCreatedBy();
+            this.createdDate = account.getCreatedDate();
+            this.lastModifiedBy = account.getLastModifiedBy();
+            this.lastModifiedDate = account.getLastModifiedDate();
         }
     }
 

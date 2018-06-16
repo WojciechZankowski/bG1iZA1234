@@ -2,7 +2,6 @@ package pl.zankowski.lmbd.user.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.google.common.base.Objects;
-import org.hibernate.annotations.Immutable;
 import pl.zankowski.lmbd.core.Constants;
 import pl.zankowski.lmbd.core.IEntity;
 import pl.zankowski.lmbd.core.data.AbstractAuditingEntity;
@@ -26,7 +25,6 @@ import java.util.Set;
 
 @Entity
 @Table(name = "lmbd_user")
-@Immutable
 public class UserEntity extends AbstractAuditingEntity implements IEntity {
 
     private static final long serialVersionUID = -2666366358188622396L;
@@ -34,63 +32,66 @@ public class UserEntity extends AbstractAuditingEntity implements IEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
     @SequenceGenerator(name = "sequenceGenerator")
-    private final Long id;
+    private Long id;
 
     @NotNull
     @Pattern(regexp = Constants.LOGIN_REGEX)
     @Size(min = 1, max = 100)
     @Column(length = 100, unique = true, nullable = false)
-    private final String login;
+    private String login;
 
     @NotNull
     @Size(min = 60, max = 60)
     @Column(name = "password_hash", length = 60)
-    private final String password;
+    private String password;
 
     @Size(max = 50)
     @Column(name = "first_name", length = 50)
-    private final String firstName;
+    private String firstName;
 
     @Size(max = 50)
     @Column(name = "last_name", length = 50)
-    private final String lastName;
+    private String lastName;
 
     @Email
     @Size(max = 50)
     @Column(length = 100, unique = true)
-    private final String email;
+    private String email;
 
     @NotNull
     @Column(nullable = false)
-    private final boolean activated;
+    private boolean activated;
 
     @Size(min = 2, max = 5)
     @Column(name = "lang_key", length = 5)
-    private final String langKey;
+    private String langKey;
 
     @Size(max = 256)
     @Column(name = "image_url", length = 256)
-    private final String imageUrl;
+    private String imageUrl;
 
     @Size(max = 20)
     @Column(name = "activation_key", length = 20)
     @JsonIgnore
-    private final String activationKey;
+    private String activationKey;
 
     @Size(max = 20)
     @Column(name = "reset_key", length = 20)
     @JsonIgnore
-    private final String resetKey;
+    private String resetKey;
 
     @Column(name = "reset_date")
-    private final Instant resetDate;
+    private Instant resetDate;
 
     @JsonIgnore
     @ManyToMany
     @JoinTable(name = "lmbd_user_authority",
             joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},
             inverseJoinColumns = {@JoinColumn(name = "authority_name", referencedColumnName = "name")})
-    private final Set<AuthorityEntity> authorities;
+    private Set<AuthorityEntity> authorities;
+
+    public UserEntity() {
+    }
 
     public UserEntity(
             final Long id,

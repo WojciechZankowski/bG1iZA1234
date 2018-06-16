@@ -10,6 +10,7 @@ import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
 import {NavBarComponent} from "./navigation/nav-bar.component";
 import {RouterModule} from "@angular/router";
 import {CommonModule} from "@angular/common";
+import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 
 @NgModule({
   imports: [
@@ -33,7 +34,7 @@ import {CommonModule} from "@angular/common";
     NavBarComponent,
     TranslateModule,
     DesignModule,
-    NgbModule,
+    NgbModule
   ]
 })
 export class SharedModule {

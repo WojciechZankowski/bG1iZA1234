@@ -10,9 +10,13 @@ import pl.zankowski.lmbd.core.RandomUtil;
 import pl.zankowski.lmbd.core.security.AuthoritiesConstants;
 import pl.zankowski.lmbd.mail.MailService;
 import pl.zankowski.lmbd.user.api.AccountTO;
-import pl.zankowski.lmbd.user.api.exception.UserExistsException;
+import pl.zankowski.lmbd.user.api.AccountTOBuilder;
+import pl.zankowski.lmbd.user.api.exception.UserAlreadyExistsException;
+import pl.zankowski.lmbd.user.api.exception.UserNotFoundException;
 import pl.zankowski.lmbd.user.entity.UserEntity;
 import pl.zankowski.lmbd.user.entity.UserEntityBuilder;
+
+import java.time.Instant;
 
 @Service
 @Transactional
@@ -38,14 +42,14 @@ public class DefaultUserService implements UserService {
     }
 
     @Override
-    public void registerAccount(final AccountTO account) throws UserExistsException {
+    public void registerAccount(final AccountTO account) throws UserAlreadyExistsException {
         userRepository.findOneByLogin(account.getLogin().toLowerCase())
                 .map(user -> {
-                    throw new UserExistsException("Login already in use.");
+                    throw new UserAlreadyExistsException("Login already in use.");
                 })
                 .orElseGet(() -> userRepository.findOneByEmail(account.getEmail())
                         .map(user -> {
-                            throw new UserExistsException("Email already in use.");
+                            throw new UserAlreadyExistsException("Email already in use.");
                         })
                         .orElseGet(() -> {
                             mailService.sendActivationEmail(account);
@@ -54,11 +58,14 @@ public class DefaultUserService implements UserService {
     }
 
     private UserEntity createUser(final AccountTO account) {
-        final UserEntity user = new UserEntityBuilder()
+        final UserEntity user = new UserEntityBuilder(account)
                 .addAuthority(authorityRepository.findById(AuthoritiesConstants.USER).get())
                 .withPassword(passwordEncoder.encode(account.getPassword()))
                 .withActivated(false)
                 .withActivationKey(RandomUtil.generateActivationKey())
+                .withCreatedBy("test")
+                .withCreatedDate(Instant.now())
+                .withLangKey("pl")
                 .build();
         userRepository.save(user);
 
@@ -67,5 +74,11 @@ public class DefaultUserService implements UserService {
         return user;
     }
 
+    @Override
+    public AccountTO loadUserByUsername(final String login) throws UserNotFoundException {
+        return userRepository.findOneWithAuthoritiesByLogin(login.toLowerCase())
+                .map(user -> new AccountTOBuilder(user).build())
+                .orElseThrow(UserNotFoundException::new);
+    }
 
 }
