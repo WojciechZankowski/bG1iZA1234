@@ -8,7 +8,7 @@ import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import java.time.DayOfWeek;
@@ -26,7 +26,7 @@ public class OpeningHoursEntity implements IEntity {
     private Long id;
 
 
-    @ManyToOne
+    @OneToMany
     @JoinColumn(name = "RANGE_ID", nullable = false, updatable = false)
     private Map<DayOfWeek, OpeningHoursRangeEntity> openingHours;
 

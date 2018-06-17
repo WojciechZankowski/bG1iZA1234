@@ -15,6 +15,7 @@ import pl.zankowski.lmbd.user.api.exception.UserAlreadyExistsException;
 import pl.zankowski.lmbd.user.api.exception.UserNotFoundException;
 import pl.zankowski.lmbd.user.entity.UserEntity;
 import pl.zankowski.lmbd.user.entity.UserEntityBuilder;
+import pl.zankowski.lmbd.user.mapper.UserMapper;
 
 import java.time.Instant;
 
@@ -28,17 +29,20 @@ public class DefaultUserService implements UserService {
     private final AuthorityRepository authorityRepository;
     private final PasswordEncoder passwordEncoder;
     private final MailService mailService;
+    private final UserMapper userMapper;
 
     @Autowired
     public DefaultUserService(
             final UserRepository userRepository,
             final AuthorityRepository authorityRepository,
             final PasswordEncoder passwordEncoder,
-            final MailService mailService) {
+            final MailService mailService,
+            final UserMapper userMapper) {
         this.userRepository = userRepository;
         this.authorityRepository = authorityRepository;
         this.passwordEncoder = passwordEncoder;
         this.mailService = mailService;
+        this.userMapper = userMapper;
     }
 
     @Override
@@ -77,7 +81,7 @@ public class DefaultUserService implements UserService {
     @Override
     public AccountTO loadUserByUsername(final String login) throws UserNotFoundException {
         return userRepository.findOneWithAuthoritiesByLogin(login.toLowerCase())
-                .map(user -> new AccountTOBuilder(user).build())
+                .map(userMapper::map)
                 .orElseThrow(UserNotFoundException::new);
     }
 

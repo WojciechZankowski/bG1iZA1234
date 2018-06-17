@@ -1,20 +1,8 @@
 package pl.zankowski.lmbd.user.api;
 
-import pl.zankowski.lmbd.user.entity.UserEntity;
-
-public class AccountTOBuilder extends UserTOBuilder {
+public class AccountTOBuilder extends AbstractUserTOBuilder<AccountTOBuilder> {
 
     private String password;
-
-    public AccountTOBuilder() {
-    }
-
-    public AccountTOBuilder(final UserEntity userEntity) {
-        super(userEntity);
-        if (userEntity != null) {
-            password = userEntity.getPassword();
-        }
-    }
 
     public String getPassword() {
         return password;
