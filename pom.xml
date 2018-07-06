@@ -4,16 +4,26 @@
     <modelVersion>4.0.0</modelVersion>
 
     <groupId>pl.zankowski</groupId>
-    <artifactId>lmbd</artifactId>
-    <version>0.0.1-SNAPSHOT</version>
+    <artifactId>lodomaniak</artifactId>
+    <version>1.0.0-SNAPSHOT</version>
     <modules>
-        <module>lmbd-app</module>
-        <module>lmbd-ui</module>
+        <module>lodomaniak-app</module>
+        <module>lodomaniak-ui</module>
+        <module>lodomaniak-user</module>
+        <module>lodomaniak-user-api</module>
+        <module>lodomaniak-user-spi</module>
+        <module>lodomaniak-mail</module>
+        <module>lodomaniak-mail-spi</module>
+        <module>lodomaniak-core</module>
+        <module>lodomaniak-ice-cream</module>
+        <module>lodomaniak-core-entity</module>
+        <module>lodomaniak-auth</module>
+        <module>lodomaniak-auth-api</module>
+        <module>lodomaniak-ice-cream-api</module>
     </modules>
     <packaging>pom</packaging>
 
-    <name>lmbd</name>
-    <description>Demo project for Spring Boot</description>
+    <name>lodomaniak</name>
 
     <parent>
         <groupId>org.springframework.boot</groupId>
@@ -30,22 +40,81 @@
 
     <dependencyManagement>
         <dependencies>
+
+            <!-- Internal -->
+
             <dependency>
-                <groupId>com.yahoofinance-api</groupId>
-                <artifactId>YahooFinanceAPI</artifactId>
-                <version>3.13.0</version>
+                <groupId>pl.zankowski</groupId>
+                <artifactId>lodomaniak-user-api</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
             </dependency>
 
             <dependency>
-                <groupId>org.joda</groupId>
-                <artifactId>joda-money</artifactId>
-                <version>0.12</version>
+                <groupId>pl.zankowski</groupId>
+                <artifactId>lodomaniak-user-spi</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
             </dependency>
+
+            <dependency>
+                <groupId>pl.zankowski</groupId>
+                <artifactId>lodomaniak-user</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>pl.zankowski</groupId>
+                <artifactId>lodomaniak-ice-cream-api</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>pl.zankowski</groupId>
+                <artifactId>lodomaniak-core</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>pl.zankowski</groupId>
+                <artifactId>lodomaniak-core-entity</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>pl.zankowski</groupId>
+                <artifactId>lodomaniak-mail-spi</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>pl.zankowski</groupId>
+                <artifactId>lodomaniak-auth-api</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>pl.zankowski</groupId>
+                <artifactId>lodomaniak-mail</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>pl.zankowski</groupId>
+                <artifactId>lodomaniak-ice-cream</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+            </dependency>
+
+            <!-- External -->
 
             <dependency>
                 <groupId>com.google.guava</groupId>
                 <artifactId>guava</artifactId>
                 <version>25.0-jre</version>
+            </dependency>
+
+            <dependency>
+                <groupId>com.fasterxml.jackson.core</groupId>
+                <artifactId>jackson-annotations</artifactId>
+                <version>2.9.6</version>
             </dependency>
 
             <dependency>
@@ -65,6 +134,7 @@
                 <artifactId>nv-i18n</artifactId>
                 <version>1.22</version>
             </dependency>
+
         </dependencies>
     </dependencyManagement>
 

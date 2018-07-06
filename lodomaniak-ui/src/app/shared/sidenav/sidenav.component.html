@@ -1,0 +1,18 @@
+<mat-sidenav-container class="example-container">
+
+  <mat-sidenav #sidenav mode="side" [(opened)]="opened">
+    <ul class="side-nav-menu">
+      <li *ngFor="let item of menuItems">
+        <a [routerLink]="item.url" routerLinkActive="nav-bar-active" [routerLinkActiveOptions]="routerActiveOptions">
+          {{item.name | translate}}
+        </a>
+      </li>
+    </ul>
+  </mat-sidenav>
+
+  <mat-sidenav-content>
+
+    <ng-content></ng-content>
+
+  </mat-sidenav-content>
+</mat-sidenav-container>
