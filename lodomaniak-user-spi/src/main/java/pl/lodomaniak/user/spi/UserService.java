@@ -11,6 +11,8 @@ public interface UserService {
 
     UserTO activateAccount(String key) throws UserNotFoundException;
 
+    UserTO getAccount() throws UserNotFoundException;
+
     AccountTO loadUserByUsername(String login) throws UserNotFoundException;
 
 }

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import pl.lodomaniak.user.api.AccountTO;
+import pl.lodomaniak.user.api.UserTO;
 import pl.lodomaniak.user.api.exception.UserNotFoundException;
 import pl.lodomaniak.user.spi.UserService;
 
@@ -46,6 +47,14 @@ public class AccountRestController {
     @GetMapping("/activate")
     public ResponseEntity activateAccount(@RequestParam final String key) throws UserNotFoundException { ;
         return ResponseEntity.ok(userService.activateAccount(key));
+    }
+
+    @ApiOperation(value = "Get current user account.")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "User account retrieved.")})
+    @GetMapping("/account")
+    public ResponseEntity<UserTO> getAccount() throws UserNotFoundException {
+        return ResponseEntity.ok(userService.getAccount());
     }
 
 }

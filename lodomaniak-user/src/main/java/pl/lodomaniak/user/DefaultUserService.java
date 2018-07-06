@@ -7,6 +7,7 @@ import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import pl.lodomaniak.auth.api.AuthoritiesConstants;
+import pl.lodomaniak.auth.api.SecurityUtils;
 import pl.lodomaniak.core.RandomUtil;
 import pl.lodomaniak.mail.spi.MailService;
 import pl.lodomaniak.user.api.AccountTO;
@@ -92,6 +93,11 @@ public class DefaultUserService implements UserService {
                 .withActivationKey(null)
                 .build());
         return userMapper.map(userEntity);
+    }
+
+    @Override
+    public UserTO getAccount() throws UserNotFoundException {
+        return loadUserByUsername(SecurityUtils.getCurrentUserLogin());
     }
 
     @Override
