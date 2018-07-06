@@ -1,5 +1,9 @@
 package pl.lodomaniak.icecream;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -11,6 +15,7 @@ import pl.lodomaniak.icecream.api.IceCreamShopTO;
 
 @RestController
 @RequestMapping("/api/icecreamshop")
+@Api(tags = "Ice Cream Shop", description = "Perform operations on Ice Cream shops.")
 public class IceCreamShopRestController {
 
     private final IceCreamShopService iceCreamShopService;
@@ -20,6 +25,9 @@ public class IceCreamShopRestController {
         this.iceCreamShopService = iceCreamShopService;
     }
 
+    @ApiOperation(value = "Create Ice Cream Shop.")
+    @ApiResponses(value = {
+            @ApiResponse(code = 201, message = "Ice Cream Shop created")})
     @PostMapping()
     public ResponseEntity<?> addIceCreamShop(@RequestBody final IceCreamShopTO iceCreamShop) {
         iceCreamShopService.addIceCreamShop(iceCreamShop);

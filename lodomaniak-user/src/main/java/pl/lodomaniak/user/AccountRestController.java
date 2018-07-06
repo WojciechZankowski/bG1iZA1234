@@ -1,5 +1,9 @@
 package pl.lodomaniak.user;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -14,6 +18,7 @@ import javax.validation.Valid;
 
 @RestController
 @RequestMapping("/api")
+@Api(tags = "Account", description = "Perform operations on user account.")
 public class AccountRestController {
 
     private final UserService userService;
@@ -23,10 +28,13 @@ public class AccountRestController {
         this.userService = userService;
     }
 
+    @ApiOperation(value = "Register user account.")
+    @ApiResponses(value = {
+            @ApiResponse(code = 201, message = "User account created.")})
     @PostMapping("/register")
     public ResponseEntity registerAccount(@Valid @RequestBody final AccountTO account) {
         userService.registerAccount(account);
-        return new ResponseEntity<>(HttpStatus.CREATED);
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
 }
