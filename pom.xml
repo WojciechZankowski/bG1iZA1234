@@ -3,8 +3,8 @@
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <modelVersion>4.0.0</modelVersion>
 
-    <groupId>pl.zankowski</groupId>
-    <artifactId>lodomaniak</artifactId>
+    <groupId>pl.lodomaniak</groupId>
+    <artifactId>all</artifactId>
     <version>1.0.0-SNAPSHOT</version>
     <modules>
         <module>lodomaniak-app</module>
@@ -44,62 +44,68 @@
             <!-- Internal -->
 
             <dependency>
-                <groupId>pl.zankowski</groupId>
-                <artifactId>lodomaniak-user-api</artifactId>
+                <groupId>pl.lodomaniak</groupId>
+                <artifactId>auth</artifactId>
                 <version>1.0.0-SNAPSHOT</version>
             </dependency>
 
             <dependency>
-                <groupId>pl.zankowski</groupId>
-                <artifactId>lodomaniak-user-spi</artifactId>
+                <groupId>pl.lodomaniak</groupId>
+                <artifactId>user-api</artifactId>
                 <version>1.0.0-SNAPSHOT</version>
             </dependency>
 
             <dependency>
-                <groupId>pl.zankowski</groupId>
-                <artifactId>lodomaniak-user</artifactId>
+                <groupId>pl.lodomaniak</groupId>
+                <artifactId>user-spi</artifactId>
                 <version>1.0.0-SNAPSHOT</version>
             </dependency>
 
             <dependency>
-                <groupId>pl.zankowski</groupId>
-                <artifactId>lodomaniak-ice-cream-api</artifactId>
+                <groupId>pl.lodomaniak</groupId>
+                <artifactId>user</artifactId>
                 <version>1.0.0-SNAPSHOT</version>
             </dependency>
 
             <dependency>
-                <groupId>pl.zankowski</groupId>
-                <artifactId>lodomaniak-core</artifactId>
+                <groupId>pl.lodomaniak</groupId>
+                <artifactId>ice-cream-api</artifactId>
                 <version>1.0.0-SNAPSHOT</version>
             </dependency>
 
             <dependency>
-                <groupId>pl.zankowski</groupId>
-                <artifactId>lodomaniak-core-entity</artifactId>
+                <groupId>pl.lodomaniak</groupId>
+                <artifactId>core</artifactId>
                 <version>1.0.0-SNAPSHOT</version>
             </dependency>
 
             <dependency>
-                <groupId>pl.zankowski</groupId>
-                <artifactId>lodomaniak-mail-spi</artifactId>
+                <groupId>pl.lodomaniak</groupId>
+                <artifactId>core-entity</artifactId>
                 <version>1.0.0-SNAPSHOT</version>
             </dependency>
 
             <dependency>
-                <groupId>pl.zankowski</groupId>
-                <artifactId>lodomaniak-auth-api</artifactId>
+                <groupId>pl.lodomaniak</groupId>
+                <artifactId>mail-spi</artifactId>
                 <version>1.0.0-SNAPSHOT</version>
             </dependency>
 
             <dependency>
-                <groupId>pl.zankowski</groupId>
-                <artifactId>lodomaniak-mail</artifactId>
+                <groupId>pl.lodomaniak</groupId>
+                <artifactId>auth-api</artifactId>
                 <version>1.0.0-SNAPSHOT</version>
             </dependency>
 
             <dependency>
-                <groupId>pl.zankowski</groupId>
-                <artifactId>lodomaniak-ice-cream</artifactId>
+                <groupId>pl.lodomaniak</groupId>
+                <artifactId>mail</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>pl.lodomaniak</groupId>
+                <artifactId>ice-cream</artifactId>
                 <version>1.0.0-SNAPSHOT</version>
             </dependency>
 

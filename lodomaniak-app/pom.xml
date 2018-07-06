@@ -3,31 +3,36 @@
          xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>lodomaniak</artifactId>
-        <groupId>pl.zankowski</groupId>
+        <artifactId>all</artifactId>
+        <groupId>pl.lodomaniak</groupId>
         <version>1.0.0-SNAPSHOT</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>lodomaniak-app</artifactId>
+    <artifactId>app</artifactId>
 
     <dependencies>
 
         <!-- Internal -->
 
         <dependency>
-            <groupId>pl.zankowski</groupId>
-            <artifactId>lodomaniak-user</artifactId>
+            <groupId>pl.lodomaniak</groupId>
+            <artifactId>auth</artifactId>
         </dependency>
 
         <dependency>
-            <groupId>pl.zankowski</groupId>
-            <artifactId>lodomaniak-mail</artifactId>
+            <groupId>pl.lodomaniak</groupId>
+            <artifactId>user</artifactId>
         </dependency>
 
         <dependency>
-            <groupId>pl.zankowski</groupId>
-            <artifactId>lodomaniak-ice-cream</artifactId>
+            <groupId>pl.lodomaniak</groupId>
+            <artifactId>mail</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>pl.lodomaniak</groupId>
+            <artifactId>ice-cream</artifactId>
         </dependency>
 
         <!-- Spring Dependencies -->

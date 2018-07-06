@@ -7,7 +7,7 @@ import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.thymeleaf.spring5.SpringTemplateEngine;
 import org.thymeleaf.templatemode.TemplateMode;
 import org.thymeleaf.templateresolver.ClassLoaderTemplateResolver;
-import pl.zankowski.lodomaniak.core.Constants;
+import pl.lodomaniak.core.Constants;
 
 @Configuration
 public class MailConfiguration {
