@@ -49,7 +49,7 @@ public class AccountRestController {
         return ResponseEntity.ok(userService.activateAccount(key));
     }
 
-    @ApiOperation(value = "Get current user account.")
+    @ApiOperation(value = "Get currently logged in user account.")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "User account retrieved.")})
     @GetMapping("/account")
