@@ -6,16 +6,17 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.web.servlet.config.annotation.CorsRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import pl.lodomaniak.core.LodomaniakConfigurationProperties;
 
 @Configuration
 public class WebConfiguration implements WebMvcConfigurer {
 
     private static final Logger LOG = LoggerFactory.getLogger(WebConfiguration.class);
 
-    private final LmbdConfigurationProperties lmbdConfigurationProperties;
+    private final LodomaniakConfigurationProperties lmbdConfigurationProperties;
 
     @Autowired
-    public WebConfiguration(final LmbdConfigurationProperties lmbdConfigurationProperties) {
+    public WebConfiguration(final LodomaniakConfigurationProperties lmbdConfigurationProperties) {
         this.lmbdConfigurationProperties = lmbdConfigurationProperties;
     }
 

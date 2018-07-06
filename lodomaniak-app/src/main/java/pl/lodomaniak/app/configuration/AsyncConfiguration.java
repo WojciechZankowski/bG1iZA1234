@@ -11,6 +11,7 @@ import org.springframework.scheduling.annotation.AsyncConfigurer;
 import org.springframework.scheduling.annotation.EnableAsync;
 import org.springframework.scheduling.annotation.EnableScheduling;
 import org.springframework.scheduling.concurrent.ThreadPoolTaskExecutor;
+import pl.lodomaniak.core.LodomaniakConfigurationProperties;
 
 import java.util.concurrent.Executor;
 
@@ -21,10 +22,10 @@ public class AsyncConfiguration implements AsyncConfigurer {
 
     private static final Logger LOG = LoggerFactory.getLogger(AsyncConfiguration.class);
 
-    private final LmbdConfigurationProperties lmbdConfigurationProperties;
+    private final LodomaniakConfigurationProperties lmbdConfigurationProperties;
 
     @Autowired
-    public AsyncConfiguration(final LmbdConfigurationProperties lmbdConfigurationProperties) {
+    public AsyncConfiguration(final LodomaniakConfigurationProperties lmbdConfigurationProperties) {
         this.lmbdConfigurationProperties = lmbdConfigurationProperties;
     }
 

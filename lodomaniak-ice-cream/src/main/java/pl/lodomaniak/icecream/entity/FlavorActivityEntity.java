@@ -4,15 +4,21 @@ import com.google.common.base.Objects;
 import pl.lodomaniak.core.entity.IEntity;
 
 import javax.persistence.Column;
+import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.SequenceGenerator;
+import javax.persistence.Table;
 import java.time.LocalDate;
 
+@Entity
+@Table(name = "lmbd_flavor_activity")
 public class FlavorActivityEntity implements IEntity {
+
+    private static final long serialVersionUID = 5557611084628542593L;
 
     @Id
     @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
