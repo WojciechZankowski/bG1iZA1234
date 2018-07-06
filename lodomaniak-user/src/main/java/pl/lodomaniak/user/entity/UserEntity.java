@@ -24,7 +24,7 @@ import java.time.Instant;
 import java.util.Set;
 
 @Entity
-@Table(name = "lmbd_user")
+@Table(name = "lodomaniak_user")
 public class UserEntity extends AbstractAuditingEntity implements IEntity {
 
     private static final long serialVersionUID = -2666366358188622396L;
@@ -85,7 +85,7 @@ public class UserEntity extends AbstractAuditingEntity implements IEntity {
 
     @JsonIgnore
     @ManyToMany
-    @JoinTable(name = "lmbd_user_authority",
+    @JoinTable(name = "lodomaniak_user_authority",
             joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},
             inverseJoinColumns = {@JoinColumn(name = "authority_name", referencedColumnName = "name")})
     private Set<AuthorityEntity> authorities;

@@ -12,7 +12,7 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 
 @Entity
-@Table(name = "lmbd_authority")
+@Table(name = "lodomaniak_authority")
 @Immutable
 public class AuthorityEntity implements IEntity {
 

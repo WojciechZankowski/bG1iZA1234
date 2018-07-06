@@ -10,6 +10,7 @@ import pl.lodomaniak.auth.api.AuthoritiesConstants;
 import pl.lodomaniak.core.RandomUtil;
 import pl.lodomaniak.mail.spi.MailService;
 import pl.lodomaniak.user.api.AccountTO;
+import pl.lodomaniak.user.api.UserTO;
 import pl.lodomaniak.user.api.exception.UserAlreadyExistsException;
 import pl.lodomaniak.user.api.exception.UserNotFoundException;
 import pl.lodomaniak.user.entity.UserEntity;
@@ -76,6 +77,21 @@ public class DefaultUserService implements UserService {
         LOG.debug("New user has been created: {}", user);
 
         return user;
+    }
+
+    @Override
+    public UserTO activateAccount(final String key) throws UserNotFoundException {
+        return userRepository.findOneByActivationKey(key)
+                .map(this::activateAccount)
+                .orElseThrow(UserNotFoundException::new);
+    }
+
+    private UserTO activateAccount(final UserEntity user) {
+        final UserEntity userEntity = userRepository.save(new UserEntityBuilder(user)
+                .withActivated(true)
+                .withActivationKey(null)
+                .build());
+        return userMapper.map(userEntity);
     }
 
     @Override

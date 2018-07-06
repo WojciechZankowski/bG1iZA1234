@@ -29,6 +29,28 @@ public final class UserEntityBuilder {
     public UserEntityBuilder() {
     }
 
+    public UserEntityBuilder(final UserEntity userEntity) {
+        if (userEntity != null) {
+            createdBy = userEntity.getCreatedBy();
+            createdDate = userEntity.getCreatedDate();
+            lastModifiedBy = userEntity.getLastModifiedBy();
+            lastModifiedDate = userEntity.getLastModifiedDate();
+            id = userEntity.getId();
+            login = userEntity.getLogin();
+            password = userEntity.getPassword();
+            firstName = userEntity.getFirstName();
+            lastName = userEntity.getLastName();
+            email = userEntity.getEmail();
+            activated = userEntity.isActivated();
+            langKey = userEntity.getLangKey();
+            imageUrl = userEntity.getImageUrl();
+            activationKey = userEntity.getActivationKey();
+            resetKey = userEntity.getResetKey();
+            resetDate = userEntity.getResetDate();
+            authorities = userEntity.getAuthorities();
+        }
+    }
+
     public UserEntityBuilder(final AccountTO account) {
         if (account != null) {
             this.login = account.getLogin();
