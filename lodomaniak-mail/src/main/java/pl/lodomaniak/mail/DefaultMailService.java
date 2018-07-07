@@ -51,6 +51,13 @@ public class DefaultMailService implements MailService {
         sendEmailFromTemplate(user, "activationEmail", "email.activation.title");
     }
 
+    @Override
+    public void sendResetPasswordEmail(final UserTO user) {
+        LOG.debug("Sending password reset email to {}", user.getEmail());
+
+        sendEmailFromTemplate(user, "passwordResetEmail", "email.reset.title");
+    }
+
     private void sendEmailFromTemplate(final UserTO user, final String templateName, final String titleKey) {
         final Locale locale = Locale.forLanguageTag(user.getLangKey());
 

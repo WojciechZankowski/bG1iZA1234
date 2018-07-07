@@ -13,4 +13,8 @@ public class RandomUtil {
         return RandomStringUtils.randomNumeric(DEF_COUNT);
     }
 
+    public static String generateResetKey() {
+        return RandomStringUtils.randomNumeric(DEF_COUNT);
+    }
+
 }

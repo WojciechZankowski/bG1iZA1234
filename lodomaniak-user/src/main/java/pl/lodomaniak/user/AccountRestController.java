@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import pl.lodomaniak.user.api.AccountTO;
+import pl.lodomaniak.user.api.PasswordResetTO;
 import pl.lodomaniak.user.api.UserTO;
 import pl.lodomaniak.user.api.exception.UserNotFoundException;
 import pl.lodomaniak.user.spi.UserService;
@@ -45,7 +46,7 @@ public class AccountRestController {
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "User account activated.")})
     @GetMapping("/activate")
-    public ResponseEntity activateAccount(@RequestParam final String key) throws UserNotFoundException { ;
+    public ResponseEntity activateAccount(@RequestParam final String key) throws UserNotFoundException {
         return ResponseEntity.ok(userService.activateAccount(key));
     }
 
@@ -55,6 +56,24 @@ public class AccountRestController {
     @GetMapping("/account")
     public ResponseEntity<UserTO> getAccount() throws UserNotFoundException {
         return ResponseEntity.ok(userService.getAccount());
+    }
+
+    @ApiOperation(value = "Send password reset email for given user.")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Password reset email has been sent.")})
+    @PostMapping("/account/password-reset/init")
+    public ResponseEntity initPasswordReset(@RequestBody final String email) throws UserNotFoundException {
+        userService.initPasswordReset(email);
+        return ResponseEntity.ok().build();
+    }
+
+    @ApiOperation(value = "Reset password for an user.")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Password has been reset.")})
+    @PostMapping("/account/password-reset")
+    public ResponseEntity resetPassword(@RequestBody final PasswordResetTO passwordReset) throws UserNotFoundException {
+        userService.resetPassword(passwordReset);
+        return ResponseEntity.ok().build();
     }
 
 }

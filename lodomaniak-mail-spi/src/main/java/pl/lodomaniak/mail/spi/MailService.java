@@ -6,4 +6,6 @@ public interface MailService {
 
     void sendActivationEmail(final UserTO user);
 
+    void sendResetPasswordEmail(final UserTO user);
+
 }

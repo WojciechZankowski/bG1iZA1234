@@ -11,6 +11,7 @@ import pl.lodomaniak.auth.api.SecurityUtils;
 import pl.lodomaniak.core.RandomUtil;
 import pl.lodomaniak.mail.spi.MailService;
 import pl.lodomaniak.user.api.AccountTO;
+import pl.lodomaniak.user.api.PasswordResetTO;
 import pl.lodomaniak.user.api.UserTO;
 import pl.lodomaniak.user.api.exception.UserAlreadyExistsException;
 import pl.lodomaniak.user.api.exception.UserNotFoundException;
@@ -20,6 +21,7 @@ import pl.lodomaniak.user.mapper.UserMapper;
 import pl.lodomaniak.user.spi.UserService;
 
 import java.time.Instant;
+import java.time.temporal.ChronoUnit;
 
 @Service
 @Transactional
@@ -98,6 +100,43 @@ public class DefaultUserService implements UserService {
     @Override
     public UserTO getAccount() throws UserNotFoundException {
         return loadUserByUsername(SecurityUtils.getCurrentUserLogin());
+    }
+
+    @Override
+    public void initPasswordReset(final String email) throws UserNotFoundException {
+        final UserEntity user = userRepository.findOneByEmail(email)
+                .filter(UserEntity::isActivated)
+                .map(this::initPasswordReset)
+                .orElseThrow(UserNotFoundException::new);
+
+        mailService.sendResetPasswordEmail(userMapper.map(user));
+    }
+
+    private UserEntity initPasswordReset(final UserEntity user) {
+        return userRepository.save(new UserEntityBuilder(user)
+                .withResetKey(RandomUtil.generateResetKey())
+                .withResetDate(Instant.now())
+                .build());
+    }
+
+    @Override
+    public void resetPassword(final PasswordResetTO passwordReset) throws UserNotFoundException {
+        userRepository.findOneByResetKey(passwordReset.getKey())
+                .filter(user -> isResetKeyExpired(user.getResetDate()))
+                .map(user -> resetPassword(user, passwordReset))
+                .orElseThrow(UserNotFoundException::new);
+    }
+
+    private boolean isResetKeyExpired(final Instant resetDate) {
+        return resetDate.isAfter(Instant.now().minus(1, ChronoUnit.DAYS));
+    }
+
+    private UserEntity resetPassword(final UserEntity user, final PasswordResetTO passwordReset) {
+        return userRepository.save(new UserEntityBuilder(user)
+                .withPassword(passwordEncoder.encode(passwordReset.getPassword()))
+                .withResetDate(null)
+                .withResetKey(null)
+                .build());
     }
 
     @Override
