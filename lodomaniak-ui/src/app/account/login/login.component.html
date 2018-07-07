@@ -1,30 +1,20 @@
-<div>
-  <form name="form" role="form" (ngSubmit)="login()" fxLayout="column">
-    <div class="form-group" fxFlex="0 0 50%">
-      <!--<label class="form-control-label" for="login">{{'ACCOUNT.FORM.LOGIN.TITLE' | translate}}</label>-->
-      <!--<input type="text" class="form-control" id="login" name="login"-->
-      <!--placeholder="{{'ACCOUNT.FORM.LOGIN.PLACEHOLDER' | translate}}"-->
-      <!--required minlength="1" maxlength="50" pattern="^[_'.@A-Za-z0-9-]*$">-->
-      <mat-form-field appearance="outline">
-        <mat-label>{{'ACCOUNT.FORM.USERNAME.TITLE' | translate}}</mat-label>
-        <input matInput id="login" name="login" [(ngModel)]='credentials.username'
-               placeholder="{{'ACCOUNT.FORM.USERNAME.PLACEHOLDER' | translate}}">
-      </mat-form-field>
-    </div>
+<lodomaniak-account-card [title]="title">
 
-    <div class="form-group">
-      <!--<label class="form-control-label" for="password">{{'ACCOUNT.FORM.PASSWORD.TITLE' | translate}}</label>-->
-      <!--<input type="password" class="form-control" id="password" name="password"-->
-      <!--placeholder="{{'ACCOUNT.FORM.PASSWORD.PLACEHOLDER' | translate}}"-->
-      <!--minlength=4 maxlength=50 required>-->
+  <form class="login-form" name="form" role="form" (ngSubmit)="login()">
 
-      <mat-form-field appearance="outline">
-        <mat-label>{{'ACCOUNT.FORM.PASSWORD.TITLE' | translate}}</mat-label>
-        <input matInput id="password" name="password" [(ngModel)]="credentials.password"
-               type="password" placeholder="{{'ACCOUNT.FORM.PASSWORD.PLACEHOLDER' | translate}}">
-      </mat-form-field>
-    </div>
+    <mat-form-field class="form-size" appearance="outline">
+      <mat-label>{{'ACCOUNT.FORM.USERNAME.TITLE' | translate}}</mat-label>
+      <input matInput id="login" name="login" [(ngModel)]='credentials.username'
+             placeholder="{{'ACCOUNT.FORM.USERNAME.PLACEHOLDER' | translate}}">
+    </mat-form-field>
 
-    <button mat-stroked-button type="submit">{{'ACCOUNT.FORM.LOGIN' | translate}}</button>
+    <mat-form-field class="form-size" appearance="outline">
+      <mat-label>{{'ACCOUNT.FORM.PASSWORD.TITLE' | translate}}</mat-label>
+      <input matInput id="password" name="password" [(ngModel)]="credentials.password"
+             type="password" placeholder="{{'ACCOUNT.FORM.PASSWORD.PLACEHOLDER' | translate}}">
+    </mat-form-field>
+
+    <button class="form-size button-size" mat-stroked-button type="submit">{{'ACCOUNT.FORM.LOGIN.BUTTON' | translate}}</button>
   </form>
-</div>
+
+</lodomaniak-account-card>

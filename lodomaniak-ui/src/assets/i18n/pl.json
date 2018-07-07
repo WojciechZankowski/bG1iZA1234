@@ -21,8 +21,14 @@
       "FIRST_NAME.PLACEHOLDER": "Twoje imię",
       "LAST_NAME": "Nazwisko",
       "LAST_NAME.PLACEHOLDER": "Twoje nazwisko",
-      "REGISTER": "Zarejestruj",
-      "LOGIN": "Zaloguj"
+      "REGISTER": {
+        "TITLE": "Zarejestruj konto w Lodomaniaku",
+        "BUTTON": "Zarejestruj"
+      },
+      "LOGIN": {
+        "TITLE": "Zaloguj się do Lodomaniaka",
+        "BUTTON": "Zaloguj"
+      }
     }
   },
   "COMMODITIES": {

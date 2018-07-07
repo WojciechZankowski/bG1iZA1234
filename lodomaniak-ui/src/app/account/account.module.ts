@@ -5,6 +5,8 @@ import {SharedModule} from "../shared/shared.module";
 import {CommonModule} from "@angular/common";
 import {FormsModule} from "@angular/forms";
 import {LoginComponent} from "./login/login.component";
+import {AccountComponent} from "./account.component";
+import {AccountCardComponent} from "./account-card.component";
 
 @NgModule({
   imports: [
@@ -14,12 +16,19 @@ import {LoginComponent} from "./login/login.component";
     SharedModule
   ],
   declarations: [
+    AccountComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    AccountCardComponent
   ],
   entryComponents: [
+    AccountComponent,
     RegisterComponent,
-    LoginComponent
+    LoginComponent,
+    AccountCardComponent
+  ],
+  providers: [
+    AccountCardComponent
   ]
 })
 export class AccountModule {

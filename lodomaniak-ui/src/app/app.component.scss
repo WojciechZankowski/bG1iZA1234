@@ -1,16 +1,12 @@
 @import '../assets/styles/main';
 
 .page {
-  flex: 1 1 100%;
-  justify-content: space-around;
-  align-items: center;
-}
+  background-color: #f3f3f3;
 
-.page-bar {
-  width: $full-width;
-}
-
-.content-container {
-  margin: 20px;
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 0;
 }
 
