@@ -4,18 +4,23 @@ import {DashboardComponent} from "./dashboard/dashboard.component";
 import {FlavorSchedulerComponent} from "./flavor-scheduler/flavor-scheduler.component";
 import {FlavorsComponent} from "./flavors/flavors.component";
 import {IceCreamShopsComponent} from "./ice-cream-shops/ice-cream-shops.component";
+import {AdminComponent} from "./admin.component";
+import {SharedModule} from "../shared/shared.module";
 
 @NgModule({
   imports: [
-    AdminRoutingModule
+    AdminRoutingModule,
+    SharedModule
   ],
   declarations: [
+    AdminComponent,
     DashboardComponent,
     FlavorSchedulerComponent,
     FlavorsComponent,
     IceCreamShopsComponent
   ],
   entryComponents: [
+    AdminComponent,
     DashboardComponent,
     FlavorSchedulerComponent,
     FlavorsComponent,
