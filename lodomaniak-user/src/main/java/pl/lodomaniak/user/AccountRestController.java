@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import pl.lodomaniak.user.api.AccountTO;
+import pl.lodomaniak.user.api.PasswordResetRequestTO;
 import pl.lodomaniak.user.api.PasswordResetTO;
 import pl.lodomaniak.user.api.UserTO;
 import pl.lodomaniak.user.api.exception.UserNotFoundException;
@@ -62,8 +63,8 @@ public class AccountRestController {
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Password reset email has been sent.")})
     @PostMapping("/account/password-reset/init")
-    public ResponseEntity initPasswordReset(@RequestBody final String email) throws UserNotFoundException {
-        userService.initPasswordReset(email);
+    public ResponseEntity initPasswordReset(@RequestBody final PasswordResetRequestTO request) throws UserNotFoundException {
+        userService.initPasswordReset(request);
         return ResponseEntity.ok().build();
     }
 

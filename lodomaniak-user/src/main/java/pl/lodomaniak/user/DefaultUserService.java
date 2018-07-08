@@ -11,6 +11,7 @@ import pl.lodomaniak.auth.api.SecurityUtils;
 import pl.lodomaniak.core.RandomUtil;
 import pl.lodomaniak.mail.spi.MailService;
 import pl.lodomaniak.user.api.AccountTO;
+import pl.lodomaniak.user.api.PasswordResetRequestTO;
 import pl.lodomaniak.user.api.PasswordResetTO;
 import pl.lodomaniak.user.api.UserTO;
 import pl.lodomaniak.user.api.exception.UserAlreadyExistsException;
@@ -104,8 +105,8 @@ public class DefaultUserService implements UserService {
     }
 
     @Override
-    public void initPasswordReset(final String email) throws UserNotFoundException {
-        final UserEntity user = userRepository.findOneByEmail(email)
+    public void initPasswordReset(final PasswordResetRequestTO request) throws UserNotFoundException {
+        final UserEntity user = userRepository.findOneByEmail(request.getEmail())
                 .filter(UserEntity::isActivated)
                 .map(this::initPasswordReset)
                 .orElseThrow(UserNotFoundException::new);

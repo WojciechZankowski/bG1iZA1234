@@ -5,6 +5,7 @@ import {LoginComponent} from "./login/login.component";
 import {AccountComponent} from "./account.component";
 import {PasswordResetInitComponent} from "./reset-password/password-reset-init.component";
 import {ActivateComponent} from "./activate/activate.component";
+import {PasswordResetComponent} from "./reset-password/password-reset.component";
 
 const routes: Array<Route> = [
   {
@@ -31,6 +32,10 @@ const routes: Array<Route> = [
       {
         path: 'password-reset',
         component: PasswordResetInitComponent
+      },
+      {
+        path: 'password-reset/finish',
+        component: PasswordResetComponent
       }
     ]
   }

@@ -9,6 +9,7 @@ import {AccountComponent} from "./account.component";
 import {AccountCardComponent} from "./account-card.component";
 import {PasswordResetInitComponent} from "./reset-password/password-reset-init.component";
 import {ActivateComponent} from "./activate/activate.component";
+import {PasswordResetComponent} from "./reset-password/password-reset.component";
 
 @NgModule({
   imports: [
@@ -23,7 +24,8 @@ import {ActivateComponent} from "./activate/activate.component";
     LoginComponent,
     AccountCardComponent,
     PasswordResetInitComponent,
-    ActivateComponent
+    ActivateComponent,
+    PasswordResetComponent
   ],
   entryComponents: [
     AccountComponent,
@@ -31,7 +33,8 @@ import {ActivateComponent} from "./activate/activate.component";
     LoginComponent,
     AccountCardComponent,
     PasswordResetInitComponent,
-    ActivateComponent
+    ActivateComponent,
+    PasswordResetComponent
   ]
 })
 export class AccountModule {

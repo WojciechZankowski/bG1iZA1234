@@ -1,5 +1,9 @@
 <lodomaniak-account-card [title]="title">
 
-<mat-error>TEST</mat-error>
+<span class="form-size">{{'ACCOUNT.FORM.ACTIVATE.SUCCESS' | translate}}
+  <a [routerLink]="loginPath"
+     routerLinkActive="nav-bar-active"
+     [routerLinkActiveOptions]="routerActiveOptions">{{'ACCOUNT.FORM.HERE' | translate}}</a>
+</span>
 
 </lodomaniak-account-card>

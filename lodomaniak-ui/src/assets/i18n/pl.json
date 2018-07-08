@@ -25,7 +25,6 @@
         "TITLE": "Zarejestruj konto w Lodomaniaku",
         "BUTTON": "Zarejestruj",
         "CREATE_ACCOUNT": "Masz już konto? Zaloguj się",
-        "HERE": "tutaj.",
         "SUCCESS": "Konto zostało zarejestrowane. Sprwadź skrzynkę pocztową aby zakończyć rejestrację.",
         "CLOSE": "Zamknij"
       },
@@ -33,16 +32,21 @@
         "TITLE": "Zaloguj się do Lodomaniaka",
         "BUTTON": "Zaloguj",
         "CREATE_ACCOUNT": "Nie masz jeszcze konta? Możesz je stworzyć",
-        "RESET_PASSWORD": "Zapomniales hasła? Zresetuj hasło",
-        "HERE": "tutaj."
+        "RESET_PASSWORD": "Zapomniales hasła? Zresetuj hasło"
       },
       "PASSWORD_RESET": {
         "TITLE": "Zresetuj hasło do swojego konta",
-        "BUTTON": "Zresetuj hasło"
+        "BUTTON": "Zresetuj hasło",
+        "INIT_SUCCESS": "Wiadomość z instrukcją resetu hasło została wysłana. Sprawdź swoją skrzynkę pocztową.",
+        "SUCCESS": "Hasło zostało zmienione. Przejdź do logowania.",
+        "LOGIN": "Przejdź do logowania",
+        "CLOSE": "Zamknij"
       },
       "ACTIVATE": {
-        "TITLE": "Aktywacja konta"
-      }
+        "TITLE": "Aktywacja konta",
+        "SUCCESS": "Twoje konto zostało aktywowane. Możesz się zalogować"
+      },
+      "HERE": "tutaj."
     }
   },
   "COMMODITIES": {
