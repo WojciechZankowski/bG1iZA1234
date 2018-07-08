@@ -1,6 +1,8 @@
 import {Component} from "@angular/core";
 import {Account} from "../../model/account.model";
 import {RegisterService} from "../../services/register.service";
+import {MatSnackBar} from "@angular/material";
+import {TranslateService} from "@ngx-translate/core";
 
 @Component({
   templateUrl: './register.component.html',
@@ -16,7 +18,9 @@ export class RegisterComponent {
   public loginPath = '/account/login';
   public routerActiveOptions = {exact: true};
 
-  constructor(private registerService: RegisterService) {
+  constructor(private registerService: RegisterService,
+              private snackBar: MatSnackBar,
+              private translateService: TranslateService) {
   }
 
   register() {
@@ -26,6 +30,11 @@ export class RegisterComponent {
       this.account.langKey = "pl";
       this.registerService.save(this.account)
         .subscribe((result) => {
+          this.account = new Account();
+          this.confirmPassword = null;
+          this.snackBar.open(
+            this.translateService.instant('ACCOUNT.FORM.REGISTER.SUCCESS'),
+            this.translateService.instant('ACCOUNT.FORM.REGISTER.CLOSE'));
         });
     }
   }

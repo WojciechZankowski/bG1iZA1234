@@ -8,6 +8,7 @@ import {LoginComponent} from "./login/login.component";
 import {AccountComponent} from "./account.component";
 import {AccountCardComponent} from "./account-card.component";
 import {PasswordResetInitComponent} from "./reset-password/password-reset-init.component";
+import {ActivateComponent} from "./activate/activate.component";
 
 @NgModule({
   imports: [
@@ -21,14 +22,16 @@ import {PasswordResetInitComponent} from "./reset-password/password-reset-init.c
     RegisterComponent,
     LoginComponent,
     AccountCardComponent,
-    PasswordResetInitComponent
+    PasswordResetInitComponent,
+    ActivateComponent
   ],
   entryComponents: [
     AccountComponent,
     RegisterComponent,
     LoginComponent,
     AccountCardComponent,
-    PasswordResetInitComponent
+    PasswordResetInitComponent,
+    ActivateComponent
   ]
 })
 export class AccountModule {

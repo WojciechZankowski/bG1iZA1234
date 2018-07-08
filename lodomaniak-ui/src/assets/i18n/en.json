@@ -16,14 +16,24 @@
       "LAST_NAME": "Nazwisko",
       "LAST_NAME.PLACEHOLDER": "Twoje nazwisko",
       "REGISTER": {
-        "TITLE": "Zarejestruj konto w lodomaniaku",
-        "BUTTON": "Zarejestruj"
+        "TITLE": "Zarejestruj konto w Lodomaniaku",
+        "BUTTON": "Zarejestruj",
+        "CREATE_ACCOUNT": "Masz już konto? Zaloguj się",
+        "HERE": "tutaj."
       },
       "LOGIN": {
-        "TITLE": "Zaloguj się do lodomaniaka",
+        "TITLE": "Zaloguj się do Lodomaniaka",
         "BUTTON": "Zaloguj",
-        "CREATE_ACCOUNT": "Nie masz jeszcze konta? Może je stworzyć",
+        "CREATE_ACCOUNT": "Nie masz jeszcze konta? Możesz je stworzyć",
+        "RESET_PASSWORD": "Zapomniales hasła? Zresetuj hasło",
         "HERE": "tutaj."
+      },
+      "PASSWORD_RESET": {
+        "TITLE": "Zresetuj hasło do swojego konta",
+        "BUTTON": "Zresetuj hasło"
+      },
+      "ACTIVATE": {
+        "TITLE": "Aktywacja konta"
       }
     }
   },

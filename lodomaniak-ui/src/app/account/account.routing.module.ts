@@ -4,6 +4,7 @@ import {RegisterComponent} from "./register/register.component";
 import {LoginComponent} from "./login/login.component";
 import {AccountComponent} from "./account.component";
 import {PasswordResetInitComponent} from "./reset-password/password-reset-init.component";
+import {ActivateComponent} from "./activate/activate.component";
 
 const routes: Array<Route> = [
   {
@@ -22,6 +23,10 @@ const routes: Array<Route> = [
       {
         path: 'login',
         component: LoginComponent
+      },
+      {
+        path: 'activate',
+        component: ActivateComponent
       },
       {
         path: 'password-reset',
