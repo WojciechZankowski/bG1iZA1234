@@ -14,7 +14,24 @@
              type="password" placeholder="{{'ACCOUNT.FORM.PASSWORD.PLACEHOLDER' | translate}}">
     </mat-form-field>
 
-    <button class="form-size button-size" mat-stroked-button type="submit">{{'ACCOUNT.FORM.LOGIN.BUTTON' | translate}}</button>
+    <button class="form-size button-size" mat-stroked-button type="submit">{{'ACCOUNT.FORM.LOGIN.BUTTON' | translate}}
+    </button>
+
+    <span>
+      <p>
+      {{'ACCOUNT.FORM.LOGIN.CREATE_ACCOUNT' | translate}}
+      <a [routerLink]="registrationPath"
+         routerLinkActive="nav-bar-active"
+         [routerLinkActiveOptions]="routerActiveOptions">{{'ACCOUNT.FORM.LOGIN.HERE' | translate}}</a>
+      </p>
+    </span>
+    <span>
+      {{'ACCOUNT.FORM.LOGIN.RESET_PASSWORD' | translate}}
+      <a [routerLink]="passwordResetPath"
+         routerLinkActive="nav-bar-active"
+         [routerLinkActiveOptions]="routerActiveOptions">{{'ACCOUNT.FORM.LOGIN.HERE' | translate}}</a>
+    </span>
   </form>
+
 
 </lodomaniak-account-card>

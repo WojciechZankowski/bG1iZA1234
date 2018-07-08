@@ -3,6 +3,7 @@ import {Route, RouterModule} from "@angular/router";
 import {RegisterComponent} from "./register/register.component";
 import {LoginComponent} from "./login/login.component";
 import {AccountComponent} from "./account.component";
+import {PasswordResetInitComponent} from "./reset-password/password-reset-init.component";
 
 const routes: Array<Route> = [
   {
@@ -21,6 +22,10 @@ const routes: Array<Route> = [
       {
         path: 'login',
         component: LoginComponent
+      },
+      {
+        path: 'password-reset',
+        component: PasswordResetInitComponent
       }
     ]
   }

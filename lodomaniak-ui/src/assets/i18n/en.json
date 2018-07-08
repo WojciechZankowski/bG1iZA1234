@@ -21,7 +21,9 @@
       },
       "LOGIN": {
         "TITLE": "Zaloguj się do lodomaniaka",
-        "BUTTON": "Zaloguj"
+        "BUTTON": "Zaloguj",
+        "CREATE_ACCOUNT": "Nie masz jeszcze konta? Może je stworzyć",
+        "HERE": "tutaj."
       }
     }
   },

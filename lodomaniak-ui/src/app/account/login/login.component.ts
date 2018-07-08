@@ -11,6 +11,10 @@ export class LoginComponent {
   public credentials: Credentials = new Credentials();
   public title: string = 'ACCOUNT.FORM.LOGIN.TITLE';
 
+  public registrationPath = '/account/register';
+  public passwordResetPath = '/account/password-reset';
+  public routerActiveOptions = {exact: true};
+
   constructor(private authService: AuthService) {
   }
 

@@ -1,6 +1,8 @@
 package pl.lodomaniak.user.mapper;
 
 import org.springframework.stereotype.Component;
+import pl.lodomaniak.mail.api.UserMailTO;
+import pl.lodomaniak.mail.api.UserMailTOBuilder;
 import pl.lodomaniak.user.api.AccountTO;
 import pl.lodomaniak.user.api.AccountTOBuilder;
 import pl.lodomaniak.user.entity.AuthorityEntity;
@@ -33,6 +35,16 @@ public class UserMapper {
 
     private Set<String> map(final Set<AuthorityEntity> authorityEntities) {
         return authorityEntities.stream().map(AuthorityEntity::getName).collect(toSet());
+    }
+
+    public UserMailTO mapToUserMail(final UserEntity user) {
+        return new UserMailTOBuilder()
+                .withLogin(user.getLogin())
+                .withEmail(user.getEmail())
+                .withLangKey(user.getLangKey())
+                .withActivationKey(user.getActivationKey())
+                .withResetKey(user.getResetKey())
+                .build();
     }
 
 }

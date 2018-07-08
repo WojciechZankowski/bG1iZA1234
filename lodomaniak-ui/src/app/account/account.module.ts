@@ -7,6 +7,7 @@ import {FormsModule} from "@angular/forms";
 import {LoginComponent} from "./login/login.component";
 import {AccountComponent} from "./account.component";
 import {AccountCardComponent} from "./account-card.component";
+import {PasswordResetInitComponent} from "./reset-password/password-reset-init.component";
 
 @NgModule({
   imports: [
@@ -19,16 +20,15 @@ import {AccountCardComponent} from "./account-card.component";
     AccountComponent,
     RegisterComponent,
     LoginComponent,
-    AccountCardComponent
+    AccountCardComponent,
+    PasswordResetInitComponent
   ],
   entryComponents: [
     AccountComponent,
     RegisterComponent,
     LoginComponent,
-    AccountCardComponent
-  ],
-  providers: [
-    AccountCardComponent
+    AccountCardComponent,
+    PasswordResetInitComponent
   ]
 })
 export class AccountModule {

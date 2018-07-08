@@ -60,8 +60,9 @@ public class DefaultUserService implements UserService {
                             throw new UserAlreadyExistsException("Email already in use.");
                         })
                         .orElseGet(() -> {
-                            mailService.sendActivationEmail(account);
-                            return createUser(account);
+                            final UserEntity user = createUser(account);
+                            mailService.sendActivationEmail(userMapper.mapToUserMail(user));
+                            return user;
                         }));
     }
 
@@ -109,7 +110,7 @@ public class DefaultUserService implements UserService {
                 .map(this::initPasswordReset)
                 .orElseThrow(UserNotFoundException::new);
 
-        mailService.sendResetPasswordEmail(userMapper.map(user));
+        mailService.sendResetPasswordEmail(userMapper.mapToUserMail(user));
     }
 
     private UserEntity initPasswordReset(final UserEntity user) {

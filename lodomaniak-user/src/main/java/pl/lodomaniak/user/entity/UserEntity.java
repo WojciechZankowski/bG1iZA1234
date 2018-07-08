@@ -1,6 +1,5 @@
 package pl.lodomaniak.user.entity;
 
-import com.fasterxml.jackson.annotation.JsonIgnore;
 import com.google.common.base.Objects;
 import pl.lodomaniak.core.Constants;
 import pl.lodomaniak.core.entity.AbstractAuditingEntity;
@@ -72,18 +71,15 @@ public class UserEntity extends AbstractAuditingEntity implements IEntity {
 
     @Size(max = 20)
     @Column(name = "activation_key", length = 20)
-    @JsonIgnore
     private String activationKey;
 
     @Size(max = 20)
     @Column(name = "reset_key", length = 20)
-    @JsonIgnore
     private String resetKey;
 
     @Column(name = "reset_date")
     private Instant resetDate;
 
-    @JsonIgnore
     @ManyToMany
     @JoinTable(name = "lodomaniak_user_authority",
             joinColumns = {@JoinColumn(name = "user_id", referencedColumnName = "id")},

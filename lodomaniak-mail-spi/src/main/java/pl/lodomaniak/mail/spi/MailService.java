@@ -1,11 +1,11 @@
 package pl.lodomaniak.mail.spi;
 
-import pl.lodomaniak.user.api.UserTO;
+import pl.lodomaniak.mail.api.UserMailTO;
 
 public interface MailService {
 
-    void sendActivationEmail(final UserTO user);
+    void sendActivationEmail(final UserMailTO user);
 
-    void sendResetPasswordEmail(final UserTO user);
+    void sendResetPasswordEmail(final UserMailTO user);
 
 }

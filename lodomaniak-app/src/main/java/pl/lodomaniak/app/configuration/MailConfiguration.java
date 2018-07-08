@@ -1,7 +1,9 @@
 package pl.lodomaniak.app.configuration;
 
+import org.springframework.context.MessageSource;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
+import org.springframework.context.support.ReloadableResourceBundleMessageSource;
 import org.springframework.mail.javamail.JavaMailSender;
 import org.springframework.mail.javamail.JavaMailSenderImpl;
 import org.thymeleaf.spring5.SpringTemplateEngine;
@@ -11,16 +13,6 @@ import pl.lodomaniak.core.Constants;
 
 @Configuration
 public class MailConfiguration {
-
-    @Bean
-    public JavaMailSender javaMailSender() {
-        return new JavaMailSenderImpl();
-    }
-
-    @Bean
-    public SpringTemplateEngine springTemplateEngine() {
-        return new SpringTemplateEngine();
-    }
 
     @Bean
     public ClassLoaderTemplateResolver emailTemplateResolver() {

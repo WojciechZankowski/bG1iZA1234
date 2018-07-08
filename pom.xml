@@ -20,6 +20,7 @@
         <module>lodomaniak-auth</module>
         <module>lodomaniak-auth-api</module>
         <module>lodomaniak-ice-cream-api</module>
+        <module>lodomaniak-mail-api</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -100,6 +101,12 @@
             <dependency>
                 <groupId>pl.lodomaniak</groupId>
                 <artifactId>mail</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>pl.lodomaniak</groupId>
+                <artifactId>mail-api</artifactId>
                 <version>1.0.0-SNAPSHOT</version>
             </dependency>
 
