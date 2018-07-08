@@ -6,6 +6,7 @@ import {Account} from "../model/account.model";
 import {HttpParams} from "@angular/common/http";
 import {PasswordReset} from "../model/password-reset.model";
 
+export const ACCOUNT_PATH = '/account';
 export const REGISTER_PATH = '/register';
 export const ACTIVATE_PATH = '/activate';
 export const PASSWORD_RESET_INIT_PATH = '/account/password-reset/init';
@@ -15,6 +16,10 @@ export const PASSWORD_RESET_PATH = '/account/password-reset';
 export class RegisterService {
 
   constructor(private apiService: ApiService) {
+  }
+
+  get(): Observable<any> {
+    return this.apiService.get(ACCOUNT_PATH);
   }
 
   save(account: Account): Observable<any> {

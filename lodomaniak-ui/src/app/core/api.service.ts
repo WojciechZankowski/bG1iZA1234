@@ -34,7 +34,7 @@ export class ApiService {
     return this.http.post(
       `${environment.restApiUrl}${path}`,
       JSON.stringify(body),
-      {headers: this.headers}
+      {headers: this.headers, observe: 'response'}
     ).pipe(catchError(this.formatErrors));
   }
 

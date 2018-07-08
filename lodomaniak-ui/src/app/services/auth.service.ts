@@ -2,6 +2,7 @@ import {Injectable} from "@angular/core";
 import {ApiService} from "../core/api.service";
 import {Credentials} from "../model/credentials.model";
 import {Observable} from "rxjs/Observable";
+import {map} from "rxjs/operators";
 
 export const AUTH_PATH: string = '/authenticate';
 
@@ -18,7 +19,8 @@ export class AuthService {
   }
 
   login(credentials: Credentials): Observable<any> {
-    return this.apiService.post(AUTH_PATH, credentials).map(response => this.authenticateSuccess(credentials, response));
+    return this.apiService.post(AUTH_PATH, credentials)
+      .pipe(map(response => this.authenticateSuccess(credentials, response)));
   }
 
   private authenticateSuccess(credentials: Credentials, response: any): string {

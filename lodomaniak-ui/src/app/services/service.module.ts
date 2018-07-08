@@ -3,6 +3,8 @@ import {PriceBarService} from "./price-bar.service";
 import {CoreModule} from "../core/core.module";
 import {RegisterService} from "./register.service";
 import {AuthService} from "./auth.service";
+import {PrincipalService} from "./principal.service";
+import {UserRouteAccessService} from "./user-route-access.service";
 
 @NgModule({
   imports: [
@@ -12,7 +14,9 @@ import {AuthService} from "./auth.service";
   providers: [
     AuthService,
     PriceBarService,
-    RegisterService
+    RegisterService,
+    PrincipalService,
+    UserRouteAccessService
   ]
 })
 export class ServiceModule {
