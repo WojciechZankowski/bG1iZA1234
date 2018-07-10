@@ -2,9 +2,10 @@ import {Component} from "@angular/core";
 import {NavBarItem} from "../shared/navigation/nav-bar.component";
 
 const menuItems: Array<NavBarItem> = [
-  {name: 'MENU.DASHBOARD', url: ''},
-  {name: 'MENU.LOANS', url: '/loans'},
-  {name: 'MENU.HISTORY', url: '/history'}
+  {name: 'MENU.DASHBOARD', url: '/dashboard'},
+  {name: 'MENU.ICE_CREAM_SHOP', url: '/shops'},
+  {name: 'MENU.FLAVORS', url: '/flavors'},
+  {name: 'MENU.FLAVOR_SCHEDULER', url: '/flavor-scheduler'}
 ];
 
 const profileItems: Array<NavBarItem> = [
@@ -22,6 +23,6 @@ export class AdminComponent {
 
   public readonly opened: boolean = true;
 
-  fillerNav = Array(10).fill(0).map((_, i) => `Nav Item ${i + 1}`);
+  public routerActiveOptions = {exact: true};
 
 }

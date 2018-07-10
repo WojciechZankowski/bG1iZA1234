@@ -56,11 +56,9 @@
   },
   "MENU": {
     "DASHBOARD": "Podsumowanie",
-    "LOANS": "Umowy",
-    "HISTORY": "Historia",
-    "PROFILE": {
-      "SETTINGS": "Ustawienia"
-    }
+    "FLAVORS": "Smaki",
+    "FLAVOR_SCHEDULER": "Planer",
+    "ICE_CREAM_SHOP": "Lodziarnie"
   },
   "TITLE": "Lodomaniak"
 }
