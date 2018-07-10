@@ -5,10 +5,15 @@ import {FlavorSchedulerComponent} from "./flavor-scheduler/flavor-scheduler.comp
 import {IceCreamShopsComponent} from "./ice-cream-shops/ice-cream-shops.component";
 import {AdminComponent} from "./admin.component";
 import {DashboardComponent} from "./dashboard/dashboard.component";
+import {UserRouteAccessService} from "../services/user-route-access.service";
 
 const routes: Routes = [
   {
     path: '',
+    data: {
+      authorities: ['ROLE_ADMIN']
+    },
+    canActivate: [UserRouteAccessService],
     component: AdminComponent,
     children: [
       {

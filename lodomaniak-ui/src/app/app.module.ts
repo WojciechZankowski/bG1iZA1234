@@ -1,4 +1,3 @@
-import {BrowserModule} from '@angular/platform-browser';
 import {NgModule} from '@angular/core';
 
 import {AppComponent} from './app.component';
@@ -12,6 +11,8 @@ import {FeaturesModule} from "./features/features.module";
 import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
 import {FormsModule} from "@angular/forms";
 import {AuthInterceptor} from "./core/interceptor/auth.interceptor";
+import {BrowserModule} from "@angular/platform-browser";
+import {AuthErrorInterceptor} from "./core/interceptor/auth-error.interceptor";
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
@@ -43,6 +44,11 @@ export function HttpLoaderFactory(http: HttpClient) {
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
+      multi: true
+    },
+    {
+      provide: HTTP_INTERCEPTORS,
+      useClass: AuthErrorInterceptor,
       multi: true
     }
   ],

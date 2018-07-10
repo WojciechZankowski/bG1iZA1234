@@ -12,7 +12,8 @@ const profileItems: Array<NavBarItem> = [
 ];
 
 @Component({
-  templateUrl: './admin.component.html'
+  templateUrl: './admin.component.html',
+  styleUrls: ['./admin.component.scss']
 })
 export class AdminComponent {
 
@@ -20,5 +21,7 @@ export class AdminComponent {
   public readonly PROFILE_ITEMS = profileItems;
 
   public readonly opened: boolean = true;
+
+  fillerNav = Array(10).fill(0).map((_, i) => `Nav Item ${i + 1}`);
 
 }

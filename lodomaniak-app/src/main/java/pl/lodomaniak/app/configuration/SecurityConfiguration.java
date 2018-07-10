@@ -14,6 +14,7 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import pl.lodomaniak.auth.UnauthorizedEntryPoint;
 import pl.lodomaniak.auth.jwt.JwtFilter;
 
 @Configuration
@@ -31,22 +32,35 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
     protected void configure(final HttpSecurity http) throws Exception {
         // @formatter:off
         http
-                .csrf().disable()
-                .logout().disable()
-                .authorizeRequests()
-                    .anyRequest().permitAll()
-                .and()
-                    .sessionManagement()
-                    .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
-                .and()
-                    .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
-                    .headers().cacheControl();
+            .exceptionHandling()
+            .authenticationEntryPoint(http401UnauthorizedEntryPoint())
+        .and()
+            .csrf().disable()
+            .logout().disable()
+            .authorizeRequests()
+            .antMatchers("/api/register").permitAll()
+            .antMatchers("/api/activate").permitAll()
+            .antMatchers("/api/password-reset").permitAll()
+            .antMatchers("/api/password-reset/init").permitAll()
+            .antMatchers("/api/authenticate").permitAll()
+            .antMatchers("/api/**").authenticated()
+        .and()
+            .sessionManagement()
+            .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+        .and()
+            .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
+            .headers().cacheControl();
         // @formatter:on
     }
 
     @Override
     public void configure(final WebSecurity web) {
         web.ignoring().antMatchers(HttpMethod.OPTIONS, "/**");
+    }
+
+    @Bean
+    public UnauthorizedEntryPoint http401UnauthorizedEntryPoint() {
+        return new UnauthorizedEntryPoint();
     }
 
     @Bean

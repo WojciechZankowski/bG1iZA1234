@@ -1,14 +1,17 @@
 import {NgModule} from "@angular/core";
 import {
   MatButtonModule,
-  MatCardModule, MatCheckboxModule,
+  MatCardModule,
+  MatCheckboxModule,
   MatFormFieldModule,
   MatIconModule,
   MatInputModule,
-  MatMenuModule, MatSidenavModule, MatSnackBarModule,
+  MatListModule,
+  MatMenuModule,
+  MatSidenavModule,
+  MatSnackBarModule,
   MatToolbarModule
 } from "@angular/material";
-import {MatSidenavMenuModule} from "mat-sidenav-menu";
 
 @NgModule({
   imports: [
@@ -21,7 +24,8 @@ import {MatSidenavMenuModule} from "mat-sidenav-menu";
     MatInputModule,
     MatSidenavModule,
     MatCheckboxModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatListModule
   ],
   exports: [
     MatButtonModule,
@@ -33,7 +37,8 @@ import {MatSidenavMenuModule} from "mat-sidenav-menu";
     MatInputModule,
     MatSidenavModule,
     MatCheckboxModule,
-    MatSnackBarModule
+    MatSnackBarModule,
+    MatListModule
   ]
 })
 export class DesignModule {

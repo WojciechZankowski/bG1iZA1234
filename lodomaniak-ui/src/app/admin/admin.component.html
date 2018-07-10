@@ -1,7 +1,26 @@
-<lodomaniak-navbar style="width: 100%"></lodomaniak-navbar>
+<div class="page-content">
 
-<lodomaniak-sidenav [menuItems]="MENU_ITEMS">
-  <div class="content-container">
-    <router-outlet></router-outlet>
+  <mat-toolbar color="primary">
+    <button mat-icon-button (click)="snav.toggle()">
+      <mat-icon>menu</mat-icon>
+    </button>
+    <h1>{{'TITLE' | translate}}</h1>
+  </mat-toolbar>
+
+  <div class="content-container" fxLayout="row" >
+    <mat-drawer-container class="content-container">
+      <mat-drawer #snav [mode]="'side'">
+        <mat-nav-list class="navigation-list">
+          <a mat-list-item routerLink="." *ngFor="let nav of fillerNav">{{nav}}</a>
+        </mat-nav-list>
+      </mat-drawer>
+
+      <mat-drawer-content>
+        <div class="content-container">
+          <router-outlet></router-outlet>
+        </div>
+      </mat-drawer-content>
+    </mat-drawer-container>
   </div>
-</lodomaniak-sidenav>
+
+</div>

@@ -31,6 +31,7 @@ import {SidenavComponent} from "./sidenav/sidenav.component";
     PercentagePipe,
     MoneyPipe,
     DecimalPipe,
+    CommonModule,
     HeaderComponent,
     NavBarComponent,
     SidenavComponent,
