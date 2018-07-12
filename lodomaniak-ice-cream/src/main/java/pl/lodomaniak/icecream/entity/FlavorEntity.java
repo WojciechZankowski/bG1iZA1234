@@ -14,7 +14,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name="lmbd_flavors")
+@Table(name="lodomaniak_flavors")
 public class FlavorEntity implements IEntity {
 
     private static final long serialVersionUID = 8365531052096887778L;

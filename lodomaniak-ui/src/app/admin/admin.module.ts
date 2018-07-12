@@ -7,25 +7,25 @@ import {IceCreamShopsComponent} from "./ice-cream-shops/ice-cream-shops.componen
 import {AdminComponent} from "./admin.component";
 import {SharedModule} from "../shared/shared.module";
 import {BrowserModule} from "@angular/platform-browser";
+import {IceCreamShopsModule} from "./ice-cream-shops/ice-cream-shops.module";
 
 @NgModule({
   imports: [
     AdminRoutingModule,
+    IceCreamShopsModule,
     SharedModule
   ],
   declarations: [
     AdminComponent,
     DashboardComponent,
     FlavorSchedulerComponent,
-    FlavorsComponent,
-    IceCreamShopsComponent
+    FlavorsComponent
   ],
   entryComponents: [
     AdminComponent,
     DashboardComponent,
     FlavorSchedulerComponent,
-    FlavorsComponent,
-    IceCreamShopsComponent
+    FlavorsComponent
   ]
 })
 export class AdminModule {

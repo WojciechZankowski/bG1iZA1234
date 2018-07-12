@@ -26,7 +26,7 @@ export class LoginComponent implements OnInit {
   }
 
   public login(): void {
-    this.credentials.rememberMe = true;
+    this.credentials.rememberMe = false;
     this.authService.login(this.credentials).subscribe(result => {
       this.principal.identity(true).then((account) => {
         this.router.navigate(['']);

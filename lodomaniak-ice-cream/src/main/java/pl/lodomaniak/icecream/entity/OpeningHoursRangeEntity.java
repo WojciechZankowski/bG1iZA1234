@@ -12,7 +12,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "lmbd_opening_hours_ranges")
+@Table(name = "lodomaniak_opening_hours_ranges")
 public class OpeningHoursRangeEntity implements IEntity {
 
     private static final long serialVersionUID = 1066607389165177609L;

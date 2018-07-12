@@ -6,6 +6,7 @@ import pl.lodomaniak.core.entity.IEntity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
 import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -14,7 +15,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "lmbd_address")
+@Table(name = "lodomaniak_address")
 public class AddressEntity implements IEntity {
 
     private static final long serialVersionUID = 6009512953688468971L;
@@ -37,7 +38,7 @@ public class AddressEntity implements IEntity {
     private String zipCode;
 
     @Column
-    @Enumerated
+    @Enumerated(EnumType.STRING)
     private CountryCode countryCode;
 
     public AddressEntity() {

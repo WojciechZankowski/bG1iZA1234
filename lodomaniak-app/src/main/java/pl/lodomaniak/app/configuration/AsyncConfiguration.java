@@ -22,11 +22,11 @@ public class AsyncConfiguration implements AsyncConfigurer {
 
     private static final Logger LOG = LoggerFactory.getLogger(AsyncConfiguration.class);
 
-    private final LodomaniakConfigurationProperties lmbdConfigurationProperties;
+    private final LodomaniakConfigurationProperties lodomaniakConfigurationProperties;
 
     @Autowired
-    public AsyncConfiguration(final LodomaniakConfigurationProperties lmbdConfigurationProperties) {
-        this.lmbdConfigurationProperties = lmbdConfigurationProperties;
+    public AsyncConfiguration(final LodomaniakConfigurationProperties lodomaniakConfigurationProperties) {
+        this.lodomaniakConfigurationProperties = lodomaniakConfigurationProperties;
     }
 
     @Override
@@ -35,10 +35,10 @@ public class AsyncConfiguration implements AsyncConfigurer {
         LOG.debug("Creating Async Task Executor.");
 
         final ThreadPoolTaskExecutor executor = new ThreadPoolTaskExecutor();
-        executor.setCorePoolSize(lmbdConfigurationProperties.getAsync().getCorePoolSize());
-        executor.setMaxPoolSize(lmbdConfigurationProperties.getAsync().getMaxPoolSize());
-        executor.setQueueCapacity(lmbdConfigurationProperties.getAsync().getQueueCapacity());
-        executor.setThreadNamePrefix(lmbdConfigurationProperties.getAsync().getThreadNamePrefix());
+        executor.setCorePoolSize(lodomaniakConfigurationProperties.getAsync().getCorePoolSize());
+        executor.setMaxPoolSize(lodomaniakConfigurationProperties.getAsync().getMaxPoolSize());
+        executor.setQueueCapacity(lodomaniakConfigurationProperties.getAsync().getQueueCapacity());
+        executor.setThreadNamePrefix(lodomaniakConfigurationProperties.getAsync().getThreadNamePrefix());
 
         return executor;
     }

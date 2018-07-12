@@ -15,7 +15,7 @@ import java.time.DayOfWeek;
 import java.util.Map;
 
 @Entity
-@Table(name = "lmbd_opening_hours")
+@Table(name = "lodomaniak_opening_hours")
 public class OpeningHoursEntity implements IEntity {
 
     private static final long serialVersionUID = -5878631343997198494L;

@@ -9,7 +9,7 @@
 
   <div class="content-container" fxLayout="row">
     <mat-drawer-container class="content-container">
-      <mat-drawer #snav [mode]="'side'">
+      <mat-drawer #snav [mode]="'side'" [opened]="true">
         <mat-nav-list class="navigation-list">
           <a mat-list-item [routerLink]="item.url" routerLinkActive="nav-bar-active"
              [routerLinkActiveOptions]="routerActiveOptions" *ngFor="let item of MENU_ITEMS">{{item.name |
@@ -18,7 +18,7 @@
       </mat-drawer>
 
       <mat-drawer-content>
-        <div class="content-container">
+        <div class="content-container internal-container">
           <router-outlet></router-outlet>
         </div>
       </mat-drawer-content>

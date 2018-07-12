@@ -54,6 +54,50 @@
     "XAG/PLN": "SREBRO",
     "GRAM": "g"
   },
+  "DIALOG": {
+    "NO": "Nie",
+    "YES": "Tak",
+    "CANCEL": "Anuluj",
+    "SAVE": "Zapisz"
+  },
+  "ICE_CREAM_SHOP": {
+    "DIALOG": {
+      "TITLE": "Dodawanie lokalu",
+      "COMPANY": {
+        "TITLE": "Firma",
+        "PLACEHOLDER": "Wybierz firmę"
+      },
+      "ADDRESS": "Adres",
+      "STREET": {
+        "TITLE": "Ulica",
+        "PLACEHOLDER": "Ulica lokalu"
+      },
+      "ZIP_CODE": {
+        "TITLE": "Kod pocztowy",
+        "PLACEHOLDER": "Kod pocztowy"
+      },
+      "CITY": {
+        "TITLE": "Miasto",
+        "PLACEHOLDER": "Miasto"
+      },
+      "OPENING_HOURS": "Godziny otwarcia",
+      "MONDAY": "Poniedziałek",
+      "TUESDAY": "Wtorek",
+      "WEDNESDAY": "Sroda",
+      "THURSDAY": "Czwartek",
+      "FRIDAY": "Piątek",
+      "SATURDAY": "Sobota",
+      "SUNDAY": "Niedziela",
+      "OPEN": {
+        "TITLE": "Otwarcie",
+        "PLACEHOLDER": "Godzina otwarcia"
+      },
+      "CLOSE": {
+        "TITLE": "Zamknięcie",
+        "PLACEHOLDER": "Godzina zamknięcia"
+      }
+    }
+  },
   "MENU": {
     "DASHBOARD": "Podsumowanie",
     "FLAVORS": "Smaki",

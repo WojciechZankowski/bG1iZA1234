@@ -23,8 +23,7 @@ public class IceCreamShopTO implements ITransferObject {
             @JsonProperty("imageUrl") final String imageUrl,
             @JsonProperty("company") final CompanyTO company,
             @JsonProperty("address") final AddressTO address,
-            @JsonProperty("openingHours") final OpeningHoursTO openingHours,
-            @JsonProperty("availableFlavors") final List<FlavorTO> availableFlavors) {
+            @JsonProperty("openingHours") final OpeningHoursTO openingHours) {
         this.imageUrl = imageUrl;
         this.company = company;
         this.address = address;

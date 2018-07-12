@@ -12,12 +12,13 @@ import java.io.IOException;
 
 public class UnauthorizedEntryPoint implements AuthenticationEntryPoint {
 
-    private static final Logger LOGGER = LoggerFactory.getLogger(UnauthorizedEntryPoint.class);
+    private static final Logger LOG = LoggerFactory.getLogger(UnauthorizedEntryPoint.class);
 
     @Override
     public void commence(final HttpServletRequest request, final HttpServletResponse response,
             final AuthenticationException authException) throws IOException, ServletException {
-        LOGGER.debug("Pre-authenticated entry point called. Rejecting access");
+        LOG.debug("Pre-authenticated entry point called. Rejecting access");
         response.sendError(HttpServletResponse.SC_UNAUTHORIZED, "Access Denied");
     }
+
 }

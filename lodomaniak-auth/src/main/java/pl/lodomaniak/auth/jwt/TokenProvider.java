@@ -31,22 +31,22 @@ public class TokenProvider {
     private static final String AUTHORITIES_KEY = "auth";
     private static final Logger LOG = LoggerFactory.getLogger(TokenProvider.class);
 
-    private final LodomaniakConfigurationProperties lmbdConfigurationProperties;
+    private final LodomaniakConfigurationProperties lodomaniakConfigurationProperties;
 
     private String secretKey;
     private long tokenValidity;
     private long tokenValidityForRememberMe;
 
     @Autowired
-    public TokenProvider(final LodomaniakConfigurationProperties lmbdConfigurationProperties) {
-        this.lmbdConfigurationProperties = lmbdConfigurationProperties;
+    public TokenProvider(final LodomaniakConfigurationProperties lodomaniakConfigurationProperties) {
+        this.lodomaniakConfigurationProperties = lodomaniakConfigurationProperties;
     }
 
     @PostConstruct
     public void init() {
-        secretKey = lmbdConfigurationProperties.getSecurity().getSecretKey();
-        tokenValidity = lmbdConfigurationProperties.getSecurity().getTokenValidityInMilliseconds();
-        tokenValidityForRememberMe = lmbdConfigurationProperties.getSecurity().getTokenValidityInMillisecondsForRememberMe();
+        secretKey = lodomaniakConfigurationProperties.getSecurity().getSecretKey();
+        tokenValidity = lodomaniakConfigurationProperties.getSecurity().getTokenValidityInMilliseconds();
+        tokenValidityForRememberMe = lodomaniakConfigurationProperties.getSecurity().getTokenValidityInMillisecondsForRememberMe();
     }
 
     public String createAuthToken(final Authentication authentication, final boolean rememberMe) {

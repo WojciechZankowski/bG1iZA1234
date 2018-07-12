@@ -15,7 +15,7 @@ import javax.persistence.Table;
 import java.time.LocalDate;
 
 @Entity
-@Table(name = "lmbd_flavor_activity")
+@Table(name = "lodomaniak_flavor_activity")
 public class FlavorActivityEntity implements IEntity {
 
     private static final long serialVersionUID = 5557611084628542593L;

@@ -1,0 +1,67 @@
+<h2 mat-dialog-title>{{'ICE_CREAM_SHOP.DIALOG.TITLE' | translate}}</h2>
+
+<form class="login-form" name="form" role="form">
+
+  <mat-form-field>
+    <mat-label>{{'ICE_CREAM_SHOP.DIALOG.COMPANY.TITLE' | translate}}</mat-label>
+    <mat-select placeholder="{{'ICE_CREAM_SHOP.DIALOG.COMPANY.PLACEHOLDER' | translate}}">
+      <mat-option *ngFor="let company of companyList" [value]="company.name">
+        {{company.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <br/>
+  <h3 class="mt-0 mb-0">{{'ICE_CREAM_SHOP.DIALOG.ADDRESS' | translate}}</h3>
+  <mat-divider class="pb-1"></mat-divider>
+
+  <div class="row">
+    <mat-form-field class="form-size f-10">
+      <mat-label>{{'ICE_CREAM_SHOP.DIALOG.STREET.TITLE' | translate}}</mat-label>
+      <input matInput id="street" name="street" [(ngModel)]="iceCreamShop.address.street"
+             placeholder="{{'ICE_CREAM_SHOP.DIALOG.STREET.PLACEHOLDER' | translate}}">
+    </mat-form-field>
+  </div>
+
+  <div class="row">
+    <mat-form-field class="form-size f-4 pr-1">
+      <mat-label>{{'ICE_CREAM_SHOP.DIALOG.ZIP_CODE.TITLE' | translate}}</mat-label>
+      <input matInput id="zipCode" name="zipCode" [(ngModel)]="iceCreamShop.address.zipCode"
+             placeholder="{{'ICE_CREAM_SHOP.DIALOG.ZIP_CODE.PLACEHOLDER' | translate}}">
+    </mat-form-field>
+
+    <mat-form-field class="form-size f-6">
+      <mat-label>{{'ICE_CREAM_SHOP.DIALOG.CITY.TITLE' | translate}}</mat-label>
+      <input matInput id="city" name="city" [(ngModel)]="iceCreamShop.address.city"
+             placeholder="{{'ICE_CREAM_SHOP.DIALOG.CITY.PLACEHOLDER' | translate}}">
+    </mat-form-field>
+  </div>
+
+  <br/>
+  <h3 class="mt-0 mb-0">{{'ICE_CREAM_SHOP.DIALOG.OPENING_HOURS' | translate}}</h3>
+  <mat-divider class="pb-1"></mat-divider>
+
+  <div class="row" *ngFor="let day of objectKeys(iceCreamShop.openingHours.openingHours)">
+    <h4 class="f-4 pr-1">{{'ICE_CREAM_SHOP.DIALOG.' + day | translate}}</h4>
+
+    <mat-form-field class="form-size f-3 pr-1">
+      <mat-label>{{'ICE_CREAM_SHOP.DIALOG.OPEN.TITLE' | translate}}</mat-label>
+      <input matInput id="open" name="open" [(ngModel)]="iceCreamShop.openingHours.openingHours[day].openHour"
+             type="time"
+             placeholder="{{'ICE_CREAM_SHOP.DIALOG.OPEN.PLACEHOLDER' | translate}}">
+    </mat-form-field>
+
+    <mat-form-field class="form-size f-3">
+      <mat-label>{{'ICE_CREAM_SHOP.DIALOG.CLOSE.TITLE' | translate}}</mat-label>
+      <input matInput id="close" name="close" [(ngModel)]="iceCreamShop.openingHours.openingHours[day].closeHour"
+             type="time"
+             placeholder="{{'ICE_CREAM_SHOP.DIALOG.CLOSE.PLACEHOLDER' | translate}}">
+    </mat-form-field>
+  </div>
+
+</form>
+
+<mat-dialog-actions class="float-right">
+  <button mat-button mat-dialog-close>{{'DIALOG.CANCEL' | translate}}</button>
+  <button mat-button [mat-dialog-close]="true">{{'DIALOG.SAVE' | translate}}</button>
+</mat-dialog-actions>

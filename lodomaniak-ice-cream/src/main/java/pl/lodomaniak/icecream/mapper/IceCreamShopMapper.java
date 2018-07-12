@@ -1,5 +1,6 @@
 package pl.lodomaniak.icecream.mapper;
 
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 import pl.lodomaniak.icecream.api.AddressTO;
 import pl.lodomaniak.icecream.api.CompanyTO;
@@ -24,32 +25,21 @@ import java.util.stream.Collectors;
 @Component
 public class IceCreamShopMapper {
 
+    private final AddressMapper addressMapper;
+    private final CompanyMapper companyMapper;
+
+    @Autowired
+    public IceCreamShopMapper(final AddressMapper addressMapper, final CompanyMapper companyMapper) {
+        this.addressMapper = addressMapper;
+        this.companyMapper = companyMapper;
+    }
+
     public IceCreamShopEntity map(final IceCreamShopTO iceCreamShop) {
         return new IceCreamShopEntityBuilder()
                 .withImageUrl(iceCreamShop.getImageUrl())
-                .withAddress(map(iceCreamShop.getAddress()))
-                .withCompany(map(iceCreamShop.getCompany()))
+                .withAddress(addressMapper.map(iceCreamShop.getAddress()))
+                .withCompany(companyMapper.map(iceCreamShop.getCompany()))
                 .withOpeningHours(map(iceCreamShop.getOpeningHours()))
-                .build();
-    }
-
-    private AddressEntity map(final AddressTO address) {
-        return new AddressEntityBuilder()
-                .withStreetAddress(address.getStreetAddress())
-                .withCity(address.getCity())
-                .withCounty(address.getCounty())
-                .withZipCode(address.getZipCode())
-                .withCountryCode(address.getCountryCode())
-                .build();
-    }
-
-    private CompanyEntity map(final CompanyTO company) {
-        return new CompanyEntityBuilder()
-                .withAddressEntity(map(company.getAddress()))
-                .withImageUrl(company.getImageUrl())
-                .withName(company.getName())
-                .withNip(company.getNip())
-                .withRegon(company.getRegon())
                 .build();
     }
 

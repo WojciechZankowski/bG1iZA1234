@@ -14,7 +14,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "lmbd_ice_cream_shop")
+@Table(name = "lodomaniak_ice_cream_shop")
 public class IceCreamShopEntity implements IEntity {
 
     private static final long serialVersionUID = 3853964512133627417L;

@@ -14,7 +14,7 @@ import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
-@Table(name = "lmbd_company")
+@Table(name = "lodomaniak_company")
 public class CompanyEntity implements IEntity {
 
     private static final long serialVersionUID = 148625710782753189L;

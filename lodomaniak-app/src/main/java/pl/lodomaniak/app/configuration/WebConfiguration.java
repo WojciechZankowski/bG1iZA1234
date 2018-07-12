@@ -11,13 +11,11 @@ import pl.lodomaniak.core.LodomaniakConfigurationProperties;
 @Configuration
 public class WebConfiguration implements WebMvcConfigurer {
 
-    private static final Logger LOG = LoggerFactory.getLogger(WebConfiguration.class);
-
-    private final LodomaniakConfigurationProperties lmbdConfigurationProperties;
+    private final LodomaniakConfigurationProperties lodomaniakConfigurationProperties;
 
     @Autowired
-    public WebConfiguration(final LodomaniakConfigurationProperties lmbdConfigurationProperties) {
-        this.lmbdConfigurationProperties = lmbdConfigurationProperties;
+    public WebConfiguration(final LodomaniakConfigurationProperties lodomaniakConfigurationProperties) {
+        this.lodomaniakConfigurationProperties = lodomaniakConfigurationProperties;
     }
 
     @Override
