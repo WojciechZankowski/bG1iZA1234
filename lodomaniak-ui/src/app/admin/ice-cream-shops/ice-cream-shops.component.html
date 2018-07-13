@@ -2,9 +2,14 @@
 
 <div class="container">
 
-  <h4>Istniejące lokale</h4>
-  <mat-divider></mat-divider>
+  <h3 class="header-margin">{{'ICE_CREAM_SHOP.EXISTING_SHOPS' | translate}}</h3>
+  <mat-divider class="pb-1"></mat-divider>
 
-  <h4>Zamknięte lokale</h4>
+  <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between center">
+    <ice-cream-shop-card class="card" fxFlex="32%" fxFlex.xs="80%" *ngFor="let iceCreamShop of iceCreamShops"
+                         [iceCreamShop]="iceCreamShop"></ice-cream-shop-card>
+  </div>
+
+  <h3 class="header-margin">{{'ICE_CREAM_SHOP.CLOSED_SHOPS' | translate}}</h3>
   <mat-divider></mat-divider>
 </div>

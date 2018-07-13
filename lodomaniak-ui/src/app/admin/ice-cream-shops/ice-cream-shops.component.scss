@@ -5,3 +5,21 @@
   flex-direction: column;
   flex: 1 1 100%;
 }
+
+.card-row {
+  flex-flow: row wrap
+}
+
+.card {
+  justify-content: space-between;
+}
+
+.header-margin {
+  margin-bottom: 0.75em;
+}
+
+:host {
+  display: block;
+  width: 100%;
+  height: 100%;
+}

@@ -58,10 +58,14 @@
     "NO": "Nie",
     "YES": "Tak",
     "CANCEL": "Anuluj",
-    "SAVE": "Zapisz"
+    "SAVE": "Zapisz",
+    "EDIT": "Edytuj"
   },
   "ICE_CREAM_SHOP": {
     "ADD_SHOP": "Dodaj lokal",
+    "EXISTING_SHOPS": "Istniejące lokale",
+    "CLOSED_SHOPS": "Zamknięte lokale",
+    "OPENING_HOURS": "Godziny otwarcia",
     "DIALOG": {
       "TITLE": "Dodawanie lokalu",
       "COMPANY": {
