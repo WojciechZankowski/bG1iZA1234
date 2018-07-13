@@ -3,15 +3,17 @@ package pl.lodomaniak.icecream.api;
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
 import com.fasterxml.jackson.annotation.JsonPropertyOrder;
-import com.google.common.base.Objects;
 import com.neovisionaries.i18n.CountryCode;
 import pl.lodomaniak.core.ITransferObject;
 
-@JsonPropertyOrder({"streetAddress", "city", "county", "zipCode", "countryCode"})
+import java.util.Objects;
+
+@JsonPropertyOrder({"id", "streetAddress", "city", "county", "zipCode", "countryCode"})
 public class AddressTO implements ITransferObject {
 
     private static final long serialVersionUID = 3412163320810220011L;
 
+    private final Long id;
     private final String streetAddress;
     private final String city;
     private final String county;
@@ -20,16 +22,22 @@ public class AddressTO implements ITransferObject {
 
     @JsonCreator
     public AddressTO(
+            @JsonProperty("id") final Long id,
             @JsonProperty("streetAddress") final String streetAddress,
             @JsonProperty("city") final String city,
             @JsonProperty("county") final String county,
             @JsonProperty("zipCode") final String zipCode,
             @JsonProperty("countryCode") final CountryCode countryCode) {
+        this.id = id;
         this.streetAddress = streetAddress;
         this.city = city;
         this.county = county;
         this.zipCode = zipCode;
         this.countryCode = countryCode;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public String getStreetAddress() {
@@ -57,22 +65,24 @@ public class AddressTO implements ITransferObject {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         final AddressTO addressTO = (AddressTO) o;
-        return Objects.equal(streetAddress, addressTO.streetAddress) &&
-                Objects.equal(city, addressTO.city) &&
-                Objects.equal(county, addressTO.county) &&
-                Objects.equal(zipCode, addressTO.zipCode) &&
+        return Objects.equals(id, addressTO.id) &&
+                Objects.equals(streetAddress, addressTO.streetAddress) &&
+                Objects.equals(city, addressTO.city) &&
+                Objects.equals(county, addressTO.county) &&
+                Objects.equals(zipCode, addressTO.zipCode) &&
                 countryCode == addressTO.countryCode;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(streetAddress, city, county, zipCode, countryCode);
+        return Objects.hash(id, streetAddress, city, county, zipCode, countryCode);
     }
 
     @Override
     public String toString() {
         return "AddressTO{" +
-                "streetAddress='" + streetAddress + '\'' +
+                "id=" + id +
+                ", streetAddress='" + streetAddress + '\'' +
                 ", city='" + city + '\'' +
                 ", county='" + county + '\'' +
                 ", zipCode='" + zipCode + '\'' +

@@ -1,11 +1,17 @@
 package pl.lodomaniak.icecream.api;
 
 public final class CompanyTOBuilder {
+    private Long id;
     private String name;
     private String imageUrl;
     private String nip;
     private String regon;
     private AddressTO address;
+
+    public CompanyTOBuilder withId(Long id) {
+        this.id = id;
+        return this;
+    }
 
     public CompanyTOBuilder withName(String name) {
         this.name = name;
@@ -33,6 +39,6 @@ public final class CompanyTOBuilder {
     }
 
     public CompanyTO build() {
-        return new CompanyTO(name, imageUrl, nip, regon, address);
+        return new CompanyTO(id, name, imageUrl, nip, regon, address);
     }
 }

@@ -29,8 +29,7 @@ public class UserEntity extends AbstractAuditingEntity implements IEntity {
     private static final long serialVersionUID = -2666366358188622396L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
-    @SequenceGenerator(name = "sequenceGenerator")
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @NotNull

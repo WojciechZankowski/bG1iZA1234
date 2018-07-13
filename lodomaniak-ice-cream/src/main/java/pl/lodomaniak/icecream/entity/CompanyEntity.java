@@ -3,8 +3,10 @@ package pl.lodomaniak.icecream.entity;
 import com.google.common.base.Objects;
 import pl.lodomaniak.core.entity.IEntity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -20,8 +22,7 @@ public class CompanyEntity implements IEntity {
     private static final long serialVersionUID = 148625710782753189L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
-    @SequenceGenerator(name = "sequenceGenerator")
+    @GeneratedValue
     private Long id;
 
     @Column
@@ -36,7 +37,7 @@ public class CompanyEntity implements IEntity {
     @Column
     private String regon;
 
-    @ManyToOne
+    @ManyToOne(cascade={CascadeType.MERGE, CascadeType.PERSIST})
     @JoinColumn(name = "ADDRESS_ID", nullable = false, updatable = false)
     private AddressEntity addressEntity;
 
@@ -44,11 +45,13 @@ public class CompanyEntity implements IEntity {
     }
 
     public CompanyEntity(
+            final Long id,
             final String name,
             final String imageUrl,
             final String nip,
             final String regon,
             final AddressEntity addressEntity) {
+        this.id = id;
         this.name = name;
         this.imageUrl = imageUrl;
         this.nip = nip;

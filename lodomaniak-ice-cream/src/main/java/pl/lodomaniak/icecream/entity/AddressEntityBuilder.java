@@ -3,11 +3,17 @@ package pl.lodomaniak.icecream.entity;
 import com.neovisionaries.i18n.CountryCode;
 
 public final class AddressEntityBuilder {
+    private Long id;
     private String streetAddress;
     private String city;
     private String county;
     private String zipCode;
     private CountryCode countryCode;
+
+    public AddressEntityBuilder withId(Long id) {
+        this.id = id;
+        return this;
+    }
 
     public AddressEntityBuilder withStreetAddress(String streetAddress) {
         this.streetAddress = streetAddress;
@@ -35,6 +41,6 @@ public final class AddressEntityBuilder {
     }
 
     public AddressEntity build() {
-        return new AddressEntity(streetAddress, city, county, zipCode, countryCode);
+        return new AddressEntity(id, streetAddress, city, county, zipCode, countryCode);
     }
 }

@@ -20,8 +20,7 @@ public class FlavorEntity implements IEntity {
     private static final long serialVersionUID = 8365531052096887778L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
-    @SequenceGenerator(name = "sequenceGenerator")
+    @GeneratedValue
     private Long id;
 
     @Column

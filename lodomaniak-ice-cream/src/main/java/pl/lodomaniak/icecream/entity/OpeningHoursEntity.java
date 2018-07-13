@@ -3,7 +3,9 @@ package pl.lodomaniak.icecream.entity;
 import com.google.common.base.Objects;
 import pl.lodomaniak.core.entity.IEntity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
@@ -21,12 +23,11 @@ public class OpeningHoursEntity implements IEntity {
     private static final long serialVersionUID = -5878631343997198494L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
-    @SequenceGenerator(name = "sequenceGenerator")
+    @GeneratedValue
     private Long id;
 
 
-    @OneToMany
+    @OneToMany(cascade={CascadeType.MERGE, CascadeType.PERSIST})
     @JoinColumn(name = "RANGE_ID", nullable = false, updatable = false)
     private Map<DayOfWeek, OpeningHoursRangeEntity> openingHours;
 

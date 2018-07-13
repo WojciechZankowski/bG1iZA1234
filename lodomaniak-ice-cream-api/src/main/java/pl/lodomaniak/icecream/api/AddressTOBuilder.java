@@ -3,11 +3,17 @@ package pl.lodomaniak.icecream.api;
 import com.neovisionaries.i18n.CountryCode;
 
 public final class AddressTOBuilder {
+    private Long id;
     private String streetAddress;
     private String city;
     private String county;
     private String zipCode;
     private CountryCode countryCode;
+
+    public AddressTOBuilder withId(Long id) {
+        this.id = id;
+        return this;
+    }
 
     public AddressTOBuilder withStreetAddress(String streetAddress) {
         this.streetAddress = streetAddress;
@@ -35,6 +41,6 @@ public final class AddressTOBuilder {
     }
 
     public AddressTO build() {
-        return new AddressTO(streetAddress, city, county, zipCode, countryCode);
+        return new AddressTO(id, streetAddress, city, county, zipCode, countryCode);
     }
 }

@@ -11,6 +11,7 @@ public class AddressMapper {
 
     public AddressEntity map(final AddressTO address) {
         return new AddressEntityBuilder()
+                .withId(address.getId())
                 .withStreetAddress(address.getStreetAddress())
                 .withCity(address.getCity())
                 .withCounty(address.getCounty())
@@ -21,6 +22,7 @@ public class AddressMapper {
 
     public AddressTO map(final AddressEntity entity) {
         return new AddressTOBuilder()
+                .withId(entity.getId())
                 .withStreetAddress(entity.getStreetAddress())
                 .withZipCode(entity.getZipCode())
                 .withCounty(entity.getCounty())

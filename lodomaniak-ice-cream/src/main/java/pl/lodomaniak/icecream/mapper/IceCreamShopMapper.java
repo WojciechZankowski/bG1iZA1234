@@ -2,15 +2,12 @@ package pl.lodomaniak.icecream.mapper;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
-import pl.lodomaniak.icecream.api.AddressTO;
-import pl.lodomaniak.icecream.api.CompanyTO;
 import pl.lodomaniak.icecream.api.IceCreamShopTO;
+import pl.lodomaniak.icecream.api.IceCreamShopTOBuilder;
 import pl.lodomaniak.icecream.api.OpeningHoursRangeTO;
+import pl.lodomaniak.icecream.api.OpeningHoursRangeTOBuilder;
 import pl.lodomaniak.icecream.api.OpeningHoursTO;
-import pl.lodomaniak.icecream.entity.AddressEntity;
-import pl.lodomaniak.icecream.entity.AddressEntityBuilder;
-import pl.lodomaniak.icecream.entity.CompanyEntity;
-import pl.lodomaniak.icecream.entity.CompanyEntityBuilder;
+import pl.lodomaniak.icecream.api.OpeningHoursTOBuilder;
 import pl.lodomaniak.icecream.entity.IceCreamShopEntity;
 import pl.lodomaniak.icecream.entity.IceCreamShopEntityBuilder;
 import pl.lodomaniak.icecream.entity.OpeningHoursEntity;
@@ -44,19 +41,47 @@ public class IceCreamShopMapper {
     }
 
     private OpeningHoursEntity map(final OpeningHoursTO openingHours) {
-        final Map<DayOfWeek, OpeningHoursRangeEntity> mappedOpeningHours = openingHours.getOpeningHours()
-                .entrySet().stream()
-                .collect(Collectors.toMap(Map.Entry::getKey, (entry) -> map(entry.getValue())));
-
         return new OpeningHoursEntityBuilder()
-                .withOpeningHours(mappedOpeningHours)
+                .withOpeningHours(mapTO(openingHours.getOpeningHours()))
                 .build();
+    }
+
+    private Map<DayOfWeek, OpeningHoursRangeEntity> mapTO(final Map<DayOfWeek, OpeningHoursRangeTO> map) {
+        return map.entrySet().stream()
+                .collect(Collectors.toMap(Map.Entry::getKey, (entry) -> map(entry.getValue())));
     }
 
     private OpeningHoursRangeEntity map(final OpeningHoursRangeTO openingHoursRange) {
         return new OpeningHoursRangeEntityBuilder()
                 .withOpenHour(openingHoursRange.getOpenHour())
                 .withCloseHour(openingHoursRange.getCloseHour())
+                .build();
+    }
+
+    public IceCreamShopTO map(final IceCreamShopEntity entity) {
+        return new IceCreamShopTOBuilder()
+                .withAddress(addressMapper.map(entity.getAddress()))
+                .withCompany(companyMapper.map(entity.getCompany()))
+                .withImageUrl(entity.getImageUrl())
+                .withOpeningHours(map(entity.getOpeningHours()))
+                .build();
+    }
+
+    private OpeningHoursTO map(final OpeningHoursEntity entity) {
+        return new OpeningHoursTOBuilder()
+                .withOpeningHours(map(entity.getOpeningHours()))
+                .build();
+    }
+
+    private Map<DayOfWeek, OpeningHoursRangeTO> map(final Map<DayOfWeek, OpeningHoursRangeEntity> map) {
+        return map.entrySet().stream()
+                .collect(Collectors.toMap(Map.Entry::getKey, (entry) -> map(entry.getValue())));
+    }
+
+    private OpeningHoursRangeTO map(final OpeningHoursRangeEntity entity) {
+        return new OpeningHoursRangeTOBuilder()
+                .withOpenHour(entity.getOpenHour())
+                .withCloseHour(entity.getCloseHour())
                 .build();
     }
 

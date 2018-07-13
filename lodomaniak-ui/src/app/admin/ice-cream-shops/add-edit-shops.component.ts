@@ -6,6 +6,7 @@ import {OpeningHours} from "../../model/opening-hours.model";
 import {Company} from "../../model/company.model";
 import {OpeningHoursRange} from "../../model/opening-hours-range.model";
 import {CompanyService} from "../../services/company.service";
+import {IceCreamShopService} from "../../services/ice-cream-shop.service";
 
 @Component({
   templateUrl: './add-edit-shops.component.html',
@@ -14,12 +15,11 @@ import {CompanyService} from "../../services/company.service";
 export class AddEditShopsComponent implements OnInit {
 
   public companyList: Array<Company> = [];
-
   public iceCreamShop: IceCreamShop = new IceCreamShop(new Company(), new Address(), new OpeningHours());
+  public objectKeys = Object.keys;
 
-  objectKeys = Object.keys;
-
-  constructor(private companyService: CompanyService) {
+  constructor(private companyService: CompanyService,
+              private iceCreamShopService: IceCreamShopService) {
   }
 
   ngOnInit(): void {
@@ -38,6 +38,11 @@ export class AddEditShopsComponent implements OnInit {
       });
 
     this.iceCreamShop.openingHours.openingHours = openingHours;
+  }
+
+  save(): void {
+    this.iceCreamShopService.save(this.iceCreamShop)
+      .subscribe(() => {});
   }
 
 

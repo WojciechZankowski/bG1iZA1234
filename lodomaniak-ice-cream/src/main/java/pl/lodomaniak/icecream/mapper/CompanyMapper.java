@@ -19,6 +19,7 @@ public class CompanyMapper {
 
     public CompanyEntity map(final CompanyTO company) {
         return new CompanyEntityBuilder()
+                .withId(company.getId())
                 .withAddressEntity(addressMapper.map(company.getAddress()))
                 .withImageUrl(company.getImageUrl())
                 .withName(company.getName())
@@ -29,6 +30,7 @@ public class CompanyMapper {
 
     public CompanyTO map(final CompanyEntity entity) {
         return new CompanyTOBuilder()
+                .withId(entity.getId())
                 .withAddress(addressMapper.map(entity.getAddressEntity()))
                 .withName(entity.getName())
                 .withRegon(entity.getRegon())

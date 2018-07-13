@@ -21,8 +21,7 @@ public class AddressEntity implements IEntity {
     private static final long serialVersionUID = 6009512953688468971L;
 
     @Id
-    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "sequenceGenerator")
-    @SequenceGenerator(name = "sequenceGenerator")
+    @GeneratedValue
     private Long id;
 
     @Column
@@ -45,11 +44,13 @@ public class AddressEntity implements IEntity {
     }
 
     public AddressEntity(
+            final Long id,
             final String streetAddress,
             final String city,
             final String county,
             final String zipCode,
             final CountryCode countryCode) {
+        this.id = id;
         this.streetAddress = streetAddress;
         this.city = city;
         this.county = county;
