@@ -24,13 +24,13 @@ export class AddEditShopsComponent implements OnInit {
 
   ngOnInit(): void {
     let openingHours = {};
-    openingHours['MONDAY'] = new OpeningHoursRange();
-    openingHours['TUESDAY'] = new OpeningHoursRange();
-    openingHours['WEDNESDAY'] = new OpeningHoursRange();
-    openingHours['THURSDAY'] = new OpeningHoursRange();
-    openingHours['FRIDAY'] = new OpeningHoursRange();
-    openingHours['SATURDAY'] = new OpeningHoursRange();
-    openingHours['SUNDAY'] = new OpeningHoursRange();
+    openingHours['MONDAY'] = new OpeningHoursRange('MONDAY');
+    openingHours['TUESDAY'] = new OpeningHoursRange('TUESDAY');
+    openingHours['WEDNESDAY'] = new OpeningHoursRange('WEDNESDAY');
+    openingHours['THURSDAY'] = new OpeningHoursRange('THURSDAY');
+    openingHours['FRIDAY'] = new OpeningHoursRange('FRIDAY');
+    openingHours['SATURDAY'] = new OpeningHoursRange('SATURDAY');
+    openingHours['SUNDAY'] = new OpeningHoursRange('SUNDAY');
 
     this.companyService.getCompanies()
       .subscribe((companies: Array<Company>) => {

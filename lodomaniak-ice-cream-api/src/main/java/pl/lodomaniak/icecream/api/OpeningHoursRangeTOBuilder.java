@@ -1,8 +1,16 @@
 package pl.lodomaniak.icecream.api;
 
+import java.time.DayOfWeek;
+
 public final class OpeningHoursRangeTOBuilder {
+    private DayOfWeek dayOfWeek;
     private String openHour;
     private String closeHour;
+
+    public OpeningHoursRangeTOBuilder withDayOfWeek(DayOfWeek dayOfWeek) {
+        this.dayOfWeek = dayOfWeek;
+        return this;
+    }
 
     public OpeningHoursRangeTOBuilder withOpenHour(String openHour) {
         this.openHour = openHour;
@@ -15,6 +23,6 @@ public final class OpeningHoursRangeTOBuilder {
     }
 
     public OpeningHoursRangeTO build() {
-        return new OpeningHoursRangeTO(openHour, closeHour);
+        return new OpeningHoursRangeTO(dayOfWeek, openHour, closeHour);
     }
 }

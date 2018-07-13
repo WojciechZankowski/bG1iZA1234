@@ -53,6 +53,7 @@ public class IceCreamShopMapper {
 
     private OpeningHoursRangeEntity map(final OpeningHoursRangeTO openingHoursRange) {
         return new OpeningHoursRangeEntityBuilder()
+                .withDayOfWeek(openingHoursRange.getDayOfWeek())
                 .withOpenHour(openingHoursRange.getOpenHour())
                 .withCloseHour(openingHoursRange.getCloseHour())
                 .build();
@@ -80,6 +81,7 @@ public class IceCreamShopMapper {
 
     private OpeningHoursRangeTO map(final OpeningHoursRangeEntity entity) {
         return new OpeningHoursRangeTOBuilder()
+                .withDayOfWeek(entity.getDayOfWeek())
                 .withOpenHour(entity.getOpenHour())
                 .withCloseHour(entity.getCloseHour())
                 .build();

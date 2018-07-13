@@ -4,12 +4,23 @@ import com.google.common.base.Objects;
 import pl.lodomaniak.core.entity.IEntity;
 
 import javax.persistence.CascadeType;
+import javax.persistence.CollectionTable;
+import javax.persistence.Column;
+import javax.persistence.ConstraintMode;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
 import javax.persistence.FetchType;
+import javax.persistence.ForeignKey;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
+import javax.persistence.MapKey;
+import javax.persistence.MapKeyClass;
+import javax.persistence.MapKeyColumn;
+import javax.persistence.MapKeyEnumerated;
+import javax.persistence.MapKeyJoinColumn;
 import javax.persistence.OneToMany;
 import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
@@ -29,6 +40,7 @@ public class OpeningHoursEntity implements IEntity {
 
     @OneToMany(cascade={CascadeType.MERGE, CascadeType.PERSIST})
     @JoinColumn(name = "RANGE_ID", nullable = false, updatable = false)
+    @MapKey(name = "dayOfWeek")
     private Map<DayOfWeek, OpeningHoursRangeEntity> openingHours;
 
     public OpeningHoursEntity() {
