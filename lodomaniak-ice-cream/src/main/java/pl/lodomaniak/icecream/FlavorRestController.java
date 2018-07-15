@@ -5,6 +5,7 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -15,6 +16,7 @@ import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
+import pl.lodomaniak.icecream.api.FlavorActivityTO;
 import pl.lodomaniak.icecream.api.FlavorTO;
 
 @RestController
@@ -53,6 +55,32 @@ public class FlavorRestController {
     @GetMapping("/mine")
     public ResponseEntity<?> getFlavors(@AuthenticationPrincipal final User user) {
         return ResponseEntity.ok(flavorService.getFlavors(user));
+    }
+
+    @ApiOperation(value = "Scheduled Ice Cream flavors retrieval.")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Scheduled Ice Cream flavors received")})
+    @GetMapping("/schedule")
+    public ResponseEntity<?> getScheduled(final Pageable pageable, @AuthenticationPrincipal final User user) {
+        return ResponseEntity.ok(flavorService.getPlannedFlavors(pageable, user));
+    }
+
+    @ApiOperation(value = "Schedule Ice Cream flavor.")
+    @ApiResponses(value = {
+            @ApiResponse(code = 201, message = "Ice Cream flavor scheduled.")})
+    @PostMapping("/schedule")
+    public ResponseEntity<?> scheduleFlavor(@RequestBody final FlavorActivityTO flavorActivity) {
+        flavorService.scheduleFlavor(flavorActivity);
+        return ResponseEntity.status(HttpStatus.CREATED).build();
+    }
+
+    @ApiOperation(value = "Update Ice Cream flavor schedule.")
+    @ApiResponses(value = {
+            @ApiResponse(code = 201, message = "Ice Cream flavor schedule updated.")})
+    @PutMapping("/schedule")
+    public ResponseEntity<?> updateFlavorSchedule(@RequestBody final FlavorActivityTO flavorActivity) {
+        flavorService.updateFlavorSchedule(flavorActivity);
+        return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 
 }

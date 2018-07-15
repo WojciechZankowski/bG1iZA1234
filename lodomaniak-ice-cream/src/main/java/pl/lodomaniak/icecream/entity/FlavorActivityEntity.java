@@ -3,6 +3,7 @@ package pl.lodomaniak.icecream.entity;
 import com.google.common.base.Objects;
 import pl.lodomaniak.core.entity.IEntity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -26,12 +27,12 @@ public class FlavorActivityEntity implements IEntity {
     @Column
     private LocalDate date;
 
-    @ManyToOne
-    @JoinColumn(name = "FLAVOR_ID", nullable = false, updatable = false)
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "FLAVOR_ID", nullable = false)
     private FlavorEntity flavor;
 
-    @ManyToOne
-    @JoinColumn(name = "ICE_CREAM_SHOP_ID", nullable = false, updatable = false)
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "ICE_CREAM_SHOP_ID", nullable = false)
     private IceCreamShopEntity iceCreamShop;
 
     public FlavorActivityEntity() {
@@ -39,6 +40,7 @@ public class FlavorActivityEntity implements IEntity {
 
     public FlavorActivityEntity(final Long id, final LocalDate date, final FlavorEntity flavor,
             final IceCreamShopEntity iceCreamShop) {
+        this.id = id;
         this.date = date;
         this.flavor = flavor;
         this.iceCreamShop = iceCreamShop;

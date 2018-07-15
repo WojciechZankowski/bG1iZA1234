@@ -1,9 +1,15 @@
 package pl.lodomaniak.icecream;
 
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Service;
 import pl.lodomaniak.icecream.api.CompanyTO;
+import pl.lodomaniak.icecream.api.FlavorActivityTO;
 import pl.lodomaniak.icecream.api.FlavorTO;
+import pl.lodomaniak.icecream.api.IceCreamShopTO;
+import pl.lodomaniak.icecream.mapper.FlavorActivityMapper;
 import pl.lodomaniak.icecream.mapper.FlavorMapper;
 
 import java.util.List;
@@ -16,15 +22,21 @@ public class DefaultFlavorService implements FlavorService {
     private final FlavorActivityRepository flavorActivityRepository;
     private final FlavorRepository flavorRepository;
     private final FlavorMapper flavorMapper;
+    private final FlavorActivityMapper flavorActivityMapper;
     private final CompanyService companyService;
+    private final IceCreamShopService iceCreamShopService;
 
+    @Autowired
     public DefaultFlavorService(final FlavorActivityRepository flavorActivityRepository,
             final FlavorRepository flavorRepository, final FlavorMapper flavorMapper,
-            final CompanyService companyService) {
+            final FlavorActivityMapper flavorActivityMapper, final CompanyService companyService,
+            final IceCreamShopService iceCreamShopService) {
         this.flavorActivityRepository = flavorActivityRepository;
         this.flavorRepository = flavorRepository;
         this.flavorMapper = flavorMapper;
+        this.flavorActivityMapper = flavorActivityMapper;
         this.companyService = companyService;
+        this.iceCreamShopService = iceCreamShopService;
     }
 
     @Override
@@ -50,5 +62,25 @@ public class DefaultFlavorService implements FlavorService {
         return flavorRepository.findAllByCompanyId(companiesId).stream()
                 .map(flavorMapper::map)
                 .collect(toList());
+    }
+
+    @Override
+    public void scheduleFlavor(final FlavorActivityTO flavorActivity) {
+        flavorActivityRepository.save(flavorActivityMapper.map(flavorActivity));
+    }
+
+    @Override
+    public void updateFlavorSchedule(final FlavorActivityTO flavorActivity) {
+        flavorActivityRepository.save(flavorActivityMapper.map(flavorActivity));
+    }
+
+    @Override
+    public Page<FlavorActivityTO> getPlannedFlavors(final Pageable pageable, final User user) {
+        final List<Long> iceCreamShopsId = iceCreamShopService.getIceCreamShops(user).stream()
+                .map(IceCreamShopTO::getId)
+                .collect(toList());
+
+        return flavorActivityRepository.findAllByIceCreamShopId(iceCreamShopsId, pageable)
+                .map(flavorActivityMapper::map);
     }
 }

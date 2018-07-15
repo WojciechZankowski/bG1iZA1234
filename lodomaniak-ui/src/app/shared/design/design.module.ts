@@ -2,12 +2,12 @@ import {NgModule} from "@angular/core";
 import {
   MatButtonModule,
   MatCardModule,
-  MatCheckboxModule, MatDialogModule, MatDividerModule,
+  MatCheckboxModule, MatDatepickerModule, MatDialogModule, MatDividerModule,
   MatFormFieldModule,
   MatIconModule,
   MatInputModule,
   MatListModule,
-  MatMenuModule, MatSelectModule,
+  MatMenuModule, MatNativeDateModule, MatSelectModule,
   MatSidenavModule,
   MatSnackBarModule,
   MatToolbarModule
@@ -29,7 +29,9 @@ import {MaterialFileInputModule} from "ngx-material-file-input";
     MatCheckboxModule,
     MatSnackBarModule,
     MatSelectModule,
-    MatListModule
+    MatListModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ],
   exports: [
     MatButtonModule,
@@ -45,7 +47,9 @@ import {MaterialFileInputModule} from "ngx-material-file-input";
     MatCheckboxModule,
     MatSnackBarModule,
     MatSelectModule,
-    MatListModule
+    MatListModule,
+    MatDatepickerModule,
+    MatNativeDateModule
   ]
 })
 export class DesignModule {

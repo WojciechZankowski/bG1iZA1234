@@ -126,6 +126,24 @@
       }
     }
   },
+  "SCHEDULER": {
+    "ADD_SCHEDULE": "Zaplanuj smak",
+    "DIALOG": {
+      "TITLE": "Zaplanuj smak",
+      "FLAVOR": {
+        "TITLE": "Smak",
+        "PLACEHOLDER": "Wybierz smak"
+      },
+      "ICE_CREAM_SHOP": {
+        "TITLE": "Lokal",
+        "PLACEHOLDER": "Wybierz lokal"
+      },
+      "DATE": {
+        "TITLE": "Data",
+        "PLACEHOLDER": "Wybierz datę"
+      }
+    }
+  },
   "MENU": {
     "DASHBOARD": "Podsumowanie",
     "FLAVORS": "Smaki",
