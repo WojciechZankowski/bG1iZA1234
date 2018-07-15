@@ -11,6 +11,7 @@ public class LodomaniakConfigurationProperties {
     private final LodomaniakConfigurationProperties.Mail mail = new LodomaniakConfigurationProperties.Mail();
     private final LodomaniakConfigurationProperties.Async async = new LodomaniakConfigurationProperties.Async();
     private final LodomaniakConfigurationProperties.Security security = new LodomaniakConfigurationProperties.Security();
+    private final LodomaniakConfigurationProperties.Image image = new LodomaniakConfigurationProperties.Image();
 
     public LodomaniakConfigurationProperties() {
     }
@@ -22,6 +23,10 @@ public class LodomaniakConfigurationProperties {
 
     public Mail getMail() {
         return mail;
+    }
+
+    public Image getImage() {
+        return image;
     }
 
     public Security getSecurity() {
@@ -127,6 +132,23 @@ public class LodomaniakConfigurationProperties {
 
         public void setTokenValidityInMillisecondsForRememberMe(final long tokenValidityInMillisecondsForRememberMe) {
             this.tokenValidityInMillisecondsForRememberMe = tokenValidityInMillisecondsForRememberMe;
+        }
+    }
+
+    public static class Image {
+
+        private String path;
+
+        public Image() {
+        }
+
+        public String getPath() {
+            return path;
+        }
+
+        public Image setPath(final String path) {
+            this.path = path;
+            return this;
         }
     }
 

@@ -6,13 +6,11 @@ import pl.lodomaniak.core.entity.IEntity;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 
 @Entity
@@ -22,7 +20,7 @@ public class CompanyEntity implements IEntity {
     private static final long serialVersionUID = 148625710782753189L;
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column
@@ -37,9 +35,9 @@ public class CompanyEntity implements IEntity {
     @Column
     private String regon;
 
-    @ManyToOne(cascade={CascadeType.MERGE, CascadeType.PERSIST})
-    @JoinColumn(name = "ADDRESS_ID", nullable = false, updatable = false)
-    private AddressEntity addressEntity;
+    @ManyToOne(cascade = CascadeType.MERGE)
+    @JoinColumn(name = "ADDRESS_ID", nullable = false)
+    private AddressEntity address;
 
     public CompanyEntity() {
     }
@@ -50,13 +48,13 @@ public class CompanyEntity implements IEntity {
             final String imageUrl,
             final String nip,
             final String regon,
-            final AddressEntity addressEntity) {
+            final AddressEntity address) {
         this.id = id;
         this.name = name;
         this.imageUrl = imageUrl;
         this.nip = nip;
         this.regon = regon;
-        this.addressEntity = addressEntity;
+        this.address = address;
     }
 
     public Long getId() {
@@ -79,8 +77,8 @@ public class CompanyEntity implements IEntity {
         return regon;
     }
 
-    public AddressEntity getAddressEntity() {
-        return addressEntity;
+    public AddressEntity getAddress() {
+        return address;
     }
 
     @Override
@@ -93,12 +91,12 @@ public class CompanyEntity implements IEntity {
                 Objects.equal(imageUrl, that.imageUrl) &&
                 Objects.equal(nip, that.nip) &&
                 Objects.equal(regon, that.regon) &&
-                Objects.equal(addressEntity, that.addressEntity);
+                Objects.equal(address, that.address);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(id, name, imageUrl, nip, regon, addressEntity);
+        return Objects.hashCode(id, name, imageUrl, nip, regon, address);
     }
 
     @Override
@@ -109,7 +107,7 @@ public class CompanyEntity implements IEntity {
                 ", imageUrl='" + imageUrl + '\'' +
                 ", nip='" + nip + '\'' +
                 ", regon='" + regon + '\'' +
-                ", addressEntity=" + addressEntity +
+                ", address=" + address +
                 '}';
     }
 }

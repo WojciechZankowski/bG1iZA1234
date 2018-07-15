@@ -6,12 +6,8 @@ import pl.lodomaniak.icecream.api.IceCreamShopTO;
 import pl.lodomaniak.icecream.api.IceCreamShopTOBuilder;
 import pl.lodomaniak.icecream.api.OpeningHoursRangeTO;
 import pl.lodomaniak.icecream.api.OpeningHoursRangeTOBuilder;
-import pl.lodomaniak.icecream.api.OpeningHoursTO;
-import pl.lodomaniak.icecream.api.OpeningHoursTOBuilder;
 import pl.lodomaniak.icecream.entity.IceCreamShopEntity;
 import pl.lodomaniak.icecream.entity.IceCreamShopEntityBuilder;
-import pl.lodomaniak.icecream.entity.OpeningHoursEntity;
-import pl.lodomaniak.icecream.entity.OpeningHoursEntityBuilder;
 import pl.lodomaniak.icecream.entity.OpeningHoursRangeEntity;
 import pl.lodomaniak.icecream.entity.OpeningHoursRangeEntityBuilder;
 
@@ -33,16 +29,11 @@ public class IceCreamShopMapper {
 
     public IceCreamShopEntity map(final IceCreamShopTO iceCreamShop) {
         return new IceCreamShopEntityBuilder()
+                .withId(iceCreamShop.getId())
                 .withImageUrl(iceCreamShop.getImageUrl())
                 .withAddress(addressMapper.map(iceCreamShop.getAddress()))
                 .withCompany(companyMapper.map(iceCreamShop.getCompany()))
-                .withOpeningHours(map(iceCreamShop.getOpeningHours()))
-                .build();
-    }
-
-    private OpeningHoursEntity map(final OpeningHoursTO openingHours) {
-        return new OpeningHoursEntityBuilder()
-                .withOpeningHours(mapTO(openingHours.getOpeningHours()))
+                .withOpeningHours(mapTO(iceCreamShop.getOpeningHours()))
                 .build();
     }
 
@@ -53,6 +44,7 @@ public class IceCreamShopMapper {
 
     private OpeningHoursRangeEntity map(final OpeningHoursRangeTO openingHoursRange) {
         return new OpeningHoursRangeEntityBuilder()
+                .withId(openingHoursRange.getId())
                 .withDayOfWeek(openingHoursRange.getDayOfWeek())
                 .withOpenHour(openingHoursRange.getOpenHour())
                 .withCloseHour(openingHoursRange.getCloseHour())
@@ -61,15 +53,10 @@ public class IceCreamShopMapper {
 
     public IceCreamShopTO map(final IceCreamShopEntity entity) {
         return new IceCreamShopTOBuilder()
+                .withId(entity.getId())
                 .withAddress(addressMapper.map(entity.getAddress()))
                 .withCompany(companyMapper.map(entity.getCompany()))
                 .withImageUrl(entity.getImageUrl())
-                .withOpeningHours(map(entity.getOpeningHours()))
-                .build();
-    }
-
-    private OpeningHoursTO map(final OpeningHoursEntity entity) {
-        return new OpeningHoursTOBuilder()
                 .withOpeningHours(map(entity.getOpeningHours()))
                 .build();
     }
@@ -81,6 +68,7 @@ public class IceCreamShopMapper {
 
     private OpeningHoursRangeTO map(final OpeningHoursRangeEntity entity) {
         return new OpeningHoursRangeTOBuilder()
+                .withId(entity.getId())
                 .withDayOfWeek(entity.getDayOfWeek())
                 .withOpenHour(entity.getOpenHour())
                 .withCloseHour(entity.getCloseHour())

@@ -6,28 +6,36 @@ import com.fasterxml.jackson.annotation.JsonPropertyOrder;
 import com.google.common.base.Objects;
 import pl.lodomaniak.core.ITransferObject;
 
-import java.util.List;
+import java.time.DayOfWeek;
+import java.util.Map;
 
-@JsonPropertyOrder({"imageUrl", "company", "address", "openingHours"})
+@JsonPropertyOrder({"id", "imageUrl", "company", "address", "openingHours"})
 public class IceCreamShopTO implements ITransferObject {
 
     private static final long serialVersionUID = 8320758878321650308L;
 
+    private final Long id;
     private final String imageUrl;
     private final CompanyTO company;
     private final AddressTO address;
-    private final OpeningHoursTO openingHours;
+    private final Map<DayOfWeek, OpeningHoursRangeTO> openingHours;
 
     @JsonCreator
     public IceCreamShopTO(
+            @JsonProperty("id") final Long id,
             @JsonProperty("imageUrl") final String imageUrl,
             @JsonProperty("company") final CompanyTO company,
             @JsonProperty("address") final AddressTO address,
-            @JsonProperty("openingHours") final OpeningHoursTO openingHours) {
+            @JsonProperty("openingHours") final Map<DayOfWeek, OpeningHoursRangeTO> openingHours) {
+        this.id = id;
         this.imageUrl = imageUrl;
         this.company = company;
         this.address = address;
         this.openingHours = openingHours;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public String getImageUrl() {
@@ -42,7 +50,7 @@ public class IceCreamShopTO implements ITransferObject {
         return address;
     }
 
-    public OpeningHoursTO getOpeningHours() {
+    public Map<DayOfWeek, OpeningHoursRangeTO> getOpeningHours() {
         return openingHours;
     }
 
@@ -51,7 +59,8 @@ public class IceCreamShopTO implements ITransferObject {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         final IceCreamShopTO that = (IceCreamShopTO) o;
-        return Objects.equal(imageUrl, that.imageUrl) &&
+        return Objects.equal(id, that.id) &&
+                Objects.equal(imageUrl, that.imageUrl) &&
                 Objects.equal(company, that.company) &&
                 Objects.equal(address, that.address) &&
                 Objects.equal(openingHours, that.openingHours);
@@ -59,13 +68,14 @@ public class IceCreamShopTO implements ITransferObject {
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(imageUrl, company, address, openingHours);
+        return Objects.hashCode(id, imageUrl, company, address, openingHours);
     }
 
     @Override
     public String toString() {
         return "IceCreamShopTO{" +
-                "imageUrl='" + imageUrl + '\'' +
+                "id='" + id + '\'' +
+                ", imageUrl='" + imageUrl + '\'' +
                 ", company=" + company +
                 ", address=" + address +
                 ", openingHours=" + openingHours +

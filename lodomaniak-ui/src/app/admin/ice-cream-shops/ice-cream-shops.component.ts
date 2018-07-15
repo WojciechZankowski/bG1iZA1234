@@ -17,17 +17,27 @@ export class IceCreamShopsComponent implements OnInit {
   }
 
   ngOnInit(): void {
+    this.fetchShops();
+  }
+
+  fetchShops() {
     this.iceCreamShopService.getIceCreamShops()
       .subscribe((shops: Array<IceCreamShop>) => {
-          this.iceCreamShops = shops;
+        this.iceCreamShops = shops;
       })
   }
 
   openAddEditDialog(): void {
-    this.dialog.open(AddEditShopsComponent, {
+    let matDialogRef = this.dialog.open(AddEditShopsComponent, {
       height: '80vh',
       width: '600px',
-    })
+    });
+
+    matDialogRef.afterClosed().subscribe(result => {
+      if (result) {
+        this.fetchShops();
+      }
+    });
 
   }
 

@@ -1,9 +1,10 @@
 import {Injectable} from "@angular/core";
-import {HttpClient, HttpHeaders, HttpParams} from "@angular/common/http";
+import {HttpClient, HttpHeaders, HttpParams, HttpRequest} from "@angular/common/http";
 import {ErrorObservable} from "rxjs/observable/ErrorObservable";
 import {Observable} from "rxjs/Observable";
 import {environment} from "../../environments/environment";
 import {catchError} from "rxjs/operators";
+import {IMAGE_PATH} from "../services/image.service";
 
 @Injectable()
 export class ApiService {
@@ -30,11 +31,11 @@ export class ApiService {
     ).pipe(catchError(this.formatErrors));
   }
 
-  post(path: string, body: Object = {}): Observable<any> {
+  post(path: string, body: Object = {}, headers?: HttpHeaders): Observable<any> {
     return this.http.post(
       `${environment.restApiUrl}${path}`,
       JSON.stringify(body),
-      {headers: this.headers, observe: 'response'}
+      {headers: headers ? headers : this.headers, observe: 'response'}
     ).pipe(catchError(this.formatErrors));
   }
 
@@ -43,4 +44,10 @@ export class ApiService {
       `${environment.restApiUrl}${path}`
     ).pipe(catchError(this.formatErrors));
   }
+
+  request(method: string, path: string, data: any, options: any): Observable<any> {
+    const req = new HttpRequest(method, `${environment.restApiUrl}${path}`, data, options);
+    return this.http.request(req);
+  }
+
 }

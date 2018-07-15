@@ -6,6 +6,7 @@ import {PrincipalService} from "./principal.service";
 import {UserRouteAccessService} from "./user-route-access.service";
 import {CompanyService} from "./company.service";
 import {IceCreamShopService} from "./ice-cream-shop.service";
+import {ImageService} from "./image.service";
 
 @NgModule({
   imports: [
@@ -18,7 +19,8 @@ import {IceCreamShopService} from "./ice-cream-shop.service";
     PrincipalService,
     UserRouteAccessService,
     CompanyService,
-    IceCreamShopService
+    IceCreamShopService,
+    ImageService
   ]
 })
 export class ServiceModule {

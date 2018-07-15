@@ -85,6 +85,10 @@
         "TITLE": "Miasto",
         "PLACEHOLDER": "Miasto"
       },
+      "IMAGE": {
+        "TITLE": "Zdjęcie",
+        "PLACEHOLDER": "Wybierz zdjęcie"
+      },
       "OPENING_HOURS": "Godziny otwarcia",
       "MONDAY": "Poniedziałek",
       "TUESDAY": "Wtorek",

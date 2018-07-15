@@ -9,6 +9,8 @@ public interface IceCreamShopService {
 
     void addIceCreamShop(IceCreamShopTO iceCreamShop);
 
+    void updateIceCreamShop(IceCreamShopTO iceCreamShop);
+
     List<IceCreamShopTO> getIceCreamShops(User user);
 
 }

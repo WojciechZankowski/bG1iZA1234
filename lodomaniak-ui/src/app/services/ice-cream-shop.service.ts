@@ -15,6 +15,10 @@ export class IceCreamShopService {
     return this.apiService.post(ICE_CREAM_SHOP_PATH, iceCreamShop);
   }
 
+  update(iceCreamShop: IceCreamShop): Observable<any> {
+    return this.apiService.put(ICE_CREAM_SHOP_PATH, iceCreamShop);
+  }
+
   getIceCreamShops(): Observable<Array<IceCreamShop>> {
     return this.apiService.get(ICE_CREAM_SHOP_GET_PATH);
   }

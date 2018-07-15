@@ -31,7 +31,7 @@ public class CompanyMapper {
     public CompanyTO map(final CompanyEntity entity) {
         return new CompanyTOBuilder()
                 .withId(entity.getId())
-                .withAddress(addressMapper.map(entity.getAddressEntity()))
+                .withAddress(addressMapper.map(entity.getAddress()))
                 .withName(entity.getName())
                 .withRegon(entity.getRegon())
                 .withNip(entity.getNip())

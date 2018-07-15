@@ -11,6 +11,7 @@ import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -34,6 +35,15 @@ public class IceCreamShopRestController {
     @PostMapping()
     public ResponseEntity<?> addIceCreamShop(@RequestBody final IceCreamShopTO iceCreamShop) {
         iceCreamShopService.addIceCreamShop(iceCreamShop);
+        return ResponseEntity.status(HttpStatus.CREATED).build();
+    }
+
+    @ApiOperation(value = "Update Ice Cream Shop.")
+    @ApiResponses(value = {
+            @ApiResponse(code = 201, message = "Ice Cream Shop updated")})
+    @PutMapping()
+    public ResponseEntity<?> updateIceCreamShop(@RequestBody final IceCreamShopTO iceCreamShop) {
+        iceCreamShopService.updateIceCreamShop(iceCreamShop);
         return ResponseEntity.status(HttpStatus.CREATED).build();
     }
 

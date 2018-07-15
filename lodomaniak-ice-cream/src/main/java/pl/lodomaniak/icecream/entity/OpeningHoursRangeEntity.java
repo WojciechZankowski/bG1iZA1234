@@ -4,7 +4,10 @@ import pl.lodomaniak.core.entity.IEntity;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.EnumType;
+import javax.persistence.Enumerated;
 import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.Table;
 import java.time.DayOfWeek;
@@ -17,9 +20,10 @@ public class OpeningHoursRangeEntity implements IEntity {
     private static final long serialVersionUID = 1066607389165177609L;
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
+    @Enumerated(EnumType.STRING)
     @Column
     private DayOfWeek dayOfWeek;
 
@@ -44,16 +48,32 @@ public class OpeningHoursRangeEntity implements IEntity {
         return id;
     }
 
+    public void setId(final Long id) {
+        this.id = id;
+    }
+
     public DayOfWeek getDayOfWeek() {
         return dayOfWeek;
+    }
+
+    public void setDayOfWeek(final DayOfWeek dayOfWeek) {
+        this.dayOfWeek = dayOfWeek;
     }
 
     public String getOpenHour() {
         return openHour;
     }
 
+    public void setOpenHour(final String openHour) {
+        this.openHour = openHour;
+    }
+
     public String getCloseHour() {
         return closeHour;
+    }
+
+    public void setCloseHour(final String closeHour) {
+        this.closeHour = closeHour;
     }
 
     @Override

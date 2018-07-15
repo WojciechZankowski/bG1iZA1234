@@ -3,9 +3,15 @@ package pl.lodomaniak.icecream.api;
 import java.time.DayOfWeek;
 
 public final class OpeningHoursRangeTOBuilder {
+    private Long id;
     private DayOfWeek dayOfWeek;
     private String openHour;
     private String closeHour;
+
+    public OpeningHoursRangeTOBuilder withId(Long id) {
+        this.id = id;
+        return this;
+    }
 
     public OpeningHoursRangeTOBuilder withDayOfWeek(DayOfWeek dayOfWeek) {
         this.dayOfWeek = dayOfWeek;
@@ -23,6 +29,6 @@ public final class OpeningHoursRangeTOBuilder {
     }
 
     public OpeningHoursRangeTO build() {
-        return new OpeningHoursRangeTO(dayOfWeek, openHour, closeHour);
+        return new OpeningHoursRangeTO(id, dayOfWeek, openHour, closeHour);
     }
 }

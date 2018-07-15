@@ -21,7 +21,7 @@ public class FlavorActivityEntity implements IEntity {
     private static final long serialVersionUID = 5557611084628542593L;
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column

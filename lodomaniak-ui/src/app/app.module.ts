@@ -13,6 +13,7 @@ import {FormsModule} from "@angular/forms";
 import {AuthInterceptor} from "./core/interceptor/auth.interceptor";
 import {BrowserModule} from "@angular/platform-browser";
 import {AuthErrorInterceptor} from "./core/interceptor/auth-error.interceptor";
+import {NxModule} from "@nrwl/nx";
 
 export function HttpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);

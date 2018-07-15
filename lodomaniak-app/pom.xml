@@ -35,6 +35,11 @@
             <artifactId>ice-cream</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>pl.lodomaniak</groupId>
+            <artifactId>image</artifactId>
+        </dependency>
+
         <!-- Spring Dependencies -->
 
         <dependency>

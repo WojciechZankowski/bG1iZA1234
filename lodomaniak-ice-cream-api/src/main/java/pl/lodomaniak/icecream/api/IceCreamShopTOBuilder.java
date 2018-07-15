@@ -1,10 +1,19 @@
 package pl.lodomaniak.icecream.api;
 
+import java.time.DayOfWeek;
+import java.util.Map;
+
 public final class IceCreamShopTOBuilder {
+    private Long id;
     private String imageUrl;
     private CompanyTO company;
     private AddressTO address;
-    private OpeningHoursTO openingHours;
+    private Map<DayOfWeek, OpeningHoursRangeTO> openingHours;
+
+    public IceCreamShopTOBuilder withId(final Long id) {
+        this.id = id;
+        return this;
+    }
 
     public IceCreamShopTOBuilder withImageUrl(String imageUrl) {
         this.imageUrl = imageUrl;
@@ -21,12 +30,12 @@ public final class IceCreamShopTOBuilder {
         return this;
     }
 
-    public IceCreamShopTOBuilder withOpeningHours(OpeningHoursTO openingHours) {
+    public IceCreamShopTOBuilder withOpeningHours(Map<DayOfWeek, OpeningHoursRangeTO> openingHours) {
         this.openingHours = openingHours;
         return this;
     }
 
     public IceCreamShopTO build() {
-        return new IceCreamShopTO(imageUrl, company, address, openingHours);
+        return new IceCreamShopTO(id, imageUrl, company, address, openingHours);
     }
 }

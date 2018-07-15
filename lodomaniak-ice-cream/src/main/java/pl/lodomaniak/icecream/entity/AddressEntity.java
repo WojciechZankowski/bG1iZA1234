@@ -21,7 +21,7 @@ public class AddressEntity implements IEntity {
     private static final long serialVersionUID = 6009512953688468971L;
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
     @Column

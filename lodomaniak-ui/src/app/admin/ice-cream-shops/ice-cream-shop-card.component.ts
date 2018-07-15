@@ -2,6 +2,7 @@ import {Component, Input} from "@angular/core";
 import {IceCreamShop} from "../../model/ice-cream-shop.model";
 import {MatDialog} from "@angular/material";
 import {AddEditShopsComponent} from "./add-edit-shops.component";
+import {environment} from "../../../environments/environment";
 
 @Component({
   selector: 'ice-cream-shop-card',
@@ -25,6 +26,10 @@ export class IceCreamShopCardComponent {
         iceCreamShop: this.iceCreamShop
       }
     });
+  }
+
+  getFilePath(name: string) {
+    return '/assets/img/content/' + name;
   }
 
 }

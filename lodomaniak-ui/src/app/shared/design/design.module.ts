@@ -12,6 +12,7 @@ import {
   MatSnackBarModule,
   MatToolbarModule
 } from "@angular/material";
+import {MaterialFileInputModule} from "ngx-material-file-input";
 
 @NgModule({
   imports: [

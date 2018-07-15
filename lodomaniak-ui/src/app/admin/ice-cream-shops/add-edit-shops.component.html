@@ -4,12 +4,25 @@
 
   <mat-form-field>
     <mat-label>{{'ICE_CREAM_SHOP.DIALOG.COMPANY.TITLE' | translate}}</mat-label>
-    <mat-select [(value)]="iceCreamShop.company" placeholder="{{'ICE_CREAM_SHOP.DIALOG.COMPANY.PLACEHOLDER' | translate}}">
+    <mat-select [(value)]="iceCreamShop.company"
+                placeholder="{{'ICE_CREAM_SHOP.DIALOG.COMPANY.PLACEHOLDER' | translate}}">
       <mat-option *ngFor="let company of companyList" [value]="company">
         {{company.name}}
       </mat-option>
     </mat-select>
   </mat-form-field>
+
+  <br/>
+  <h3 class="mt-0 mb-0">{{'ICE_CREAM_SHOP.DIALOG.IMAGE.TITLE' | translate}}</h3>
+  <mat-divider class="pb-1"></mat-divider>
+  <div class="row">
+    <div class="form-size f-3 pr-1">
+      <mat-label class="pr-1">{{'ICE_CREAM_SHOP.DIALOG.IMAGE.TITLE' | translate}}</mat-label>
+      <button type="button" mat-button (click)="imgFileInput.click()">{{'ICE_CREAM_SHOP.DIALOG.IMAGE.PLACEHOLDER' | translate}}
+      </button>
+      <input hidden type="file" #imgFileInput (change)="handleFileInput($event.target.files)"/>
+    </div>
+  </div>
 
   <br/>
   <h3 class="mt-0 mb-0">{{'ICE_CREAM_SHOP.DIALOG.ADDRESS' | translate}}</h3>
@@ -41,19 +54,19 @@
   <h3 class="mt-0 mb-0">{{'ICE_CREAM_SHOP.DIALOG.OPENING_HOURS' | translate}}</h3>
   <mat-divider class="pb-1"></mat-divider>
 
-  <div class="row" *ngFor="let day of objectKeys(iceCreamShop.openingHours.openingHours)">
+  <div class="row" *ngFor="let day of objectKeys(iceCreamShop.openingHours)">
     <h4 class="f-4 pr-1">{{'ICE_CREAM_SHOP.DIALOG.' + day | translate}}</h4>
 
     <mat-form-field class="form-size f-3 pr-1">
       <mat-label>{{'ICE_CREAM_SHOP.DIALOG.OPEN.TITLE' | translate}}</mat-label>
-      <input matInput id="open" name="open" [(ngModel)]="iceCreamShop.openingHours.openingHours[day].openHour"
+      <input matInput id="open" name="open" [(ngModel)]="iceCreamShop.openingHours[day].openHour"
              type="time"
              placeholder="{{'ICE_CREAM_SHOP.DIALOG.OPEN.PLACEHOLDER' | translate}}">
     </mat-form-field>
 
     <mat-form-field class="form-size f-3">
       <mat-label>{{'ICE_CREAM_SHOP.DIALOG.CLOSE.TITLE' | translate}}</mat-label>
-      <input matInput id="close" name="close" [(ngModel)]="iceCreamShop.openingHours.openingHours[day].closeHour"
+      <input matInput id="close" name="close" [(ngModel)]="iceCreamShop.openingHours[day].closeHour"
              type="time"
              placeholder="{{'ICE_CREAM_SHOP.DIALOG.CLOSE.PLACEHOLDER' | translate}}">
     </mat-form-field>

@@ -1,17 +1,17 @@
 <mat-card>
   <mat-card-title class="account-card-title">{{iceCreamShop.company.name}}</mat-card-title>
   <mat-card-subtitle>{{iceCreamShop.address.streetAddress}}, {{iceCreamShop.address.zipCode}} {{iceCreamShop.address.city}}</mat-card-subtitle>
-  <img mat-card-image src="https://material.angular.io/assets/img/examples/shiba2.jpg" alt="Photo of a Shiba Inu">
+  <img mat-card-image src="{{getFilePath(iceCreamShop.imageUrl)}}" alt="Ice Cream">
   <mat-card-content>
     <h5>{{'ICE_CREAM_SHOP.OPENING_HOURS' | translate}}</h5>
     <div class="ice-cream-shop-card-content">
-      <span>{{'ICE_CREAM_SHOP.DIALOG.MONDAY' | translate}} {{iceCreamShop.openingHours.openingHours['MONDAY'].openHour}}-{{iceCreamShop.openingHours.openingHours['MONDAY'].closeHour}}</span>
-      <span>{{'ICE_CREAM_SHOP.DIALOG.TUESDAY' | translate}} {{iceCreamShop.openingHours.openingHours['TUESDAY'].openHour}}-{{iceCreamShop.openingHours.openingHours['TUESDAY'].closeHour}}</span>
-      <span>{{'ICE_CREAM_SHOP.DIALOG.WEDNESDAY' | translate}} {{iceCreamShop.openingHours.openingHours['WEDNESDAY'].openHour}}-{{iceCreamShop.openingHours.openingHours['WEDNESDAY'].closeHour}}</span>
-      <span>{{'ICE_CREAM_SHOP.DIALOG.THURSDAY' | translate}} {{iceCreamShop.openingHours.openingHours['THURSDAY'].openHour}}-{{iceCreamShop.openingHours.openingHours['THURSDAY'].closeHour}}</span>
-      <span>{{'ICE_CREAM_SHOP.DIALOG.FRIDAY' | translate}} {{iceCreamShop.openingHours.openingHours['FRIDAY'].openHour}}-{{iceCreamShop.openingHours.openingHours['FRIDAY'].closeHour}}</span>
-      <span>{{'ICE_CREAM_SHOP.DIALOG.SATURDAY' | translate}} {{iceCreamShop.openingHours.openingHours['SATURDAY'].openHour}}-{{iceCreamShop.openingHours.openingHours['SATURDAY'].closeHour}}</span>
-      <span>{{'ICE_CREAM_SHOP.DIALOG.SUNDAY' | translate}} {{iceCreamShop.openingHours.openingHours['SUNDAY'].openHour}}-{{iceCreamShop.openingHours.openingHours['SUNDAY'].closeHour}}</span>
+      <span>{{'ICE_CREAM_SHOP.DIALOG.MONDAY' | translate}} {{iceCreamShop.openingHours['MONDAY'].openHour}}-{{iceCreamShop.openingHours['MONDAY'].closeHour}}</span>
+      <span>{{'ICE_CREAM_SHOP.DIALOG.TUESDAY' | translate}} {{iceCreamShop.openingHours['TUESDAY'].openHour}}-{{iceCreamShop.openingHours['TUESDAY'].closeHour}}</span>
+      <span>{{'ICE_CREAM_SHOP.DIALOG.WEDNESDAY' | translate}} {{iceCreamShop.openingHours['WEDNESDAY'].openHour}}-{{iceCreamShop.openingHours['WEDNESDAY'].closeHour}}</span>
+      <span>{{'ICE_CREAM_SHOP.DIALOG.THURSDAY' | translate}} {{iceCreamShop.openingHours['THURSDAY'].openHour}}-{{iceCreamShop.openingHours['THURSDAY'].closeHour}}</span>
+      <span>{{'ICE_CREAM_SHOP.DIALOG.FRIDAY' | translate}} {{iceCreamShop.openingHours['FRIDAY'].openHour}}-{{iceCreamShop.openingHours['FRIDAY'].closeHour}}</span>
+      <span>{{'ICE_CREAM_SHOP.DIALOG.SATURDAY' | translate}} {{iceCreamShop.openingHours['SATURDAY'].openHour}}-{{iceCreamShop.openingHours['SATURDAY'].closeHour}}</span>
+      <span>{{'ICE_CREAM_SHOP.DIALOG.SUNDAY' | translate}} {{iceCreamShop.openingHours['SUNDAY'].openHour}}-{{iceCreamShop.openingHours['SUNDAY'].closeHour}}</span>
     </div>
   </mat-card-content>
   <mat-card-actions>
