@@ -7,6 +7,6 @@ import java.util.List;
 
 public interface FlavorRepository extends JpaRepository<FlavorEntity, Long> {
 
-    List<FlavorEntity> findAllByCompanyId(long companyId);
+    List<FlavorEntity> findAllByCompanyId(List<Long> companyId);
 
 }

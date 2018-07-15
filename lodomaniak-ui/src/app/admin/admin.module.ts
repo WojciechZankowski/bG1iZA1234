@@ -6,24 +6,24 @@ import {FlavorsComponent} from "./flavors/flavors.component";
 import {AdminComponent} from "./admin.component";
 import {SharedModule} from "../shared/shared.module";
 import {IceCreamShopsModule} from "./ice-cream-shops/ice-cream-shops.module";
+import {FlavorsModule} from "./flavors/flavors.module";
 
 @NgModule({
   imports: [
     AdminRoutingModule,
     IceCreamShopsModule,
+    FlavorsModule,
     SharedModule
   ],
   declarations: [
     AdminComponent,
     DashboardComponent,
-    FlavorSchedulerComponent,
-    FlavorsComponent
+    FlavorSchedulerComponent
   ],
   entryComponents: [
     AdminComponent,
     DashboardComponent,
-    FlavorSchedulerComponent,
-    FlavorsComponent
+    FlavorSchedulerComponent
   ]
 })
 export class AdminModule {

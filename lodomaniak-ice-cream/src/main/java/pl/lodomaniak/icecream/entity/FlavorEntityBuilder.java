@@ -1,9 +1,15 @@
 package pl.lodomaniak.icecream.entity;
 
 public final class FlavorEntityBuilder {
+    private Long id;
     private String name;
     private String imageUrl;
-    private CompanyEntity companyEntity;
+    private CompanyEntity company;
+
+    public FlavorEntityBuilder withId(Long id) {
+        this.id = id;
+        return this;
+    }
 
     public FlavorEntityBuilder withName(String name) {
         this.name = name;
@@ -15,12 +21,12 @@ public final class FlavorEntityBuilder {
         return this;
     }
 
-    public FlavorEntityBuilder withCompanyEntity(final CompanyEntity companyEntity) {
-        this.companyEntity = companyEntity;
+    public FlavorEntityBuilder withCompany(CompanyEntity company) {
+        this.company = company;
         return this;
     }
 
     public FlavorEntity build() {
-        return new FlavorEntity(name, imageUrl, companyEntity);
+        return new FlavorEntity(id, name, imageUrl, company);
     }
 }

@@ -3,9 +3,15 @@ package pl.lodomaniak.icecream.entity;
 import java.time.LocalDate;
 
 public final class FlavorActivityEntityBuilder {
+    private Long id;
     private LocalDate date;
     private FlavorEntity flavor;
     private IceCreamShopEntity iceCreamShop;
+
+    public FlavorActivityEntityBuilder withId(Long id) {
+        this.id = id;
+        return this;
+    }
 
     public FlavorActivityEntityBuilder withDate(LocalDate date) {
         this.date = date;
@@ -23,6 +29,6 @@ public final class FlavorActivityEntityBuilder {
     }
 
     public FlavorActivityEntity build() {
-        return new FlavorActivityEntity(date, flavor, iceCreamShop);
+        return new FlavorActivityEntity(id, date, flavor, iceCreamShop);
     }
 }

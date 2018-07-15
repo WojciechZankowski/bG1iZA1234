@@ -32,7 +32,7 @@ public class IceCreamShopRestController {
     @ApiOperation(value = "Create Ice Cream Shop.")
     @ApiResponses(value = {
             @ApiResponse(code = 201, message = "Ice Cream Shop created")})
-    @PostMapping()
+    @PostMapping
     public ResponseEntity<?> addIceCreamShop(@RequestBody final IceCreamShopTO iceCreamShop) {
         iceCreamShopService.addIceCreamShop(iceCreamShop);
         return ResponseEntity.status(HttpStatus.CREATED).build();
@@ -41,7 +41,7 @@ public class IceCreamShopRestController {
     @ApiOperation(value = "Update Ice Cream Shop.")
     @ApiResponses(value = {
             @ApiResponse(code = 201, message = "Ice Cream Shop updated")})
-    @PutMapping()
+    @PutMapping
     public ResponseEntity<?> updateIceCreamShop(@RequestBody final IceCreamShopTO iceCreamShop) {
         iceCreamShopService.updateIceCreamShop(iceCreamShop);
         return ResponseEntity.status(HttpStatus.CREATED).build();

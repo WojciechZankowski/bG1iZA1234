@@ -38,7 +38,6 @@ export class IceCreamShopsComponent implements OnInit {
         this.fetchShops();
       }
     });
-
   }
 
 }

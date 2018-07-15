@@ -10,7 +10,6 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.SequenceGenerator;
 import javax.persistence.Table;
 import java.time.LocalDate;
 
@@ -38,10 +37,15 @@ public class FlavorActivityEntity implements IEntity {
     public FlavorActivityEntity() {
     }
 
-    public FlavorActivityEntity(final LocalDate date, final FlavorEntity flavor, final IceCreamShopEntity iceCreamShop) {
+    public FlavorActivityEntity(final Long id, final LocalDate date, final FlavorEntity flavor,
+            final IceCreamShopEntity iceCreamShop) {
         this.date = date;
         this.flavor = flavor;
         this.iceCreamShop = iceCreamShop;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public LocalDate getDate() {

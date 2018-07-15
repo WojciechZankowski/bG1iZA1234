@@ -1,0 +1,44 @@
+<h2 mat-dialog-title>{{'FLAVOR.DIALOG.TITLE' | translate}}</h2>
+
+<form class="login-form" name="form" role="form">
+
+  <mat-form-field>
+    <mat-label>{{'FLAVOR.DIALOG.COMPANY.TITLE' | translate}}</mat-label>
+    <mat-select [(value)]="flavor.company"
+                placeholder="{{'FLAVOR.DIALOG.COMPANY.PLACEHOLDER' | translate}}">
+      <mat-option *ngFor="let company of companyList" [value]="company">
+        {{company.name}}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <br/>
+  <h3 class="mt-0 mb-0">{{'FLAVOR.DIALOG.IMAGE.TITLE' | translate}}</h3>
+  <mat-divider class="pb-1"></mat-divider>
+  <div class="row">
+    <div class="form-size f-3 pr-1">
+      <mat-label class="pr-1">{{'FLAVOR.DIALOG.IMAGE.TITLE' | translate}}</mat-label>
+      <button type="button" mat-button (click)="imgFileInput.click()">{{'FLAVOR.DIALOG.IMAGE.PLACEHOLDER' | translate}}
+      </button>
+      <input hidden type="file" #imgFileInput (change)="handleFileInput($event.target.files)"/>
+    </div>
+  </div>
+
+  <br/>
+  <h3 class="mt-0 mb-0">{{'FLAVOR.DIALOG.FLAVOR.NAME' | translate}}</h3>
+  <mat-divider class="pb-1"></mat-divider>
+
+  <div class="row">
+    <mat-form-field class="form-size f-10">
+      <mat-label>{{'FLAVOR.DIALOG.FLAVOR.TITLE' | translate}}</mat-label>
+      <input matInput id="name" name="name" [(ngModel)]="flavor.name"
+             placeholder="{{'FLAVOR.DIALOG.FLAVOR.PLACEHOLDER' | translate}}">
+    </mat-form-field>
+  </div>
+
+</form>
+
+<mat-dialog-actions class="float-right">
+  <button mat-button mat-dialog-close>{{'DIALOG.CANCEL' | translate}}</button>
+  <button mat-button (click)="save()" [mat-dialog-close]="true">{{'DIALOG.SAVE' | translate}}</button>
+</mat-dialog-actions>

@@ -1,6 +1,8 @@
 package pl.lodomaniak.icecream;
 
+import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Service;
+import pl.lodomaniak.icecream.api.CompanyTO;
 import pl.lodomaniak.icecream.api.FlavorTO;
 import pl.lodomaniak.icecream.mapper.FlavorMapper;
 
@@ -14,16 +16,24 @@ public class DefaultFlavorService implements FlavorService {
     private final FlavorActivityRepository flavorActivityRepository;
     private final FlavorRepository flavorRepository;
     private final FlavorMapper flavorMapper;
+    private final CompanyService companyService;
 
     public DefaultFlavorService(final FlavorActivityRepository flavorActivityRepository,
-            final FlavorRepository flavorRepository, final FlavorMapper flavorMapper) {
+            final FlavorRepository flavorRepository, final FlavorMapper flavorMapper,
+            final CompanyService companyService) {
         this.flavorActivityRepository = flavorActivityRepository;
         this.flavorRepository = flavorRepository;
         this.flavorMapper = flavorMapper;
+        this.companyService = companyService;
     }
 
     @Override
     public void addFlavor(final FlavorTO flavor) {
+        flavorRepository.save(flavorMapper.map(flavor));
+    }
+
+    @Override
+    public void updateFlavor(final FlavorTO flavor) {
         flavorRepository.save(flavorMapper.map(flavor));
     }
 
@@ -33,8 +43,11 @@ public class DefaultFlavorService implements FlavorService {
     }
 
     @Override
-    public List<FlavorTO> getFlavors(final long companyId) {
-        return flavorRepository.findAllByCompanyId(companyId).stream()
+    public List<FlavorTO> getFlavors(final User user) {
+        final List<Long> companiesId = companyService.getCompanies(user).stream()
+                .map(CompanyTO::getId)
+                .collect(toList());
+        return flavorRepository.findAllByCompanyId(companiesId).stream()
                 .map(flavorMapper::map)
                 .collect(toList());
     }

@@ -1,4 +1,58 @@
 package pl.lodomaniak.icecream;
 
+import io.swagger.annotations.Api;
+import io.swagger.annotations.ApiOperation;
+import io.swagger.annotations.ApiResponse;
+import io.swagger.annotations.ApiResponses;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.HttpStatus;
+import org.springframework.http.ResponseEntity;
+import org.springframework.security.core.annotation.AuthenticationPrincipal;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.PutMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
+import pl.lodomaniak.icecream.api.FlavorTO;
+
+@RestController
+@RequestMapping("/api/flavor")
+@Api(tags = "Ice Cream Flavors", description = "Perform operations on Ice Cream flavors.")
 public class FlavorRestController {
+
+    private final FlavorService flavorService;
+
+    @Autowired
+    public FlavorRestController(final FlavorService flavorService) {
+        this.flavorService = flavorService;
+    }
+
+    @ApiOperation(value = "Create Ice Cream flavor.")
+    @ApiResponses(value = {
+            @ApiResponse(code = 201, message = "Ice Cream flavor created")})
+    @PostMapping
+    public ResponseEntity<?> addFlavor(@RequestBody final FlavorTO flavor) {
+        flavorService.addFlavor(flavor);
+        return ResponseEntity.status(HttpStatus.CREATED).build();
+    }
+
+    @ApiOperation(value = "Update Ice Cream flavor.")
+    @ApiResponses(value = {
+            @ApiResponse(code = 201, message = "Ice Cream flavor updated.")})
+    @PutMapping
+    public ResponseEntity<?> updateFlavor(@RequestBody final FlavorTO flavor) {
+        flavorService.updateFlavor(flavor);
+        return ResponseEntity.status(HttpStatus.CREATED).build();
+    }
+
+    @ApiOperation(value = "Ice Cream flavor retrieval.")
+    @ApiResponses(value =  {
+            @ApiResponse(code = 200, message = "Ice Cream flavor received")})
+    @GetMapping("/mine")
+    public ResponseEntity<?> getFlavors(@AuthenticationPrincipal final User user) {
+        return ResponseEntity.ok(flavorService.getFlavors(user));
+    }
+
 }

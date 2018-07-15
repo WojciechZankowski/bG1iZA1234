@@ -107,6 +107,25 @@
       }
     }
   },
+  "FLAVOR": {
+    "ADD_FLAVOR": "Dodaj smak",
+    "DIALOG": {
+      "TITLE": "Dodawanie smaku",
+      "COMPANY": {
+        "TITLE": "Firma",
+        "PLACEHOLDER": "Wybierz firmę"
+      },
+      "IMAGE": {
+        "TITLE": "Zdjęcie",
+        "PLACEHOLDER": "Wybierz zdjęcie"
+      },
+      "FLAVOR": {
+        "NAME": "Smak",
+        "TITLE": "Nazwa smaku",
+        "PLACEHOLDER": ""
+      }
+    }
+  },
   "MENU": {
     "DASHBOARD": "Podsumowanie",
     "FLAVORS": "Smaki",

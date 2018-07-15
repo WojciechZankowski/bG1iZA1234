@@ -3,6 +3,7 @@ package pl.lodomaniak.icecream.entity;
 import com.google.common.base.Objects;
 import pl.lodomaniak.core.entity.IEntity;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -29,14 +30,15 @@ public class FlavorEntity implements IEntity {
     @Column
     private String imageUrl;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "COMPANY_ID", nullable = false, updatable = false)
     private CompanyEntity company;
 
     public FlavorEntity() {
     }
 
-    public FlavorEntity(final String name, final String imageUrl, final CompanyEntity company) {
+    public FlavorEntity(final Long id, final String name, final String imageUrl, final CompanyEntity company) {
+        this.id = id;
         this.name = name;
         this.imageUrl = imageUrl;
         this.company = company;
