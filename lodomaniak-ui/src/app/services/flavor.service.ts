@@ -5,6 +5,7 @@ import {Flavor} from "../model/flavor.model";
 import {PageRequest} from "../model/page-request.model";
 import {FlavorSchedule} from "../model/flavor-schedule.model";
 import {HttpParams} from "@angular/common/http";
+import {Page} from "../model/page.model";
 
 export const FLAVOR_PATH = '/flavor';
 export const FLAVOR_MINE_PATH = '/flavor/mine';
@@ -28,7 +29,7 @@ export class FlavorService {
     return this.apiService.get(FLAVOR_MINE_PATH);
   }
 
-  getSchedule(request: PageRequest): Observable<Array<FlavorSchedule>> {
+  getSchedule(request: PageRequest): Observable<Page<FlavorSchedule>> {
     const properties = new HttpParams().set('page', request.page.toString())
       .set('size', request.size.toString())
       .set('direction', request.direction)

@@ -1,9 +1,10 @@
 import {Component, OnInit} from "@angular/core";
-import {MatDialog} from "@angular/material";
+import {MatDialog, PageEvent} from "@angular/material";
 import {FlavorService} from "../../services/flavor.service";
 import {AddEditScheduleComponent} from "./add-edit-schedule.component";
 import {PageRequest} from "../../model/page-request.model";
 import {FlavorSchedule} from "../../model/flavor-schedule.model";
+import {Page} from "../../model/page.model";
 
 @Component({
   templateUrl: './flavor-scheduler.component.html',
@@ -11,10 +12,11 @@ import {FlavorSchedule} from "../../model/flavor-schedule.model";
 })
 export class FlavorSchedulerComponent implements OnInit {
 
-  public schedules: Array<FlavorSchedule> = [];
+  public schedules: Page<FlavorSchedule>;
 
   public length: number = 0;
-
+  public pageSize: number = 25;
+  public pageSizeOptions: Array<number> = [10, 25, 50];
 
   constructor(private dialog: MatDialog,
               private flavorService: FlavorService) {
@@ -25,9 +27,18 @@ export class FlavorSchedulerComponent implements OnInit {
   }
 
   fetchSchedule(): void {
-    const pageRequest = new PageRequest(0, 50, 'ASC', 'date');
+    const pageRequest = new PageRequest(0, this.pageSize, 'ASC', 'date');
     this.flavorService.getSchedule(pageRequest).subscribe(schedules => {
       this.schedules = schedules;
+      this.length = schedules.totalElements;
+    });
+  }
+
+  onPageChange(event: PageEvent): void {
+    const pageRequest = new PageRequest(event.pageIndex, event.pageSize, 'ASC', 'date');
+    this.flavorService.getSchedule(pageRequest).subscribe(schedules => {
+      this.schedules = schedules;
+      this.length = schedules.totalElements;
     });
   }
 

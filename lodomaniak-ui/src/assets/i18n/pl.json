@@ -109,6 +109,7 @@
   },
   "FLAVOR": {
     "ADD_FLAVOR": "Dodaj smak",
+    "EXISTING_FLAVORS": "Smaki",
     "DIALOG": {
       "TITLE": "Dodawanie smaku",
       "COMPANY": {

@@ -1,4 +1,5 @@
-import {Component} from "@angular/core";
+import {Component, Input} from "@angular/core";
+import {FlavorSchedule} from "../../model/flavor-schedule.model";
 
 @Component({
   selector: 'flavor-scheduler-card',
@@ -7,6 +8,11 @@ import {Component} from "@angular/core";
 })
 export class FlavorSchedulerCardComponent {
 
+  @Input()
+  public flavorSchedule: FlavorSchedule;
 
+  edit(): void {
+
+  }
 
 }
