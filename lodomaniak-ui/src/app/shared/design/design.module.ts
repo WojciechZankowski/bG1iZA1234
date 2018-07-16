@@ -7,7 +7,7 @@ import {
   MatIconModule,
   MatInputModule,
   MatListModule,
-  MatMenuModule, MatNativeDateModule, MatSelectModule,
+  MatMenuModule, MatNativeDateModule, MatPaginatorModule, MatSelectModule,
   MatSidenavModule,
   MatSnackBarModule,
   MatToolbarModule
@@ -31,7 +31,8 @@ import {MaterialFileInputModule} from "ngx-material-file-input";
     MatSelectModule,
     MatListModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatPaginatorModule
   ],
   exports: [
     MatButtonModule,
@@ -49,7 +50,8 @@ import {MaterialFileInputModule} from "ngx-material-file-input";
     MatSelectModule,
     MatListModule,
     MatDatepickerModule,
-    MatNativeDateModule
+    MatNativeDateModule,
+    MatPaginatorModule
   ]
 })
 export class DesignModule {

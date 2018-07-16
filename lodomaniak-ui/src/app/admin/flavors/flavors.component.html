@@ -1,7 +1,7 @@
 <button mat-stroked-button (click)="openAddEditDialog()">{{'FLAVOR.ADD_FLAVOR' | translate}}</button>
 
 <div class="container">
-  <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between center">
+  <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="20px">
     <flavor-card class="card" fxFlex="32%" fxFlex.xs="80%" *ngFor="let flavor of flavors"
                          [flavor]="flavor"></flavor-card>
   </div>

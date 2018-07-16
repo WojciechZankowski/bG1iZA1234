@@ -13,6 +13,9 @@ export class FlavorSchedulerComponent implements OnInit {
 
   public schedules: Array<FlavorSchedule> = [];
 
+  public length: number = 0;
+
+
   constructor(private dialog: MatDialog,
               private flavorService: FlavorService) {
   }
@@ -22,7 +25,7 @@ export class FlavorSchedulerComponent implements OnInit {
   }
 
   fetchSchedule(): void {
-    const pageRequest = new PageRequest(1, 50, 'ASC', 'date');
+    const pageRequest = new PageRequest(0, 50, 'ASC', 'date');
     this.flavorService.getSchedule(pageRequest).subscribe(schedules => {
       this.schedules = schedules;
     });

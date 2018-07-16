@@ -6,16 +6,12 @@
   flex: 1 1 100%;
 }
 
-.card-row {
-  flex-flow: row wrap
-}
-
 .card {
   justify-content: space-between;
 }
 
 .header-margin {
-  margin-bottom: 0.75em;
+  margin-bottom: 0.5em;
 }
 
 :host {

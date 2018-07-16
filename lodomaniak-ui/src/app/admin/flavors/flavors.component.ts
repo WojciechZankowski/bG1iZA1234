@@ -30,7 +30,7 @@ export class FlavorsComponent implements OnInit {
   openAddEditDialog(): void {
     let matDialogRef = this.dialog.open(AddEditFlavorComponent, {
       height: '50vh',
-      width: '600px',
+      width: '600px'
     });
 
     matDialogRef.afterClosed().subscribe(result => {

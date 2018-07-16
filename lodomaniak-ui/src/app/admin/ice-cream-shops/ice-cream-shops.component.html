@@ -5,7 +5,7 @@
   <h2 class="header-margin">{{'ICE_CREAM_SHOP.EXISTING_SHOPS' | translate}}</h2>
   <mat-divider class="pb-1"></mat-divider>
 
-  <div fxLayout="row" fxLayout.xs="column" fxLayoutAlign="space-between center">
+  <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="20px">
     <ice-cream-shop-card class="card" fxFlex="32%" fxFlex.xs="80%" *ngFor="let iceCreamShop of iceCreamShops"
                          [iceCreamShop]="iceCreamShop"></ice-cream-shop-card>
   </div>

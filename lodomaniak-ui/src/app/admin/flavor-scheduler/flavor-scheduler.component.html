@@ -1,1 +1,7 @@
 <button mat-stroked-button (click)="openAddEditDialog()">{{'SCHEDULER.ADD_SCHEDULE' | translate}}</button>
+
+<mat-paginator [length]="length"
+               [pageSize]="pageSize"
+               [pageSizeOptions]="pageSizeOptions"
+               (page)="pageEvent = $event">
+</mat-paginator>

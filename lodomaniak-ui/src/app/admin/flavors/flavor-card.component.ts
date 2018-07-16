@@ -18,7 +18,7 @@ export class FlavorCardComponent {
 
   edit(): void {
     this.dialog.open(AddEditFlavorComponent, {
-      height: '80vh',
+      height: '50vh',
       width: '600px',
       data: {
         flavor: this.flavor
