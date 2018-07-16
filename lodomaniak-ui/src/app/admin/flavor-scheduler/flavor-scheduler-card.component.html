@@ -1,6 +1,12 @@
 <mat-card>
-  <mat-card-title class="account-card-title">{{flavorSchedule.date}}</mat-card-title>
-  <mat-card-subtitle>{{flavorSchedule.iceCreamShop.company.name}}</mat-card-subtitle>
+  <mat-card-header>
+    <img mat-card-avatar src="{{getFilePath(flavorSchedule.flavor.imageUrl)}}" alt="Ice Cream">
+    <mat-card-title class="account-card-title">{{flavorSchedule.date}}: {{flavorSchedule.flavor.name}}</mat-card-title>
+    <mat-card-subtitle>{{flavorSchedule.iceCreamShop.company.name}}:
+      {{flavorSchedule.iceCreamShop.address.streetAddress}}, {{flavorSchedule.iceCreamShop.address.zipCode}}
+      {{flavorSchedule.iceCreamShop.address.city}}
+    </mat-card-subtitle>
+  </mat-card-header>
   <mat-card-actions>
     <button mat-button (click)="edit()">{{'DIALOG.EDIT' | translate}}</button>
   </mat-card-actions>

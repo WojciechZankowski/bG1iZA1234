@@ -5,6 +5,9 @@ import {AddEditScheduleComponent} from "./add-edit-schedule.component";
 import {PageRequest} from "../../model/page-request.model";
 import {FlavorSchedule} from "../../model/flavor-schedule.model";
 import {Page} from "../../model/page.model";
+import {OpeningHoursRange} from "../../model/opening-hours-range.model";
+
+export type GroupedSchedule = { [key: string]: Array<FlavorSchedule> };
 
 @Component({
   templateUrl: './flavor-scheduler.component.html',
@@ -13,10 +16,13 @@ import {Page} from "../../model/page.model";
 export class FlavorSchedulerComponent implements OnInit {
 
   public schedules: Page<FlavorSchedule>;
+  public groupedData: GroupedSchedule;
 
   public length: number = 0;
-  public pageSize: number = 25;
-  public pageSizeOptions: Array<number> = [10, 25, 50];
+  public pageSize: number = 50;
+  public pageSizeOptions: Array<number> = [25, 50, 100];
+
+  public readonly OBJECT_KEYS = Object.keys;
 
   constructor(private dialog: MatDialog,
               private flavorService: FlavorService) {
@@ -31,6 +37,9 @@ export class FlavorSchedulerComponent implements OnInit {
     this.flavorService.getSchedule(pageRequest).subscribe(schedules => {
       this.schedules = schedules;
       this.length = schedules.totalElements;
+      const groupedSchedule = this.grouped(schedules.content);
+      this.groupedData = groupedSchedule;
+      console.log(groupedSchedule);
     });
   }
 
@@ -44,7 +53,7 @@ export class FlavorSchedulerComponent implements OnInit {
 
   openAddEditDialog(): void {
     let matDialogRef = this.dialog.open(AddEditScheduleComponent, {
-      height: '50vh',
+      height: '40vh',
       width: '600px',
     });
 
@@ -53,6 +62,26 @@ export class FlavorSchedulerComponent implements OnInit {
         this.fetchSchedule();
       }
     });
+  }
+
+  grouped(schedules: Array<FlavorSchedule>): GroupedSchedule {
+    if (!schedules) {
+      return {};
+    }
+
+    const grouped: GroupedSchedule = {};
+
+    schedules.forEach(schedule => {
+      const key: string = schedule.date.toString();
+      let groupedElement = grouped[key];
+      if (!groupedElement) {
+        groupedElement = [];
+      }
+      groupedElement.push(schedule);
+      grouped[key] = groupedElement;
+    });
+
+    return grouped;
   }
 
 }

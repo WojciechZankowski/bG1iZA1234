@@ -21,7 +21,6 @@ export class FlavorCardComponent {
   constructor(private dialog: MatDialog) {}
 
   edit(): void {
-
     this.dialog.open(AddEditFlavorComponent, {
       height: '50vh',
       width: '600px',

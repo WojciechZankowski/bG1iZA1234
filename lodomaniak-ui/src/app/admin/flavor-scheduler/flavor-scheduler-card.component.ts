@@ -1,5 +1,8 @@
 import {Component, Input} from "@angular/core";
 import {FlavorSchedule} from "../../model/flavor-schedule.model";
+import {MatDialog} from "@angular/material";
+import {AddEditFlavorComponent} from "../flavors/add-edit-flavor.component";
+import {AddEditScheduleComponent} from "./add-edit-schedule.component";
 
 @Component({
   selector: 'flavor-scheduler-card',
@@ -11,8 +14,20 @@ export class FlavorSchedulerCardComponent {
   @Input()
   public flavorSchedule: FlavorSchedule;
 
-  edit(): void {
+  constructor(private dialog: MatDialog) {}
 
+  edit(): void {
+    this.dialog.open(AddEditScheduleComponent, {
+      height: '40vh',
+      width: '600px',
+      data: {
+        flavor: this.flavorSchedule
+      }
+    });
+  }
+
+  getFilePath(name: string) {
+    return '/assets/img/content/' + name;
   }
 
 }
