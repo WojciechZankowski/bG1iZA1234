@@ -16,7 +16,7 @@ public interface FlavorService {
 
     List<FlavorTO> getAvailableFlavors(long iceCreamShopId);
 
-    List<FlavorTO> getFlavors(User user);
+    Page<FlavorTO> getFlavors(User user, Pageable pageable);
 
     void scheduleFlavor(FlavorActivityTO flavorActivity);
 

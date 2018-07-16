@@ -6,7 +6,13 @@
   <mat-divider class="pb-1"></mat-divider>
 
   <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="20px">
-    <flavor-card class="card" fxFlex="32%" fxFlex.xs="80%" *ngFor="let flavor of flavors"
+    <flavor-card class="card" fxFlex="32%" fxFlex.xs="80%" *ngFor="let flavor of flavors.content"
                  [flavor]="flavor"></flavor-card>
   </div>
 </div>
+
+<mat-paginator [length]="length"
+               [pageSize]="pageSize"
+               [pageSizeOptions]="pageSizeOptions"
+               (page)="onPageChange($event)">
+</mat-paginator>

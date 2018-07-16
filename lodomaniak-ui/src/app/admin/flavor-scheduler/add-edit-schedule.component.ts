@@ -5,6 +5,7 @@ import {IceCreamShopService} from "../../services/ice-cream-shop.service";
 import {FlavorService} from "../../services/flavor.service";
 import {Flavor} from "../../model/flavor.model";
 import {MAT_DIALOG_DATA} from "@angular/material";
+import {PageRequest} from "../../model/page-request.model";
 
 @Component({
   templateUrl: './add-edit-schedule.component.html',
@@ -24,8 +25,9 @@ export class AddEditScheduleComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.flavorService.getFlavors().subscribe(flavors => {
-      this.flavorList = flavors;
+    const pageRequest = new PageRequest(0, 10000);
+    this.flavorService.getFlavors(pageRequest).subscribe(flavors => {
+      this.flavorList = flavors.content;
     });
 
     this.iceCreamShopService.getIceCreamShops().subscribe(iceCreamShopList => {

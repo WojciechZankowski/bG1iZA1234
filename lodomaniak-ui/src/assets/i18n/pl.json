@@ -120,6 +120,10 @@
         "TITLE": "Zdjęcie",
         "PLACEHOLDER": "Wybierz zdjęcie"
       },
+      "TAG": {
+        "TITLE": "Tagi",
+        "PLACEHOLDER": "Wpisz tagi"
+      },
       "FLAVOR": {
         "NAME": "Smak",
         "TITLE": "Nazwa smaku",

@@ -55,13 +55,12 @@ public class DefaultFlavorService implements FlavorService {
     }
 
     @Override
-    public List<FlavorTO> getFlavors(final User user) {
+    public Page<FlavorTO> getFlavors(final User user, final Pageable pageable) {
         final List<Long> companiesId = companyService.getCompanies(user).stream()
                 .map(CompanyTO::getId)
                 .collect(toList());
-        return flavorRepository.findAllByCompanyId(companiesId).stream()
-                .map(flavorMapper::map)
-                .collect(toList());
+        return flavorRepository.findAllByCompanyId(companiesId, pageable)
+                .map(flavorMapper::map);
     }
 
     @Override

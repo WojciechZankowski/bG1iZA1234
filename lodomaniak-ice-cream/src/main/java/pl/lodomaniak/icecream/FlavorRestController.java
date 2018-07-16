@@ -53,8 +53,8 @@ public class FlavorRestController {
     @ApiResponses(value =  {
             @ApiResponse(code = 200, message = "Ice Cream flavor received")})
     @GetMapping("/mine")
-    public ResponseEntity<?> getFlavors(@AuthenticationPrincipal final User user) {
-        return ResponseEntity.ok(flavorService.getFlavors(user));
+    public ResponseEntity<?> getFlavors(final Pageable pageable, @AuthenticationPrincipal final User user) {
+        return ResponseEntity.ok(flavorService.getFlavors(user, pageable));
     }
 
     @ApiOperation(value = "Scheduled Ice Cream flavors retrieval.")

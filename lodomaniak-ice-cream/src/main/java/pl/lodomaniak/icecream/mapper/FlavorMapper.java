@@ -22,6 +22,7 @@ public class FlavorMapper {
                 .withId(flavor.getId())
                 .withName(flavor.getName())
                 .withImageUrl(flavor.getImageUrl())
+                .withTags(flavor.getTags())
                 .withCompany(companyMapper.map(flavor.getCompany()))
                 .build();
     }
@@ -31,6 +32,7 @@ public class FlavorMapper {
                 .withId(flavor.getId())
                 .withName(flavor.getName())
                 .withImageUrl(flavor.getImageUrl())
+                .withTags(flavor.getTags())
                 .withCompany(companyMapper.map(flavor.getCompany()))
                 .build();
     }
