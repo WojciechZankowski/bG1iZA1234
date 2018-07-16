@@ -31,6 +31,7 @@ export class FlavorsComponent implements OnInit {
     this.flavorService.getFlavors(pageRequest)
       .subscribe((flavors) => {
         this.flavors = flavors;
+        this.length = flavors.totalElements;
       })
   }
 
@@ -39,6 +40,7 @@ export class FlavorsComponent implements OnInit {
     this.flavorService.getFlavors(pageRequest)
       .subscribe((flavors) => {
         this.flavors = flavors;
+        this.length = flavors.totalElements;
       })
   }
 

@@ -5,8 +5,8 @@
   <h2 class="header-margin">{{'FLAVOR.EXISTING_FLAVORS' | translate}}</h2>
   <mat-divider class="pb-1"></mat-divider>
 
-  <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="20px">
-    <flavor-card class="card" fxFlex="32%" fxFlex.xs="80%" *ngFor="let flavor of flavors.content"
+  <div fxLayout="row wrap" fxLayout.xs="column wrap" fxLayoutGap="1%" fxFlexAlign="stretch">
+    <flavor-card class="card" fxFlex="32.25%" fxFlexAlign="stretch" fxFlex.xs="80%" *ngFor="let flavor of flavors.content"
                  [flavor]="flavor"></flavor-card>
   </div>
 </div>

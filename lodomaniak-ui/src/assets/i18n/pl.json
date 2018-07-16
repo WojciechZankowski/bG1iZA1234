@@ -127,7 +127,7 @@
       "FLAVOR": {
         "NAME": "Smak",
         "TITLE": "Nazwa smaku",
-        "PLACEHOLDER": ""
+        "PLACEHOLDER": "Wpisz nazwę smaku"
       }
     }
   },

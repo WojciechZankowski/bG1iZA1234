@@ -2,7 +2,7 @@ import {NgModule} from "@angular/core";
 import {
   MatButtonModule,
   MatCardModule,
-  MatCheckboxModule, MatDatepickerModule, MatDialogModule, MatDividerModule,
+  MatCheckboxModule, MatChipsModule, MatDatepickerModule, MatDialogModule, MatDividerModule,
   MatFormFieldModule,
   MatIconModule,
   MatInputModule,
@@ -32,7 +32,8 @@ import {MaterialFileInputModule} from "ngx-material-file-input";
     MatListModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatChipsModule
   ],
   exports: [
     MatButtonModule,
@@ -51,7 +52,8 @@ import {MaterialFileInputModule} from "ngx-material-file-input";
     MatListModule,
     MatDatepickerModule,
     MatNativeDateModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatChipsModule
   ]
 })
 export class DesignModule {

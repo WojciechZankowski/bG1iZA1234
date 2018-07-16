@@ -28,7 +28,7 @@ export class FlavorService {
   getFlavors(request: PageRequest): Observable<Page<Flavor>> {
     const properties = new HttpParams().set('page', request.page.toString())
       .set('size', request.size.toString());
-    return this.apiService.get(FLAVOR_SCHEDULE_PATH, properties);
+    return this.apiService.get(FLAVOR_MINE_PATH, properties);
   }
 
   getSchedule(request: PageRequest): Observable<Page<FlavorSchedule>> {

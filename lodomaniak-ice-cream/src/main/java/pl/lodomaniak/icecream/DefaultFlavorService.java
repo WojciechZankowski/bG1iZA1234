@@ -59,7 +59,7 @@ public class DefaultFlavorService implements FlavorService {
         final List<Long> companiesId = companyService.getCompanies(user).stream()
                 .map(CompanyTO::getId)
                 .collect(toList());
-        return flavorRepository.findAllByCompanyId(companiesId, pageable)
+        return flavorRepository.findAllByCompanyIdIn(companiesId, pageable)
                 .map(flavorMapper::map);
     }
 

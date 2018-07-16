@@ -9,6 +9,6 @@ import java.util.List;
 
 public interface FlavorRepository extends JpaRepository<FlavorEntity, Long> {
 
-    Page<FlavorEntity> findAllByCompanyId(List<Long> companyId, Pageable pageable);
+    Page<FlavorEntity> findAllByCompanyIdIn(List<Long> companyId, Pageable pageable);
 
 }
