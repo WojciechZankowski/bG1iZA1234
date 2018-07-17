@@ -4,7 +4,7 @@
 
   <mat-form-field>
     <mat-label>{{'FLAVOR.DIALOG.COMPANY.TITLE' | translate}}</mat-label>
-    <mat-select [(value)]="flavor.company"
+    <mat-select [(value)]="flavor.company" [compareWith]="compareById"
                 placeholder="{{'FLAVOR.DIALOG.COMPANY.PLACEHOLDER' | translate}}">
       <mat-option *ngFor="let company of companyList" [value]="company">
         {{company.name}}

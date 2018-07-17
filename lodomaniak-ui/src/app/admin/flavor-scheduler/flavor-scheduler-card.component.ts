@@ -21,7 +21,7 @@ export class FlavorSchedulerCardComponent {
       height: '40vh',
       width: '600px',
       data: {
-        flavor: this.flavorSchedule
+        flavorSchedule: this.flavorSchedule
       }
     });
   }

@@ -4,12 +4,16 @@ import {IceCreamShop} from "../../model/ice-cream-shop.model";
 import {IceCreamShopService} from "../../services/ice-cream-shop.service";
 import {FlavorService} from "../../services/flavor.service";
 import {Flavor} from "../../model/flavor.model";
-import {MAT_DIALOG_DATA} from "@angular/material";
+import {DateAdapter, MAT_DATE_LOCALE, MAT_DIALOG_DATA, NativeDateAdapter} from "@angular/material";
 import {PageRequest} from "../../model/page-request.model";
 
 @Component({
   templateUrl: './add-edit-schedule.component.html',
-  styleUrls: ['./add-edit-schedule.component.scss']
+  styleUrls: ['./add-edit-schedule.component.scss'],
+  providers: [
+    {provide: MAT_DATE_LOCALE, useValue: 'pl-PL'},
+    {provide: DateAdapter, useClass: NativeDateAdapter}
+  ]
 })
 export class AddEditScheduleComponent implements OnInit {
 
@@ -46,10 +50,20 @@ export class AddEditScheduleComponent implements OnInit {
 
   save(): void {
     if (this.edit) {
-      this.flavorService.updateSchedule(this.flavorSchedule).subscribe(() => {});
+      this.flavorService.updateSchedule(this.flavorSchedule).subscribe(() => {
+      });
     } else {
-      this.flavorService.saveSchedule(this.flavorSchedule).subscribe(() => {});
+      this.flavorService.saveSchedule(this.flavorSchedule).subscribe(() => {
+      });
     }
+  }
+
+  compareShopsById(obj1: IceCreamShop, obj2: IceCreamShop): boolean {
+    return obj1 && obj2 ? obj1.id === obj2.id : false;
+  }
+
+  compareFlavorsById(obj1: Flavor, obj2: Flavor): boolean {
+    return obj1 && obj2 ? obj1.id === obj2.id : false;
   }
 
 }

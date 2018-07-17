@@ -2,7 +2,6 @@ import {Component, Inject, OnInit} from "@angular/core";
 import {MAT_DIALOG_DATA} from "@angular/material";
 import {IceCreamShop} from "../../model/ice-cream-shop.model";
 import {Address} from "../../model/address.model";
-import {OpeningHours} from "../../model/opening-hours.model";
 import {Company} from "../../model/company.model";
 import {OpeningHoursRange} from "../../model/opening-hours-range.model";
 import {CompanyService} from "../../services/company.service";
@@ -65,6 +64,10 @@ export class AddEditShopsComponent implements OnInit {
         .subscribe(() => {
         });
     }
+  }
+
+  compareById(obj1: Company, obj2: Company): boolean {
+    return obj1 && obj2 ? obj1.id === obj2.id : false;
   }
 
   handleFileInput(files: FileList) {

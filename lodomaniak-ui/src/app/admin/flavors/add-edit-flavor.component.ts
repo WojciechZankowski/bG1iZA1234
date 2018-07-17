@@ -45,6 +45,7 @@ export class AddEditFlavorComponent implements OnInit {
 
     if (this.data != null) {
       this.flavor = this.data.flavor;
+      this.tags = this.flavor.tags;
       this.edit = true;
     }
 
@@ -96,6 +97,10 @@ export class AddEditFlavorComponent implements OnInit {
     if (index >= 0) {
       this.tags.splice(index, 1);
     }
+  }
+
+  compareById(obj1: Company, obj2: Company): boolean {
+    return obj1 && obj2 ? obj1.id === obj2.id : false;
   }
 
 }

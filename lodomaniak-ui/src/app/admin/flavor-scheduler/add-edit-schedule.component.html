@@ -12,9 +12,11 @@
     </mat-form-field>
   </div>
 
+  {{flavorSchedule.date}}
+
   <mat-form-field>
     <mat-label>{{'SCHEDULER.DIALOG.FLAVOR.TITLE' | translate}}</mat-label>
-    <mat-select [(value)]="flavorSchedule.flavor"
+    <mat-select [(value)]="flavorSchedule.flavor" [compareWith]="compareShopsById"
                 placeholder="{{'SCHEDULER.DIALOG.FLAVOR.PLACEHOLDER' | translate}}">
       <mat-option *ngFor="let flavor of flavorList" [value]="flavor">
         {{flavor.name}}
@@ -24,7 +26,7 @@
 
   <mat-form-field>
     <mat-label>{{'SCHEDULER.DIALOG.ICE_CREAM_SHOP.TITLE' | translate}}</mat-label>
-    <mat-select [(value)]="flavorSchedule.iceCreamShop"
+    <mat-select [(value)]="flavorSchedule.iceCreamShop" [compareWith]="compareFlavorsById"
                 placeholder="{{'SCHEDULER.DIALOG.ICE_CREAM_SHOP.PLACEHOLDER' | translate}}">
       <mat-option *ngFor="let iceCreamShop of iceCreamShopList" [value]="iceCreamShop">
         {{iceCreamShop.company.name}}: {{iceCreamShop.address.streetAddress}}, {{iceCreamShop.address.zipCode}}
