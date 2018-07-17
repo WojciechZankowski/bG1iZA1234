@@ -1,5 +1,7 @@
 package pl.lodomaniak.icecream.entity;
 
+import com.google.common.collect.Lists;
+
 public final class CompanyEntityBuilder {
     private Long id;
     private String name;
@@ -39,6 +41,6 @@ public final class CompanyEntityBuilder {
     }
 
     public CompanyEntity build() {
-        return new CompanyEntity(id, name, imageUrl, nip, regon, addressEntity);
+        return new CompanyEntity(id, name, imageUrl, nip, regon, Lists.newArrayList(), addressEntity);
     }
 }

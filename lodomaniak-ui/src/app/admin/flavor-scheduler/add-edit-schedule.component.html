@@ -12,8 +12,6 @@
     </mat-form-field>
   </div>
 
-  {{flavorSchedule.date}}
-
   <mat-form-field>
     <mat-label>{{'SCHEDULER.DIALOG.FLAVOR.TITLE' | translate}}</mat-label>
     <mat-select [(value)]="flavorSchedule.flavor" [compareWith]="compareShopsById"

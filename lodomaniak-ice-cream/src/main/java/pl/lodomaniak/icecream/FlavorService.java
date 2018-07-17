@@ -23,6 +23,6 @@ public interface FlavorService {
 
     void updateFlavorSchedule(FlavorActivityTO flavorActivity);
 
-    Page<FlavorActivityTO> getPlannedFlavors(final Pageable pageable, User user);
+    Page<FlavorActivityTO> getPlannedFlavors(final Pageable pageable, User user) throws UserNotFoundException;
 
 }

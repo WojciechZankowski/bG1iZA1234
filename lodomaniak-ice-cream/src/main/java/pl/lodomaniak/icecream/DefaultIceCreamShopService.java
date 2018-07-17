@@ -44,7 +44,6 @@ public class DefaultIceCreamShopService implements IceCreamShopService {
     @Override
     public void addIceCreamShop(final IceCreamShopTO iceCreamShop) {
         final IceCreamShopEntity entity = iceCreamShopMapper.map(iceCreamShop);
-        save(entity.getCompany());
         save(entity.getAddress());
         iceCreamShopRepository.save(entity);
     }
@@ -52,13 +51,6 @@ public class DefaultIceCreamShopService implements IceCreamShopService {
     private void save(final AddressEntity entity) {
         if (entity.getId() == null) {
             addressRepository.save(entity);
-        }
-    }
-
-    private void save(final CompanyEntity entity) {
-        if (entity.getId() == null) {
-            save(entity.getAddress());
-            companyRepository.save(entity);
         }
     }
 

@@ -75,7 +75,8 @@ public class DefaultFlavorService implements FlavorService {
     }
 
     @Override
-    public Page<FlavorActivityTO> getPlannedFlavors(final Pageable pageable, final User user) {
+    public Page<FlavorActivityTO> getPlannedFlavors(final Pageable pageable, final User user)
+            throws UserNotFoundException {
         final List<Long> iceCreamShopsId = iceCreamShopService.getIceCreamShops(user).stream()
                 .map(IceCreamShopTO::getId)
                 .collect(toList());

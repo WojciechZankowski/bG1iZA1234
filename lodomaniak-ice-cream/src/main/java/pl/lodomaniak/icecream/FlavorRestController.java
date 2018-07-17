@@ -63,7 +63,8 @@ public class FlavorRestController {
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Scheduled Ice Cream flavors received")})
     @GetMapping("/schedule")
-    public ResponseEntity<?> getScheduled(final Pageable pageable, @AuthenticationPrincipal final User user) {
+    public ResponseEntity<?> getScheduled(final Pageable pageable, @AuthenticationPrincipal final User user)
+            throws UserNotFoundException {
         return ResponseEntity.ok(flavorService.getPlannedFlavors(pageable, user));
     }
 

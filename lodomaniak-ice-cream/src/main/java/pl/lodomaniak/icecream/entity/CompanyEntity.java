@@ -3,7 +3,9 @@ package pl.lodomaniak.icecream.entity;
 import pl.lodomaniak.core.entity.IEntity;
 
 import javax.persistence.CascadeType;
+import javax.persistence.CollectionTable;
 import javax.persistence.Column;
+import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -36,7 +38,8 @@ public class CompanyEntity implements IEntity {
     @Column
     private String regon;
 
-    @Column(updatable = false)
+    @ElementCollection
+    @CollectionTable(name = "lodomaniak_company_users")
     private List<Long> userId;
 
     @ManyToOne(cascade = CascadeType.MERGE)

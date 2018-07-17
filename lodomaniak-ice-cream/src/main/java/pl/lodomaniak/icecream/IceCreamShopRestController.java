@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import pl.lodomaniak.icecream.api.IceCreamShopTO;
+import pl.lodomaniak.user.api.exception.UserNotFoundException;
 
 @RestController
 @RequestMapping("/api/icecreamshop")
@@ -51,7 +52,7 @@ public class IceCreamShopRestController {
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Ice Cream Shop received")})
     @GetMapping("/mine")
-    public ResponseEntity<?> getIceCreamShops(@AuthenticationPrincipal final User user) {
+    public ResponseEntity<?> getIceCreamShops(@AuthenticationPrincipal final User user) throws UserNotFoundException {
         return ResponseEntity.ok(iceCreamShopService.getIceCreamShops(user));
     }
 
