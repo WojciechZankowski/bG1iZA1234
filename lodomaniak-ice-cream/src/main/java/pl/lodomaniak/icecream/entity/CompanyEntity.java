@@ -1,6 +1,5 @@
 package pl.lodomaniak.icecream.entity;
 
-import com.google.common.base.Objects;
 import pl.lodomaniak.core.entity.IEntity;
 
 import javax.persistence.CascadeType;
@@ -12,6 +11,8 @@ import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+import java.util.List;
+import java.util.Objects;
 
 @Entity
 @Table(name = "lodomaniak_company")
@@ -35,6 +36,9 @@ public class CompanyEntity implements IEntity {
     @Column
     private String regon;
 
+    @Column(updatable = false)
+    private List<Long> userId;
+
     @ManyToOne(cascade = CascadeType.MERGE)
     @JoinColumn(name = "ADDRESS_ID", nullable = false)
     private AddressEntity address;
@@ -48,12 +52,14 @@ public class CompanyEntity implements IEntity {
             final String imageUrl,
             final String nip,
             final String regon,
+            final List<Long> userId,
             final AddressEntity address) {
         this.id = id;
         this.name = name;
         this.imageUrl = imageUrl;
         this.nip = nip;
         this.regon = regon;
+        this.userId = userId;
         this.address = address;
     }
 
@@ -77,6 +83,10 @@ public class CompanyEntity implements IEntity {
         return regon;
     }
 
+    public List<Long> getUserId() {
+        return userId;
+    }
+
     public AddressEntity getAddress() {
         return address;
     }
@@ -86,17 +96,18 @@ public class CompanyEntity implements IEntity {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         final CompanyEntity that = (CompanyEntity) o;
-        return Objects.equal(id, that.id) &&
-                Objects.equal(name, that.name) &&
-                Objects.equal(imageUrl, that.imageUrl) &&
-                Objects.equal(nip, that.nip) &&
-                Objects.equal(regon, that.regon) &&
-                Objects.equal(address, that.address);
+        return Objects.equals(id, that.id) &&
+                Objects.equals(name, that.name) &&
+                Objects.equals(imageUrl, that.imageUrl) &&
+                Objects.equals(nip, that.nip) &&
+                Objects.equals(regon, that.regon) &&
+                Objects.equals(userId, that.userId) &&
+                Objects.equals(address, that.address);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(id, name, imageUrl, nip, regon, address);
+        return Objects.hash(id, name, imageUrl, nip, regon, userId, address);
     }
 
     @Override
@@ -107,6 +118,7 @@ public class CompanyEntity implements IEntity {
                 ", imageUrl='" + imageUrl + '\'' +
                 ", nip='" + nip + '\'' +
                 ", regon='" + regon + '\'' +
+                ", userId=" + userId +
                 ", address=" + address +
                 '}';
     }

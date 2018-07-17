@@ -17,6 +17,7 @@ public class UserMapper {
 
     public AccountTO map(final UserEntity user) {
         return new AccountTOBuilder()
+                .withId(user.getId())
                 .withLogin(user.getLogin())
                 .withPassword(user.getPassword())
                 .withFirstName(user.getFirstName())

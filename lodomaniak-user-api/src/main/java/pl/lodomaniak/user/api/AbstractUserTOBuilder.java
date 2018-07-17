@@ -5,6 +5,7 @@ import java.util.Set;
 
 public abstract class AbstractUserTOBuilder<B> {
 
+    private Long id;
     private String login;
     private String firstName;
     private String lastName;
@@ -17,6 +18,15 @@ public abstract class AbstractUserTOBuilder<B> {
     private String lastModifiedBy;
     private Instant lastModifiedDate;
     private Set<String> authorities;
+
+    public Long getId() {
+        return id;
+    }
+
+    public B withId(final Long id) {
+        this.id = id;
+        return (B) this;
+    }
 
     public String getLogin() {
         return login;

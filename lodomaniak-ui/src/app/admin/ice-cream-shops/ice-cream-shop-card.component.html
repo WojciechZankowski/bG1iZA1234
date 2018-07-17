@@ -7,48 +7,10 @@
   <mat-card-content>
     <h5>{{'ICE_CREAM_SHOP.OPENING_HOURS' | translate}}</h5>
     <div class="ice-cream-shop-card-content">
-      <span>
-        <div class="hour-row">
-          <div class="f-3">{{'ICE_CREAM_SHOP.DIALOG.MONDAY' | translate}}</div>
-          <div class="f-7">{{iceCreamShop.openingHours['MONDAY'].openHour}}-{{iceCreamShop.openingHours['MONDAY'].closeHour}}</div>
-        </div>
-      </span>
-      <span>
-        <div class="hour-row">
-          <div class="f-3">{{'ICE_CREAM_SHOP.DIALOG.TUESDAY' | translate}} </div>
-          <div class="f-7">{{iceCreamShop.openingHours['TUESDAY'].openHour}}-{{iceCreamShop.openingHours['TUESDAY'].closeHour}} </div>
-        </div>
-      </span>
-      <span>
-        <div class="hour-row">
-          <div class="f-3">{{'ICE_CREAM_SHOP.DIALOG.WEDNESDAY' | translate}}</div>
-          <div class="f-7">{{iceCreamShop.openingHours['WEDNESDAY'].openHour}}-{{iceCreamShop.openingHours['WEDNESDAY'].closeHour}}</div>
-        </div>
-      </span>
-      <span>
-        <div class="hour-row">
-          <div class="f-3">{{'ICE_CREAM_SHOP.DIALOG.THURSDAY' | translate}} </div>
-          <div class="f-7">{{iceCreamShop.openingHours['THURSDAY'].openHour}}-{{iceCreamShop.openingHours['THURSDAY'].closeHour}}</div>
-        </div>
-      </span>
-      <span>
-        <div class="hour-row">
-          <div class="f-3">{{'ICE_CREAM_SHOP.DIALOG.FRIDAY' | translate}} </div>
-          <div class="f-7">{{iceCreamShop.openingHours['FRIDAY'].openHour}}-{{iceCreamShop.openingHours['FRIDAY'].closeHour}}</div>
-        </div>
-      </span>
-      <span>
-        <div class="hour-row">
-          <div class="f-3">{{'ICE_CREAM_SHOP.DIALOG.SATURDAY' | translate}} </div>
-          <div class="f-7">{{iceCreamShop.openingHours['SATURDAY'].openHour}}-{{iceCreamShop.openingHours['SATURDAY'].closeHour}}</div>
-        </div>
-      </span>
-      <span>
-        <div class="hour-row">
-          <div class="f-3">{{'ICE_CREAM_SHOP.DIALOG.SUNDAY' | translate}} </div>
-          <div class="f-7">{{iceCreamShop.openingHours['SUNDAY'].openHour}}-{{iceCreamShop.openingHours['SUNDAY'].closeHour}}</div>
-        </div>
-      </span>
+      <div class="hour-row" *ngFor="let day of DAY_OF_WEEK">
+        <div class="f-3">{{'ICE_CREAM_SHOP.DIALOG.'+day | translate}}</div>
+        <div class="f-7">{{iceCreamShop.openingHours[day].openHour}}-{{iceCreamShop.openingHours[day].closeHour}}</div>
+      </div>
     </div>
   </mat-card-content>
   <mat-card-actions>

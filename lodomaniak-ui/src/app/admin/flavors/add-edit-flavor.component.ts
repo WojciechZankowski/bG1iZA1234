@@ -21,6 +21,9 @@ export class AddEditFlavorComponent implements OnInit {
   public flavor: Flavor;
   public companyList: Array<Company> = [];
 
+  public readonly diameter = 30;
+
+  public loading: boolean = false;
   private edit: boolean = false;
 
   visible = true;
@@ -69,10 +72,12 @@ export class AddEditFlavorComponent implements OnInit {
 
   handleFileInput(files: FileList) {
     const file = files.item(0);
+    this.loading = true;
     this.imageService.save(file)
       .subscribe((file: FileUploadResponse) => {
         if (!!file) {
           this.flavor.imageUrl = file.name;
+          this.loading = false;
         }
       })
   }
@@ -101,6 +106,11 @@ export class AddEditFlavorComponent implements OnInit {
 
   compareById(obj1: Company, obj2: Company): boolean {
     return obj1 && obj2 ? obj1.id === obj2.id : false;
+  }
+
+  getUrl() {
+    const imageUrl = this.flavor.imageUrl;
+    return imageUrl ? '...' + imageUrl.substring(imageUrl.length - 10, imageUrl.length) : '';
   }
 
 }

@@ -2,7 +2,6 @@ import {Component} from "@angular/core";
 import {NavBarItem} from "../shared/navigation/nav-bar.component";
 
 const menuItems: Array<NavBarItem> = [
-  {name: 'MENU.DASHBOARD', url: '/dashboard'},
   {name: 'MENU.ICE_CREAM_SHOP', url: '/shops'},
   {name: 'MENU.FLAVORS', url: '/flavors'},
   {name: 'MENU.FLAVOR_SCHEDULER', url: '/flavor-scheduler'}

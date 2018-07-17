@@ -7,7 +7,7 @@ import {
   MatIconModule,
   MatInputModule,
   MatListModule,
-  MatMenuModule, MatNativeDateModule, MatPaginatorModule, MatSelectModule,
+  MatMenuModule, MatNativeDateModule, MatPaginatorModule, MatProgressSpinnerModule, MatSelectModule,
   MatSidenavModule,
   MatSnackBarModule,
   MatToolbarModule
@@ -33,7 +33,8 @@ import {MaterialFileInputModule} from "ngx-material-file-input";
     MatDatepickerModule,
     MatNativeDateModule,
     MatPaginatorModule,
-    MatChipsModule
+    MatChipsModule,
+    MatProgressSpinnerModule
   ],
   exports: [
     MatButtonModule,
@@ -53,7 +54,8 @@ import {MaterialFileInputModule} from "ngx-material-file-input";
     MatDatepickerModule,
     MatNativeDateModule,
     MatPaginatorModule,
-    MatChipsModule
+    MatChipsModule,
+    MatProgressSpinnerModule
   ]
 })
 export class DesignModule {

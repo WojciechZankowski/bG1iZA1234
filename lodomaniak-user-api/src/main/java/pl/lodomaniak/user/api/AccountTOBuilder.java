@@ -14,7 +14,7 @@ public class AccountTOBuilder extends AbstractUserTOBuilder<AccountTOBuilder> {
     }
 
     public AccountTO build() {
-        return new AccountTO(getLogin(), getPassword(), getFirstName(), getLastName(),
+        return new AccountTO(getId(), getLogin(), getPassword(), getFirstName(), getLastName(),
                 getEmail(), isActivated(), getLangKey(), getImageUrl(), getCreatedBy(),
                 getCreatedDate(), getLastModifiedBy(), getLastModifiedDate(), getAuthorities());
     }

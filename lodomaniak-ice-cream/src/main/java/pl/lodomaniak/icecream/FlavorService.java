@@ -5,6 +5,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.userdetails.User;
 import pl.lodomaniak.icecream.api.FlavorActivityTO;
 import pl.lodomaniak.icecream.api.FlavorTO;
+import pl.lodomaniak.user.api.exception.UserNotFoundException;
 
 import java.util.List;
 
@@ -16,7 +17,7 @@ public interface FlavorService {
 
     List<FlavorTO> getAvailableFlavors(long iceCreamShopId);
 
-    Page<FlavorTO> getFlavors(User user, Pageable pageable);
+    Page<FlavorTO> getFlavors(User user, Pageable pageable) throws UserNotFoundException;
 
     void scheduleFlavor(FlavorActivityTO flavorActivity);
 

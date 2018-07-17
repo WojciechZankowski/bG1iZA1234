@@ -18,6 +18,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import pl.lodomaniak.icecream.api.FlavorActivityTO;
 import pl.lodomaniak.icecream.api.FlavorTO;
+import pl.lodomaniak.user.api.exception.UserNotFoundException;
 
 @RestController
 @RequestMapping("/api/flavor")
@@ -53,7 +54,8 @@ public class FlavorRestController {
     @ApiResponses(value =  {
             @ApiResponse(code = 200, message = "Ice Cream flavor received")})
     @GetMapping("/mine")
-    public ResponseEntity<?> getFlavors(final Pageable pageable, @AuthenticationPrincipal final User user) {
+    public ResponseEntity<?> getFlavors(final Pageable pageable, @AuthenticationPrincipal final User user)
+            throws UserNotFoundException {
         return ResponseEntity.ok(flavorService.getFlavors(user, pageable));
     }
 

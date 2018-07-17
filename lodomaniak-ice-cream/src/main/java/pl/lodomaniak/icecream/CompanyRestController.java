@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import pl.lodomaniak.icecream.api.CompanyTO;
+import pl.lodomaniak.user.api.exception.UserNotFoundException;
 
 import java.security.Principal;
 
@@ -33,7 +34,7 @@ public class CompanyRestController {
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Company received")})
     @GetMapping("/mine")
-    public ResponseEntity<?> getCompanies(@AuthenticationPrincipal final User user) {
+    public ResponseEntity<?> getCompanies(@AuthenticationPrincipal final User user) throws UserNotFoundException {
         return ResponseEntity.ok(companyService.getCompanies(user));
     }
 

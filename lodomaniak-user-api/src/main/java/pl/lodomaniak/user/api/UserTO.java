@@ -2,7 +2,6 @@ package pl.lodomaniak.user.api;
 
 import com.fasterxml.jackson.annotation.JsonCreator;
 import com.fasterxml.jackson.annotation.JsonProperty;
-import com.google.common.base.Objects;
 import pl.lodomaniak.core.Constants;
 import pl.lodomaniak.core.ITransferObject;
 
@@ -12,11 +11,14 @@ import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Pattern;
 import javax.validation.constraints.Size;
 import java.time.Instant;
+import java.util.Objects;
 import java.util.Set;
 
 public class UserTO implements ITransferObject {
 
     private static final long serialVersionUID = -5639378155048073249L;
+
+    private final Long id;
 
     @NotBlank
     @Pattern(regexp = Constants.LOGIN_REGEX)
@@ -54,6 +56,7 @@ public class UserTO implements ITransferObject {
 
     @JsonCreator
     public UserTO(
+            @JsonProperty("id") final Long id,
             @JsonProperty("login") final String login,
             @JsonProperty("firstName") final String firstName,
             @JsonProperty("lastName") final String lastName,
@@ -66,6 +69,7 @@ public class UserTO implements ITransferObject {
             @JsonProperty("lastModifiedBy") final String lastModifiedBy,
             @JsonProperty("lastModifiedDate") final Instant lastModifiedDate,
             @JsonProperty("authorities") final Set<String> authorities) {
+        this.id = id;
         this.login = login;
         this.firstName = firstName;
         this.lastName = lastName;
@@ -78,6 +82,10 @@ public class UserTO implements ITransferObject {
         this.lastModifiedBy = lastModifiedBy;
         this.lastModifiedDate = lastModifiedDate;
         this.authorities = authorities;
+    }
+
+    public Long getId() {
+        return id;
     }
 
     public String getLogin() {
@@ -134,29 +142,31 @@ public class UserTO implements ITransferObject {
         if (o == null || getClass() != o.getClass()) return false;
         final UserTO userTO = (UserTO) o;
         return activated == userTO.activated &&
-                Objects.equal(login, userTO.login) &&
-                Objects.equal(firstName, userTO.firstName) &&
-                Objects.equal(lastName, userTO.lastName) &&
-                Objects.equal(email, userTO.email) &&
-                Objects.equal(langKey, userTO.langKey) &&
-                Objects.equal(imageUrl, userTO.imageUrl) &&
-                Objects.equal(createdBy, userTO.createdBy) &&
-                Objects.equal(createdDate, userTO.createdDate) &&
-                Objects.equal(lastModifiedBy, userTO.lastModifiedBy) &&
-                Objects.equal(lastModifiedDate, userTO.lastModifiedDate) &&
-                Objects.equal(authorities, userTO.authorities);
+                Objects.equals(id, userTO.id) &&
+                Objects.equals(login, userTO.login) &&
+                Objects.equals(firstName, userTO.firstName) &&
+                Objects.equals(lastName, userTO.lastName) &&
+                Objects.equals(email, userTO.email) &&
+                Objects.equals(langKey, userTO.langKey) &&
+                Objects.equals(imageUrl, userTO.imageUrl) &&
+                Objects.equals(createdBy, userTO.createdBy) &&
+                Objects.equals(createdDate, userTO.createdDate) &&
+                Objects.equals(lastModifiedBy, userTO.lastModifiedBy) &&
+                Objects.equals(lastModifiedDate, userTO.lastModifiedDate) &&
+                Objects.equals(authorities, userTO.authorities);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hashCode(login, firstName, lastName, email, activated, langKey, imageUrl, createdBy,
-                createdDate, lastModifiedBy, lastModifiedDate, authorities);
+        return Objects.hash(id, login, firstName, lastName, email, activated, langKey, imageUrl,
+                createdBy, createdDate, lastModifiedBy, lastModifiedDate, authorities);
     }
 
     @Override
     public String toString() {
         return "UserTO{" +
-                "login='" + login + '\'' +
+                "id=" + id +
+                ", login='" + login + '\'' +
                 ", firstName='" + firstName + '\'' +
                 ", lastName='" + lastName + '\'' +
                 ", email='" + email + '\'' +

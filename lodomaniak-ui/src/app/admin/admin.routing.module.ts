@@ -4,7 +4,6 @@ import {FlavorsComponent} from "./flavors/flavors.component";
 import {FlavorSchedulerComponent} from "./flavor-scheduler/flavor-scheduler.component";
 import {IceCreamShopsComponent} from "./ice-cream-shops/ice-cream-shops.component";
 import {AdminComponent} from "./admin.component";
-import {DashboardComponent} from "./dashboard/dashboard.component";
 import {UserRouteAccessService} from "../services/user-route-access.service";
 
 const routes: Routes = [
@@ -20,10 +19,6 @@ const routes: Routes = [
         path: '',
         redirectTo: 'shops',
         pathMatch: 'full'
-      },
-      {
-        path: 'dashboard',
-        component: DashboardComponent
       },
       {
         path: 'flavors',

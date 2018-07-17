@@ -8,6 +8,7 @@ import {CompanyService} from "../../services/company.service";
 import {IceCreamShopService} from "../../services/ice-cream-shop.service";
 import {ImageService} from "../../services/image.service";
 import {FileUploadResponse} from "../../model/file-upload-response.model";
+import {DayOfWeek} from "../../model/day-of-week.model";
 
 @Component({
   templateUrl: './add-edit-shops.component.html',
@@ -17,8 +18,13 @@ export class AddEditShopsComponent implements OnInit {
 
   public iceCreamShop: IceCreamShop;
   public companyList: Array<Company> = [];
-  public objectKeys = Object.keys;
 
+  public readonly diameter = 30;
+  public readonly DAY_OF_WEEK = Object.keys(DayOfWeek)
+    .map(key => DayOfWeek[key])
+    .filter(value => typeof value === 'string') as string[];
+
+  public loading: boolean = false;
   private edit: boolean = false;
 
   constructor(private companyService: CompanyService,
@@ -66,16 +72,23 @@ export class AddEditShopsComponent implements OnInit {
     }
   }
 
+  getUrl() {
+    const imageUrl = this.iceCreamShop.imageUrl;
+    return imageUrl ? '...' + imageUrl.substring(imageUrl.length - 10, imageUrl.length) : '';
+  }
+
   compareById(obj1: Company, obj2: Company): boolean {
     return obj1 && obj2 ? obj1.id === obj2.id : false;
   }
 
   handleFileInput(files: FileList) {
     const file = files.item(0);
+    this.loading = true;
     this.imageService.save(file)
       .subscribe((file: FileUploadResponse) => {
         if (!!file) {
           this.iceCreamShop.imageUrl = file.name;
+          this.loading = false;
         }
       })
   }

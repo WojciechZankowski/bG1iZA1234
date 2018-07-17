@@ -16,11 +16,15 @@
   <h3 class="mt-0 mb-0">{{'FLAVOR.DIALOG.IMAGE.TITLE' | translate}}</h3>
   <mat-divider class="pb-1"></mat-divider>
   <div class="row">
-    <div class="form-size f-3 pr-1">
+    <div class="form-size pr-1">
       <mat-label class="pr-1">{{'FLAVOR.DIALOG.IMAGE.TITLE' | translate}}</mat-label>
+      <span>{{getUrl()}}</span>
       <button type="button" mat-button (click)="imgFileInput.click()">{{'FLAVOR.DIALOG.IMAGE.PLACEHOLDER' | translate}}
       </button>
       <input hidden type="file" #imgFileInput (change)="handleFileInput($event.target.files)"/>
+    </div>
+    <div *ngIf="loading">
+      <mat-spinner [diameter]="diameter" class="spinner-size"></mat-spinner>
     </div>
   </div>
 

@@ -11,6 +11,7 @@ import pl.lodomaniak.icecream.api.FlavorTO;
 import pl.lodomaniak.icecream.api.IceCreamShopTO;
 import pl.lodomaniak.icecream.mapper.FlavorActivityMapper;
 import pl.lodomaniak.icecream.mapper.FlavorMapper;
+import pl.lodomaniak.user.api.exception.UserNotFoundException;
 
 import java.util.List;
 
@@ -55,7 +56,7 @@ public class DefaultFlavorService implements FlavorService {
     }
 
     @Override
-    public Page<FlavorTO> getFlavors(final User user, final Pageable pageable) {
+    public Page<FlavorTO> getFlavors(final User user, final Pageable pageable) throws UserNotFoundException {
         final List<Long> companiesId = companyService.getCompanies(user).stream()
                 .map(CompanyTO::getId)
                 .collect(toList());

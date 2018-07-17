@@ -18,6 +18,7 @@ public class AccountTO extends UserTO {
 
     @JsonCreator
     public AccountTO(
+            @JsonProperty("id") final Long id,
             @JsonProperty("login") final String login,
             @JsonProperty("password") final String password,
             @JsonProperty("firstName") final String firstName,
@@ -31,7 +32,8 @@ public class AccountTO extends UserTO {
             @JsonProperty("lastModifiedBy") final String lastModifiedBy,
             @JsonProperty("lastModifiedDate") final Instant lastModifiedDate,
             @JsonProperty("authorities") final Set<String> authorities) {
-        super(login, firstName, lastName, email, activated, langKey, imageUrl, createdBy, createdDate, lastModifiedBy, lastModifiedDate, authorities);
+        super(id, login, firstName, lastName, email, activated, langKey, imageUrl, createdBy, createdDate,
+                lastModifiedBy, lastModifiedDate, authorities);
         this.password = password;
     }
 
