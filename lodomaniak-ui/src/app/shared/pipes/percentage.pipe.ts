@@ -1,8 +1,9 @@
-import {Pipe, PipeTransform} from "@angular/core";
-import {Percentage} from "../../model/percentage.model";
+import { Pipe, PipeTransform } from '@angular/core';
+
+import { Percentage } from '../../model/percentage.model';
 
 @Pipe({
-  name: 'lmbdPercentage'
+  name: 'lmbdPercentage',
 })
 export class PercentagePipe implements PipeTransform {
 

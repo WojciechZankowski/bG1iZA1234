@@ -1,8 +1,9 @@
-import {Pipe, PipeTransform} from "@angular/core";
-import {Money} from "../../model/money.model";
+import { Pipe, PipeTransform } from '@angular/core';
+
+import { Money } from '../../model/money.model';
 
 @Pipe({
-  name: 'lmbdMoney'
+  name: 'lmbdMoney',
 })
 export class MoneyPipe implements PipeTransform {
 

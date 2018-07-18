@@ -1,6 +1,6 @@
-import {Address} from "./address.model";
-import {Company} from "./company.model";
-import {OpeningHoursRange} from "./opening-hours-range.model";
+import { Address } from './address.model';
+import { Company } from './company.model';
+import { OpeningHoursRange } from './opening-hours-range.model';
 
 export class IceCreamShop {
 
@@ -10,7 +10,8 @@ export class IceCreamShop {
   address: Address;
   openingHours: { [key: string]: OpeningHoursRange };
 
-  constructor(id: number, imageUrl: string, company: Company, address: Address, openingHours: { [key: string]: OpeningHoursRange }) {
+  constructor(id: number, imageUrl: string, company: Company, address: Address,
+              openingHours: { [key: string]: OpeningHoursRange }) {
     this.id = id;
     this.imageUrl = imageUrl;
     this.company = company;

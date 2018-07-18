@@ -1,8 +1,8 @@
 export class Page<T> {
-  content: Array<T>;
+  content: T[];
   totalElements: number;
 
-  constructor(content?: Array<T>, totalElements?: number) {
+  constructor(content?: T[], totalElements?: number) {
     this.content = content;
     this.totalElements = totalElements;
   }

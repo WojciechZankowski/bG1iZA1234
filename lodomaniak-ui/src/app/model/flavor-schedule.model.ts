@@ -1,5 +1,5 @@
-import {Flavor} from "./flavor.model";
-import {IceCreamShop} from "./ice-cream-shop.model";
+import { Flavor } from './flavor.model';
+import { IceCreamShop } from './ice-cream-shop.model';
 
 export class FlavorSchedule {
   id: number;

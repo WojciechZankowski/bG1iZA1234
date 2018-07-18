@@ -1,17 +1,18 @@
-import {NgModule} from "@angular/core";
-import {WebSocketService} from "./web-socket.service";
-import {HttpClientModule} from "@angular/common/http";
-import {ApiService} from "./api.service";
+import { NgModule } from '@angular/core';
+import { HttpClientModule } from '@angular/common/http';
+
+import { WebSocketService } from './web-socket.service';
+import { ApiService } from './api.service';
 
 @NgModule({
   imports: [
-    HttpClientModule
+    HttpClientModule,
   ],
   declarations: [],
   providers: [
     WebSocketService,
-    ApiService
-  ]
+    ApiService,
+  ],
 })
 export class CoreModule {
 }

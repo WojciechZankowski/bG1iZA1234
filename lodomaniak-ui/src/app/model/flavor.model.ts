@@ -1,4 +1,4 @@
-import {Company} from "./company.model";
+import { Company } from './company.model';
 
 export class Flavor {
   id: number;
@@ -6,7 +6,6 @@ export class Flavor {
   imageUrl: string;
   tags: string[];
   company: Company;
-
 
   constructor(id?: number, name?: string, imageUrl?: string, tags?: string[], company?: Company) {
     this.id = id;

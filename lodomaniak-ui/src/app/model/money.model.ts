@@ -1,4 +1,4 @@
-import {CurrencyUnit} from "./currency-unit.model";
+import { CurrencyUnit } from './currency-unit.model';
 
 export class Money {
   amount: number;

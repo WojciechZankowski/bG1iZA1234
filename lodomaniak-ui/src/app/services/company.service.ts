@@ -1,7 +1,8 @@
-import {Injectable} from "@angular/core";
-import {Observable} from "rxjs/Observable";
-import {Company} from "../model/company.model";
-import {ApiService} from "../core/api.service";
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+
+import { Company } from '../model/company.model';
+import { ApiService } from '../core/api.service';
 
 export const COMPANY_PATH = '/company/mine';
 
@@ -10,7 +11,7 @@ export class CompanyService {
 
   constructor(private apiService: ApiService) {}
 
-  getCompanies(): Observable<Array<Company>> {
+  getCompanies(): Observable<Company[]> {
     return this.apiService.get(COMPANY_PATH);
   }
 

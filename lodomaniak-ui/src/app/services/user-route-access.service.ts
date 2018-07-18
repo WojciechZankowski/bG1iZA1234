@@ -1,6 +1,7 @@
-import {ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot} from "@angular/router";
-import {Injectable} from "@angular/core";
-import {PrincipalService} from "./principal.service";
+import { ActivatedRouteSnapshot, CanActivate, Router, RouterStateSnapshot } from '@angular/router';
+import { Injectable } from '@angular/core';
+
+import { PrincipalService } from './principal.service';
 
 @Injectable()
 export class UserRouteAccessService implements CanActivate {

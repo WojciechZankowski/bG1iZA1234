@@ -1,5 +1,6 @@
-import {Injectable} from "@angular/core";
-import {RegisterService} from "./register.service";
+import { Injectable } from '@angular/core';
+
+import { RegisterService } from './register.service';
 
 @Injectable()
 export class PrincipalService {
@@ -8,7 +9,7 @@ export class PrincipalService {
   private authenticated = false;
 
   constructor(
-    private accountService: RegisterService
+    private accountService: RegisterService,
   ) { }
 
   hasAnyAuthorityDirect(authorities: string[]): boolean {
@@ -26,7 +27,7 @@ export class PrincipalService {
   }
 
   identity(force?: boolean): Promise<any> {
-    if (force === true) {
+    if (force) {
       this.userIdentity = undefined;
     }
 

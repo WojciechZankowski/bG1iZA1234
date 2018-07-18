@@ -1,20 +1,19 @@
-import {NgModule} from '@angular/core';
+import { NgModule } from '@angular/core';
 
-import {AppComponent} from './app.component';
-import {ServiceModule} from "./services/service.module";
-import {SharedModule} from "./shared/shared.module";
-import {TranslateLoader, TranslateModule} from "@ngx-translate/core";
-import {HTTP_INTERCEPTORS, HttpClient, HttpClientModule} from "@angular/common/http";
-import {TranslateHttpLoader} from "@ngx-translate/http-loader";
-import {AppRoutingModule} from "./app.routing.module";
-import {FeaturesModule} from "./features/features.module";
-import {BrowserAnimationsModule} from "@angular/platform-browser/animations";
-import {FormsModule} from "@angular/forms";
-import {AuthInterceptor} from "./core/interceptor/auth.interceptor";
-import {BrowserModule} from "@angular/platform-browser";
-import {AuthErrorInterceptor} from "./core/interceptor/auth-error.interceptor";
+import { AppComponent } from './app.component';
+import { ServiceModule } from './services/service.module';
+import { SharedModule } from './shared/shared.module';
+import { TranslateLoader, TranslateModule } from '@ngx-translate/core';
+import { HTTP_INTERCEPTORS, HttpClient, HttpClientModule } from '@angular/common/http';
+import { TranslateHttpLoader } from '@ngx-translate/http-loader';
+import { AppRoutingModule } from './app.routing.module';
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
+import { FormsModule } from '@angular/forms';
+import { AuthInterceptor } from './core/interceptor/auth.interceptor';
+import { BrowserModule } from '@angular/platform-browser';
+import { AuthErrorInterceptor } from './core/interceptor/auth-error.interceptor';
 
-export function HttpLoaderFactory(http: HttpClient) {
+export function httpLoaderFactory(http: HttpClient) {
   return new TranslateHttpLoader(http);
 }
 
@@ -29,30 +28,29 @@ export function HttpLoaderFactory(http: HttpClient) {
     TranslateModule.forRoot({
       loader: {
         provide: TranslateLoader,
-        useFactory: HttpLoaderFactory,
-        deps: [HttpClient]
-      }
+        useFactory: httpLoaderFactory,
+        deps: [HttpClient],
+      },
     }),
     AppRoutingModule,
-    FeaturesModule,
     ServiceModule,
     SharedModule,
-    FormsModule
+    FormsModule,
   ],
   exports: [],
   providers: [
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthInterceptor,
-      multi: true
+      multi: true,
     },
     {
       provide: HTTP_INTERCEPTORS,
       useClass: AuthErrorInterceptor,
-      multi: true
-    }
+      multi: true,
+    },
   ],
-  bootstrap: [AppComponent]
+  bootstrap: [AppComponent],
 })
 export class AppModule {
 }

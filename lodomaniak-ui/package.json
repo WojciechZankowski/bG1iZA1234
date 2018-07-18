@@ -4,7 +4,7 @@
   "license": "MIT",
   "scripts": {
     "ng": "ng",
-    "start": "ng serve",
+    "start": "ng serve --dev",
     "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
@@ -40,6 +40,8 @@
     "ngx-material-file-input": "^0.2.0",
     "rxjs": "^6.2.0",
     "rxjs-compat": "^6.2.0",
+    "tslint-config-airbnb": "^5.9.2",
+    "tslint-language-service": "^0.9.9",
     "zone.js": "^0.8.26"
   },
   "devDependencies": {
@@ -60,7 +62,7 @@
     "karma-jasmine-html-reporter": "^0.2.2",
     "protractor": "~5.1.2",
     "ts-node": "~3.2.0",
-    "tslint": "~5.9.1",
+    "tslint": "^5.9.1",
     "typescript": "2.7.2"
   }
 }

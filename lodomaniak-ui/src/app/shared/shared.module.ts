@@ -1,23 +1,23 @@
-import {NgModule} from "@angular/core";
-import {TranslateModule} from "@ngx-translate/core";
+import { NgModule } from '@angular/core';
+import { TranslateModule } from '@ngx-translate/core';
+import { RouterModule } from '@angular/router';
+import { CommonModule } from '@angular/common';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 
-import {PercentagePipe} from "./pipes/percentage.pipe";
-import {MoneyPipe} from "./pipes/money.pipe";
-import {DecimalPipe} from "./pipes/decimal.pipe";
-import {HeaderComponent} from "./navigation/header.component";
-import {DesignModule} from "./design/design.module";
-import {NgbModule} from "@ng-bootstrap/ng-bootstrap";
-import {NavBarComponent} from "./navigation/nav-bar.component";
-import {RouterModule} from "@angular/router";
-import {CommonModule} from "@angular/common";
-import {SidenavComponent} from "./sidenav/sidenav.component";
+import { PercentagePipe } from './pipes/percentage.pipe';
+import { MoneyPipe } from './pipes/money.pipe';
+import { DecimalPipe } from './pipes/decimal.pipe';
+import { HeaderComponent } from './navigation/header.component';
+import { DesignModule } from './design/design.module';
+import { NavBarComponent } from './navigation/nav-bar.component';
+import { SidenavComponent } from './sidenav/sidenav.component';
 
 @NgModule({
   imports: [
     CommonModule,
     DesignModule,
     TranslateModule,
-    RouterModule
+    RouterModule,
   ],
   declarations: [
     PercentagePipe,
@@ -25,7 +25,7 @@ import {SidenavComponent} from "./sidenav/sidenav.component";
     DecimalPipe,
     HeaderComponent,
     NavBarComponent,
-    SidenavComponent
+    SidenavComponent,
   ],
   exports: [
     PercentagePipe,
@@ -37,8 +37,8 @@ import {SidenavComponent} from "./sidenav/sidenav.component";
     SidenavComponent,
     TranslateModule,
     DesignModule,
-    NgbModule
-  ]
+    NgbModule,
+  ],
 })
 export class SharedModule {
 }

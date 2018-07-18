@@ -1,16 +1,17 @@
-import {Component, OnInit} from "@angular/core";
-import {MatDialog} from "@angular/material";
-import {AddEditShopsComponent} from "./add-edit-shops.component";
-import {IceCreamShopService} from "../../services/ice-cream-shop.service";
-import {IceCreamShop} from "../../model/ice-cream-shop.model";
+import { Component, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material';
+
+import { AddEditShopsComponent } from './add-edit-shops.component';
+import { IceCreamShopService } from '../../services/ice-cream-shop.service';
+import { IceCreamShop } from '../../model/ice-cream-shop.model';
 
 @Component({
   templateUrl: './ice-cream-shops.component.html',
-  styleUrls: ['./ice-cream-shops.component.scss']
+  styleUrls: ['./ice-cream-shops.component.scss'],
 })
 export class IceCreamShopsComponent implements OnInit {
 
-  public iceCreamShops: Array<IceCreamShop> = [];
+  public iceCreamShops: IceCreamShop[] = [];
 
   constructor(private dialog: MatDialog,
               private iceCreamShopService: IceCreamShopService) {
@@ -22,18 +23,18 @@ export class IceCreamShopsComponent implements OnInit {
 
   fetchShops() {
     this.iceCreamShopService.getIceCreamShops()
-      .subscribe((shops: Array<IceCreamShop>) => {
+      .subscribe((shops: IceCreamShop[]) => {
         this.iceCreamShops = shops;
-      })
+      });
   }
 
   openAddEditDialog(): void {
-    let matDialogRef = this.dialog.open(AddEditShopsComponent, {
+    const matDialogRef = this.dialog.open(AddEditShopsComponent, {
       height: '80vh',
       width: '600px',
     });
 
-    matDialogRef.afterClosed().subscribe(result => {
+    matDialogRef.afterClosed().subscribe((result) => {
       if (result) {
         this.fetchShops();
       }

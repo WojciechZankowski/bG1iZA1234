@@ -1,13 +1,14 @@
-import {NgModule} from "@angular/core";
-import {Route, RouterModule} from "@angular/router";
-import {RegisterComponent} from "./register/register.component";
-import {LoginComponent} from "./login/login.component";
-import {AccountComponent} from "./account.component";
-import {PasswordResetInitComponent} from "./reset-password/password-reset-init.component";
-import {ActivateComponent} from "./activate/activate.component";
-import {PasswordResetComponent} from "./reset-password/password-reset.component";
+import { NgModule } from '@angular/core';
+import { Route, RouterModule } from '@angular/router';
 
-const routes: Array<Route> = [
+import { RegisterComponent } from './register/register.component';
+import { LoginComponent } from './login/login.component';
+import { AccountComponent } from './account.component';
+import { PasswordResetInitComponent } from './reset-password/password-reset-init.component';
+import { ActivateComponent } from './activate/activate.component';
+import { PasswordResetComponent } from './reset-password/password-reset.component';
+
+const routes: Route[] = [
   {
     path: '',
     component: AccountComponent,
@@ -15,39 +16,39 @@ const routes: Array<Route> = [
       {
         path: '',
         redirectTo: 'login',
-        pathMatch: 'full'
+        pathMatch: 'full',
       },
       {
         path: 'register',
-        component: RegisterComponent
+        component: RegisterComponent,
       },
       {
         path: 'login',
-        component: LoginComponent
+        component: LoginComponent,
       },
       {
         path: 'activate',
-        component: ActivateComponent
+        component: ActivateComponent,
       },
       {
         path: 'password-reset',
-        component: PasswordResetInitComponent
+        component: PasswordResetInitComponent,
       },
       {
         path: 'password-reset/finish',
-        component: PasswordResetComponent
-      }
-    ]
-  }
+        component: PasswordResetComponent,
+      },
+    ],
+  },
 ];
 
 @NgModule({
   imports: [
-    RouterModule.forChild(routes)
+    RouterModule.forChild(routes),
   ],
   exports: [
-    RouterModule
-  ]
+    RouterModule,
+  ],
 })
 export class AccountRoutingModule {
 }

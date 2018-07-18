@@ -1,19 +1,20 @@
-import {Component} from "@angular/core";
-import {NavBarItem} from "../shared/navigation/nav-bar.component";
+import { Component } from '@angular/core';
 
-const menuItems: Array<NavBarItem> = [
-  {name: 'MENU.ICE_CREAM_SHOP', url: '/shops'},
-  {name: 'MENU.FLAVORS', url: '/flavors'},
-  {name: 'MENU.FLAVOR_SCHEDULER', url: '/flavor-scheduler'}
+import { NavBarItem } from '../shared/navigation/nav-bar.component';
+
+const menuItems: NavBarItem[] = [
+  { name: 'MENU.ICE_CREAM_SHOP', url: '/shops' },
+  { name: 'MENU.FLAVORS', url: '/flavors' },
+  { name: 'MENU.FLAVOR_SCHEDULER', url: '/flavor-scheduler' },
 ];
 
-const profileItems: Array<NavBarItem> = [
-  {name: 'MENU.PROFILE.SETTINGS', url: '/profile/settings'}
+const profileItems: NavBarItem[] = [
+  { name: 'MENU.PROFILE.SETTINGS', url: '/profile/settings' },
 ];
 
 @Component({
   templateUrl: './admin.component.html',
-  styleUrls: ['./admin.component.scss']
+  styleUrls: ['./admin.component.scss'],
 })
 export class AdminComponent {
 
@@ -22,6 +23,6 @@ export class AdminComponent {
 
   public readonly opened: boolean = true;
 
-  public routerActiveOptions = {exact: true};
+  public routerActiveOptions = { exact: true };
 
 }

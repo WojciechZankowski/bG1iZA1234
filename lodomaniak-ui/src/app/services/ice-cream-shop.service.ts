@@ -1,7 +1,8 @@
-import {Injectable} from "@angular/core";
-import {ApiService} from "../core/api.service";
-import {IceCreamShop} from "../model/ice-cream-shop.model";
-import {Observable} from "rxjs/Observable";
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+
+import { ApiService } from '../core/api.service';
+import { IceCreamShop } from '../model/ice-cream-shop.model';
 
 export const ICE_CREAM_SHOP_PATH = '/icecreamshop';
 export const ICE_CREAM_SHOP_GET_PATH = '/icecreamshop/mine';
@@ -19,7 +20,7 @@ export class IceCreamShopService {
     return this.apiService.put(ICE_CREAM_SHOP_PATH, iceCreamShop);
   }
 
-  getIceCreamShops(): Observable<Array<IceCreamShop>> {
+  getIceCreamShops(): Observable<IceCreamShop[]> {
     return this.apiService.get(ICE_CREAM_SHOP_GET_PATH);
   }
 

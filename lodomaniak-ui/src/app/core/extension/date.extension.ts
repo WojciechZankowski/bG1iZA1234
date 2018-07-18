@@ -6,6 +6,6 @@ declare interface Date {
 
 (function () {
   Date.prototype.toJSON = function (key?: any) {
-    return moment(this).format("YYYY-MM-DD");
-  }
+    return moment(this).format('YYYY-MM-DD');
+  };
 })();

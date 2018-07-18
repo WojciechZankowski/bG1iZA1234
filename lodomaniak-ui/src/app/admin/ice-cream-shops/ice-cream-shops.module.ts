@@ -1,26 +1,27 @@
-import {NgModule} from "@angular/core";
-import {AddEditShopsComponent} from "./add-edit-shops.component";
-import {IceCreamShopsComponent} from "./ice-cream-shops.component";
-import {SharedModule} from "../../shared/shared.module";
-import {FormsModule} from "@angular/forms";
-import {IceCreamShopCardComponent} from "./ice-cream-shop-card.component";
-import {FlexLayoutModule} from "@angular/flex-layout";
+import { NgModule } from '@angular/core';
+import { FormsModule } from '@angular/forms';
+import { FlexLayoutModule } from '@angular/flex-layout';
+
+import { AddEditShopsComponent } from './add-edit-shops.component';
+import { IceCreamShopsComponent } from './ice-cream-shops.component';
+import { SharedModule } from '../../shared/shared.module';
+import { IceCreamShopCardComponent } from './ice-cream-shop-card.component';
 
 @NgModule({
   imports: [
     SharedModule,
     FormsModule,
-    FlexLayoutModule
+    FlexLayoutModule,
   ],
   declarations: [
     AddEditShopsComponent,
     IceCreamShopsComponent,
-    IceCreamShopCardComponent
+    IceCreamShopCardComponent,
   ],
   entryComponents: [
     AddEditShopsComponent,
-    IceCreamShopsComponent
-  ]
+    IceCreamShopsComponent,
+  ],
 })
 export class IceCreamShopsModule {
 

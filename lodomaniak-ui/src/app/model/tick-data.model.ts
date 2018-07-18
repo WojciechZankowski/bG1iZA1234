@@ -1,5 +1,5 @@
-import {Money} from "./money.model";
-import {Percentage} from "./percentage.model";
+import { Money } from './money.model';
+import { Percentage } from './percentage.model';
 
 export class TickData {
   ticker: string;

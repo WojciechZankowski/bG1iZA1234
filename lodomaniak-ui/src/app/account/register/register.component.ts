@@ -1,12 +1,13 @@
-import {Component} from "@angular/core";
-import {Account} from "../../model/account.model";
-import {RegisterService} from "../../services/register.service";
-import {MatSnackBar} from "@angular/material";
-import {TranslateService} from "@ngx-translate/core";
+import { Component } from '@angular/core';
+import { MatSnackBar } from '@angular/material';
+import { TranslateService } from '@ngx-translate/core';
+
+import { Account } from '../../model/account.model';
+import { RegisterService } from '../../services/register.service';
 
 @Component({
   templateUrl: './register.component.html',
-  styleUrls: ['./register.component.scss']
+  styleUrls: ['./register.component.scss'],
 })
 export class RegisterComponent {
 
@@ -16,7 +17,7 @@ export class RegisterComponent {
   public confirmPassword: string;
 
   public loginPath = '/account/login';
-  public routerActiveOptions = {exact: true};
+  public routerActiveOptions = { exact: true };
 
   constructor(private registerService: RegisterService,
               private snackBar: MatSnackBar,
@@ -25,9 +26,9 @@ export class RegisterComponent {
 
   register() {
     if (this.account.password !== this.confirmPassword) {
-      console.log('gOWNO');
+      // Validated
     } else {
-      this.account.langKey = "pl";
+      this.account.langKey = 'pl';
       this.registerService.save(this.account)
         .subscribe((result) => {
           this.account = new Account();

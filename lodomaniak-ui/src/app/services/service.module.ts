@@ -1,17 +1,18 @@
-import {NgModule} from "@angular/core";
-import {CoreModule} from "../core/core.module";
-import {RegisterService} from "./register.service";
-import {AuthService} from "./auth.service";
-import {PrincipalService} from "./principal.service";
-import {UserRouteAccessService} from "./user-route-access.service";
-import {CompanyService} from "./company.service";
-import {IceCreamShopService} from "./ice-cream-shop.service";
-import {ImageService} from "./image.service";
-import {FlavorService} from "./flavor.service";
+import { NgModule } from '@angular/core';
+
+import { CoreModule } from '../core/core.module';
+import { RegisterService } from './register.service';
+import { AuthService } from './auth.service';
+import { PrincipalService } from './principal.service';
+import { UserRouteAccessService } from './user-route-access.service';
+import { CompanyService } from './company.service';
+import { IceCreamShopService } from './ice-cream-shop.service';
+import { ImageService } from './image.service';
+import { FlavorService } from './flavor.service';
 
 @NgModule({
   imports: [
-    CoreModule
+    CoreModule,
   ],
   declarations: [],
   providers: [
@@ -22,8 +23,8 @@ import {FlavorService} from "./flavor.service";
     CompanyService,
     IceCreamShopService,
     ImageService,
-    FlavorService
-  ]
+    FlavorService,
+  ],
 })
 export class ServiceModule {
 }

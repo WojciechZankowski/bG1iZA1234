@@ -1,12 +1,13 @@
-import {Component, Inject, OnInit} from "@angular/core";
-import {CompanyService} from "../../services/company.service";
-import {FlavorService} from "../../services/flavor.service";
-import {ImageService} from "../../services/image.service";
-import {MAT_DIALOG_DATA, MatChipInputEvent} from "@angular/material";
-import {Flavor} from "../../model/flavor.model";
-import {Company} from "../../model/company.model";
-import {FileUploadResponse} from "../../model/file-upload-response.model";
-import {COMMA, ENTER} from "@angular/cdk/keycodes";
+import { Component, Inject, OnInit } from '@angular/core';
+import { COMMA, ENTER } from '@angular/cdk/keycodes';
+import { MAT_DIALOG_DATA, MatChipInputEvent } from '@angular/material';
+
+import { CompanyService } from '../../services/company.service';
+import { FlavorService } from '../../services/flavor.service';
+import { ImageService } from '../../services/image.service';
+import { Flavor } from '../../model/flavor.model';
+import { Company } from '../../model/company.model';
+import { FileUploadResponse } from '../../model/file-upload-response.model';
 
 export interface Fruit {
   name: string;
@@ -14,12 +15,12 @@ export interface Fruit {
 
 @Component({
   templateUrl: './add-edit-flavor.component.html',
-  styleUrls: ['./add-edit-flavor.component.scss']
+  styleUrls: ['./add-edit-flavor.component.scss'],
 })
 export class AddEditFlavorComponent implements OnInit {
 
   public flavor: Flavor;
-  public companyList: Array<Company> = [];
+  public companyList: Company[] = [];
 
   public readonly diameter = 30;
 
@@ -42,7 +43,7 @@ export class AddEditFlavorComponent implements OnInit {
 
   ngOnInit(): void {
     this.companyService.getCompanies()
-      .subscribe((companies: Array<Company>) => {
+      .subscribe((companies: Company[]) => {
         this.companyList = companies;
       });
 
@@ -53,7 +54,7 @@ export class AddEditFlavorComponent implements OnInit {
     }
 
     if (!this.flavor) {
-      this.flavor = new Flavor(null, "", "", [], new Company());
+      this.flavor = new Flavor(null, '', '', [], new Company());
     }
   }
 
@@ -79,7 +80,7 @@ export class AddEditFlavorComponent implements OnInit {
           this.flavor.imageUrl = file.name;
           this.loading = false;
         }
-      })
+      });
   }
 
   add(event: MatChipInputEvent): void {

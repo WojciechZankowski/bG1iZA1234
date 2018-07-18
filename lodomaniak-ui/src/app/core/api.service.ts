@@ -1,10 +1,10 @@
-import {Injectable} from "@angular/core";
-import {HttpClient, HttpHeaders, HttpParams, HttpRequest} from "@angular/common/http";
-import {ErrorObservable} from "rxjs/observable/ErrorObservable";
-import {Observable} from "rxjs/Observable";
-import {environment} from "../../environments/environment";
-import {catchError} from "rxjs/operators";
-import {IMAGE_PATH} from "../services/image.service";
+import { Injectable } from '@angular/core';
+import { catchError } from 'rxjs/operators';
+import { HttpClient, HttpHeaders, HttpParams, HttpRequest } from '@angular/common/http';
+import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
+import { Observable } from 'rxjs/Observable';
+
+import { environment } from '../../environments/environment';
 
 @Injectable()
 export class ApiService {
@@ -19,7 +19,7 @@ export class ApiService {
   }
 
   get(path: string, params: HttpParams = new HttpParams()): Observable<any> {
-    return this.http.get(`${environment.restApiUrl}${path}`, {params})
+    return this.http.get(`${environment.restApiUrl}${path}`, { params })
       .pipe(catchError(this.formatErrors));
   }
 
@@ -27,7 +27,7 @@ export class ApiService {
     return this.http.put(
       `${environment.restApiUrl}${path}`,
       JSON.stringify(body),
-      {headers: this.headers}
+      { headers: this.headers },
     ).pipe(catchError(this.formatErrors));
   }
 
@@ -35,13 +35,13 @@ export class ApiService {
     return this.http.post(
       `${environment.restApiUrl}${path}`,
       JSON.stringify(body),
-      {headers: headers ? headers : this.headers, observe: 'response'}
+      { headers: headers ? headers : this.headers, observe: 'response' },
     ).pipe(catchError(this.formatErrors));
   }
 
   delete(path): Observable<any> {
     return this.http.delete(
-      `${environment.restApiUrl}${path}`
+      `${environment.restApiUrl}${path}`,
     ).pipe(catchError(this.formatErrors));
   }
 

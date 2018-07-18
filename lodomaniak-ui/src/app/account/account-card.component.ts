@@ -1,9 +1,9 @@
-import {Component, Input} from "@angular/core";
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'lodomaniak-account-card',
   templateUrl: './account-card.component.html',
-  styleUrls: ['./account-card.component.scss']
+  styleUrls: ['./account-card.component.scss'],
 })
 export class AccountCardComponent {
 

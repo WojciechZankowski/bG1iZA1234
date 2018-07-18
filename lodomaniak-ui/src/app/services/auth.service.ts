@@ -1,8 +1,9 @@
-import {Injectable} from "@angular/core";
-import {ApiService} from "../core/api.service";
-import {Credentials} from "../model/credentials.model";
-import {Observable} from "rxjs/Observable";
-import {map} from "rxjs/operators";
+import { Injectable } from '@angular/core';
+import { Observable } from 'rxjs/Observable';
+import { map } from 'rxjs/operators';
+
+import { ApiService } from '../core/api.service';
+import { Credentials } from '../model/credentials.model';
 
 export const AUTH_PATH: string = '/authenticate';
 

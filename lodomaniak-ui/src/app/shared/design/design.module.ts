@@ -1,4 +1,4 @@
-import {NgModule} from "@angular/core";
+import { NgModule } from '@angular/core';
 import {
   MatButtonModule,
   MatCardModule,
@@ -10,9 +10,9 @@ import {
   MatMenuModule, MatNativeDateModule, MatPaginatorModule, MatProgressSpinnerModule, MatSelectModule,
   MatSidenavModule,
   MatSnackBarModule,
-  MatToolbarModule
-} from "@angular/material";
-import {MaterialFileInputModule} from "ngx-material-file-input";
+  MatToolbarModule,
+} from '@angular/material';
+import { MaterialFileInputModule } from 'ngx-material-file-input';
 
 @NgModule({
   imports: [
@@ -34,7 +34,7 @@ import {MaterialFileInputModule} from "ngx-material-file-input";
     MatNativeDateModule,
     MatPaginatorModule,
     MatChipsModule,
-    MatProgressSpinnerModule
+    MatProgressSpinnerModule,
   ],
   exports: [
     MatButtonModule,
@@ -55,8 +55,8 @@ import {MaterialFileInputModule} from "ngx-material-file-input";
     MatNativeDateModule,
     MatPaginatorModule,
     MatChipsModule,
-    MatProgressSpinnerModule
-  ]
+    MatProgressSpinnerModule,
+  ],
 })
 export class DesignModule {
 

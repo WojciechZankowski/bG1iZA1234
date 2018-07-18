@@ -1,23 +1,24 @@
-import {Component, Inject, OnInit} from "@angular/core";
-import {MAT_DIALOG_DATA} from "@angular/material";
-import {IceCreamShop} from "../../model/ice-cream-shop.model";
-import {Address} from "../../model/address.model";
-import {Company} from "../../model/company.model";
-import {OpeningHoursRange} from "../../model/opening-hours-range.model";
-import {CompanyService} from "../../services/company.service";
-import {IceCreamShopService} from "../../services/ice-cream-shop.service";
-import {ImageService} from "../../services/image.service";
-import {FileUploadResponse} from "../../model/file-upload-response.model";
-import {DayOfWeek} from "../../model/day-of-week.model";
+import { Component, Inject, OnInit } from '@angular/core';
+import { MAT_DIALOG_DATA } from '@angular/material';
+
+import { IceCreamShop } from '../../model/ice-cream-shop.model';
+import { Address } from '../../model/address.model';
+import { Company } from '../../model/company.model';
+import { OpeningHoursRange } from '../../model/opening-hours-range.model';
+import { CompanyService } from '../../services/company.service';
+import { IceCreamShopService } from '../../services/ice-cream-shop.service';
+import { ImageService } from '../../services/image.service';
+import { FileUploadResponse } from '../../model/file-upload-response.model';
+import { DayOfWeek } from '../../model/day-of-week.model';
 
 @Component({
   templateUrl: './add-edit-shops.component.html',
-  styleUrls: ['./add-edit-shops.component.scss']
+  styleUrls: ['./add-edit-shops.component.scss'],
 })
 export class AddEditShopsComponent implements OnInit {
 
   public iceCreamShop: IceCreamShop;
-  public companyList: Array<Company> = [];
+  public companyList: Company[] = [];
 
   public readonly diameter = 30;
   public readonly DAY_OF_WEEK = Object.keys(DayOfWeek)
@@ -35,7 +36,7 @@ export class AddEditShopsComponent implements OnInit {
 
   ngOnInit(): void {
     this.companyService.getCompanies()
-      .subscribe((companies: Array<Company>) => {
+      .subscribe((companies: Company[]) => {
         this.companyList = companies;
       });
 
@@ -45,9 +46,9 @@ export class AddEditShopsComponent implements OnInit {
     }
 
     if (!this.iceCreamShop) {
-      this.iceCreamShop = new IceCreamShop(null, "", new Company(), new Address(), {});
+      this.iceCreamShop = new IceCreamShop(null, '', new Company(), new Address(), {});
 
-      let openingHours = {};
+      const openingHours = {};
       openingHours['MONDAY'] = new OpeningHoursRange(null, 'MONDAY');
       openingHours['TUESDAY'] = new OpeningHoursRange(null, 'TUESDAY');
       openingHours['WEDNESDAY'] = new OpeningHoursRange(null, 'WEDNESDAY');
@@ -90,7 +91,7 @@ export class AddEditShopsComponent implements OnInit {
           this.iceCreamShop.imageUrl = file.name;
           this.loading = false;
         }
-      })
+      });
   }
 
 }
