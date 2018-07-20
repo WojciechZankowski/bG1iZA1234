@@ -10,7 +10,7 @@ import { RegisterService } from '../../services/register.service';
 })
 export class PasswordResetInitComponent {
 
-  public title: string = 'ACCOUNT.FORM.PASSWORD_RESET.TITLE';
+  public readonly TITLE: string = 'ACCOUNT.FORM.PASSWORD_RESET.TITLE';
 
   public email: string;
 

@@ -1,20 +1,13 @@
+@import '../../assets/styles/main';
+
 .account {
-  /* The image used */
   background-image: url("/assets/img/background.jpeg");
-
-  /* Full height */
-  height: 100%;
-
-  /* Center and scale the image nicely */
   background-position: center;
   background-repeat: no-repeat;
   background-size: cover;
-}
 
-.centered-container {
-  display: flex;           /* establish flex container */
-  flex-direction: column;  /* make main axis vertical */
-  justify-content: center; /* center items vertically, in this case */
-  align-items: center;     /* center items horizontally, in this case */
-  padding-top: 2rem;
+  &-container {
+    @include lodomaniak-flexbox-column-vhcenter;
+    padding-top: 2rem;
+  }
 }

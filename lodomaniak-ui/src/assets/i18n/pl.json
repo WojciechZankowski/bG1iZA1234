@@ -26,13 +26,17 @@
         "BUTTON": "Zarejestruj",
         "CREATE_ACCOUNT": "Masz już konto? Zaloguj się",
         "SUCCESS": "Konto zostało zarejestrowane. Sprwadź skrzynkę pocztową aby zakończyć rejestrację.",
+        "ERROR": "Login lub email są już zajęte. Spróbuj jeszcze raz.",
+        "ERROR_PASSWORD": "Hasła nie są takie same. Spróbuj jeszcze raz.",
         "CLOSE": "Zamknij"
       },
       "LOGIN": {
         "TITLE": "Zaloguj się do Lodomaniaka",
         "BUTTON": "Zaloguj",
         "CREATE_ACCOUNT": "Nie masz jeszcze konta? Możesz je stworzyć",
-        "RESET_PASSWORD": "Zapomniales hasła? Zresetuj hasło"
+        "RESET_PASSWORD": "Zapomniales hasła? Zresetuj hasło",
+        "ERROR": "Nieprawidłowy login lub hasło. Spróbuj jeszcze raz.",
+        "CLOSE": "Zamknij"
       },
       "PASSWORD_RESET": {
         "TITLE": "Zresetuj hasło do swojego konta",
@@ -40,6 +44,7 @@
         "INIT_SUCCESS": "Wiadomość z instrukcją resetu hasło została wysłana. Sprawdź swoją skrzynkę pocztową.",
         "SUCCESS": "Hasło zostało zmienione. Przejdź do logowania.",
         "LOGIN": "Przejdź do logowania",
+        "ERROR_PASSWORD": "Hasła nie są takie same. Spróbuj jeszcze raz.",
         "CLOSE": "Zamknij"
       },
       "ACTIVATE": {

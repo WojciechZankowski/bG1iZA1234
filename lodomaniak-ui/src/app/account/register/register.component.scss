@@ -1,16 +1,7 @@
 @import '../../../assets/styles/main';
 
-.form-size {
-  width: 25rem;
-}
-
-.button-size {
-  height: 3.5rem;
-}
-
-.login-form {
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
+.register {
+  &-form {
+    @include lodomaniak-flexbox-column-vhcenter;
+  }
 }

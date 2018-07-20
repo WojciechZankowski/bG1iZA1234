@@ -6,6 +6,7 @@ import { Component, OnInit } from '@angular/core';
 
 import { PasswordReset } from '../../model/password-reset.model';
 import { RegisterService } from '../../services/register.service';
+import { LOGIN_PATH, ROUTER_ACTIVE_OPTIONS } from '../../core/path.utilities';
 
 @Component({
   templateUrl: './password-reset.component.html',
@@ -13,13 +14,12 @@ import { RegisterService } from '../../services/register.service';
 })
 export class PasswordResetComponent implements OnInit {
 
-  public title: string = 'ACCOUNT.FORM.PASSWORD_RESET.TITLE';
+  public readonly TITLE: string = 'ACCOUNT.FORM.PASSWORD_RESET.TITLE';
+  public readonly loginPath = LOGIN_PATH;
+  public readonly routerActiveOptions = ROUTER_ACTIVE_OPTIONS;
 
   public resetModel: PasswordReset = new PasswordReset();
   public confirmPassword: string;
-
-  public loginPath = '/account/login';
-  public routerActiveOptions = { exact: true };
 
   constructor(private route: ActivatedRoute,
               private registerService: RegisterService,
@@ -31,15 +31,15 @@ export class PasswordResetComponent implements OnInit {
     this.route.queryParams
       .pipe(filter(params => params.key))
       .subscribe((params) => {
-        console.log(params.key);
-
         this.resetModel.key = params.key;
       });
   }
 
   public passwordReset(): void {
     if (this.resetModel.password !== this.confirmPassword) {
-      console.log('gOWNO');
+      this.snackBar.open(
+        this.translateService.instant('ACCOUNT.FORM.PASSWORD_RESET.ERROR_PASSWORD'),
+        this.translateService.instant('ACCOUNT.FORM.PASSWORD_RESET.CLOSE'));
     } else {
       this.registerService.passwordReset(this.resetModel)
         .subscribe(() => {

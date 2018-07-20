@@ -1,0 +1,19 @@
+@mixin lodomaniak-flexbox {
+  display: flex;
+}
+
+@mixin lodomaniak-flexbox-column {
+  @include lodomaniak-flexbox;
+  flex-direction: column;
+}
+
+@mixin lodomaniak-flexbox-row {
+  @include lodomaniak-flexbox;
+  flex-direction: row;
+}
+
+@mixin lodomaniak-flexbox-column-vhcenter {
+  @include lodomaniak-flexbox-column;
+  justify-content: center;
+  align-items: center;
+}

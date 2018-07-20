@@ -1,4 +1,4 @@
-<lodomaniak-account-card [title]="title">
+<lodomaniak-account-card [title]="TITLE">
 
   <form class="login-form" name="form" role="form" (ngSubmit)="login()">
 
@@ -14,7 +14,7 @@
              type="password" placeholder="{{'ACCOUNT.FORM.PASSWORD.PLACEHOLDER' | translate}}">
     </mat-form-field>
 
-    <button class="form-size button-size" mat-stroked-button type="submit">{{'ACCOUNT.FORM.LOGIN.BUTTON' | translate}}
+    <button class="form-size form-button-size" mat-stroked-button type="submit">{{'ACCOUNT.FORM.LOGIN.BUTTON' | translate}}
     </button>
 
     <span>

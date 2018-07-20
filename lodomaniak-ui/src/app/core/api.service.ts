@@ -1,7 +1,5 @@
 import { Injectable } from '@angular/core';
-import { catchError } from 'rxjs/operators';
 import { HttpClient, HttpHeaders, HttpParams, HttpRequest } from '@angular/common/http';
-import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
 import { Observable } from 'rxjs/Observable';
 
 import { environment } from '../../environments/environment';
@@ -14,13 +12,8 @@ export class ApiService {
   constructor(private http: HttpClient) {
   }
 
-  private formatErrors(error: any) {
-    return new ErrorObservable(error.error);
-  }
-
   get(path: string, params: HttpParams = new HttpParams()): Observable<any> {
-    return this.http.get(`${environment.restApiUrl}${path}`, { params })
-      .pipe(catchError(this.formatErrors));
+    return this.http.get(`${environment.restApiUrl}${path}`, { params });
   }
 
   put(path: string, body: Object = {}): Observable<any> {
@@ -28,7 +21,7 @@ export class ApiService {
       `${environment.restApiUrl}${path}`,
       JSON.stringify(body),
       { headers: this.headers },
-    ).pipe(catchError(this.formatErrors));
+    );
   }
 
   post(path: string, body: Object = {}, headers?: HttpHeaders): Observable<any> {
@@ -36,13 +29,13 @@ export class ApiService {
       `${environment.restApiUrl}${path}`,
       JSON.stringify(body),
       { headers: headers ? headers : this.headers, observe: 'response' },
-    ).pipe(catchError(this.formatErrors));
+    );
   }
 
   delete(path): Observable<any> {
     return this.http.delete(
       `${environment.restApiUrl}${path}`,
-    ).pipe(catchError(this.formatErrors));
+    );
   }
 
   request(method: string, path: string, data: any, options: any): Observable<any> {
