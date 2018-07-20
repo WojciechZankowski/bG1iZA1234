@@ -9,7 +9,7 @@ import {
   MatListModule,
   MatMenuModule, MatNativeDateModule, MatPaginatorModule, MatProgressSpinnerModule, MatSelectModule,
   MatSidenavModule,
-  MatSnackBarModule,
+  MatSnackBarModule, MatTabsModule,
   MatToolbarModule,
 } from '@angular/material';
 import { MaterialFileInputModule } from 'ngx-material-file-input';
@@ -35,6 +35,7 @@ import { MaterialFileInputModule } from 'ngx-material-file-input';
     MatPaginatorModule,
     MatChipsModule,
     MatProgressSpinnerModule,
+    MatTabsModule,
   ],
   exports: [
     MatButtonModule,
@@ -56,6 +57,7 @@ import { MaterialFileInputModule } from 'ngx-material-file-input';
     MatPaginatorModule,
     MatChipsModule,
     MatProgressSpinnerModule,
+    MatTabsModule,
   ],
 })
 export class DesignModule {

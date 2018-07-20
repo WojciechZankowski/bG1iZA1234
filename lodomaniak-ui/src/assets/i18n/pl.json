@@ -151,7 +151,17 @@
       "DATE": {
         "TITLE": "Data",
         "PLACEHOLDER": "Wybierz datę"
-      }
+      },
+      "START_DATE": {
+        "TITLE": "Początek",
+        "PLACEHOLDER": "Wybierz początek serii"
+      },
+      "END_DATE": {
+        "TITLE": "Koniec",
+        "PLACEHOLDER": "Wybierz koniec serii"
+      },
+      "SINGLE": "Pojedyncza",
+      "SERIE": "Seria"
     }
   },
   "MENU": {

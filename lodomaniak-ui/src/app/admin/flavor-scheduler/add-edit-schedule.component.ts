@@ -25,8 +25,10 @@ export class AddEditScheduleComponent implements OnInit {
   public flavorSchedule: FlavorSchedule;
   public iceCreamShopList: IceCreamShop[] = [];
   public flavorList: Flavor[] = [];
+  public edit: boolean = false;
 
-  private edit: boolean = false;
+  public startDate: Date;
+  public endDate: Date;
 
   constructor(private iceCreamShopService: IceCreamShopService,
               private flavorService: FlavorService,
@@ -58,6 +60,15 @@ export class AddEditScheduleComponent implements OnInit {
       this.flavorService.updateSchedule(this.flavorSchedule).subscribe(() => {
       });
     } else {
+      if (this.startDate && this.endDate) {
+        for (const day = this.startDate; day <= this.endDate; day.setDate(day.getDate() + 1)) {
+          this.flavorSchedule.date = day;
+          this.flavorService.saveSchedule(this.flavorSchedule)
+            .subscribe(() => {
+            });
+        }
+      }
+
       this.flavorService.saveSchedule(this.flavorSchedule).subscribe(() => {
       });
     }

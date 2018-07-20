@@ -18,7 +18,7 @@ export class FlavorSchedulerCardComponent {
 
   edit(): void {
     this.dialog.open(AddEditScheduleComponent, {
-      height: '40vh',
+      height: '45vh',
       width: '600px',
       data: {
         flavorSchedule: this.flavorSchedule,
