@@ -15,14 +15,14 @@ export type GroupedSchedule = { [key: string]: FlavorSchedule[] };
 })
 export class FlavorSchedulerComponent implements OnInit {
 
+  public readonly OBJECT_KEYS = Object.keys;
+
   public schedules: Page<FlavorSchedule>;
   public groupedData: GroupedSchedule;
 
   public length: number = 0;
   public pageSize: number = 50;
   public pageSizeOptions: number[] = [25, 50, 100];
-
-  public readonly OBJECT_KEYS = Object.keys;
 
   constructor(private dialog: MatDialog,
               private flavorService: FlavorService) {

@@ -1,11 +1,11 @@
 <mat-card>
   <img mat-card-image src="{{getFilePath(flavor.imageUrl)}}" alt="Ice Cream">
-  <mat-card-title class="account-card-title">{{flavor.name}}</mat-card-title>
+  <mat-card-title>{{flavor.name}}</mat-card-title>
   <mat-card-subtitle>{{flavor.company.name}}</mat-card-subtitle>
   <mat-card-content>
     <mat-chip-list #chipList>
-      <mat-chip *ngFor="let tag of flavor.tags" [selectable]="selectable"
-                [removable]="removable">
+      <mat-chip *ngFor="let tag of flavor.tags" [selectable]="SELECTABLE"
+                [removable]="REMOVABLE">
         {{tag}}
       </mat-chip>
     </mat-chip-list>

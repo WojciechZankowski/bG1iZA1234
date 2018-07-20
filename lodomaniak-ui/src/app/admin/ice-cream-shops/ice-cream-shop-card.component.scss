@@ -1,9 +1,11 @@
-.ice-cream-shop-card-content {
-  display: flex;
-  flex-direction: column;
-}
+@import '../../../assets/styles/main';
 
-.hour-row {
-  display: flex;
-  flex-direction: row;
+.ice-cream-shop-card {
+  &-content {
+    @include lodomaniak-flexbox-column;
+  }
+
+  &-hour-row {
+    @include lodomaniak-flexbox-row;
+  }
 }

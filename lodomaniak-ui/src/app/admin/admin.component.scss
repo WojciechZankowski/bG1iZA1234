@@ -1,40 +1,23 @@
 @import '../../assets/styles/main';
 
-.nav-bar-active {
-  color: $main-color;
+.admin {
+  @include lodomaniak-flexbox-column;
 }
 
-.page-content {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  width: 100%;
-}
+.navbar {
+  &-container {
+    @include lodomaniak-flexbox;
+    flex: 1 1 auto;
+  }
 
-.drawer-content {
-  width: 100%;
-}
+  &-drawer {
+    &-container {
+      @include lodomaniak-flexbox;
+      flex: 1 1 auto;
+    }
+  }
 
-.test {
-  display: flex;
-  flex: 1 1 auto;
-  height: 100%;
-}
-
-.content-container {
-  display: flex;
-  flex: 1 1 auto;
-}
-
-.internal-container {
-  padding: 10px;
-}
-
-.navigation-list {
-  padding-top: 0px;
-}
-
-mat-toolbar {
-  min-height: 64px;
-  max-height: 64px
+  &-active {
+    color: $primary-color;
+  }
 }

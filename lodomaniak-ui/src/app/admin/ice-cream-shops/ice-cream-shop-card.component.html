@@ -1,5 +1,5 @@
 <mat-card>
-  <mat-card-title class="account-card-title">{{iceCreamShop.company.name}}</mat-card-title>
+  <mat-card-title>{{iceCreamShop.company.name}}</mat-card-title>
   <mat-card-subtitle>{{iceCreamShop.address.streetAddress}}, {{iceCreamShop.address.zipCode}}
     {{iceCreamShop.address.city}}
   </mat-card-subtitle>
@@ -7,7 +7,7 @@
   <mat-card-content>
     <h5>{{'ICE_CREAM_SHOP.OPENING_HOURS' | translate}}</h5>
     <div class="ice-cream-shop-card-content">
-      <div class="hour-row" *ngFor="let day of DAY_OF_WEEK">
+      <div class="ice-cream-shop-card-hour-row" *ngFor="let day of DAY_OF_WEEK">
         <div class="f-3">{{'ICE_CREAM_SHOP.DIALOG.'+day | translate}}</div>
         <div class="f-7">{{iceCreamShop.openingHours[day].openHour}}-{{iceCreamShop.openingHours[day].closeHour}}</div>
       </div>

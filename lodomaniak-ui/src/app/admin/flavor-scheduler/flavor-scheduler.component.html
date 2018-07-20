@@ -1,31 +1,14 @@
 <button mat-stroked-button (click)="openAddEditDialog()">{{'SCHEDULER.ADD_SCHEDULE' | translate}}</button>
 
-<!--<div class="container">-->
-  <!--<div fxLayout="row" fxLayout.xs="column" fxLayoutGap="20px">-->
-    <!--<flavor-scheduler-card class="card" fxFlex="32%" fxFlex.xs="80%" *ngFor="let schedule of schedules.content"-->
-                 <!--[flavorSchedule]="schedule"></flavor-scheduler-card>-->
-  <!--</div>-->
-<!--</div>-->
-
-<div class="container" *ngFor="let date of OBJECT_KEYS(groupedData)">
-  <h2 class="header-margin">{{date}}</h2>
+<div class="flavor-scheduler-container" *ngFor="let date of OBJECT_KEYS(groupedData)">
+  <h2 class="margin-bottom">{{date}}</h2>
   <mat-divider class="pb-1"></mat-divider>
 
   <div fxLayout="column" fxLayoutGap="20px">
-    <flavor-scheduler-card class="card" fxFlex="100%" *ngFor="let schedule of groupedData[date]"
+    <flavor-scheduler-card class="flavor-scheduler-card" fxFlex="100%" *ngFor="let schedule of groupedData[date]"
                            [flavorSchedule]="schedule"></flavor-scheduler-card>
   </div>
 </div>
-
-<!--<div class="container" *ngFor="let keys of OBJECT_KEYS(groupedData)">-->
-  <!--<h2 class="header-margin">{{'FLAVOR.EXISTING_FLAVORS' | translate}}</h2>-->
-  <!--<mat-divider class="pb-1"></mat-divider>-->
-  <!---->
-  <!--<div fxLayout="column" fxLayoutGap="20px">-->
-    <!--<flavor-scheduler-card class="card" fxFlex="100%" *ngFor="let schedule of schedules.content"-->
-                           <!--[flavorSchedule]="schedule"></flavor-scheduler-card>-->
-  <!--</div>-->
-<!--</div>-->
 
 <mat-paginator [length]="length"
                [pageSize]="pageSize"

@@ -7,15 +7,14 @@ import { Flavor } from '../../model/flavor.model';
 @Component({
   selector: 'flavor-card',
   templateUrl: './flavor-card.component.html',
-  styleUrls: ['./flavor-card.component.scss'],
 })
 export class FlavorCardComponent {
 
+  public readonly SELECTABLE = true;
+  public readonly REMOVABLE = false;
+  
   @Input()
   public flavor: Flavor;
-
-  selectable = true;
-  removable = false;
 
   constructor(private dialog: MatDialog) {
   }

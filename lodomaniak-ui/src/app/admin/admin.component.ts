@@ -20,7 +20,6 @@ export class AdminComponent {
 
   public readonly MENU_ITEMS = menuItems;
   public readonly PROFILE_ITEMS = profileItems;
-
   public readonly opened: boolean = true;
 
   public routerActiveOptions = { exact: true };

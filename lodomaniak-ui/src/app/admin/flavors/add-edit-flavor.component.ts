@@ -15,24 +15,21 @@ export interface Fruit {
 
 @Component({
   templateUrl: './add-edit-flavor.component.html',
-  styleUrls: ['./add-edit-flavor.component.scss'],
 })
 export class AddEditFlavorComponent implements OnInit {
 
+  public readonly SELECTABLE = true;
+  public readonly REMOVABLE = true;
+  public readonly ADD_ON_BLUR = true;
+  public readonly SEPARATOR_KEY_CODES: number[] = [ENTER, COMMA];
+  public readonly DIAMETER = 30;
+
   public flavor: Flavor;
   public companyList: Company[] = [];
-
-  public readonly diameter = 30;
-
   public loading: boolean = false;
-  private edit: boolean = false;
+  public tags: string[] = [];
 
-  visible = true;
-  selectable = true;
-  removable = true;
-  addOnBlur = true;
-  readonly separatorKeysCodes: number[] = [ENTER, COMMA];
-  tags: string[] = [];
+  private edit: boolean = false;
 
   constructor(private companyService: CompanyService,
               private flavorService: FlavorService,

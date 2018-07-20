@@ -15,7 +15,6 @@ import { PageRequest } from '../../model/page-request.model';
 
 @Component({
   templateUrl: './add-edit-schedule.component.html',
-  styleUrls: ['./add-edit-schedule.component.scss'],
   providers: [
     { provide: MAT_DATE_LOCALE, useValue: 'pl-PL' },
     { provide: DateAdapter, useClass: NativeDateAdapter },

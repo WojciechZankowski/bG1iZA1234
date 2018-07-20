@@ -1,4 +1,5 @@
 @import "common/_colors";
+@import "common/_flexbox";
 @import "common/variables";
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
 
@@ -29,8 +30,13 @@ a:hover {
   color: $main-color;
 }
 
+mat-toolbar {
+  min-height: 64px;
+  max-height: 64px
+}
+
 mat-form-field {
-  min-width:auto !important;
+  min-width: auto !important;
   .mat-form-field-infix {
     width: auto;
   }
@@ -64,8 +70,16 @@ mat-form-field {
   }
 }
 
+.padding {
+  padding: $default-padding;
+}
+
 .padding-bottom {
   padding-bottom: $default-padding;
+}
+
+.margin-bottom {
+  margin-bottom: $default-padding;
 }
 
 .form {
@@ -78,20 +92,8 @@ mat-form-field {
   }
 }
 
-
-
-
-
-
-
-
-
-
-
-
 .row {
-  display: flex;
-  flex-direction: row;
+  @include lodomaniak-flexbox-row;
 }
 
 .mt-0 {
@@ -108,6 +110,10 @@ mat-form-field {
 
 .pb-1 {
   padding-bottom: 1rem;
+}
+
+.pt-0 {
+  padding-top: 0;
 }
 
 .float-right {

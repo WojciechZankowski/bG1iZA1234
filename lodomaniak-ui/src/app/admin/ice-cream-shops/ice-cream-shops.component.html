@@ -1,12 +1,12 @@
 <button mat-stroked-button (click)="openAddEditDialog()">{{'ICE_CREAM_SHOP.ADD_SHOP' | translate}}</button>
 
-<div class="container">
+<div class="ice-cream-shop-container">
 
-  <h2 class="header-margin">{{'ICE_CREAM_SHOP.EXISTING_SHOPS' | translate}}</h2>
+  <h2 class="margin-bottom">{{'ICE_CREAM_SHOP.EXISTING_SHOPS' | translate}}</h2>
   <mat-divider class="pb-1"></mat-divider>
 
   <div fxLayout="row" fxLayout.xs="column" fxLayoutGap="20px">
-    <ice-cream-shop-card class="card" fxFlex="32%" fxFlex.xs="80%" *ngFor="let iceCreamShop of iceCreamShops"
+    <ice-cream-shop-card class="ice-cream-shop-card" fxFlex="32%" fxFlex.xs="80%" *ngFor="let iceCreamShop of iceCreamShops"
                          [iceCreamShop]="iceCreamShop"></ice-cream-shop-card>
   </div>
 </div>

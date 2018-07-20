@@ -13,7 +13,6 @@ import { DayOfWeek } from '../../model/day-of-week.model';
 
 @Component({
   templateUrl: './add-edit-shops.component.html',
-  styleUrls: ['./add-edit-shops.component.scss'],
 })
 export class AddEditShopsComponent implements OnInit {
 

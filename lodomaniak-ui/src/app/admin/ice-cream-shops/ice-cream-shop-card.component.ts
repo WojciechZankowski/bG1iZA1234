@@ -12,12 +12,12 @@ import { DayOfWeek } from '../../model/day-of-week.model';
 })
 export class IceCreamShopCardComponent {
 
-  @Input()
-  public iceCreamShop: IceCreamShop;
-
   public readonly DAY_OF_WEEK = Object.keys(DayOfWeek)
     .map(key => DayOfWeek[key])
     .filter(value => typeof value === 'string') as string[];
+
+  @Input()
+  public iceCreamShop: IceCreamShop;
 
   constructor(private dialog: MatDialog) {}
 

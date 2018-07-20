@@ -1,21 +1,16 @@
 @import '../../../assets/styles/main';
 
-.container {
-  display: flex;
-  flex-direction: column;
-  flex: 1 1 100%;
-}
+.flavor-scheduler {
+  &-container {
+    @include lodomaniak-flexbox-column;
+    flex: 1 1 100%;
+  }
 
-.card {
-  justify-content: space-between;
-}
-
-.header-margin {
-  margin-bottom: 0.75em;
+  &-card {
+    justify-content: space-between;
+  }
 }
 
 :host {
-  display: block;
-  width: 100%;
-  height: 100%;
+  @include lodomaniak-vhfull-block;
 }
