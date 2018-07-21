@@ -13,6 +13,7 @@ import pl.lodomaniak.icecream.mapper.FlavorActivityMapper;
 import pl.lodomaniak.icecream.mapper.FlavorMapper;
 import pl.lodomaniak.user.api.exception.UserNotFoundException;
 
+import java.time.LocalDate;
 import java.util.List;
 
 import static java.util.stream.Collectors.toList;
@@ -81,7 +82,7 @@ public class DefaultFlavorService implements FlavorService {
                 .map(IceCreamShopTO::getId)
                 .collect(toList());
 
-        return flavorActivityRepository.findAllByIceCreamShopId(iceCreamShopsId, pageable)
+        return flavorActivityRepository.findAllByIceCreamShopIdAndDateGreaterThanEqual(iceCreamShopsId, LocalDate.now(), pageable)
                 .map(flavorActivityMapper::map);
     }
 }

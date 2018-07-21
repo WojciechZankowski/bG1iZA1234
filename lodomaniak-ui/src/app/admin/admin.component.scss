@@ -32,3 +32,10 @@
     color: $primary-color;
   }
 }
+
+.footer {
+  &-container {
+    @include small;
+    background-color: #FFF;
+  }
+}

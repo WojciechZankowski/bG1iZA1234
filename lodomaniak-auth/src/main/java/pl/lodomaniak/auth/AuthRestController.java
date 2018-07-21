@@ -36,6 +36,7 @@ public class AuthRestController {
     public ResponseEntity authenticate(@Valid @RequestBody final LoginTO login, final HttpServletResponse response) {
         final JwtTokenTO authToken = authService.createAuthToken(login);
         response.addHeader(JwtConfigurer.AUTHORIZATION_HEADER, "Bearer " + authToken.getIdToken());
+//        response.addHeader("Access-Control-Allow-Headers", "*");
         return ResponseEntity.ok(authToken);
     }
 
