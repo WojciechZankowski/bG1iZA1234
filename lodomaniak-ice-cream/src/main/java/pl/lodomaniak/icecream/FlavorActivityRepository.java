@@ -10,7 +10,7 @@ import java.util.List;
 
 public interface FlavorActivityRepository extends JpaRepository<FlavorActivityEntity, Long> {
 
-    Page<FlavorActivityEntity> findAllByIceCreamShopIdAndDateGreaterThanEqual(List<Long> iceCreamShopId,
+    Page<FlavorActivityEntity> findAllByIceCreamShopIdInAndDateGreaterThanEqual(List<Long> iceCreamShopId,
             LocalDate date, Pageable pageable);
 
 }

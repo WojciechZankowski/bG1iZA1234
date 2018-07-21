@@ -31,7 +31,7 @@ public class IceCreamShopEntity implements IEntity {
     private String imageUrl;
 
     @ManyToOne
-    @JoinColumn(name = "COMPANY_ID", nullable = false, insertable = false, updatable = false)
+    @JoinColumn(name = "COMPANY_ID", nullable = false)
     private CompanyEntity company;
 
     @ManyToOne(cascade = CascadeType.MERGE)

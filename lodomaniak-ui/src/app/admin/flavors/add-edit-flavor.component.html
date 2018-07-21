@@ -2,15 +2,17 @@
 
 <form name="form" role="form">
 
-  <mat-form-field>
-    <mat-label>{{'FLAVOR.DIALOG.COMPANY.TITLE' | translate}}</mat-label>
-    <mat-select [(value)]="flavor.company" [compareWith]="compareById"
-                placeholder="{{'FLAVOR.DIALOG.COMPANY.PLACEHOLDER' | translate}}">
-      <mat-option *ngFor="let company of companyList" [value]="company">
-        {{company.name}}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
+  <div class="row">
+    <mat-form-field class="f-10">
+      <mat-label>{{'FLAVOR.DIALOG.COMPANY.TITLE' | translate}}</mat-label>
+      <mat-select [(value)]="flavor.company" [compareWith]="compareById"
+                  placeholder="{{'FLAVOR.DIALOG.COMPANY.PLACEHOLDER' | translate}}">
+        <mat-option *ngFor="let company of companyList" [value]="company">
+          {{company.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
 
   <br/>
   <h3 class="mt-0 mb-0">{{'FLAVOR.DIALOG.IMAGE.TITLE' | translate}}</h3>

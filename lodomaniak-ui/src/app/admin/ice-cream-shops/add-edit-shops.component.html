@@ -2,15 +2,17 @@
 
 <form name="form" role="form">
 
-  <mat-form-field>
-    <mat-label>{{'ICE_CREAM_SHOP.DIALOG.COMPANY.TITLE' | translate}}</mat-label>
-    <mat-select [(value)]="iceCreamShop.company" [compareWith]="compareById"
-                placeholder="{{'ICE_CREAM_SHOP.DIALOG.COMPANY.PLACEHOLDER' | translate}}">
-      <mat-option *ngFor="let company of companyList" [value]="company">
-        {{company.name}}
-      </mat-option>
-    </mat-select>
-  </mat-form-field>
+  <div class="row">
+    <mat-form-field class="f-10">
+      <mat-label>{{'ICE_CREAM_SHOP.DIALOG.COMPANY.TITLE' | translate}}</mat-label>
+      <mat-select [(value)]="iceCreamShop.company" [compareWith]="compareById"
+                  placeholder="{{'ICE_CREAM_SHOP.DIALOG.COMPANY.PLACEHOLDER' | translate}}">
+        <mat-option *ngFor="let company of companyList" [value]="company">
+          {{company.name}}
+        </mat-option>
+      </mat-select>
+    </mat-form-field>
+  </div>
 
   <br/>
   <h3 class="mt-0 mb-0">{{'ICE_CREAM_SHOP.DIALOG.IMAGE.TITLE' | translate}}</h3>
@@ -19,7 +21,8 @@
     <div class="form-size pr-1">
       <mat-label class="pr-1">{{'ICE_CREAM_SHOP.DIALOG.IMAGE.TITLE' | translate}}</mat-label>
       <span>{{getUrl()}}</span>
-      <button type="button" mat-button (click)="imgFileInput.click()">{{'ICE_CREAM_SHOP.DIALOG.IMAGE.PLACEHOLDER' | translate}}
+      <button type="button" mat-button (click)="imgFileInput.click()">
+        {{'ICE_CREAM_SHOP.DIALOG.IMAGE.PLACEHOLDER' | translate}}
       </button>
       <input hidden type="file" #imgFileInput (change)="handleFileInput($event.target.files)"/>
     </div>

@@ -14,6 +14,8 @@ import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
+import org.springframework.web.filter.CorsFilter;
+import pl.lodomaniak.auth.CustomCorsFilter;
 import pl.lodomaniak.auth.UnauthorizedEntryPoint;
 import pl.lodomaniak.auth.jwt.JwtFilter;
 
@@ -22,10 +24,12 @@ import pl.lodomaniak.auth.jwt.JwtFilter;
 public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
 
     private final JwtFilter jwtFilter;
+    private final CustomCorsFilter corsFilter;
 
     @Autowired
-    public SecurityConfiguration(final JwtFilter jwtFilter) {
+    public SecurityConfiguration(final JwtFilter jwtFilter, final CustomCorsFilter corsFilter) {
         this.jwtFilter = jwtFilter;
+        this.corsFilter = corsFilter;
     }
 
     @Override
@@ -50,6 +54,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
         .and()
             .addFilterBefore(jwtFilter, UsernamePasswordAuthenticationFilter.class)
+            .addFilterBefore(corsFilter, CorsFilter.class)
             .headers().cacheControl();
         // @formatter:on
     }

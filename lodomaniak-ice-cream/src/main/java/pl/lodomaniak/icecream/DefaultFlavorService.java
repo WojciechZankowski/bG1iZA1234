@@ -82,7 +82,7 @@ public class DefaultFlavorService implements FlavorService {
                 .map(IceCreamShopTO::getId)
                 .collect(toList());
 
-        return flavorActivityRepository.findAllByIceCreamShopIdAndDateGreaterThanEqual(iceCreamShopsId, LocalDate.now(), pageable)
+        return flavorActivityRepository.findAllByIceCreamShopIdInAndDateGreaterThanEqual(iceCreamShopsId, LocalDate.now(), pageable)
                 .map(flavorActivityMapper::map);
     }
 }
