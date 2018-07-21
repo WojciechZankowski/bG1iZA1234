@@ -35,7 +35,7 @@ export class FlavorService {
   getSchedule(request: PageRequest): Observable<Page<FlavorSchedule>> {
     const properties = new HttpParams().set('page', request.page.toString())
       .set('size', request.size.toString())
-      .set('direction', request.direction)
+      .set('sort', request.sort)
       .set('properties', request.properties);
     return this.apiService.get(FLAVOR_SCHEDULE_PATH, properties);
   }

@@ -41,7 +41,7 @@
       "PASSWORD_RESET": {
         "TITLE": "Zresetuj hasło do swojego konta",
         "BUTTON": "Zresetuj hasło",
-        "INIT_SUCCESS": "Wiadomość z instrukcją resetu hasło została wysłana. Sprawdź swoją skrzynkę pocztową.",
+        "INIT_SUCCESS": "Wiadomość z instrukcją resetu hasła została wysłana. Sprawdź swoją skrzynkę pocztową.",
         "SUCCESS": "Hasło zostało zmienione. Przejdź do logowania.",
         "LOGIN": "Przejdź do logowania",
         "ERROR_PASSWORD": "Hasła nie są takie same. Spróbuj jeszcze raz.",

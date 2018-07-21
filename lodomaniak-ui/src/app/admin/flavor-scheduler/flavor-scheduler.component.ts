@@ -30,7 +30,7 @@ export class FlavorSchedulerComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    const pageRequest = new PageRequest(0, this.pageSize, 'ASC', 'date');
+    const pageRequest = new PageRequest(0, this.pageSize, 'date,ASC');
     this.fetchSchedule(pageRequest);
   }
 
@@ -54,7 +54,7 @@ export class FlavorSchedulerComponent implements OnInit {
   }
 
   onPageChange(event: PageEvent): void {
-    const pageRequest = new PageRequest(event.pageIndex, event.pageSize, 'ASC', 'date');
+    const pageRequest = new PageRequest(event.pageIndex, event.pageSize, 'date,ASC');
     this.fetchSchedule(pageRequest);
   }
 
@@ -67,7 +67,7 @@ export class FlavorSchedulerComponent implements OnInit {
     matDialogRef.afterClosed()
       .subscribe((result) => {
         if (result) {
-          const pageRequest = new PageRequest(0, this.pageSize, 'ASC', 'date');
+          const pageRequest = new PageRequest(0, this.pageSize, 'date,ASC');
           this.fetchSchedule(pageRequest);
         }
       });

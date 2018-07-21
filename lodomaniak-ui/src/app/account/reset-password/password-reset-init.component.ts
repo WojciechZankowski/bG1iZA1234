@@ -20,12 +20,13 @@ export class PasswordResetInitComponent {
   }
 
   public passwordReset(): void {
-    this.registerService.initPasswordReset(this.email).subscribe(() => {
-      this.email = null;
-      this.snackBar.open(
-        this.translateService.instant('ACCOUNT.FORM.PASSWORD_RESET.INIT_SUCCESS'),
-        this.translateService.instant('ACCOUNT.FORM.PASSWORD_RESET.CLOSE'));
-    });
+    this.registerService.initPasswordReset(this.email)
+      .subscribe(() => {
+        this.email = null;
+        this.snackBar.open(
+          this.translateService.instant('ACCOUNT.FORM.PASSWORD_RESET.INIT_SUCCESS'),
+          this.translateService.instant('ACCOUNT.FORM.PASSWORD_RESET.CLOSE'));
+      });
   }
 
 }
