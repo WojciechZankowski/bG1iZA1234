@@ -1,15 +1,13 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 import { NavBarItem } from '../shared/navigation/nav-bar.component';
+import { AuthService } from '../services/auth.service';
 
 const menuItems: NavBarItem[] = [
-  { name: 'MENU.ICE_CREAM_SHOP', url: '/shops' },
-  { name: 'MENU.FLAVORS', url: '/flavors' },
-  { name: 'MENU.FLAVOR_SCHEDULER', url: '/flavor-scheduler' },
-];
-
-const profileItems: NavBarItem[] = [
-  { name: 'MENU.PROFILE.SETTINGS', url: '/profile/settings' },
+  { icon: 'store', name: 'MENU.ICE_CREAM_SHOP', url: '/shops' },
+  { icon: 'opacity', name: 'MENU.FLAVORS', url: '/flavors' },
+  { icon: 'event', name: 'MENU.FLAVOR_SCHEDULER', url: '/flavor-scheduler' },
 ];
 
 @Component({
@@ -19,9 +17,17 @@ const profileItems: NavBarItem[] = [
 export class AdminComponent {
 
   public readonly MENU_ITEMS = menuItems;
-  public readonly PROFILE_ITEMS = profileItems;
   public readonly opened: boolean = true;
 
   public routerActiveOptions = { exact: true };
+
+  constructor(private authService: AuthService,
+              private router: Router) {
+  }
+
+  logout(): void {
+    this.authService.logout();
+    this.router.navigate(['']);
+  }
 
 }

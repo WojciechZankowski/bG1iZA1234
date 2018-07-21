@@ -44,7 +44,7 @@
     <mat-form-field class="form-size f-10">
       <mat-label>{{'FLAVOR.DIALOG.TAG.TITLE' | translate}}</mat-label>
       <mat-chip-list #chipList>
-        <mat-chip *ngFor="let tag of tags" [selectable]="SELECTABLE"
+        <mat-chip color="accent" selected *ngFor="let tag of tags" [selectable]="SELECTABLE"
                   [removable]="REMOVABLE" (removed)="remove(tag)">
           {{tag}}
           <mat-icon matChipRemove *ngIf="REMOVABLE">cancel</mat-icon>

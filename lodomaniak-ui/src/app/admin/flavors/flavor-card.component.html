@@ -4,7 +4,7 @@
   <mat-card-subtitle>{{flavor.company.name}}</mat-card-subtitle>
   <mat-card-content>
     <mat-chip-list #chipList>
-      <mat-chip *ngFor="let tag of flavor.tags" [selectable]="SELECTABLE"
+      <mat-chip color="accent" selected *ngFor="let tag of flavor.tags" [selectable]="SELECTABLE"
                 [removable]="REMOVABLE">
         {{tag}}
       </mat-chip>

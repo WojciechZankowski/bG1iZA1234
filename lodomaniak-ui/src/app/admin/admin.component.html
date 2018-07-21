@@ -5,14 +5,21 @@
       <mat-icon>menu</mat-icon>
     </button>
     <h1>{{'TITLE' | translate}}</h1>
+    <span class="navbar-filler"></span>
+    <span class="navbar-logout">
+      <button mat-stroked-button (click)="logout()" type="submit">
+        {{'LOGOUT' | translate}}
+      </button>
+    </span>
   </mat-toolbar>
 
   <div class="navbar-container">
     <mat-drawer-container class="navbar-drawer-container">
-      <mat-drawer #snav [mode]="'side'" [opened]="true">
+      <mat-drawer class="navbar-drawer" #snav [mode]="'side'" [opened]="true">
         <mat-nav-list class="pt-0">
           <a mat-list-item [routerLink]="item.url" routerLinkActive="navbar-active"
              [routerLinkActiveOptions]="routerActiveOptions" *ngFor="let item of MENU_ITEMS">
+            <mat-icon class="pr-2">{{item.icon}}</mat-icon>
             {{item.name | translate}}
           </a>
         </mat-nav-list>

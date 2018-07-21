@@ -170,5 +170,6 @@
     "FLAVOR_SCHEDULER": "Planer",
     "ICE_CREAM_SHOP": "Lodziarnie"
   },
-  "TITLE": "Lodomaniak"
+  "TITLE": "Lodomaniak",
+  "LOGOUT": "Wyloguj"
 }

@@ -1,6 +1,7 @@
 import { Component, Input } from '@angular/core';
 
 export interface NavBarItem {
+  icon: string;
   name: string;
   url: string;
 }

@@ -2,6 +2,17 @@
 @import "common/_flexbox";
 @import "common/variables";
 @import '~@angular/material/prebuilt-themes/indigo-pink.css';
+@import '~@angular/material/theming';
+
+@include mat-core();
+
+$my-app-primary: mat-palette($mat-brown);
+$my-app-accent:  mat-palette($mat-deep-orange, 500, 900, A100);
+$my-app-warn:    mat-palette($mat-amber);
+
+$my-app-theme: mat-light-theme($my-app-primary, $my-app-accent, $my-app-warn);
+
+@include angular-material-theme($my-app-theme);
 
 html {
   overflow: auto;
@@ -82,6 +93,10 @@ mat-form-field {
   padding-bottom: $default-padding;
 }
 
+.padding-right {
+  padding-right: $default-padding;
+}
+
 .margin-bottom {
   margin-bottom: $default-padding;
 }
@@ -110,6 +125,14 @@ mat-form-field {
 
 .pr-1 {
   padding-right: 1rem;
+}
+
+.pr-2 {
+  padding-right: 2rem;
+}
+
+.pr-3 {
+  padding-right: 3rem;
 }
 
 .pb-1 {

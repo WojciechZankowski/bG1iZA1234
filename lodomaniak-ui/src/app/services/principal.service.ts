@@ -47,4 +47,9 @@ export class PrincipalService {
     });
   }
 
+  logout() {
+    this.userIdentity = null;
+    this.authenticated = false;
+  }
+
 }

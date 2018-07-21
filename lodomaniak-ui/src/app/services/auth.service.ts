@@ -4,6 +4,7 @@ import { map } from 'rxjs/operators';
 
 import { ApiService } from '../core/api.service';
 import { Credentials } from '../model/credentials.model';
+import { PrincipalService } from './principal.service';
 
 export const AUTH_PATH: string = '/authenticate';
 
@@ -12,7 +13,8 @@ export class AuthService {
 
   private readonly TOKEN_KEY: string = 'authenticationToken';
 
-  constructor(private apiService: ApiService) {
+  constructor(private apiService: ApiService,
+              private principal: PrincipalService) {
   }
 
   getToken(): string {
@@ -39,6 +41,12 @@ export class AuthService {
     } else {
       sessionStorage.setItem(this.TOKEN_KEY, jwt);
     }
+  }
+
+  logout(): void {
+    localStorage.removeItem(this.TOKEN_KEY);
+    sessionStorage.removeItem(this.TOKEN_KEY);
+    this.principal.logout();
   }
 
 }

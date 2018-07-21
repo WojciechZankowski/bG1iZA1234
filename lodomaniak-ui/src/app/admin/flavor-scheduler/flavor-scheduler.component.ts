@@ -19,6 +19,7 @@ export class FlavorSchedulerComponent implements OnInit {
 
   public schedules: Page<FlavorSchedule>;
   public groupedData: GroupedSchedule;
+  public sortedKeys: string[];
 
   public length: number = 0;
   public pageSize: number = 50;
@@ -29,26 +30,32 @@ export class FlavorSchedulerComponent implements OnInit {
   }
 
   ngOnInit(): void {
-    this.fetchSchedule();
+    const pageRequest = new PageRequest(0, this.pageSize, 'ASC', 'date');
+    this.fetchSchedule(pageRequest);
   }
 
-  fetchSchedule(): void {
-    const pageRequest = new PageRequest(0, this.pageSize, 'ASC', 'date');
+  fetchSchedule(pageRequest: PageRequest): void {
     this.flavorService.getSchedule(pageRequest).subscribe((schedules) => {
       this.schedules = schedules;
       this.length = schedules.totalElements;
       const groupedSchedule = this.grouped(schedules.content);
+      this.sortedKeys = this.sortKeys(groupedSchedule);
       this.groupedData = groupedSchedule;
-      console.log(groupedSchedule);
     });
+  }
+
+  sortKeys(groupedData: GroupedSchedule): string[] {
+    const sorted = [];
+    for (const key in groupedData) {
+      sorted[sorted.length] = key;
+    }
+    sorted.sort();
+    return sorted;
   }
 
   onPageChange(event: PageEvent): void {
     const pageRequest = new PageRequest(event.pageIndex, event.pageSize, 'ASC', 'date');
-    this.flavorService.getSchedule(pageRequest).subscribe((schedules) => {
-      this.schedules = schedules;
-      this.length = schedules.totalElements;
-    });
+    this.fetchSchedule(pageRequest);
   }
 
   openAddEditDialog(): void {
@@ -57,11 +64,13 @@ export class FlavorSchedulerComponent implements OnInit {
       width: '600px',
     });
 
-    matDialogRef.afterClosed().subscribe((result) => {
-      if (result) {
-        this.fetchSchedule();
-      }
-    });
+    matDialogRef.afterClosed()
+      .subscribe((result) => {
+        if (result) {
+          const pageRequest = new PageRequest(0, this.pageSize, 'ASC', 'date');
+          this.fetchSchedule(pageRequest);
+        }
+      });
   }
 
   grouped(schedules: FlavorSchedule[]): GroupedSchedule {
