@@ -23,6 +23,7 @@
         <module>lodomaniak-mail-api</module>
         <module>lodomaniak-image</module>
         <module>lodomaniak-image-api</module>
+        <module>lodomaniak-mobile-ui</module>
     </modules>
     <packaging>pom</packaging>
 
