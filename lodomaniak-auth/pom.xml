@@ -25,11 +25,31 @@
             <artifactId>auth-api</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>pl.lodomaniak</groupId>
+            <artifactId>core-entity</artifactId>
+        </dependency>
+
         <!-- Spring Dependencies -->
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-security</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-data-jpa</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.social</groupId>
+            <artifactId>spring-social-security</artifactId>
+        </dependency>
+
+        <dependency>
+            <groupId>org.springframework.social</groupId>
+            <artifactId>spring-social-facebook</artifactId>
         </dependency>
 
         <!-- External -->

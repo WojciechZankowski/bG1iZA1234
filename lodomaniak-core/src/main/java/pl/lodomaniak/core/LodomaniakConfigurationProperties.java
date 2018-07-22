@@ -12,6 +12,7 @@ public class LodomaniakConfigurationProperties {
     private final LodomaniakConfigurationProperties.Async async = new LodomaniakConfigurationProperties.Async();
     private final LodomaniakConfigurationProperties.Security security = new LodomaniakConfigurationProperties.Security();
     private final LodomaniakConfigurationProperties.Image image = new LodomaniakConfigurationProperties.Image();
+    private final LodomaniakConfigurationProperties.Social social = new LodomaniakConfigurationProperties.Social();
 
     public LodomaniakConfigurationProperties() {
     }
@@ -31,6 +32,10 @@ public class LodomaniakConfigurationProperties {
 
     public Security getSecurity() {
         return security;
+    }
+
+    public Social getSocial() {
+        return social;
     }
 
     public static class Mail {
@@ -146,9 +151,24 @@ public class LodomaniakConfigurationProperties {
             return path;
         }
 
-        public Image setPath(final String path) {
+        public void setPath(final String path) {
             this.path = path;
-            return this;
+        }
+    }
+
+    public static class Social {
+
+        private String redirectAfterSignIn;
+
+        public Social() {
+        }
+
+        public String getRedirectAfterSignIn() {
+            return redirectAfterSignIn;
+        }
+
+        public void setRedirectAfterSignIn(final String redirectAfterSignIn) {
+            this.redirectAfterSignIn = redirectAfterSignIn;
         }
     }
 

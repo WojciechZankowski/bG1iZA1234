@@ -10,18 +10,24 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { ProfilePage } from "../pages/profile/profile.component";
 import { RankingPage } from "../pages/ranking/ranking.component";
+import { FeaturesModule } from "./features/features.module";
+import { CookieModule } from "ngx-cookie";
+import { ServiceModule } from "./services/service.module";
 
 @NgModule({
+  imports: [
+    BrowserModule,
+    IonicModule.forRoot(MyApp),
+    FeaturesModule,
+    CookieModule.forRoot(),
+    ServiceModule,
+  ],
   declarations: [
     MyApp,
     ExplorePage,
     ProfilePage,
     RankingPage,
     TabsPage
-  ],
-  imports: [
-    BrowserModule,
-    IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -34,7 +40,8 @@ import { RankingPage } from "../pages/ranking/ranking.component";
   providers: [
     StatusBar,
     SplashScreen,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
-  ]
+    { provide: ErrorHandler, useClass: IonicErrorHandler }
+  ],
 })
-export class AppModule {}
+export class AppModule {
+}

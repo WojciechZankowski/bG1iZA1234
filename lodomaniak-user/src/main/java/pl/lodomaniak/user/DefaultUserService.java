@@ -62,7 +62,9 @@ public class DefaultUserService implements UserService {
                         })
                         .orElseGet(() -> {
                             final UserEntity user = createUser(account);
-                            mailService.sendActivationEmail(userMapper.mapToUserMail(user));
+                            if (!account.isActivated()) {
+                                mailService.sendActivationEmail(userMapper.mapToUserMail(user));
+                            }
                             return user;
                         }));
     }
@@ -71,8 +73,8 @@ public class DefaultUserService implements UserService {
         final UserEntity user = new UserEntityBuilder(account)
                 .addAuthority(authorityRepository.findById(AuthoritiesConstants.USER).get())
                 .withPassword(passwordEncoder.encode(account.getPassword()))
-                .withActivated(false)
-                .withActivationKey(RandomUtil.generateActivationKey())
+                .withActivated(account.isActivated())
+                .withActivationKey(account.isActivated() ? null : RandomUtil.generateActivationKey())
                 .withCreatedBy("test")
                 .withCreatedDate(Instant.now())
                 .withLangKey("pl")
