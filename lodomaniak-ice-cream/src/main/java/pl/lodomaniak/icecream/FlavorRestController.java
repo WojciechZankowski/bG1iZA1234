@@ -15,10 +15,13 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import pl.lodomaniak.icecream.api.FlavorActivityTO;
 import pl.lodomaniak.icecream.api.FlavorTO;
 import pl.lodomaniak.user.api.exception.UserNotFoundException;
+
+import java.time.LocalDate;
 
 @RestController
 @RequestMapping("/api/flavor")
@@ -51,7 +54,7 @@ public class FlavorRestController {
     }
 
     @ApiOperation(value = "Ice Cream flavor retrieval.")
-    @ApiResponses(value =  {
+    @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Ice Cream flavor received")})
     @GetMapping("/mine")
     public ResponseEntity<?> getFlavors(final Pageable pageable, @AuthenticationPrincipal final User user)
@@ -66,6 +69,14 @@ public class FlavorRestController {
     public ResponseEntity<?> getScheduled(final Pageable pageable, @AuthenticationPrincipal final User user)
             throws UserNotFoundException {
         return ResponseEntity.ok(flavorService.getPlannedFlavors(pageable, user));
+    }
+
+    @ApiOperation(value = "Today scheduled Ice Cream flavors in the city retrieval.")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Today's flavor in the city retrieved")})
+    @GetMapping("/schedule/today")
+    public ResponseEntity<?> getScheduledTodayInCity(@RequestParam final String city) {
+        return ResponseEntity.ok(flavorService.getAvailableFlavorsByCity(city, LocalDate.now()));
     }
 
     @ApiOperation(value = "Schedule Ice Cream flavor.")

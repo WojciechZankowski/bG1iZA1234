@@ -85,4 +85,13 @@ public class DefaultFlavorService implements FlavorService {
         return flavorActivityRepository.findAllByIceCreamShopIdInAndDateGreaterThanEqual(iceCreamShopsId, LocalDate.now(), pageable)
                 .map(flavorActivityMapper::map);
     }
+
+
+    @Override
+    public List<FlavorActivityTO> getAvailableFlavorsByCity(final String city, final LocalDate date) {
+        return flavorActivityRepository.findAllByIceCreamShopAddressCityAndDate(city, date).stream()
+                .map(flavorActivityMapper::map)
+                .collect(toList());
+    }
+
 }

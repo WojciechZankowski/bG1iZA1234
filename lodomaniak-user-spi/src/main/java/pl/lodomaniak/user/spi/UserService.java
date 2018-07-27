@@ -9,7 +9,7 @@ import pl.lodomaniak.user.api.exception.UserNotFoundException;
 
 public interface UserService {
 
-    void registerAccount(AccountTO account) throws UserAlreadyExistsException;
+    AccountTO registerAccount(AccountTO account) throws UserAlreadyExistsException;
 
     UserTO activateAccount(String key) throws UserNotFoundException;
 

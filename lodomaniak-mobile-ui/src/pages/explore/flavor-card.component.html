@@ -1,0 +1,12 @@
+<ion-card class="flavor-card">
+
+  <img *ngIf="flavorSchedule" class="flavor-card-image" src="{{getImg()}}"/>
+
+  <ion-card-content class="flavor-card-content">
+    <p><b>{{flavorSchedule ? flavorSchedule.flavor.name : ''}}</b></p>
+
+    <p class="flavor-card-address">{{flavorSchedule ? flavorSchedule.flavor.company.name : ''}}</p>
+    <p class="flavor-card-address">{{flavorSchedule ? flavorSchedule.iceCreamShop.address.streetAddress : ''}}</p>
+  </ion-card-content>
+
+</ion-card>

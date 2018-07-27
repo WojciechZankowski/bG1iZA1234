@@ -12,7 +12,7 @@ public class LodomaniakConfigurationProperties {
     private final LodomaniakConfigurationProperties.Async async = new LodomaniakConfigurationProperties.Async();
     private final LodomaniakConfigurationProperties.Security security = new LodomaniakConfigurationProperties.Security();
     private final LodomaniakConfigurationProperties.Image image = new LodomaniakConfigurationProperties.Image();
-    private final LodomaniakConfigurationProperties.Social social = new LodomaniakConfigurationProperties.Social();
+    private final Facebook facebook = new Facebook();
 
     public LodomaniakConfigurationProperties() {
     }
@@ -34,8 +34,8 @@ public class LodomaniakConfigurationProperties {
         return security;
     }
 
-    public Social getSocial() {
-        return social;
+    public Facebook getFacebook() {
+        return facebook;
     }
 
     public static class Mail {
@@ -156,19 +156,28 @@ public class LodomaniakConfigurationProperties {
         }
     }
 
-    public static class Social {
+    public static class Facebook {
 
-        private String redirectAfterSignIn;
+        private String appId;
+        private String appSecret;
 
-        public Social() {
+        public Facebook() {
         }
 
-        public String getRedirectAfterSignIn() {
-            return redirectAfterSignIn;
+        public String getAppId() {
+            return appId;
         }
 
-        public void setRedirectAfterSignIn(final String redirectAfterSignIn) {
-            this.redirectAfterSignIn = redirectAfterSignIn;
+        public void setAppId(final String appId) {
+            this.appId = appId;
+        }
+
+        public String getAppSecret() {
+            return appSecret;
+        }
+
+        public void setAppSecret(final String appSecret) {
+            this.appSecret = appSecret;
         }
     }
 

@@ -14,6 +14,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import pl.lodomaniak.icecream.api.IceCreamShopTO;
 import pl.lodomaniak.user.api.exception.UserNotFoundException;
@@ -28,6 +29,22 @@ public class IceCreamShopRestController {
     @Autowired
     public IceCreamShopRestController(final IceCreamShopService iceCreamShopService) {
         this.iceCreamShopService = iceCreamShopService;
+    }
+
+    @ApiOperation(value = "Get list of cities where Ice Cream Shops are")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "List of cities retrieved")})
+    @GetMapping("/cities")
+    public ResponseEntity<?> getCities() {
+        return ResponseEntity.ok(iceCreamShopService.getCities());
+    }
+
+    @ApiOperation(value = "Get list of lately added Ice Cream Shops in the city")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "List of lately added shops retrieved")})
+    @GetMapping("/last")
+    public ResponseEntity<?> getLatelyAdded(@RequestParam final String city) {
+        return ResponseEntity.ok(iceCreamShopService.getLatelyAddedShops(city));
     }
 
     @ApiOperation(value = "Create Ice Cream Shop.")

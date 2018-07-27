@@ -12,7 +12,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 import pl.lodomaniak.auth.api.JwtTokenTO;
 import pl.lodomaniak.auth.api.LoginTO;
+import pl.lodomaniak.auth.api.FacebookLoginTO;
 import pl.lodomaniak.auth.jwt.JwtConfigurer;
+import pl.lodomaniak.user.api.exception.UserNotFoundException;
 
 import javax.servlet.http.HttpServletResponse;
 import javax.validation.Valid;
@@ -36,8 +38,18 @@ public class AuthRestController {
     public ResponseEntity authenticate(@Valid @RequestBody final LoginTO login, final HttpServletResponse response) {
         final JwtTokenTO authToken = authService.createAuthToken(login);
         response.addHeader(JwtConfigurer.AUTHORIZATION_HEADER, "Bearer " + authToken.getIdToken());
-//        response.addHeader("Access-Control-Allow-Headers", "*");
         return ResponseEntity.ok(authToken);
+    }
+
+    @ApiOperation(value = "Authenticate facebook user.")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "JWT returned for an user")})
+    @PostMapping("/authenticate/social/facebook")
+    public ResponseEntity authenticate(@Valid @RequestBody final FacebookLoginTO login, final HttpServletResponse response)
+            throws UserNotFoundException {
+        final JwtTokenTO authToken = authService.createAuthToken(login);
+        response.addHeader(JwtConfigurer.AUTHORIZATION_HEADER, "Bearer " + authToken.getIdToken());
+        return ResponseEntity.ok(null);
     }
 
 }

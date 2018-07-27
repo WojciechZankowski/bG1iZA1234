@@ -51,8 +51,8 @@ public class DefaultUserService implements UserService {
     }
 
     @Override
-    public void registerAccount(final AccountTO account) throws UserAlreadyExistsException {
-        userRepository.findOneByLogin(account.getLogin().toLowerCase())
+    public AccountTO registerAccount(final AccountTO account) throws UserAlreadyExistsException {
+        return (AccountTO) userRepository.findOneByLogin(account.getLogin().toLowerCase())
                 .map(user -> {
                     throw new UserAlreadyExistsException("Login already in use.");
                 })
@@ -65,7 +65,7 @@ public class DefaultUserService implements UserService {
                             if (!account.isActivated()) {
                                 mailService.sendActivationEmail(userMapper.mapToUserMail(user));
                             }
-                            return user;
+                            return userMapper.map(user);
                         }));
     }
 

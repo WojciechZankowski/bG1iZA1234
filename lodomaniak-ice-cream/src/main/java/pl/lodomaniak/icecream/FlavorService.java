@@ -7,6 +7,7 @@ import pl.lodomaniak.icecream.api.FlavorActivityTO;
 import pl.lodomaniak.icecream.api.FlavorTO;
 import pl.lodomaniak.user.api.exception.UserNotFoundException;
 
+import java.time.LocalDate;
 import java.util.List;
 
 public interface FlavorService {
@@ -25,4 +26,5 @@ public interface FlavorService {
 
     Page<FlavorActivityTO> getPlannedFlavors(final Pageable pageable, User user) throws UserNotFoundException;
 
+    List<FlavorActivityTO> getAvailableFlavorsByCity(String city, LocalDate date);
 }

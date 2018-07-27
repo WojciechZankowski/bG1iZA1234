@@ -1,0 +1,69 @@
+@import "../../assets/styles/main";
+
+ion-searchbar.navbar-search {
+  margin: 10px;
+  width: auto;
+
+  background: #FFF;
+  border: 2px solid $primary-color;
+}
+
+.city-select {
+  display: flex;
+  flex-direction: row;
+  justify-content: flex-start;
+}
+
+ion-item.city-select {
+  width: 30%;
+  margin-top: 5px;
+}
+
+.select-searchable {
+  background: $primary-color;
+  color: #FFF;
+  border: 1px solid $primary-color;
+  max-width: 100%;
+  flex: 1 0 100%;
+  border-radius: 100px;
+}
+
+.select-searchable-icon {
+  .select-searchable-icon-inner {
+    color: #FFF;
+    left: 0;
+  }
+}
+
+input::-webkit-input-placeholder,
+select-searchable::-webkit-input-placeholder,
+textarea::-webkit-input-placeholder {
+  color: #666;
+}
+input:-moz-placeholder,
+select-searchable:-moz-placeholder,
+textarea:-moz-placeholder {
+  color: #666;
+}
+input::-moz-placeholder,
+select-searchable::-moz-placeholder,
+textarea::-moz-placeholder {
+  color: #666;
+}
+input:-ms-input-placeholder,
+select-searchable:-ms-input-placeholder,
+textarea:-ms-input-placeholder {
+  color: #666;
+}
+
+ion-item {
+  .item-inner {
+    border-bottom: 0 !important;
+    .input-wrapper {
+      ion-label {
+        display: none;
+      }
+    }
+  }
+}
+

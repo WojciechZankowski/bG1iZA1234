@@ -1,7 +1,13 @@
-<ion-content padding>
+<ion-content class="profile" padding>
 
-  <ion-icon name="person"></ion-icon>
-  KUPA
+  <div class="profile-container">
+    <ion-icon class="lock" name="lock"></ion-icon>
+
+    <button class="profile-button" ion-button icon-right (click)="signIn()">
+      Zaloguj przez
+      <ion-icon name="logo-facebook"></ion-icon>
+    </button>
+  </div>
 
 </ion-content>
 

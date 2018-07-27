@@ -1,18 +1,17 @@
 import { NgModule } from "@angular/core";
-import { SocialService } from "./social.service";
-import { CsrfService } from "./csrf.service";
 import { CoreModule } from "../core/core.module";
-import { CookieModule } from "ngx-cookie";
+import { AuthService } from "./auth.service";
+import { IceCreamShopService } from "./ice-cream-shop.service";
+import { FlavorService } from "./flavor.service";
 
 @NgModule({
   imports: [
     CoreModule,
-    CookieModule,
-    CookieModule.forChild()
   ],
   providers: [
-    SocialService,
-    CsrfService,
+    AuthService,
+    IceCreamShopService,
+    FlavorService
   ]
 })
 export class ServiceModule {

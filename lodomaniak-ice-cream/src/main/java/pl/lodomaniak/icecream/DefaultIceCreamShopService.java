@@ -1,6 +1,9 @@
 package pl.lodomaniak.icecream;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
+import org.springframework.data.domain.Pageable;
+import org.springframework.data.domain.Sort;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Service;
 import pl.lodomaniak.icecream.api.CompanyTO;
@@ -39,6 +42,19 @@ public class DefaultIceCreamShopService implements IceCreamShopService {
         this.iceCreamShopMapper = iceCreamShopMapper;
         this.rangeRepository = rangeRepository;
         this.companyService = companyService;
+    }
+
+    @Override
+    public List<String> getCities() {
+        return addressRepository.findDistinctCity();
+    }
+
+    @Override
+    public List<IceCreamShopTO> getLatelyAddedShops(final String city) {
+        final Pageable pageable = PageRequest.of(0, 10, Sort.Direction.DESC, "id");
+        return iceCreamShopRepository.findByAddressCity(city, pageable).stream()
+                .map(iceCreamShopMapper::map)
+                .collect(toList());
     }
 
     @Override

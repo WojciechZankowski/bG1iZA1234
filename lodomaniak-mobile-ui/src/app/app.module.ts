@@ -10,24 +10,51 @@ import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 import { ProfilePage } from "../pages/profile/profile.component";
 import { RankingPage } from "../pages/ranking/ranking.component";
-import { FeaturesModule } from "./features/features.module";
 import { CookieModule } from "ngx-cookie";
 import { ServiceModule } from "./services/service.module";
+import { Facebook } from "@ionic-native/facebook";
+import { IonicStorageModule, Storage } from '@ionic/storage';
+import { JWT_OPTIONS, JwtModule } from "@auth0/angular-jwt";
+import { SelectSearchableModule } from "ionic-select-searchable";
+import { IceCreamShopCardComponent } from "../pages/explore/ice-cream-shop-card.component";
+import { FlavorCardComponent } from "../pages/explore/flavor-card.component";
+import { BrowseCardComponent } from "../pages/explore/browse-card.component";
+import { NavbarComponent } from "../pages/explore/navbar.component";
+
+export function jwtOptionsFactory(storage) {
+  return {
+    tokenGetter: () => {
+      return storage.get('access_token');
+    }
+  }
+}
 
 @NgModule({
   imports: [
     BrowserModule,
     IonicModule.forRoot(MyApp),
-    FeaturesModule,
+    IonicStorageModule.forRoot(),
     CookieModule.forRoot(),
     ServiceModule,
+    SelectSearchableModule,
+    JwtModule.forRoot({
+      jwtOptionsProvider: {
+        provide: JWT_OPTIONS,
+        useFactory: jwtOptionsFactory,
+        deps: [Storage]
+      }
+    })
   ],
   declarations: [
     MyApp,
     ExplorePage,
     ProfilePage,
     RankingPage,
-    TabsPage
+    TabsPage,
+    IceCreamShopCardComponent,
+    FlavorCardComponent,
+    BrowseCardComponent,
+    NavbarComponent
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -35,12 +62,17 @@ import { ServiceModule } from "./services/service.module";
     ExplorePage,
     ProfilePage,
     RankingPage,
-    TabsPage
+    TabsPage,
+    IceCreamShopCardComponent,
+    FlavorCardComponent,
+    BrowseCardComponent,
+    NavbarComponent
   ],
   providers: [
     StatusBar,
     SplashScreen,
-    { provide: ErrorHandler, useClass: IonicErrorHandler }
+    { provide: ErrorHandler, useClass: IonicErrorHandler },
+    Facebook
   ],
 })
 export class AppModule {

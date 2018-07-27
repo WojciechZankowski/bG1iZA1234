@@ -1,3 +1,37 @@
-page-home {
+@import "../../assets/styles/main";
 
+ice-cream-shop-card {
+  width: 150px !important;
+  display: inline-block;
+}
+
+.explore {
+  &-row {
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+  }
+
+  &-header {
+    margin-bottom: 0 !important;
+    margin-left: 12px;
+  }
+}
+
+ion-scroll {
+  min-height: 180px;
+  height: auto;
+  margin-left: 12px;
+
+  .scroll-content {
+    padding: 0 !important;
+  }
+}
+
+.scroll-zoom-wrapper {
+  white-space: nowrap;
+}
+
+::-webkit-scrollbar,
+*::-webkit-scrollbar {
+  display: none;
 }

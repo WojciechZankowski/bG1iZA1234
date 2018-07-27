@@ -1,18 +1,56 @@
 <ion-header>
-  <ion-searchbar></ion-searchbar>
+  <navbar></navbar>
 </ion-header>
 
-<ion-content padding>
-  <lodomaniak-social provider="facebook"></lodomaniak-social>
+<ion-content class="cards">
 
+  <div class="explore-row">
+    <h3 class="explore-header">Przeglądaj</h3>
 
-  <h2>Welcome to Ionic!</h2>
-  <p>
-    This starter project comes with simple tabs-based layout for apps
-    that are going to primarily use a Tabbed UI.
-  </p>
-  <p>
-    Take a look at the <code>src/pages/</code> directory to add or change tabs,
-    update any existing page or create new pages.
-  </p>
+    <ion-grid no-padding>
+      <ion-row>
+        <ion-col col-4>
+          <browse-card title="Lodziarnie" imageUrl="assets/imgs/icecreamshop.jpeg"></browse-card>
+        </ion-col>
+        <ion-col col-4>
+          <browse-card title="Smaki" imageUrl="assets/imgs/icecream.jpeg"></browse-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+  <div class="explore-row">
+    <h3 class="explore-header">Dzisiejsze smaki</h3>
+
+    <ion-grid no-padding>
+      <ion-row>
+        <ion-col col-6>
+          <flavor-card [flavorSchedule]="flavorsSchedules[0]"></flavor-card>
+        </ion-col>
+        <ion-col col-6>
+          <flavor-card [flavorSchedule]="flavorsSchedules[1]"></flavor-card>
+        </ion-col>
+      </ion-row>
+
+      <ion-row>
+        <ion-col col-6>
+          <flavor-card [flavorSchedule]="flavorsSchedules[2]"></flavor-card>
+        </ion-col>
+        <ion-col col-6>
+          <flavor-card [flavorSchedule]="flavorsSchedules[3]"></flavor-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
+  </div>
+
+  <div class="explore-row">
+    <h3 class="explore-header">Ostatnio dodane</h3>
+
+    <ion-scroll scrollX="true" direction="x">
+      <ice-cream-shop-card class="ice-cream-shops" [iceCreamShop]="iceCreamShop"
+                           *ngFor="let iceCreamShop of iceCreamShops"></ice-cream-shop-card>
+    </ion-scroll>
+  </div>
+
 </ion-content>

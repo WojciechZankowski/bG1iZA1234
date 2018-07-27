@@ -8,6 +8,10 @@ import java.util.List;
 
 public interface IceCreamShopService {
 
+    List<String> getCities();
+
+    List<IceCreamShopTO> getLatelyAddedShops(String city);
+
     void addIceCreamShop(IceCreamShopTO iceCreamShop);
 
     void updateIceCreamShop(IceCreamShopTO iceCreamShop);
