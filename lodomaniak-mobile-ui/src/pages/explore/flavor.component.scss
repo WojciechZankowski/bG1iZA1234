@@ -1,17 +1,18 @@
 @import "../../assets/styles/main";
 
-.flavor-card {
+.flavor {
   -webkit-box-shadow: 0 0 0 rgba(0, 0, 0, 0) !important;
   box-shadow: 0 0 0 rgba(0, 0, 0, 0) !important;
 
   &-image {
     object-fit: cover;
     width: 100%;
-    height: 100px;
   }
 
   &-content {
-    padding: 0 !important;
+    padding-top: 0 !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
     margin: 0.2em 0 !important;
   }
 
@@ -23,11 +24,20 @@
     z-index: 2;
     position: absolute;
     left: 2%;
-    top: 8%;
+    top: 2%;
     margin: auto;
     min-width: 0.2em !important;
     width: 2em !important;
     height: 2em !important;
     font-size: 1.4rem !important;
+  }
+
+  &-title {
+    font-weight: bold;
+    font-size: 2.5rem;
+  }
+
+  &-header {
+    padding-left: 10px;
   }
 }

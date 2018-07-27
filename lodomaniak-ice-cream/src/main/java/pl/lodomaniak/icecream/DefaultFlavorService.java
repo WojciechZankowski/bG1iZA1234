@@ -94,4 +94,10 @@ public class DefaultFlavorService implements FlavorService {
                 .collect(toList());
     }
 
+    @Override
+    public List<FlavorActivityTO> getSchedulesForFlavor(final Long flavorId) {
+        return flavorActivityRepository.findAllByFlavorId(flavorId).stream()
+                .map(flavorActivityMapper::map)
+                .collect(toList());
+    }
 }

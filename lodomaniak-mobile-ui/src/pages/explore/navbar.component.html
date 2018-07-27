@@ -1,4 +1,7 @@
-<ion-searchbar class="navbar-search"></ion-searchbar>
+<ion-searchbar
+  class="navbar-search"
+  placeholder="Szukaj">
+</ion-searchbar>
 
 <div class="city-select">
   <ion-item class="city-select">
@@ -7,8 +10,10 @@
       item-content
       [(ngModel)]="selectedCity"
       [items]="cities"
-      placeholder="Miasto"
       [canSearch]="true">
+      <ng-template selectSearchablePlaceholderTemplate>
+        <span class="city-select-placeholder">Miasto</span>
+      </ng-template>
     </select-searchable>
   </ion-item>
 </div>

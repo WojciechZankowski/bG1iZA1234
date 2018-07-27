@@ -1,6 +1,11 @@
-<ion-card class="flavor-card">
+<ion-card (click)="onClick()" class="flavor-card">
 
-  <img *ngIf="flavorSchedule" class="flavor-card-image" src="{{getImg()}}"/>
+  <div *ngIf="flavorSchedule">
+    <button class="flavor-card-like-button" ion-button icon-only>
+      <ion-icon name="heart"></ion-icon>
+    </button>
+    <img class="flavor-card-image" src="{{getImg()}}"/>
+  </div>
 
   <ion-card-content class="flavor-card-content">
     <p><b>{{flavorSchedule ? flavorSchedule.flavor.name : ''}}</b></p>

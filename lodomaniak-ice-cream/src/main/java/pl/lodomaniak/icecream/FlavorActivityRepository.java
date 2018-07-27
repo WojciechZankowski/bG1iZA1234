@@ -15,4 +15,6 @@ public interface FlavorActivityRepository extends JpaRepository<FlavorActivityEn
 
     List<FlavorActivityEntity> findAllByIceCreamShopAddressCityAndDate(String city, LocalDate date);
 
+    List<FlavorActivityEntity> findAllByFlavorId(Long flavorId);
+
 }

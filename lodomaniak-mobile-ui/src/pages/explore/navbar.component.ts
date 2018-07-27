@@ -1,6 +1,5 @@
 import { Component, OnInit } from "@angular/core";
 import { IceCreamShopService } from "../../app/services/ice-cream-shop.service";
-import { SelectSearchableComponent } from "ionic-select-searchable";
 
 @Component({
   selector: 'navbar',

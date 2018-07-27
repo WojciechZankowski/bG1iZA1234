@@ -52,6 +52,7 @@ public class SecurityConfiguration extends WebSecurityConfigurerAdapter {
             .antMatchers("/api/icecreamshop/cities").permitAll()
             .antMatchers("/api/icecreamshop/last").permitAll()
             .antMatchers("/api/flavor/schedule/today").permitAll()
+            .antMatchers("/api/flavor/schedule/list").permitAll()
             .antMatchers("/api/**").authenticated()
         .and()
             .sessionManagement()

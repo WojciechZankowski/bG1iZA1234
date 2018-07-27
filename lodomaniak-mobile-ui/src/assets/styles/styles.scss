@@ -1,0 +1,143 @@
+@import "common/_colors";
+@import "common/_flexbox";
+@import "common/variables";
+
+a {
+  text-decoration: none;
+  color: $font-color;
+  outline: none;
+}
+
+a:hover {
+  color: $main-color;
+}
+
+mat-toolbar {
+  min-height: 64px;
+  max-height: 64px
+}
+
+mat-form-field {
+  min-width: auto !important;
+  .mat-form-field-infix {
+    width: auto;
+  }
+}
+
+.width {
+  &-full {
+    width: 100%;
+  }
+
+  &-min-full {
+    min-width: 100%;
+  }
+
+  &-max-full {
+    max-width: 100%;
+  }
+}
+
+.height {
+  &-full {
+    height: 100%;
+  }
+
+  &-min-full {
+    min-height: 100%;
+  }
+
+  &-max-full {
+    max-height: 100%;
+  }
+}
+
+.padding {
+  padding: $default-padding;
+}
+
+.padding-top {
+  padding-top: $default-padding;
+}
+
+.padding-bottom {
+  padding-bottom: $default-padding;
+}
+
+.padding-right {
+  padding-right: $default-padding;
+}
+
+.margin-bottom {
+  margin-bottom: $default-padding;
+}
+
+.form {
+  &-size {
+    width: 25rem;
+  }
+
+  &-button-size {
+    height: 3.5rem;
+  }
+}
+
+.row {
+  @include lodomaniak-flexbox-row;
+}
+
+.mt-0 {
+  margin-top: 0;
+}
+
+.mb-0 {
+  margin-bottom: 0;
+}
+
+.pr-1 {
+  padding-right: 1rem;
+}
+
+.pr-2 {
+  padding-right: 2rem;
+}
+
+.pr-3 {
+  padding-right: 3rem;
+}
+
+.pb-1 {
+  padding-bottom: 1rem;
+}
+
+.pt-0 {
+  padding-top: 0;
+}
+
+.float-right {
+  float: right;
+}
+
+.f-10 {
+  flex: 100%;
+}
+
+.f-2 {
+  flex: 20%;
+}
+
+.f-3 {
+  flex: 30%;
+}
+
+.f-4 {
+  flex: 40%;
+}
+
+.f-6 {
+  flex: 60%;
+}
+
+.f-7 {
+  flex: 70%;
+}

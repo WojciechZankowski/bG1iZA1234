@@ -2,10 +2,15 @@
 
 ion-searchbar.navbar-search {
   margin: 10px;
+  margin-bottom: 0;
   width: auto;
-
   background: #FFF;
-  border: 2px solid $primary-color;
+  border-top: 0 !important;
+  border-bottom: 0 !important;
+
+  .searchbar-input-container {
+    border: 2px solid $primary-color;
+  }
 }
 
 .city-select {
@@ -14,9 +19,15 @@ ion-searchbar.navbar-search {
   justify-content: flex-start;
 }
 
+.city-select-placeholder {
+  color: #FFF;
+}
+
 ion-item.city-select {
-  width: 30%;
+  width: 40%;
   margin-top: 5px;
+  margin-left: 2px;
+  margin-bottom: 5px;
 }
 
 .select-searchable {
@@ -25,7 +36,6 @@ ion-item.city-select {
   border: 1px solid $primary-color;
   max-width: 100%;
   flex: 1 0 100%;
-  border-radius: 100px;
 }
 
 .select-searchable-icon {
@@ -33,27 +43,6 @@ ion-item.city-select {
     color: #FFF;
     left: 0;
   }
-}
-
-input::-webkit-input-placeholder,
-select-searchable::-webkit-input-placeholder,
-textarea::-webkit-input-placeholder {
-  color: #666;
-}
-input:-moz-placeholder,
-select-searchable:-moz-placeholder,
-textarea:-moz-placeholder {
-  color: #666;
-}
-input::-moz-placeholder,
-select-searchable::-moz-placeholder,
-textarea::-moz-placeholder {
-  color: #666;
-}
-input:-ms-input-placeholder,
-select-searchable:-ms-input-placeholder,
-textarea:-ms-input-placeholder {
-  color: #666;
 }
 
 ion-item {

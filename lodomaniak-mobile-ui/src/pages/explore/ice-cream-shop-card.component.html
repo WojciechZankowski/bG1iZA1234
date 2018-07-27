@@ -1,6 +1,6 @@
 <ion-card class="ice-cream-shop">
 
-  <img class="card-image-header" src="{{getImg()}}"/>
+  <img *ngIf="iceCreamShop" class="card-image-header" src="{{getImg()}}"/>
 
   <ion-card-content class="ice-cream-shop">
     <p><b>{{iceCreamShop.company.name}}</b></p>
