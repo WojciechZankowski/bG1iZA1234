@@ -1,0 +1,30 @@
+<ion-header>
+  <ion-navbar>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+  <div class="flavor">
+    <div *ngIf="flavor">
+      <button class="flavor-like-button" ion-button icon-only>
+        <ion-icon name="heart"></ion-icon>
+      </button>
+      <img class="flavor-image" src="{{getImg()}}"/>
+    </div>
+
+    <ion-card-content class="flavor-content">
+      <p><span class="flavor-title">{{flavor ? flavor.name : ''}}</span> &bull; {{flavor ? flavor.company.name : ''}}
+      </p>
+    </ion-card-content>
+
+
+    <h3 class="flavor-header">Gdzie dzisiaj dostępne</h3>
+    <ion-list>
+      <ion-item class="flavor-schedule-item" *ngFor="let schedule of flavorSchedules" (click)="itemSelected(item)">
+        <ice-cream-shop-card-large class="flavor-schedule-card" item-content [iceCreamShop]="schedule.iceCreamShop">
+        </ice-cream-shop-card-large>
+      </ion-item>
+    </ion-list>
+  </div>
+</ion-content>
+

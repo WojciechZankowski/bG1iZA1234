@@ -16,11 +16,13 @@ import { Facebook } from "@ionic-native/facebook";
 import { IonicStorageModule, Storage } from '@ionic/storage';
 import { JWT_OPTIONS, JwtModule } from "@auth0/angular-jwt";
 import { SelectSearchableModule } from "ionic-select-searchable";
-import { IceCreamShopCardComponent } from "../pages/explore/ice-cream-shop-card.component";
-import { FlavorCardComponent } from "../pages/explore/flavor-card.component";
 import { BrowseCardComponent } from "../pages/explore/browse-card.component";
 import { NavbarComponent } from "../pages/explore/navbar.component";
-import { FlavorComponent } from "../pages/explore/flavor.component";
+import { SharedModule } from "./shared/shared.module";
+import { IceCreamShopCardComponent } from "../pages/ice-cream-shop/ice-cream-shop-card.component";
+import { FlavorComponent } from "../pages/flavor/flavor.component";
+import { IceCreamShopCardLargeComponent } from "../pages/ice-cream-shop/ice-cream-shop-card-large.component";
+import { FlavorCardComponent } from "../pages/flavor/flavor-card.component";
 
 export function jwtOptionsFactory(storage) {
   return {
@@ -37,6 +39,7 @@ export function jwtOptionsFactory(storage) {
     IonicStorageModule.forRoot(),
     CookieModule.forRoot(),
     ServiceModule,
+    SharedModule,
     SelectSearchableModule,
     JwtModule.forRoot({
       jwtOptionsProvider: {
@@ -56,7 +59,8 @@ export function jwtOptionsFactory(storage) {
     FlavorCardComponent,
     BrowseCardComponent,
     NavbarComponent,
-    FlavorComponent
+    FlavorComponent,
+    IceCreamShopCardLargeComponent
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -69,7 +73,8 @@ export function jwtOptionsFactory(storage) {
     FlavorCardComponent,
     BrowseCardComponent,
     NavbarComponent,
-    FlavorComponent
+    FlavorComponent,
+    IceCreamShopCardLargeComponent
   ],
   providers: [
     StatusBar,

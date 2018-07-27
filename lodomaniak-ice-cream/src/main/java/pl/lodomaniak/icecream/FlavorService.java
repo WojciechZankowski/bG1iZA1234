@@ -26,7 +26,6 @@ public interface FlavorService {
 
     Page<FlavorActivityTO> getPlannedFlavors(final Pageable pageable, User user) throws UserNotFoundException;
 
-    List<FlavorActivityTO> getAvailableFlavorsByCity(String city, LocalDate date);
+    List<FlavorActivityTO> getAvailableFlavors(String city, Long flavorId, LocalDate date);
 
-    List<FlavorActivityTO> getSchedulesForFlavor(Long flavorId);
 }

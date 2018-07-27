@@ -75,16 +75,9 @@ public class FlavorRestController {
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Today's flavor in the city retrieved")})
     @GetMapping("/schedule/today")
-    public ResponseEntity<?> getScheduledTodayInCity(@RequestParam final String city) {
-        return ResponseEntity.ok(flavorService.getAvailableFlavorsByCity(city, LocalDate.now()));
-    }
-
-    @ApiOperation(value = "Receive all schedules for given flavor.")
-    @ApiResponses(value = {
-            @ApiResponse(code = 200, message = "Today's schedules for given flavor received.")})
-    @GetMapping("/schedule/list")
-    public ResponseEntity<?> getSchedulesForFlavor(@RequestParam final Long flavorId) {
-        return ResponseEntity.ok(flavorService.getSchedulesForFlavor(flavorId));
+    public ResponseEntity<?> getScheduledTodayInCity(@RequestParam(required = false) final String city,
+            @RequestParam(required = false) final Long flavorId) {
+        return ResponseEntity.ok(flavorService.getAvailableFlavors(city, flavorId, LocalDate.now()));
     }
 
     @ApiOperation(value = "Schedule Ice Cream flavor.")

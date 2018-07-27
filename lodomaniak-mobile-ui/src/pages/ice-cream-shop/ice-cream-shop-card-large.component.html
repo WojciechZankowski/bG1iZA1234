@@ -1,0 +1,25 @@
+<ion-card class="ice-cream-shop-card-large">
+
+  <ion-card-content class="ice-cream-shop-card-large">
+    <div class="ice-cream-shop-card-large">
+
+      <div class="ice-cream-shop-card-large-image">
+        <img *ngIf="iceCreamShop" class="card-image-header" src="{{getImg()}}"/>
+      </div>
+
+      <div class="ice-cream-shop-card-large-content">
+        <div>
+          <span class="ice-cream-shop-card-large-content-header">{{iceCreamShop.company.name}}</span>
+
+          <p class="ice-cream-shop-address">{{iceCreamShop.address.streetAddress}}</p>
+          <p class="ice-cream-shop-address">{{iceCreamShop.address.zipCode}} {{iceCreamShop.address.city}}</p>
+        </div>
+
+        <div>
+          <span class="ice-cream-shop-card-large-content-hours">Godziny otwarcia:</span> {{getOpeningHours()}}
+        </div>
+      </div>
+    </div>
+  </ion-card-content>
+
+</ion-card>

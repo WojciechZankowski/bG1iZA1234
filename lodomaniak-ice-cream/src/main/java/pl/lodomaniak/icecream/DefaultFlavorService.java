@@ -86,17 +86,18 @@ public class DefaultFlavorService implements FlavorService {
                 .map(flavorActivityMapper::map);
     }
 
-
     @Override
-    public List<FlavorActivityTO> getAvailableFlavorsByCity(final String city, final LocalDate date) {
+    public List<FlavorActivityTO> getAvailableFlavors(final String city, final Long flavorId, final LocalDate date) {
+        if (flavorId != null) {
+            return getSchedulesForFlavor(flavorId, date);
+        }
         return flavorActivityRepository.findAllByIceCreamShopAddressCityAndDate(city, date).stream()
                 .map(flavorActivityMapper::map)
                 .collect(toList());
     }
 
-    @Override
-    public List<FlavorActivityTO> getSchedulesForFlavor(final Long flavorId) {
-        return flavorActivityRepository.findAllByFlavorId(flavorId).stream()
+    private List<FlavorActivityTO> getSchedulesForFlavor(final Long flavorId, final LocalDate date) {
+        return flavorActivityRepository.findAllByFlavorIdAndDate(flavorId, date).stream()
                 .map(flavorActivityMapper::map)
                 .collect(toList());
     }
