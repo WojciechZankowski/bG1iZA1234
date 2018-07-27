@@ -20,7 +20,7 @@
 
     <h3 class="flavor-header">Gdzie dzisiaj dostępne</h3>
     <ion-list>
-      <ion-item class="flavor-schedule-item" *ngFor="let schedule of flavorSchedules" (click)="itemSelected(item)">
+      <ion-item class="flavor-schedule-item" *ngFor="let schedule of flavorSchedules" (click)="itemSelected(schedule)">
         <ice-cream-shop-card-large class="flavor-schedule-card" item-content [iceCreamShop]="schedule.iceCreamShop">
         </ice-cream-shop-card-large>
       </ion-item>

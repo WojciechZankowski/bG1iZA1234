@@ -1,8 +1,9 @@
 import { Component, OnInit } from "@angular/core";
-import { NavParams } from "ionic-angular";
+import { NavController, NavParams } from "ionic-angular";
 import { Flavor } from "../../app/model/flavor.model";
 import { FlavorSchedule } from "../../app/model/flavor-schedule.model";
 import { FlavorService } from "../../app/services/flavor.service";
+import { IceCreamShopComponent } from "./ice-cream-shop.component";
 
 @Component({
   selector: 'flavor',
@@ -13,7 +14,8 @@ export class FlavorComponent implements OnInit {
   public flavor: Flavor;
   public flavorSchedules: FlavorSchedule[] = [];
 
-  constructor(private navParams: NavParams,
+  constructor(public navCtrl: NavController,
+              private navParams: NavParams,
               private flavorService: FlavorService) {
 
   }
@@ -28,6 +30,9 @@ export class FlavorComponent implements OnInit {
 
   itemSelected(flavorSchedule: FlavorSchedule): void {
     console.log(flavorSchedule);
+    this.navCtrl.push(IceCreamShopComponent, {
+      iceCreamShop: flavorSchedule.iceCreamShop
+    });
   }
 
   getImg(): string {
