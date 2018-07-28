@@ -1,6 +1,7 @@
 package pl.lodomaniak.icecream;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
@@ -92,6 +93,13 @@ public class DefaultIceCreamShopService implements IceCreamShopService {
         return iceCreamShopRepository.findAllByCompanyIdIn(companiesId).stream()
                 .map(iceCreamShopMapper::map)
                 .collect(toList());
+    }
+
+    @Override
+    public Page<IceCreamShopTO> getIceCreamShops(final String company, final String city, final Pageable pageable) {
+        final String companyName = company == null ? "" : company;
+        return iceCreamShopRepository.findByAddressCityAndCompanyNameContaining(city, companyName, pageable)
+                .map(iceCreamShopMapper::map);
     }
 
 }

@@ -1,4 +1,4 @@
-<ion-card (click)="onClick()" class="flavor-card">
+<ion-card *ngIf="flavorSchedule" (click)="onClick()" class="flavor-card">
 
   <div *ngIf="flavorSchedule">
     <button class="flavor-card-like-button" ion-button icon-only>

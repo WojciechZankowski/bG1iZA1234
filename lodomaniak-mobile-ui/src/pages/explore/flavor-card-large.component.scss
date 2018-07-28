@@ -1,0 +1,50 @@
+@import "../../assets/styles/main";
+
+.card-image-header {
+  object-fit: cover;
+  height: 100px;
+  background-color: black;
+}
+
+ion-card-content.flavor-card-large {
+  padding: 0 !important;
+  margin: 0.2em 0  !important;
+}
+
+ion-card.flavor-card-large {
+  -webkit-box-shadow: 0 0 0 rgba(0, 0, 0, 0) !important;
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0) !important;
+}
+
+.flavor-card-large {
+  @include lodomaniak-flexbox-row;
+  width: 100%;
+
+  &-image {
+    flex: 30%;
+  }
+
+  &-content {
+    flex: 70%;
+    padding-left: 10px;
+
+    @include lodomaniak-flexbox-column;
+    justify-content: space-between;
+
+    &-header {
+      color: #333;
+      font-weight: bold;
+      font-size: 2rem;
+    }
+
+    &-hours {
+      color: #333;
+      font-weight: bold;
+    }
+  }
+
+  &-address {
+    font-size: 1.25rem !important;
+    color: #666;
+  }
+}

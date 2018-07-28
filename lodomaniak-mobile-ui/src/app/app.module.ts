@@ -24,6 +24,7 @@ import { IceCreamShopCardLargeComponent } from "../pages/explore/ice-cream-shop-
 import { FlavorCardComponent } from "../pages/explore/flavor-card.component";
 import { FlavorComponent } from "../pages/explore/flavor.component";
 import { IceCreamShopComponent } from "../pages/explore/ice-cream-shop.component";
+import { FlavorCardLargeComponent } from "../pages/explore/flavor-card-large.component";
 
 export function jwtOptionsFactory(storage) {
   return {
@@ -64,7 +65,8 @@ export function jwtOptionsFactory(storage) {
     NavbarComponent,
     FlavorComponent,
     IceCreamShopCardLargeComponent,
-    IceCreamShopComponent
+    IceCreamShopComponent,
+    FlavorCardLargeComponent
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -79,7 +81,8 @@ export function jwtOptionsFactory(storage) {
     NavbarComponent,
     FlavorComponent,
     IceCreamShopCardLargeComponent,
-    IceCreamShopComponent
+    IceCreamShopComponent,
+    FlavorCardLargeComponent
   ],
   providers: [
     StatusBar,

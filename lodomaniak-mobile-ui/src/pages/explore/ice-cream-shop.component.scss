@@ -1,0 +1,91 @@
+@import "../../assets/styles/main";
+
+.ice-cream-shop {
+  -webkit-box-shadow: 0 0 0 rgba(0, 0, 0, 0) !important;
+  box-shadow: 0 0 0 rgba(0, 0, 0, 0) !important;
+
+  &-image {
+    object-fit: cover;
+    width: 100%;
+  }
+
+  &-content {
+    padding-top: 0 !important;
+    padding-left: 10px !important;
+    padding-right: 10px !important;
+    margin: 0.2em 0 !important;
+  }
+
+  &-details {
+    @include lodomaniak-flexbox-row;
+    width: 100%;
+    color: black;
+  }
+
+  &-address {
+    flex: 50%;
+    font-size: 1.25rem !important;
+  }
+
+  &-hours {
+    flex: 50%;
+  }
+
+  &-like-button {
+    z-index: 2;
+    position: absolute;
+    left: 2%;
+    top: 2%;
+    margin: auto;
+    min-width: 0.2em !important;
+    width: 2em !important;
+    height: 2em !important;
+    font-size: 1.4rem !important;
+  }
+
+  &-title {
+    font-weight: bold;
+    font-size: 2.5rem;
+  }
+
+  &-header {
+    padding-left: 10px;
+  }
+
+}
+
+.f-3 {
+  flex: 30%;
+}
+
+.f-7 {
+  flex: 70%;
+}
+
+.ice-cream-shop-card {
+  &-content {
+    @include lodomaniak-flexbox-column;
+  }
+
+  &-hour-row {
+    @include lodomaniak-flexbox-row;
+
+    &-left-column {
+      flex: 50%;
+      font-size: 1.25rem !important;
+    }
+
+    &-right-column {
+      flex: 50%;
+      font-size: 1.25rem !important;
+    }
+  }
+}
+
+ion-item.flavor-schedule-item {
+  padding-left: 0 !important;
+}
+
+ice-cream-shop-card-large.flavor-schedule-card {
+  width: 100%;
+}

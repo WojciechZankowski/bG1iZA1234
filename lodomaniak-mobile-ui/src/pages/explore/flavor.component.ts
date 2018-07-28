@@ -22,14 +22,13 @@ export class FlavorComponent implements OnInit {
 
   ngOnInit(): void {
     this.flavor = this.navParams.get('flavor');
-    this.flavorService.getTodaysSchedules(this.flavor.id.toString())
+    this.flavorService.getTodaysSchedules(this.flavor.id)
       .subscribe((flavorSchedules) => {
         this.flavorSchedules = flavorSchedules;
       });
   }
 
   itemSelected(flavorSchedule: FlavorSchedule): void {
-    console.log(flavorSchedule);
     this.navCtrl.push(IceCreamShopComponent, {
       iceCreamShop: flavorSchedule.iceCreamShop
     });

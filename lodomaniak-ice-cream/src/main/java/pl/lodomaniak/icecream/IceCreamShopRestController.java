@@ -5,6 +5,7 @@ import io.swagger.annotations.ApiOperation;
 import io.swagger.annotations.ApiResponse;
 import io.swagger.annotations.ApiResponses;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
@@ -45,6 +46,15 @@ public class IceCreamShopRestController {
     @GetMapping("/last")
     public ResponseEntity<?> getLatelyAdded(@RequestParam final String city) {
         return ResponseEntity.ok(iceCreamShopService.getLatelyAddedShops(city));
+    }
+
+    @ApiOperation(value = "Get list of Ice Cream Shops in the city with given name.")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "List of shops in the city and give name retrieved")})
+    @GetMapping
+    public ResponseEntity<?> getIceCreamShops(@RequestParam(required = false) final String name, @RequestParam final String city,
+            final Pageable pageable) {
+        return ResponseEntity.ok(iceCreamShopService.getIceCreamShops(name, city, pageable));
     }
 
     @ApiOperation(value = "Create Ice Cream Shop.")

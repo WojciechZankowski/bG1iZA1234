@@ -11,4 +11,7 @@ public interface FlavorRepository extends JpaRepository<FlavorEntity, Long> {
 
     Page<FlavorEntity> findAllByCompanyIdIn(List<Long> companyId, Pageable pageable);
 
+    Page<FlavorEntity> findAllByCompanyIdInAndNameContainingOrTagsContaining(List<Long> companyId, String flavorName,
+            String tagName, Pageable pageable);
+
 }

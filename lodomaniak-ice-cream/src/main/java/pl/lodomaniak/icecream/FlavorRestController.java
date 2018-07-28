@@ -35,6 +35,15 @@ public class FlavorRestController {
         this.flavorService = flavorService;
     }
 
+    @ApiOperation(value = "Ice Cream flavor for given city retrieval.")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Ice Cream flavor for city received")})
+    @GetMapping
+    public ResponseEntity<?> getFlavorsForCity(@RequestParam(required = false) final String name, @RequestParam final String city,
+            final Pageable pageable) throws UserNotFoundException {
+        return ResponseEntity.ok(flavorService.getFlavors(name, city, pageable));
+    }
+
     @ApiOperation(value = "Create Ice Cream flavor.")
     @ApiResponses(value = {
             @ApiResponse(code = 201, message = "Ice Cream flavor created")})
@@ -76,8 +85,8 @@ public class FlavorRestController {
             @ApiResponse(code = 200, message = "Today's flavor in the city retrieved")})
     @GetMapping("/schedule/today")
     public ResponseEntity<?> getScheduledTodayInCity(@RequestParam(required = false) final String city,
-            @RequestParam(required = false) final Long flavorId) {
-        return ResponseEntity.ok(flavorService.getAvailableFlavors(city, flavorId, LocalDate.now()));
+            @RequestParam(required = false) final Long flavorId, @RequestParam(required = false) final Long iceCreamShopId) {
+        return ResponseEntity.ok(flavorService.getAvailableFlavors(city, flavorId, iceCreamShopId, LocalDate.now()));
     }
 
     @ApiOperation(value = "Schedule Ice Cream flavor.")

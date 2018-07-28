@@ -2,6 +2,7 @@ package pl.lodomaniak.icecream;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Service;
@@ -16,6 +17,7 @@ import pl.lodomaniak.user.api.exception.UserNotFoundException;
 import java.time.LocalDate;
 import java.util.List;
 
+import static java.util.stream.Collectors.reducing;
 import static java.util.stream.Collectors.toList;
 
 @Service
@@ -52,16 +54,24 @@ public class DefaultFlavorService implements FlavorService {
     }
 
     @Override
-    public List<FlavorTO> getAvailableFlavors(final long iceCreamShopId) {
-        return null;
-    }
-
-    @Override
     public Page<FlavorTO> getFlavors(final User user, final Pageable pageable) throws UserNotFoundException {
         final List<Long> companiesId = companyService.getCompanies(user).stream()
                 .map(CompanyTO::getId)
                 .collect(toList());
         return flavorRepository.findAllByCompanyIdIn(companiesId, pageable)
+                .map(flavorMapper::map);
+    }
+
+    @Override
+    public Page<FlavorTO> getFlavors(final String name, final String city, final Pageable pageable) throws UserNotFoundException {
+        final List<Long> companyIds = iceCreamShopService.getIceCreamShops("", city, PageRequest.of(0, 2000))
+                .getContent().stream()
+                .map((shop) -> shop.getCompany().getId())
+                .collect(toList());
+
+        final String flavorName = name == null ? "" : name;
+
+        return flavorRepository.findAllByCompanyIdInAndNameContainingOrTagsContaining(companyIds, flavorName, flavorName, pageable)
                 .map(flavorMapper::map);
     }
 
@@ -87,9 +97,13 @@ public class DefaultFlavorService implements FlavorService {
     }
 
     @Override
-    public List<FlavorActivityTO> getAvailableFlavors(final String city, final Long flavorId, final LocalDate date) {
+    public List<FlavorActivityTO> getAvailableFlavors(final String city, final Long flavorId, final Long iceCreamShopId,
+            final LocalDate date) {
         if (flavorId != null) {
             return getSchedulesForFlavor(flavorId, date);
+        }
+        if (iceCreamShopId != null) {
+            return getSchedulesForIceCreamShop(iceCreamShopId, date);
         }
         return flavorActivityRepository.findAllByIceCreamShopAddressCityAndDate(city, date).stream()
                 .map(flavorActivityMapper::map)
@@ -98,6 +112,12 @@ public class DefaultFlavorService implements FlavorService {
 
     private List<FlavorActivityTO> getSchedulesForFlavor(final Long flavorId, final LocalDate date) {
         return flavorActivityRepository.findAllByFlavorIdAndDate(flavorId, date).stream()
+                .map(flavorActivityMapper::map)
+                .collect(toList());
+    }
+
+    private List<FlavorActivityTO> getSchedulesForIceCreamShop(final Long iceCreamShopId, final LocalDate date) {
+        return flavorActivityRepository.findAllByIceCreamShopIdAndDate(iceCreamShopId, date).stream()
                 .map(flavorActivityMapper::map)
                 .collect(toList());
     }

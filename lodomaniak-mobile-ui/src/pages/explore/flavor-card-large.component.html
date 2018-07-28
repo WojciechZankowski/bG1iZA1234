@@ -1,0 +1,20 @@
+<ion-card class="flavor-card-large">
+
+  <ion-card-content class="flavor-card-large">
+    <div class="flavor-card-large">
+
+      <div class="flavor-card-large-image">
+        <img *ngIf="flavor" class="card-image-header" src="{{getImg()}}"/>
+      </div>
+
+      <div class="flavor-card-large-content">
+        <div>
+          <span class="flavor-card-large-content-header">{{flavor.name}}</span>
+
+          <p class="flavor-address">{{flavor.company.name}}</p>
+        </div>
+      </div>
+    </div>
+  </ion-card-content>
+
+</ion-card>

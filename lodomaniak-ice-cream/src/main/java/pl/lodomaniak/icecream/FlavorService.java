@@ -16,9 +16,9 @@ public interface FlavorService {
 
     void updateFlavor(FlavorTO flavor);
 
-    List<FlavorTO> getAvailableFlavors(long iceCreamShopId);
-
     Page<FlavorTO> getFlavors(User user, Pageable pageable) throws UserNotFoundException;
+
+    Page<FlavorTO> getFlavors(String name, String city, Pageable pageable) throws UserNotFoundException;
 
     void scheduleFlavor(FlavorActivityTO flavorActivity);
 
@@ -26,6 +26,6 @@ public interface FlavorService {
 
     Page<FlavorActivityTO> getPlannedFlavors(final Pageable pageable, User user) throws UserNotFoundException;
 
-    List<FlavorActivityTO> getAvailableFlavors(String city, Long flavorId, LocalDate date);
+    List<FlavorActivityTO> getAvailableFlavors(String city, Long flavorId, Long iceCreamShopId, LocalDate date);
 
 }

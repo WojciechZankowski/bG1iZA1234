@@ -4,5 +4,42 @@
 </ion-header>
 
 <ion-content>
-  {{iceCreamShop}}
+  <div class="ice-cream-shop">
+    <div *ngIf="iceCreamShop">
+      <button class="ice-cream-shop-like-button" ion-button icon-only>
+        <ion-icon name="heart"></ion-icon>
+      </button>
+      <img class="ice-cream-shop-image" src="{{getImg()}}"/>
+    </div>
+
+    <ion-card-content class="ice-cream-shop-content">
+      <p><span class="ice-cream-shop-title">{{iceCreamShop ? iceCreamShop.company.name : ''}}</span></p>
+
+      <div class="ice-cream-shop-details">
+        <div class="ice-cream-shop-address">
+          <span>{{iceCreamShop.address.streetAddress}}</span><br/>
+          <span>{{iceCreamShop.address.zipCode}} {{iceCreamShop.address.city}}</span>
+        </div>
+        <div class="ice-cream-shop-hours">
+          <div class="ice-cream-shop-card-hour-row" *ngFor="let day of DAY_OF_WEEK">
+            <div class="ice-cream-shop-card-hour-row-left-column">{{day}}</div>
+            <div class="ice-cream-shop-card-hour-row-right-column">
+              {{iceCreamShop.openingHours[day].openHour}}-{{iceCreamShop.openingHours[day].closeHour}}
+            </div>
+          </div>
+        </div>
+      </div>
+    </ion-card-content>
+
+
+    <h3 class="ice-cream-shop-header">Dostępne smaki:</h3>
+    <ion-list>
+      <ion-item class="ice-cream-shop-schedule-item" *ngFor="let schedule of iceCreamShopSchedules"
+                (click)="itemSelected(schedule)">
+        <flavor-card-large class="ice-cream-shop-schedule-card" item-content
+                                   [flavor]="schedule.flavor">
+        </flavor-card-large>
+      </ion-item>
+    </ion-list>
+  </div>
 </ion-content>
