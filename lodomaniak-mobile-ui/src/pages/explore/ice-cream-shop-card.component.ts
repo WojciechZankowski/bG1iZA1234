@@ -1,6 +1,5 @@
 import { Component, Input } from "@angular/core";
 import { IceCreamShop } from "../../app/model/ice-cream-shop.model";
-import { FlavorComponent } from "./flavor.component";
 import { NavController } from "ionic-angular";
 import { IceCreamShopComponent } from "./ice-cream-shop.component";
 

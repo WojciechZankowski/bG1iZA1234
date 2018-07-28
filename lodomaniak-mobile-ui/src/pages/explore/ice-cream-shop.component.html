@@ -22,7 +22,7 @@
         </div>
         <div class="ice-cream-shop-hours">
           <div class="ice-cream-shop-card-hour-row" *ngFor="let day of DAY_OF_WEEK">
-            <div class="ice-cream-shop-card-hour-row-left-column">{{day}}</div>
+            <div class="ice-cream-shop-card-hour-row-left-column">{{TRANSLATIONS[day]}}</div>
             <div class="ice-cream-shop-card-hour-row-right-column">
               {{iceCreamShop.openingHours[day].openHour}}-{{iceCreamShop.openingHours[day].closeHour}}
             </div>
@@ -34,8 +34,7 @@
 
     <h3 class="ice-cream-shop-header">Dostępne smaki:</h3>
     <ion-list>
-      <ion-item class="ice-cream-shop-schedule-item" *ngFor="let schedule of iceCreamShopSchedules"
-                (click)="itemSelected(schedule)">
+      <ion-item class="ice-cream-shop-schedule-item" *ngFor="let schedule of iceCreamShopSchedules">
         <flavor-card-large class="ice-cream-shop-schedule-card" item-content
                                    [flavor]="schedule.flavor">
         </flavor-card-large>

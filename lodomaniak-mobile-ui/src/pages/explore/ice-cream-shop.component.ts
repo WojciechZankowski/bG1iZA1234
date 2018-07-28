@@ -1,10 +1,9 @@
-import { Component, OnInit } from "@angular/core";
+import { AfterViewInit, Component, OnInit } from "@angular/core";
 import { IceCreamShop } from "../../app/model/ice-cream-shop.model";
 import { FlavorService } from "../../app/services/flavor.service";
 import { NavController, NavParams } from "ionic-angular";
 import { FlavorSchedule } from "../../app/model/flavor-schedule.model";
 import { DayOfWeek } from "../../app/model/day-of-week.model";
-import { FlavorComponent } from "./flavor.component";
 
 @Component({
   selector: 'ice-cream-shop',
@@ -15,6 +14,16 @@ export class IceCreamShopComponent implements OnInit {
   public readonly DAY_OF_WEEK = Object.keys(DayOfWeek)
     .map(key => DayOfWeek[key])
     .filter(value => typeof value === 'string') as string[];
+
+  public readonly TRANSLATIONS = {
+    'MONDAY': 'Poniedziałek',
+    'TUESDAY': 'Wtorek',
+    'WEDNESDAY': 'Środa',
+    'THURSDAY': 'Czwartek',
+    'FRIDAY': 'Piątek',
+    'SATURDAY': 'Sobota',
+    'SUNDAY': 'Niedziela',
+  };
 
   public iceCreamShopSchedules: FlavorSchedule[] = [];
 
@@ -31,12 +40,6 @@ export class IceCreamShopComponent implements OnInit {
       .subscribe((iceCreamShopSchedules) => {
         this.iceCreamShopSchedules = iceCreamShopSchedules;
       });
-  }
-
-  itemSelected(flavorSchedule: FlavorSchedule): void {
-    this.navCtrl.push(FlavorComponent, {
-      flavor: flavorSchedule.flavor
-    });
   }
 
   getImg(): string {

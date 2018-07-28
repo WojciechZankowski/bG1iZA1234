@@ -5,6 +5,7 @@ import { HttpParams } from "@angular/common/http";
 import { Observable } from "rxjs/Observable";
 import { PageRequest } from "../model/page-request.model";
 import { Flavor } from "../model/flavor.model";
+import { Page } from "../model/page.model";
 
 export const FLAVOR_PATH = '/flavor';
 export const FLAVORS_SCHEDULE = '/flavor/schedule/today';
@@ -15,7 +16,7 @@ export class FlavorService {
   constructor(private apiService: ApiService) {
   }
 
-  getFlavors(name: string, city: string, page: PageRequest): Observable<Flavor[]> {
+  getFlavors(name: string, city: string, page: PageRequest): Observable<Page<Flavor>> {
     return this.apiService.get(FLAVOR_PATH, new HttpParams({
       fromObject: {
         name: name,

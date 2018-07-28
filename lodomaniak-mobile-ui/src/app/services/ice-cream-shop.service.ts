@@ -4,8 +4,7 @@ import { IceCreamShop } from "../model/ice-cream-shop.model";
 import { Observable } from "rxjs/Observable";
 import { HttpParams } from "@angular/common/http";
 import { PageRequest } from "../model/page-request.model";
-import { Flavor } from "../model/flavor.model";
-import { FLAVOR_PATH } from "./flavor.service";
+import { Page } from "../model/page.model";
 
 export const SHOPS_PATH = '/icecreamshop';
 export const LATELY_ADDED_PATH = '/icecreamshop/last';
@@ -17,7 +16,7 @@ export class IceCreamShopService {
   constructor(private apiService: ApiService) {
   }
 
-  getIceCreamShops(name: string, city: string, page: PageRequest): Observable<Flavor[]> {
+  getIceCreamShops(name: string, city: string, page: PageRequest): Observable<Page<IceCreamShop>> {
     return this.apiService.get(SHOPS_PATH, new HttpParams({
       fromObject: {
         name: name,

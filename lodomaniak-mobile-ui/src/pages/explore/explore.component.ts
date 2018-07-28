@@ -5,6 +5,8 @@ import { IceCreamShopService } from "../../app/services/ice-cream-shop.service";
 import { IceCreamShop } from "../../app/model/ice-cream-shop.model";
 import { FlavorService } from "../../app/services/flavor.service";
 import { FlavorSchedule } from "../../app/model/flavor-schedule.model";
+import { IceCreamShopsComponent } from "./ice-cream-shops.component";
+import { FlavorsComponent } from "./flavors.component";
 
 @Component({
   selector: 'lodomaniak-explore',
@@ -35,6 +37,14 @@ export class ExplorePage implements OnInit{
     this.fb.login(['public_profile', 'email'])
       .then((res: FacebookLoginResponse) => console.log('Logged into Facebook!', res))
       .catch(e => console.log('Error logging into Facebook', e));
+  }
+
+  navigateToShops(): void {
+    this.navCtrl.push(IceCreamShopsComponent);
+  }
+
+  navigateToFlavors(): void {
+    this.navCtrl.push(FlavorsComponent);
   }
 
 }

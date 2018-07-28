@@ -1,0 +1,25 @@
+<ion-header>
+  <ion-navbar>
+  </ion-navbar>
+  <ion-searchbar
+    #searchbar
+    class="navbar-search"
+    placeholder="Szukaj"
+    [(ngModel)]="searchInput"
+    [showCancelButton]="shouldShowCancel"
+    (ionInput)="onInput()"
+    (ionCancel)="onCancel()">
+  </ion-searchbar>
+</ion-header>
+
+<ion-content>
+  <ion-list>
+    <ion-item *ngFor="let shop of shops">
+      <ice-cream-shop-card-large item-content [iceCreamShop]="shop"></ice-cream-shop-card-large>
+    </ion-item>
+  </ion-list>
+
+  <ion-infinite-scroll (ionInfinite)="doInfinite($event)" *ngIf="page < totalPage">
+    <ion-infinite-scroll-content></ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+</ion-content>

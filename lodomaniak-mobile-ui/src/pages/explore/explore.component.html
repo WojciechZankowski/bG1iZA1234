@@ -10,10 +10,10 @@
     <ion-grid no-padding>
       <ion-row>
         <ion-col col-4>
-          <browse-card title="Lodziarnie" imageUrl="assets/imgs/icecreamshop.jpeg"></browse-card>
+          <browse-card (click)="navigateToShops()" title="Lodziarnie" imageUrl="assets/imgs/icecreamshop.jpeg"></browse-card>
         </ion-col>
         <ion-col col-4>
-          <browse-card title="Smaki" imageUrl="assets/imgs/icecream.jpeg"></browse-card>
+          <browse-card (click)="navigateToFlavors()" title="Smaki" imageUrl="assets/imgs/icecream.jpeg"></browse-card>
         </ion-col>
       </ion-row>
     </ion-grid>
