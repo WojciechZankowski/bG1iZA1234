@@ -24,6 +24,9 @@
         <module>lodomaniak-image</module>
         <module>lodomaniak-image-api</module>
         <module>lodomaniak-mobile-ui</module>
+        <module>lodomaniak-rating</module>
+        <module>lodomaniak-rating-api</module>
+        <module>lodomaniak-rating-spi</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -128,6 +131,24 @@
             <dependency>
                 <groupId>pl.lodomaniak</groupId>
                 <artifactId>image-api</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>pl.lodomaniak</groupId>
+                <artifactId>rating</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>pl.lodomaniak</groupId>
+                <artifactId>rating-api</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>pl.lodomaniak</groupId>
+                <artifactId>rating-spi</artifactId>
                 <version>1.0.0-SNAPSHOT</version>
             </dependency>
 
