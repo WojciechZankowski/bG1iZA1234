@@ -8,6 +8,7 @@ import { Page } from "../model/page.model";
 
 export const SHOPS_PATH = '/icecreamshop';
 export const LATELY_ADDED_PATH = '/icecreamshop/last';
+export const SHOPS_TOP_PATH = '/icecreamshop/top';
 export const CITIES_PATH = '/icecreamshop/cities';
 
 @Injectable()
@@ -33,6 +34,10 @@ export class IceCreamShopService {
 
   public getLatelyAdded(city: string): Observable<IceCreamShop[]> {
     return this.apiService.get(LATELY_ADDED_PATH, new HttpParams({ fromObject: { city: city } }));
+  }
+
+  public getTopIceCreamShops(city: string): Observable<IceCreamShop[]> {
+    return this.apiService.get(SHOPS_TOP_PATH, new HttpParams({ fromObject: { city: city } }));
   }
 
 }

@@ -1,15 +1,20 @@
 package pl.lodomaniak.rating;
 
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.data.domain.PageRequest;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import pl.lodomaniak.rating.api.RatingTO;
 import pl.lodomaniak.rating.api.RatingType;
+import pl.lodomaniak.rating.model.RatingEntity;
 import pl.lodomaniak.user.api.AccountTO;
 import pl.lodomaniak.user.api.exception.UserNotFoundException;
 import pl.lodomaniak.user.spi.UserService;
 
 import java.util.List;
+
+import static java.util.stream.Collectors.toList;
 
 @Service
 public class DefaultRatingService implements RatingService {
@@ -27,20 +32,32 @@ public class DefaultRatingService implements RatingService {
     }
 
     @Override
-    public void addRating(final RatingTO rating, final User user) throws UserNotFoundException {
+    public RatingTO getRating(final RatingType ratingType, final Long ratedObjectId, final User user)
+            throws UserNotFoundException {
         final AccountTO account = userService.loadUserByUsername(user.getUsername());
-        ratingRepository.save(ratingMapper.map(rating, account.getId()));
+        return ratingRepository.findOneByRatingTypeAndRatedObjectIdAndUserId(ratingType, ratedObjectId, account.getId())
+                .map(ratingMapper::map)
+                .orElse(null);
     }
 
     @Override
-    public void removeRating(final RatingTO rating, final User user) throws UserNotFoundException {
+    public RatingTO addRating(final RatingTO rating, final User user) throws UserNotFoundException {
         final AccountTO account = userService.loadUserByUsername(user.getUsername());
-        ratingRepository.delete(ratingMapper.map(rating, account.getId()));
+        return ratingMapper.map(ratingRepository.save(ratingMapper.map(rating, account.getId())));
+    }
+
+    @Transactional
+    @Override
+    public void removeRating(final Long ratingId, final User user) throws UserNotFoundException {
+        final AccountTO account = userService.loadUserByUsername(user.getUsername());
+        ratingRepository.deleteByIdAndUserId(ratingId, account.getId());
     }
 
     @Override
     public List<RatingTO> getMostPopular(final RatingType ratingType, final List<Long> objectIds) {
-        return null;
+        return ratingRepository.findTopByRatedObjectId(objectIds, ratingType, PageRequest.of(0, 10)).stream()
+                .map(ratingMapper::map)
+                .collect(toList());
     }
 
 }

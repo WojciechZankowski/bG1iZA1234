@@ -1,0 +1,38 @@
+<ion-content>
+
+  <div class="ranking-row">
+    <h3 class="ranking-header">Najpopularniejsze lodziarnie w twoim mieście</h3>
+
+    <ion-scroll scrollX="true" direction="x">
+      <ice-cream-shop-card class="ice-cream-shops" [iceCreamShop]="iceCreamShop"
+                           *ngFor="let iceCreamShop of topIceCreamShops"></ice-cream-shop-card>
+    </ion-scroll>
+  </div>
+
+  <div class="ranking-row">
+    <h3 class="ranking-header">Najpopularniejsze smaki w twoim mieście</h3>
+
+    <ion-scroll scrollX="true" direction="x">
+      <flavor-card *ngFor="let flavor of topFlavors" [flavor]="flavor"></flavor-card>
+    </ion-scroll>
+  </div>
+
+  <div class="ranking-row">
+    <h3 class="ranking-header">Najpopularniejsze lodziarnie: Kraków</h3>
+
+    <ion-scroll scrollX="true" direction="x">
+      <ice-cream-shop-card class="ice-cream-shops" [iceCreamShop]="iceCreamShop"
+                           *ngFor="let iceCreamShop of topKrakow"></ice-cream-shop-card>
+    </ion-scroll>
+  </div>
+
+  <div class="ranking-row">
+    <h3 class="ranking-header">Najpopularniejsze lodziarnie: Wrocław</h3>
+
+    <ion-scroll scrollX="true" direction="x">
+      <ice-cream-shop-card class="ice-cream-shops" [iceCreamShop]="iceCreamShop"
+                           *ngFor="let iceCreamShop of topWroclaw"></ice-cream-shop-card>
+    </ion-scroll>
+  </div>
+
+</ion-content>

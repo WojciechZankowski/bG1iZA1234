@@ -40,6 +40,11 @@
             <artifactId>image</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>pl.lodomaniak</groupId>
+            <artifactId>rating</artifactId>
+        </dependency>
+
         <!-- Spring Dependencies -->
 
         <dependency>

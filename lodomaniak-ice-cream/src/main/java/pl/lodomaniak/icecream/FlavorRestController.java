@@ -71,6 +71,14 @@ public class FlavorRestController {
         return ResponseEntity.ok(flavorService.getFlavors(user, pageable));
     }
 
+    @ApiOperation(value = "Ice Cream top flavors retrieval.")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Ice Cream top flavors received")})
+    @GetMapping("/top")
+    public ResponseEntity<?> getFlavors(@RequestParam final String city) {
+        return ResponseEntity.ok(flavorService.getTopFlavors(city));
+    }
+
     @ApiOperation(value = "Scheduled Ice Cream flavors retrieval.")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Scheduled Ice Cream flavors received")})

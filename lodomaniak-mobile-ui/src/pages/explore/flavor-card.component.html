@@ -1,17 +1,14 @@
-<ion-card *ngIf="flavorSchedule" (click)="onClick()" class="flavor-card">
+<ion-card *ngIf="flavor" (click)="onClick()" class="flavor-schedule-card">
 
-  <div *ngIf="flavorSchedule">
-    <button class="flavor-card-like-button" ion-button icon-only>
-      <ion-icon name="heart"></ion-icon>
-    </button>
+  <div *ngIf="flavor">
+    <like class="flavor-card-like-button" [ratedObjectId]="flavor.id" [ratingType]="RATING_TYPE"></like>
     <img class="flavor-card-image" src="{{getImg()}}"/>
   </div>
 
   <ion-card-content class="flavor-card-content">
-    <p><b>{{flavorSchedule ? flavorSchedule.flavor.name : ''}}</b></p>
+    <p><b>{{flavor ? flavor.name : ''}}</b></p>
 
-    <p class="flavor-card-address">{{flavorSchedule ? flavorSchedule.flavor.company.name : ''}}</p>
-    <p class="flavor-card-address">{{flavorSchedule ? flavorSchedule.iceCreamShop.address.streetAddress : ''}}</p>
+    <p class="flavor-card-address">{{flavor ? flavor.company.name : ''}}</p>
   </ion-card-content>
 
 </ion-card>

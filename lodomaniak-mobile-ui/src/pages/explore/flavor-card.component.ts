@@ -1,7 +1,8 @@
 import { Component, Input } from "@angular/core";
-import { FlavorSchedule } from "../../app/model/flavor-schedule.model";
-import { NavController } from "ionic-angular";
 import { FlavorComponent } from "./flavor.component";
+import { RatingType } from "../../app/model/rating-type.model";
+import { NavController } from "ionic-angular";
+import { Flavor } from "../../app/model/flavor.model";
 
 @Component({
   selector: 'flavor-card',
@@ -10,18 +11,20 @@ import { FlavorComponent } from "./flavor.component";
 export class FlavorCardComponent {
 
   @Input()
-  public flavorSchedule: FlavorSchedule;
+  public flavor: Flavor;
+
+  public readonly RATING_TYPE = RatingType.FLAVOR;
 
   constructor(public navCtrl: NavController) {
   }
 
   getImg(): string {
-    return this.flavorSchedule ? 'assets/imgs/content/' + this.flavorSchedule.flavor.imageUrl : '';
+    return this.flavor ? 'assets/imgs/content/' + this.flavor.imageUrl : '';
   }
 
   onClick(): void {
     this.navCtrl.push(FlavorComponent, {
-      flavor: this.flavorSchedule.flavor
+      flavor: this.flavor
     });
   }
 

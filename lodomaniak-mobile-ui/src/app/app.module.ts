@@ -21,18 +21,22 @@ import { NavbarComponent } from "../pages/explore/navbar.component";
 import { SharedModule } from "./shared/shared.module";
 import { IceCreamShopCardComponent } from "../pages/explore/ice-cream-shop-card.component";
 import { IceCreamShopCardLargeComponent } from "../pages/explore/ice-cream-shop-card-large.component";
-import { FlavorCardComponent } from "../pages/explore/flavor-card.component";
+import { FlavorScheduleCardComponent } from "../pages/explore/flavor-schedule-card.component";
 import { FlavorComponent } from "../pages/explore/flavor.component";
 import { IceCreamShopComponent } from "../pages/explore/ice-cream-shop.component";
 import { FlavorCardLargeComponent } from "../pages/explore/flavor-card-large.component";
 import { IceCreamShopsComponent } from "../pages/explore/ice-cream-shops.component";
 import { FlavorsComponent } from "../pages/explore/flavors.component";
+import { AuthService } from "./services/auth.service";
+import { LikeComponent } from "../pages/like/like.component";
+import { FlavorCardComponent } from "../pages/explore/flavor-card.component";
 
 export function jwtOptionsFactory(storage) {
   return {
     tokenGetter: () => {
-      return storage.get('access_token');
-    }
+      return storage.get(AuthService.TOKEN_KEY);
+    },
+    whitelistedDomains: ['10.0.2.2:9060']
   }
 }
 
@@ -62,7 +66,7 @@ export function jwtOptionsFactory(storage) {
     RankingPage,
     TabsPage,
     IceCreamShopCardComponent,
-    FlavorCardComponent,
+    FlavorScheduleCardComponent,
     BrowseCardComponent,
     NavbarComponent,
     FlavorComponent,
@@ -70,7 +74,9 @@ export function jwtOptionsFactory(storage) {
     IceCreamShopComponent,
     FlavorCardLargeComponent,
     IceCreamShopsComponent,
-    FlavorsComponent
+    FlavorsComponent,
+    LikeComponent,
+    FlavorCardComponent
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -80,7 +86,7 @@ export function jwtOptionsFactory(storage) {
     RankingPage,
     TabsPage,
     IceCreamShopCardComponent,
-    FlavorCardComponent,
+    FlavorScheduleCardComponent,
     BrowseCardComponent,
     NavbarComponent,
     FlavorComponent,
@@ -88,7 +94,9 @@ export function jwtOptionsFactory(storage) {
     IceCreamShopComponent,
     FlavorCardLargeComponent,
     IceCreamShopsComponent,
-    FlavorsComponent
+    FlavorsComponent,
+    LikeComponent,
+    FlavorCardComponent
   ],
   providers: [
     StatusBar,

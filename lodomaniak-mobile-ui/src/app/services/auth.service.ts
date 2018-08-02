@@ -10,7 +10,7 @@ export const AUTH_PATH: string = '/authenticate/social/facebook';
 @Injectable()
 export class AuthService {
 
-  private readonly TOKEN_KEY: string = 'authenticationToken';
+  public static readonly TOKEN_KEY: string = 'access_token';
 
   constructor(private apiService: ApiService,
               private storage: Storage) {
@@ -31,11 +31,11 @@ export class AuthService {
   }
 
   private storeAuthenticationToken(jwt: string) {
-    this.storage.set(this.TOKEN_KEY, jwt);
+    this.storage.set(AuthService.TOKEN_KEY, jwt);
   }
 
   logout(): void {
-    this.storage.remove(this.TOKEN_KEY);
+    this.storage.remove(AuthService.TOKEN_KEY);
   }
 
 }

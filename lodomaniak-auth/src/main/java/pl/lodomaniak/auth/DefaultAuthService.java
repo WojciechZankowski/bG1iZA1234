@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.Authentication;
+import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.stereotype.Service;
 import pl.lodomaniak.auth.api.FacebookLoginTO;
@@ -24,6 +25,11 @@ import pl.lodomaniak.user.api.AccountTOBuilder;
 import pl.lodomaniak.user.api.exception.UserAlreadyExistsException;
 import pl.lodomaniak.user.api.exception.UserNotFoundException;
 import pl.lodomaniak.user.spi.UserService;
+
+import java.util.List;
+import java.util.stream.Collectors;
+
+import static java.util.stream.Collectors.toList;
 
 @Service
 public class DefaultAuthService implements AuthService {
@@ -60,8 +66,12 @@ public class DefaultAuthService implements AuthService {
         final User facebookUser = getFacebookUser(login);
         final AccountTO user = fetchUser(facebookUser);
 
+        final List<SimpleGrantedAuthority> authorityList = user.getAuthorities().stream()
+                .map(SimpleGrantedAuthority::new)
+                .collect(toList());
+
         final UsernamePasswordAuthenticationToken authenticationToken = new UsernamePasswordAuthenticationToken(
-                user.getLogin(), facebookUser.getId());
+                user.getLogin(), facebookUser.getId(), authorityList);
         SecurityContextHolder.getContext().setAuthentication(authenticationToken);
 
         return new JwtTokenTOBuilder()

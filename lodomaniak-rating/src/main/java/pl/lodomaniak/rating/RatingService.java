@@ -10,9 +10,11 @@ import java.util.List;
 
 public interface RatingService extends RatingExternalService {
 
-    void addRating(RatingTO rating, User user) throws UserNotFoundException;
+    RatingTO getRating(RatingType ratingType, Long ratedObjectId, User user) throws UserNotFoundException;
 
-    void removeRating(RatingTO rating, User user) throws UserNotFoundException;
+    RatingTO addRating(RatingTO rating, User user) throws UserNotFoundException;
+
+    void removeRating(Long ratingId, User user) throws UserNotFoundException;
 
     List<RatingTO> getMostPopular(RatingType ratingType, List<Long> objectIds);
 

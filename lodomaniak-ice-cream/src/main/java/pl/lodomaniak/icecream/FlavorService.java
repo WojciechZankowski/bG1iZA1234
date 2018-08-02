@@ -28,4 +28,6 @@ public interface FlavorService {
 
     List<FlavorActivityTO> getAvailableFlavors(String city, Long flavorId, Long iceCreamShopId, LocalDate date);
 
+    List<FlavorTO> getTopFlavors(String city);
+
 }

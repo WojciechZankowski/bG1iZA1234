@@ -6,9 +6,7 @@
 <ion-content>
   <div class="ice-cream-shop">
     <div *ngIf="iceCreamShop">
-      <button class="ice-cream-shop-like-button" ion-button icon-only>
-        <ion-icon name="heart"></ion-icon>
-      </button>
+      <like class="flavor-card-like-button" [ratedObjectId]="iceCreamShop.id" [ratingType]="RATING_TYPE"></like>
       <img class="ice-cream-shop-image" src="{{getImg()}}"/>
     </div>
 

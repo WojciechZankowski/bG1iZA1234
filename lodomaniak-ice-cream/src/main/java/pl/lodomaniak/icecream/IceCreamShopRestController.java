@@ -83,4 +83,12 @@ public class IceCreamShopRestController {
         return ResponseEntity.ok(iceCreamShopService.getIceCreamShops(user));
     }
 
+    @ApiOperation(value = "Top Ice Cream Shops retrieval.")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Top Ice Cream Shops received")})
+    @GetMapping("/top")
+    public ResponseEntity<?> getIceCreamShops(@RequestParam final String city) {
+        return ResponseEntity.ok(iceCreamShopService.getTopIceCreamShops(city));
+    }
+
 }

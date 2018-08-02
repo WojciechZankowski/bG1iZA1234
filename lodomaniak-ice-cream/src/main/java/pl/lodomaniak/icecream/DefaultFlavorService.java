@@ -10,8 +10,12 @@ import pl.lodomaniak.icecream.api.CompanyTO;
 import pl.lodomaniak.icecream.api.FlavorActivityTO;
 import pl.lodomaniak.icecream.api.FlavorTO;
 import pl.lodomaniak.icecream.api.IceCreamShopTO;
+import pl.lodomaniak.icecream.entity.FlavorEntity;
 import pl.lodomaniak.icecream.mapper.FlavorActivityMapper;
 import pl.lodomaniak.icecream.mapper.FlavorMapper;
+import pl.lodomaniak.rating.api.RatingTO;
+import pl.lodomaniak.rating.api.RatingType;
+import pl.lodomaniak.rating.spi.RatingExternalService;
 import pl.lodomaniak.user.api.exception.UserNotFoundException;
 
 import java.time.LocalDate;
@@ -29,18 +33,20 @@ public class DefaultFlavorService implements FlavorService {
     private final FlavorActivityMapper flavorActivityMapper;
     private final CompanyService companyService;
     private final IceCreamShopService iceCreamShopService;
+    private final RatingExternalService ratingService;
 
     @Autowired
     public DefaultFlavorService(final FlavorActivityRepository flavorActivityRepository,
             final FlavorRepository flavorRepository, final FlavorMapper flavorMapper,
             final FlavorActivityMapper flavorActivityMapper, final CompanyService companyService,
-            final IceCreamShopService iceCreamShopService) {
+            final IceCreamShopService iceCreamShopService, final RatingExternalService ratingService) {
         this.flavorActivityRepository = flavorActivityRepository;
         this.flavorRepository = flavorRepository;
         this.flavorMapper = flavorMapper;
         this.flavorActivityMapper = flavorActivityMapper;
         this.companyService = companyService;
         this.iceCreamShopService = iceCreamShopService;
+        this.ratingService = ratingService;
     }
 
     @Override
@@ -63,7 +69,7 @@ public class DefaultFlavorService implements FlavorService {
     }
 
     @Override
-    public Page<FlavorTO> getFlavors(final String name, final String city, final Pageable pageable) throws UserNotFoundException {
+    public Page<FlavorTO> getFlavors(final String name, final String city, final Pageable pageable) {
         final List<Long> companyIds = iceCreamShopService.getIceCreamShops("", city, PageRequest.of(0, 2000))
                 .getContent().stream()
                 .map((shop) -> shop.getCompany().getId())
@@ -73,6 +79,26 @@ public class DefaultFlavorService implements FlavorService {
 
         return flavorRepository.findAllByCompanyIdInAndNameContainingOrTagsContaining(companyIds, flavorName, flavorName, pageable)
                 .map(flavorMapper::map);
+    }
+
+    @Override
+    public List<FlavorTO> getTopFlavors(final String city) {
+        final List<Long> companyIds = iceCreamShopService.getIceCreamShops("", city, PageRequest.of(0, 2000))
+                .getContent().stream()
+                .map((shop) -> shop.getCompany().getId())
+                .collect(toList());
+
+        final List<Long> flavorIds = flavorRepository.findAllByCompanyIdIn(companyIds).stream()
+                .map(FlavorEntity::getId)
+                .collect(toList());
+
+        final List<Long> topFlavorIds = ratingService.getMostPopular(RatingType.FLAVOR, flavorIds).stream()
+                .map(RatingTO::getRatedObjectId)
+                .collect(toList());
+
+        return flavorRepository.findAllById(topFlavorIds).stream()
+                .map(flavorMapper::map)
+                .collect(toList());
     }
 
     @Override

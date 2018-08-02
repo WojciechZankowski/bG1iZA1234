@@ -11,7 +11,8 @@
       item-content
       [(ngModel)]="selectedCity"
       [items]="cities"
-      [canSearch]="true">
+      [canSearch]="true"
+      (onChange)="cityChange($event)">
       <ng-template selectSearchablePlaceholderTemplate>
         <span class="city-select-placeholder">Miasto</span>
       </ng-template>

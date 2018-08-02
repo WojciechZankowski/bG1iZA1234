@@ -1,15 +1,18 @@
-import { AfterViewInit, Component, OnInit } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { IceCreamShop } from "../../app/model/ice-cream-shop.model";
 import { FlavorService } from "../../app/services/flavor.service";
 import { NavController, NavParams } from "ionic-angular";
 import { FlavorSchedule } from "../../app/model/flavor-schedule.model";
 import { DayOfWeek } from "../../app/model/day-of-week.model";
+import { RatingType } from "../../app/model/rating-type.model";
 
 @Component({
   selector: 'ice-cream-shop',
   templateUrl: './ice-cream-shop.component.html'
 })
 export class IceCreamShopComponent implements OnInit {
+
+  public readonly RATING_TYPE = RatingType.ICE_CREAM_SHOP;
 
   public readonly DAY_OF_WEEK = Object.keys(DayOfWeek)
     .map(key => DayOfWeek[key])

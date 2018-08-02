@@ -15,4 +15,6 @@ public interface IceCreamShopRepository extends JpaRepository<IceCreamShopEntity
 
     Page<IceCreamShopEntity> findByAddressCityAndCompanyNameContaining(String city, String company, Pageable pageable);
 
+    List<IceCreamShopEntity> findByAddressCity(String city);
+
 }

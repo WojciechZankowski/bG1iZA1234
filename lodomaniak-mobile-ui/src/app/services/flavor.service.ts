@@ -8,6 +8,7 @@ import { Flavor } from "../model/flavor.model";
 import { Page } from "../model/page.model";
 
 export const FLAVOR_PATH = '/flavor';
+export const FLAVOR_TOP_PATH = '/flavor/top';
 export const FLAVORS_SCHEDULE = '/flavor/schedule/today';
 
 @Injectable()
@@ -37,6 +38,10 @@ export class FlavorService {
 
   getTodaysSchedulesForIceCreamShop(iceCreamShopId: number): Observable<FlavorSchedule[]> {
     return this.apiService.get(FLAVORS_SCHEDULE, new HttpParams({ fromObject: { iceCreamShopId: iceCreamShopId.toString() } }))
+  }
+
+  getTopFlavors(city: string): Observable<Flavor[]> {
+    return this.apiService.get(FLAVOR_TOP_PATH, new HttpParams({ fromObject: { city: city } }));
   }
 
 }

@@ -1,0 +1,19 @@
+@import "../../assets/styles/main";
+
+.ranking {
+  &-row {
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+  }
+
+  &-header {
+    margin-bottom: 0 !important;
+    margin-left: 12px;
+  }
+}
+
+flavor-card {
+  width: 150px !important;
+  display: inline-block;
+}
+

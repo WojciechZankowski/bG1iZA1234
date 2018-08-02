@@ -30,6 +30,11 @@
             <artifactId>user-spi</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>pl.lodomaniak</groupId>
+            <artifactId>rating-spi</artifactId>
+        </dependency>
+
         <!-- Spring Dependencies -->
 
         <dependency>

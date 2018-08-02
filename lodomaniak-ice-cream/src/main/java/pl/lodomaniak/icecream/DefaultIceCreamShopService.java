@@ -10,10 +10,12 @@ import org.springframework.stereotype.Service;
 import pl.lodomaniak.icecream.api.CompanyTO;
 import pl.lodomaniak.icecream.api.IceCreamShopTO;
 import pl.lodomaniak.icecream.entity.AddressEntity;
-import pl.lodomaniak.icecream.entity.CompanyEntity;
 import pl.lodomaniak.icecream.entity.IceCreamShopEntity;
 import pl.lodomaniak.icecream.entity.OpeningHoursRangeEntity;
 import pl.lodomaniak.icecream.mapper.IceCreamShopMapper;
+import pl.lodomaniak.rating.api.RatingTO;
+import pl.lodomaniak.rating.api.RatingType;
+import pl.lodomaniak.rating.spi.RatingExternalService;
 import pl.lodomaniak.user.api.exception.UserNotFoundException;
 
 import java.time.DayOfWeek;
@@ -31,18 +33,20 @@ public class DefaultIceCreamShopService implements IceCreamShopService {
     private final IceCreamShopRepository iceCreamShopRepository;
     private final IceCreamShopMapper iceCreamShopMapper;
     private final CompanyService companyService;
+    private final RatingExternalService ratingService;
 
     @Autowired
     public DefaultIceCreamShopService(final AddressRepository addressRepository,
             final CompanyRepository companyRepository, final IceCreamShopRepository iceCreamShopRepository,
             final IceCreamShopMapper iceCreamShopMapper, final OpeningHoursRangeRepository rangeRepository,
-            final CompanyService companyService) {
+            final CompanyService companyService, final RatingExternalService ratingService) {
         this.addressRepository = addressRepository;
         this.companyRepository = companyRepository;
         this.iceCreamShopRepository = iceCreamShopRepository;
         this.iceCreamShopMapper = iceCreamShopMapper;
         this.rangeRepository = rangeRepository;
         this.companyService = companyService;
+        this.ratingService = ratingService;
     }
 
     @Override
@@ -102,4 +106,18 @@ public class DefaultIceCreamShopService implements IceCreamShopService {
                 .map(iceCreamShopMapper::map);
     }
 
+    @Override
+    public List<IceCreamShopTO> getTopIceCreamShops(final String city) {
+        final List<Long> iceCreamShopIds = iceCreamShopRepository.findByAddressCity(city).stream()
+                .map(IceCreamShopEntity::getId)
+                .collect(toList());
+
+        final List<Long> topIceCreamShopIds = ratingService.getMostPopular(RatingType.ICE_CREAM_SHOP, iceCreamShopIds).stream()
+                .map(RatingTO::getRatedObjectId)
+                .collect(toList());
+
+        return iceCreamShopRepository.findAllById(topIceCreamShopIds).stream()
+                .map(iceCreamShopMapper::map)
+                .collect(toList());
+    }
 }

@@ -21,4 +21,6 @@ public interface IceCreamShopService {
     List<IceCreamShopTO> getIceCreamShops(User user) throws UserNotFoundException;
 
     Page<IceCreamShopTO> getIceCreamShops(String company, String city, Pageable pageable);
+
+    List<IceCreamShopTO> getTopIceCreamShops(String city);
 }

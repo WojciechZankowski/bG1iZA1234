@@ -1,5 +1,5 @@
 import { Component, OnInit } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { Events, NavController } from 'ionic-angular';
 import { Facebook, FacebookLoginResponse } from '@ionic-native/facebook';
 import { IceCreamShopService } from "../../app/services/ice-cream-shop.service";
 import { IceCreamShop } from "../../app/model/ice-cream-shop.model";
@@ -7,6 +7,7 @@ import { FlavorService } from "../../app/services/flavor.service";
 import { FlavorSchedule } from "../../app/model/flavor-schedule.model";
 import { IceCreamShopsComponent } from "./ice-cream-shops.component";
 import { FlavorsComponent } from "./flavors.component";
+import { CityService } from "../../app/services/city.service";
 
 @Component({
   selector: 'lodomaniak-explore',
@@ -20,15 +21,27 @@ export class ExplorePage implements OnInit{
   constructor(public navCtrl: NavController,
               private fb: Facebook,
               private iceCreamService: IceCreamShopService,
-              private flavorService: FlavorService) {
+              private cityService: CityService,
+              private flavorService: FlavorService,
+              public events: Events) {
+    this.events.subscribe(CityService.CITY_KEY, (city) => {
+      this.fetchData(city);
+    });
   }
 
   ngOnInit(): void {
-    this.iceCreamService.getLatelyAdded('Wrocław').subscribe((iceCreamShops) => {
+    this.cityService.getCity()
+      .then((city) => {
+        this.fetchData(city);
+      })
+  }
+
+  fetchData(city: string): void {
+    this.iceCreamService.getLatelyAdded(city).subscribe((iceCreamShops) => {
       this.iceCreamShops = iceCreamShops;
     });
 
-    this.flavorService.getTodaysFlavors('Wrocław').subscribe((flavorsSchedules) => {
+    this.flavorService.getTodaysFlavors(city).subscribe((flavorsSchedules) => {
       this.flavorsSchedules = flavorsSchedules;
     });
   }
@@ -37,6 +50,10 @@ export class ExplorePage implements OnInit{
     this.fb.login(['public_profile', 'email'])
       .then((res: FacebookLoginResponse) => console.log('Logged into Facebook!', res))
       .catch(e => console.log('Error logging into Facebook', e));
+  }
+
+  onCityChange(event: string): void {
+    this.fetchData(event);
   }
 
   navigateToShops(): void {
