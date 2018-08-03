@@ -31,6 +31,8 @@ import { AuthService } from "./services/auth.service";
 import { LikeComponent } from "../pages/like/like.component";
 import { FlavorCardComponent } from "../pages/explore/flavor-card.component";
 import { FlavorTodayComponent } from "../pages/explore/flavor-today.component";
+import { FollowComponent } from "../pages/follow/follow.component";
+import { LocalNotifications } from "@ionic-native/local-notifications";
 
 export function jwtOptionsFactory(storage) {
   return {
@@ -78,7 +80,8 @@ export function jwtOptionsFactory(storage) {
     FlavorsComponent,
     LikeComponent,
     FlavorCardComponent,
-    FlavorTodayComponent
+    FlavorTodayComponent,
+    FollowComponent
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -99,13 +102,15 @@ export function jwtOptionsFactory(storage) {
     FlavorsComponent,
     LikeComponent,
     FlavorCardComponent,
-    FlavorTodayComponent
+    FlavorTodayComponent,
+    FollowComponent
   ],
   providers: [
     StatusBar,
     SplashScreen,
     { provide: ErrorHandler, useClass: IonicErrorHandler },
-    Facebook
+    Facebook,
+    LocalNotifications
   ],
 })
 export class AppModule {

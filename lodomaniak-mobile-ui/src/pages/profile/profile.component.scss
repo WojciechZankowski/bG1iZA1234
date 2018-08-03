@@ -7,11 +7,14 @@ $primary-color-light: #D7CCC8;
 
   &-container {
     display: flex;
-    padding-top: 25%;
     flex-direction: column;
     flex: 1 1 100%;
     justify-content: center;
     align-items: center;
+  }
+
+  &-container-padded {
+    padding-top: 25%;
   }
 
   &-button {
@@ -21,11 +24,30 @@ $primary-color-light: #D7CCC8;
     margin: 0.4rem 0.2rem !important;
     padding: 0 1em !important;
   }
+
+  &-row {
+    margin-left: 0.5em;
+    margin-right: 0.5em;
+  }
+
+  &-header {
+    margin-bottom: 0 !important;
+    margin-left: 12px;
+  }
+
+  &-empty {
+    margin: 1rem;
+  }
 }
 
 ion-icon.lock {
   font-size: 30rem;
   color: #FFF;
+}
+
+ion-icon.person {
+  font-size: 30rem;
+  color: $primary-color;
 }
 
 

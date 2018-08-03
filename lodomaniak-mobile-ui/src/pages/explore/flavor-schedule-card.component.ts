@@ -1,9 +1,7 @@
-import { Component, Input, OnInit } from "@angular/core";
+import { Component, Input } from "@angular/core";
 import { FlavorSchedule } from "../../app/model/flavor-schedule.model";
 import { NavController } from "ionic-angular";
 import { FlavorComponent } from "./flavor.component";
-import { RatingService } from "../../app/services/rating.service";
-import { Rating } from "../../app/model/rating.model";
 import { RatingType } from "../../app/model/rating-type.model";
 
 @Component({

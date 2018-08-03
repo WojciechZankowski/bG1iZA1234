@@ -3,7 +3,6 @@ import { ApiService } from "../core/api.service";
 import { Observable } from "rxjs/Observable";
 import { map } from "rxjs/operators";
 import { Follow } from "../model/follow.model";
-import { MY_RATING_PATH } from "./rating.service";
 import { HttpParams } from "@angular/common/http";
 
 export const MY_FOLLOW_PATH = '/follow/mine';

@@ -10,6 +10,8 @@ import { Page } from "../model/page.model";
 export const FLAVOR_PATH = '/flavor';
 export const FLAVOR_TOP_PATH = '/flavor/top';
 export const FLAVORS_SCHEDULE = '/flavor/schedule/today';
+export const MY_TODAYS_FLAVORS_SCHEDULE = '/flavor/schedule/mine/today';
+export const MY_FLAVORS = '/flavor/mine/follow';
 
 @Injectable()
 export class FlavorService {
@@ -42,6 +44,14 @@ export class FlavorService {
 
   getTopFlavors(city: string): Observable<Flavor[]> {
     return this.apiService.get(FLAVOR_TOP_PATH, new HttpParams({ fromObject: { city: city } }));
+  }
+
+  getFollowedFlavors(): Observable<Flavor[]> {
+    return this.apiService.get(MY_FLAVORS);
+  }
+
+  getMyFlavorsScheduledForToday(): Observable<FlavorSchedule[]> {
+    return this.apiService.get(MY_TODAYS_FLAVORS_SCHEDULE);
   }
 
 }

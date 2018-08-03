@@ -4,6 +4,7 @@ import { Flavor } from "../../app/model/flavor.model";
 import { FlavorSchedule } from "../../app/model/flavor-schedule.model";
 import { FlavorService } from "../../app/services/flavor.service";
 import { RatingType } from "../../app/model/rating-type.model";
+import { FollowType } from "../../app/model/follow-type.model";
 
 @Component({
   selector: 'flavor',
@@ -12,6 +13,7 @@ import { RatingType } from "../../app/model/rating-type.model";
 export class FlavorComponent implements OnInit {
 
   public readonly RATING_TYPE = RatingType.FLAVOR;
+  public readonly FOLLOW_TYPE = FollowType.FLAVOR;
 
   public flavor: Flavor;
   public flavorSchedules: FlavorSchedule[] = [];

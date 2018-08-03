@@ -1,17 +1,36 @@
-<ion-content *ngIf="!logged" class="profile" padding>
+<ion-content *ngIf="logged" class="profile" padding>
 
-    <div class="profile-container">
-      <ion-icon class="lock" name="lock"></ion-icon>
+  <div class="profile-container profile-container-padded">
+    <ion-icon class="lock" name="lock"></ion-icon>
 
-      <button class="profile-button" ion-button icon-right (click)="signIn()">
-        Zaloguj przez
-        <ion-icon name="logo-facebook"></ion-icon>
-      </button>
-    </div>
+    <button class="profile-button" ion-button icon-right (click)="signIn()">
+      Zaloguj przez
+      <ion-icon name="logo-facebook"></ion-icon>
+    </button>
+  </div>
 
 </ion-content>
 
-<ion-content *ngIf="logged">
-  TEST
+<ion-content *ngIf="!logged">
+
+  <div class="profile-container">
+    <ion-icon class="person" name="person"></ion-icon>
+  </div>
+
+  <div class="ranking-row">
+    <h3 class="ranking-header">Obserwowane smaki:</h3>
+
+    <ion-grid no-padding>
+      <ion-row *ngIf="followedFlavors && followedFlavors.length > 0">
+        <ion-col *ngFor="let flavor of followedFlavors" col-6>
+          <flavor-card [flavor]="flavor"></flavor-card>
+        </ion-col>
+      </ion-row>
+      <ion-row class="profile-empty" *ngIf="!followedFlavors">
+        Brak obserwowanych smaków
+      </ion-row>
+    </ion-grid>
+  </div>
+
 </ion-content>
 

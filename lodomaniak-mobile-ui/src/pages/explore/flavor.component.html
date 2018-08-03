@@ -13,6 +13,7 @@
     <ion-card-content class="flavor-content">
       <p><span class="flavor-title">{{flavor ? flavor.name : ''}}</span> &bull; {{flavor ? flavor.company.name : ''}}
       </p>
+      <follow [followType]="FOLLOW_TYPE" [followedObjectId]="flavor.id"></follow>
     </ion-card-content>
 
 

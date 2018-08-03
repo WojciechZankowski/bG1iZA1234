@@ -1,0 +1,7 @@
+<button (click)="onHeartClick()" *ngIf="!follow"  ion-button>
+  Obserwuj
+</button>
+<button (click)="onHeartClick()" *ngIf="follow" ion-button outline>
+  Obserwowane
+</button>
+

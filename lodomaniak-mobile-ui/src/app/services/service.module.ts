@@ -5,6 +5,7 @@ import { IceCreamShopService } from "./ice-cream-shop.service";
 import { FlavorService } from "./flavor.service";
 import { RatingService } from "./rating.service";
 import { CityService } from "./city.service";
+import { FollowService } from "./follow.service";
 
 @NgModule({
   imports: [
@@ -15,7 +16,8 @@ import { CityService } from "./city.service";
     IceCreamShopService,
     FlavorService,
     RatingService,
-    CityService
+    CityService,
+    FollowService
   ]
 })
 export class ServiceModule {
