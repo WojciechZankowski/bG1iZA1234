@@ -10,12 +10,15 @@ import org.springframework.http.ResponseEntity;
 import org.springframework.security.core.annotation.AuthenticationPrincipal;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.web.bind.annotation.DeleteMapping;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.RestController;
 import pl.lodomaniak.follow.api.FollowTO;
+import pl.lodomaniak.follow.api.FollowType;
 import pl.lodomaniak.user.api.exception.UserNotFoundException;
 
 @RestController
@@ -28,6 +31,15 @@ public class FollowRestController {
     @Autowired
     public FollowRestController(final FollowService followService) {
         this.followService = followService;
+    }
+
+    @ApiOperation(value = "Get mine rating.")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "My rating received.")})
+    @GetMapping("/mine")
+    public ResponseEntity<?> getRating(@RequestParam final Long followedObjectId, @RequestParam final FollowType followType,
+            @AuthenticationPrincipal final User user) throws UserNotFoundException {
+        return ResponseEntity.ok(followService.getMyFollow(followedObjectId, followType, user));
     }
 
     @ApiOperation(value = "Add follow.")

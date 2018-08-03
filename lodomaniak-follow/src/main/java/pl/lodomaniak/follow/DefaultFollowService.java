@@ -30,6 +30,14 @@ public class DefaultFollowService implements FollowService {
     }
 
     @Override
+    public FollowTO getMyFollow(final Long followedObjectId, final FollowType followType, final User user) throws UserNotFoundException {
+        final AccountTO account = userService.loadUserByUsername(user.getUsername());
+        return followRepository.findOneByFollowTypeAndFollowedObjectIdAndUserId(followType, followedObjectId, account.getId())
+                .map(followMapper::map)
+                .orElse(null);
+    }
+
+    @Override
     public FollowTO addFollow(final FollowTO follow, final User user) throws UserNotFoundException {
         final AccountTO account = userService.loadUserByUsername(user.getUsername());
         final FollowEntity savedEntity = followRepository.save(followMapper.map(follow, account.getId()));
