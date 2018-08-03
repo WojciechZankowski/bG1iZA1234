@@ -92,6 +92,6 @@
         <variable name="APP_NAME" value="lodomaniak" />
     </plugin>
     <allow-navigation href="http://192.168.1.104:8100" />
-    <engine name="android" spec="7.0.0" />
     <plugin name="cordova-plugin-local-notification" spec="^0.9.0-beta.2" />
+    <engine name="android" spec="7.0.0" />
 </widget>

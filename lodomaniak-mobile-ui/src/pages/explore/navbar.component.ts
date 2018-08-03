@@ -1,4 +1,4 @@
-import { Component, EventEmitter, OnInit, Output } from "@angular/core";
+import { Component, OnInit } from "@angular/core";
 import { IceCreamShopService } from "../../app/services/ice-cream-shop.service";
 import { Events, NavController } from "ionic-angular";
 import { IceCreamShopsComponent } from "./ice-cream-shops.component";
