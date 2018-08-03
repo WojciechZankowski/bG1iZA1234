@@ -1,6 +1,10 @@
+<ion-header>
+  <navbar></navbar>
+</ion-header>
+
 <ion-content>
 
-  <div class="ranking-row">
+  <div class="ranking-row" *ngIf="topIceCreamShops && topIceCreamShops.length > 0">
     <h3 class="ranking-header">Najpopularniejsze lodziarnie w twoim mieście</h3>
 
     <ion-scroll scrollX="true" direction="x">
@@ -9,7 +13,7 @@
     </ion-scroll>
   </div>
 
-  <div class="ranking-row">
+  <div class="ranking-row" *ngIf="topFlavors && topFlavors.length > 0">
     <h3 class="ranking-header">Najpopularniejsze smaki w twoim mieście</h3>
 
     <ion-scroll scrollX="true" direction="x">
@@ -17,7 +21,7 @@
     </ion-scroll>
   </div>
 
-  <div class="ranking-row">
+  <div class="ranking-row" *ngIf="topKrakow && topKrakow.length > 0">
     <h3 class="ranking-header">Najpopularniejsze lodziarnie: Kraków</h3>
 
     <ion-scroll scrollX="true" direction="x">
@@ -26,7 +30,7 @@
     </ion-scroll>
   </div>
 
-  <div class="ranking-row">
+  <div class="ranking-row" *ngIf="topWroclaw && topWroclaw.length > 0">
     <h3 class="ranking-header">Najpopularniejsze lodziarnie: Wrocław</h3>
 
     <ion-scroll scrollX="true" direction="x">

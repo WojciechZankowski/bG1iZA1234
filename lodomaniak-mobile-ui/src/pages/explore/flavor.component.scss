@@ -25,11 +25,14 @@
     position: absolute;
     left: 2%;
     top: 2%;
-    margin: auto;
+    //margin: auto;
     min-width: 0.2em !important;
     width: 2em !important;
     height: 2em !important;
     font-size: 1.4rem !important;
+    //background-color: transparent;
+    //-webkit-box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
+    //box-shadow: 0 0 0 0 rgba(0, 0, 0, 0);
   }
 
   &-title {

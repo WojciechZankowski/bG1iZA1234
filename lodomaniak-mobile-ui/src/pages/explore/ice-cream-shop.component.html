@@ -6,7 +6,7 @@
 <ion-content>
   <div class="ice-cream-shop">
     <div *ngIf="iceCreamShop">
-      <like class="flavor-card-like-button" [ratedObjectId]="iceCreamShop.id" [ratingType]="RATING_TYPE"></like>
+      <like class="ice-cream-shop-like-button" [ratedObjectId]="iceCreamShop.id" [ratingType]="RATING_TYPE"></like>
       <img class="ice-cream-shop-image" src="{{getImg()}}"/>
     </div>
 

@@ -45,6 +45,11 @@
             <artifactId>rating</artifactId>
         </dependency>
 
+        <dependency>
+            <groupId>pl.lodomaniak</groupId>
+            <artifactId>follow</artifactId>
+        </dependency>
+
         <!-- Spring Dependencies -->
 
         <dependency>

@@ -1,0 +1,20 @@
+<ion-header>
+  <ion-navbar>
+  </ion-navbar>
+</ion-header>
+
+<ion-content class="cards">
+
+  <div class="explore-row">
+    <h3 class="explore-header">Przeglądaj</h3>
+
+    <ion-grid no-padding>
+      <ion-row>
+        <ion-col *ngFor="let flavorSchedule of flavorSchedules" col-6>
+          <flavor-schedule-card [flavorSchedule]="flavorSchedule"></flavor-schedule-card>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+  </div>
+
+</ion-content>

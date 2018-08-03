@@ -8,6 +8,7 @@ import { FlavorSchedule } from "../../app/model/flavor-schedule.model";
 import { IceCreamShopsComponent } from "./ice-cream-shops.component";
 import { FlavorsComponent } from "./flavors.component";
 import { CityService } from "../../app/services/city.service";
+import { FlavorTodayComponent } from "./flavor-today.component";
 
 @Component({
   selector: 'lodomaniak-explore',
@@ -16,7 +17,8 @@ import { CityService } from "../../app/services/city.service";
 export class ExplorePage implements OnInit{
 
   public iceCreamShops: IceCreamShop[];
-  public flavorsSchedules: FlavorSchedule[] = [];
+  public flavorsSchedules: FlavorSchedule[];
+  public flavorSchedulesKrakow: FlavorSchedule[];
 
   constructor(public navCtrl: NavController,
               private fb: Facebook,
@@ -34,6 +36,10 @@ export class ExplorePage implements OnInit{
       .then((city) => {
         this.fetchData(city);
       })
+
+    this.flavorService.getTodaysFlavors('Kraków').subscribe((flavorsSchedules) => {
+      this.flavorSchedulesKrakow = flavorsSchedules;
+    });
   }
 
   fetchData(city: string): void {
@@ -62,6 +68,12 @@ export class ExplorePage implements OnInit{
 
   navigateToFlavors(): void {
     this.navCtrl.push(FlavorsComponent);
+  }
+
+  navigateToFlavorToday(flavorSchedules: FlavorSchedule[]): void {
+    this.navCtrl.push(FlavorTodayComponent, {
+      flavorSchedules: flavorSchedules
+    })
   }
 
 }

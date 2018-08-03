@@ -71,6 +71,15 @@ public class FlavorRestController {
         return ResponseEntity.ok(flavorService.getFlavors(user, pageable));
     }
 
+    @ApiOperation(value = "Followed Ice Cream flavor retrieval.")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Followed Ice Cream flavor received")})
+    @GetMapping("/mine/follow")
+    public ResponseEntity<?> getFollowedFlavors(@AuthenticationPrincipal final User user)
+            throws UserNotFoundException {
+        return ResponseEntity.ok(flavorService.getMineFollowedFlavors(user));
+    }
+
     @ApiOperation(value = "Ice Cream top flavors retrieval.")
     @ApiResponses(value = {
             @ApiResponse(code = 200, message = "Ice Cream top flavors received")})
@@ -95,6 +104,14 @@ public class FlavorRestController {
     public ResponseEntity<?> getScheduledTodayInCity(@RequestParam(required = false) final String city,
             @RequestParam(required = false) final Long flavorId, @RequestParam(required = false) final Long iceCreamShopId) {
         return ResponseEntity.ok(flavorService.getAvailableFlavors(city, flavorId, iceCreamShopId, LocalDate.now()));
+    }
+
+    @ApiOperation(value = "Today scheduled Ice Cream flavors followed by the user.")
+    @ApiResponses(value = {
+            @ApiResponse(code = 200, message = "Today's flavor for the user retrieved")})
+    @GetMapping("/schedule/mine/today")
+    public ResponseEntity<?> getScheduledMineToday(@AuthenticationPrincipal final User user) throws UserNotFoundException {
+        return ResponseEntity.ok(flavorService.getMineFlavorsScheduledForToday(user));
     }
 
     @ApiOperation(value = "Schedule Ice Cream flavor.")

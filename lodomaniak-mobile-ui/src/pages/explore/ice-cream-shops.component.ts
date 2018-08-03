@@ -1,14 +1,15 @@
-import { AfterViewInit, Component, OnInit, ViewChild } from "@angular/core";
+import { Component, OnInit, ViewChild } from "@angular/core";
 import { IceCreamShopService } from "../../app/services/ice-cream-shop.service";
 import { PageRequest } from "../../app/model/page-request.model";
 import { IceCreamShop } from "../../app/model/ice-cream-shop.model";
-import { Searchbar } from "ionic-angular";
+import { Events, Searchbar } from "ionic-angular";
+import { CityService } from "../../app/services/city.service";
 
 @Component({
   selector: 'ice-cream-shops',
   templateUrl: './ice-cream-shops.component.html',
 })
-export class IceCreamShopsComponent implements OnInit, AfterViewInit {
+export class IceCreamShopsComponent implements OnInit {
 
   public searchInput: string = '';
   public shouldShowCancel: boolean = true;
@@ -21,21 +22,24 @@ export class IceCreamShopsComponent implements OnInit, AfterViewInit {
 
   @ViewChild('searchbar') searchbar: Searchbar;
 
-  constructor(private iceCreamService: IceCreamShopService) {
+  constructor(private iceCreamService: IceCreamShopService,
+              private cityService: CityService,
+              public events: Events) {
+    this.events.subscribe(CityService.CITY_KEY, (city) => {
+      this.fetchData(city);
+    });
   }
 
   ngOnInit(): void {
-    this.fetchData();
-    this.searchbar.setFocus();
+    this.cityService.getCity()
+      .then((city) => {
+        this.fetchData(city);
+      });
   }
 
-  ngAfterViewInit(): void {
-    this.searchbar.setFocus();
-  }
-
-  private fetchData(): void {
+  private fetchData(city: string): void {
     this.page = 0;
-    this.iceCreamService.getIceCreamShops(this.searchInput, 'Wrocław', new PageRequest(this.page, this.size))
+    this.iceCreamService.getIceCreamShops(this.searchInput, city, new PageRequest(this.page, this.size))
       .subscribe((shops) => {
         this.shops = shops.content;
         this.totalPage = shops.totalPages;
@@ -43,12 +47,18 @@ export class IceCreamShopsComponent implements OnInit, AfterViewInit {
   }
 
   public onInput(): void {
-    this.fetchData();
+    this.cityService.getCity()
+      .then((city) => {
+        this.fetchData(city);
+      });
   }
 
   public onCancel(): void {
     this.searchInput = '';
-    this.fetchData();
+    this.cityService.getCity()
+      .then((city) => {
+        this.fetchData(city);
+      });
   }
 
   public doInfinite(infiniteScroll) {

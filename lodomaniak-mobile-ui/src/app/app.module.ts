@@ -30,6 +30,7 @@ import { FlavorsComponent } from "../pages/explore/flavors.component";
 import { AuthService } from "./services/auth.service";
 import { LikeComponent } from "../pages/like/like.component";
 import { FlavorCardComponent } from "../pages/explore/flavor-card.component";
+import { FlavorTodayComponent } from "../pages/explore/flavor-today.component";
 
 export function jwtOptionsFactory(storage) {
   return {
@@ -76,7 +77,8 @@ export function jwtOptionsFactory(storage) {
     IceCreamShopsComponent,
     FlavorsComponent,
     LikeComponent,
-    FlavorCardComponent
+    FlavorCardComponent,
+    FlavorTodayComponent
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -96,7 +98,8 @@ export function jwtOptionsFactory(storage) {
     IceCreamShopsComponent,
     FlavorsComponent,
     LikeComponent,
-    FlavorCardComponent
+    FlavorCardComponent,
+    FlavorTodayComponent
   ],
   providers: [
     StatusBar,

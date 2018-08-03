@@ -6,6 +6,8 @@ import org.springframework.data.domain.PageRequest;
 import org.springframework.data.domain.Pageable;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Service;
+import pl.lodomaniak.follow.api.FollowType;
+import pl.lodomaniak.follow.spi.FollowExternalService;
 import pl.lodomaniak.icecream.api.CompanyTO;
 import pl.lodomaniak.icecream.api.FlavorActivityTO;
 import pl.lodomaniak.icecream.api.FlavorTO;
@@ -16,7 +18,9 @@ import pl.lodomaniak.icecream.mapper.FlavorMapper;
 import pl.lodomaniak.rating.api.RatingTO;
 import pl.lodomaniak.rating.api.RatingType;
 import pl.lodomaniak.rating.spi.RatingExternalService;
+import pl.lodomaniak.user.api.AccountTO;
 import pl.lodomaniak.user.api.exception.UserNotFoundException;
+import pl.lodomaniak.user.spi.UserService;
 
 import java.time.LocalDate;
 import java.util.List;
@@ -34,12 +38,15 @@ public class DefaultFlavorService implements FlavorService {
     private final CompanyService companyService;
     private final IceCreamShopService iceCreamShopService;
     private final RatingExternalService ratingService;
+    private final FollowExternalService followService;
+    private final UserService userService;
 
     @Autowired
     public DefaultFlavorService(final FlavorActivityRepository flavorActivityRepository,
             final FlavorRepository flavorRepository, final FlavorMapper flavorMapper,
             final FlavorActivityMapper flavorActivityMapper, final CompanyService companyService,
-            final IceCreamShopService iceCreamShopService, final RatingExternalService ratingService) {
+            final IceCreamShopService iceCreamShopService, final RatingExternalService ratingService,
+            final FollowExternalService followService, final UserService userService) {
         this.flavorActivityRepository = flavorActivityRepository;
         this.flavorRepository = flavorRepository;
         this.flavorMapper = flavorMapper;
@@ -47,6 +54,8 @@ public class DefaultFlavorService implements FlavorService {
         this.companyService = companyService;
         this.iceCreamShopService = iceCreamShopService;
         this.ratingService = ratingService;
+        this.followService = followService;
+        this.userService = userService;
     }
 
     @Override
@@ -144,6 +153,28 @@ public class DefaultFlavorService implements FlavorService {
 
     private List<FlavorActivityTO> getSchedulesForIceCreamShop(final Long iceCreamShopId, final LocalDate date) {
         return flavorActivityRepository.findAllByIceCreamShopIdAndDate(iceCreamShopId, date).stream()
+                .map(flavorActivityMapper::map)
+                .collect(toList());
+    }
+
+    @Override
+    public List<FlavorTO> getMineFollowedFlavors(final User user) throws UserNotFoundException {
+        final AccountTO account = userService.loadUserByUsername(user.getUsername());
+
+        final List<Long> followedObjects = followService.getFollowedObjects(account.getId(), FollowType.FLAVOR);
+
+        return flavorRepository.findAllById(followedObjects).stream()
+                .map(flavorMapper::map)
+                .collect(toList());
+    }
+
+    @Override
+    public List<FlavorActivityTO> getMineFlavorsScheduledForToday(final User user) throws UserNotFoundException {
+        final AccountTO account = userService.loadUserByUsername(user.getUsername());
+
+        final List<Long> followedObjects = followService.getFollowedObjects(account.getId(), FollowType.FLAVOR);
+
+        return flavorActivityRepository.findAllByFlavorIdInAndDate(followedObjects, LocalDate.now()).stream()
                 .map(flavorActivityMapper::map)
                 .collect(toList());
     }

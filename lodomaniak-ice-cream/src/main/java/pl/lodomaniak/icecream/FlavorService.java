@@ -30,4 +30,8 @@ public interface FlavorService {
 
     List<FlavorTO> getTopFlavors(String city);
 
+    List<FlavorTO> getMineFollowedFlavors(User user) throws UserNotFoundException;
+
+    List<FlavorActivityTO> getMineFlavorsScheduledForToday(User user) throws UserNotFoundException;
+
 }

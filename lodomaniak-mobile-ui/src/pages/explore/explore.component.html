@@ -19,7 +19,7 @@
     </ion-grid>
   </div>
 
-  <div class="explore-row">
+  <div class="explore-row" *ngIf="flavorsSchedules && flavorsSchedules.length > 0">
     <h3 class="explore-header">Dzisiejsze smaki</h3>
 
     <ion-grid no-padding>
@@ -32,7 +32,7 @@
         </ion-col>
       </ion-row>
 
-      <ion-row>
+      <ion-row *ngIf="flavorsSchedules.length > 2">
         <ion-col col-6>
           <flavor-schedule-card [flavorSchedule]="flavorsSchedules[2]"></flavor-schedule-card>
         </ion-col>
@@ -40,17 +40,54 @@
           <flavor-schedule-card [flavorSchedule]="flavorsSchedules[3]"></flavor-schedule-card>
         </ion-col>
       </ion-row>
+
+      <ion-row *ngIf="flavorsSchedules.length > 4">
+        <ion-col class="more-button" col-12>
+          <button (click)="navigateToFlavorToday(flavorsSchedules)" ion-button>Pokaż więcej</button>
+        </ion-col>
+      </ion-row>
     </ion-grid>
 
   </div>
 
-  <div class="explore-row">
+  <div class="explore-row" *ngIf="iceCreamShops && iceCreamShops.length > 0">
     <h3 class="explore-header">Ostatnio dodane</h3>
 
     <ion-scroll scrollX="true" direction="x">
       <ice-cream-shop-card class="ice-cream-shops" [iceCreamShop]="iceCreamShop"
                            *ngFor="let iceCreamShop of iceCreamShops"></ice-cream-shop-card>
     </ion-scroll>
+  </div>
+
+  <div class="explore-row" *ngIf="flavorSchedulesKrakow && flavorSchedulesKrakow.length > 0">
+    <h3 class="explore-header">Dzisiejsze smaki: Kraków</h3>
+
+    <ion-grid no-padding>
+      <ion-row>
+        <ion-col col-6>
+          <flavor-schedule-card [flavorSchedule]="flavorSchedulesKrakow[0]"></flavor-schedule-card>
+        </ion-col>
+        <ion-col col-6>
+          <flavor-schedule-card [flavorSchedule]="flavorSchedulesKrakow[1]"></flavor-schedule-card>
+        </ion-col>
+      </ion-row>
+
+      <ion-row *ngIf="flavorSchedulesKrakow.length > 2">
+        <ion-col col-6>
+          <flavor-schedule-card [flavorSchedule]="flavorSchedulesKrakow[2]"></flavor-schedule-card>
+        </ion-col>
+        <ion-col col-6>
+          <flavor-schedule-card [flavorSchedule]="flavorSchedulesKrakow[3]"></flavor-schedule-card>
+        </ion-col>
+      </ion-row>
+
+      <ion-row *ngIf="flavorSchedulesKrakow.length > 4">
+        <ion-col class="more-button" col-12>
+          <button (click)="navigateToFlavorToday(flavorSchedulesKrakow)" ion-button>Pokaż więcej</button>
+        </ion-col>
+      </ion-row>
+    </ion-grid>
+
   </div>
 
 </ion-content>

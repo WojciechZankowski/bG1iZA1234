@@ -9,11 +9,16 @@
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
-    <artifactId>ice-cream</artifactId>
+    <artifactId>follow</artifactId>
 
     <dependencies>
 
         <!-- Internal -->
+
+        <dependency>
+            <groupId>pl.lodomaniak</groupId>
+            <artifactId>follow-spi</artifactId>
+        </dependency>
 
         <dependency>
             <groupId>pl.lodomaniak</groupId>
@@ -22,22 +27,7 @@
 
         <dependency>
             <groupId>pl.lodomaniak</groupId>
-            <artifactId>ice-cream-api</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>pl.lodomaniak</groupId>
             <artifactId>user-spi</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>pl.lodomaniak</groupId>
-            <artifactId>rating-spi</artifactId>
-        </dependency>
-
-        <dependency>
-            <groupId>pl.lodomaniak</groupId>
-            <artifactId>follow-spi</artifactId>
         </dependency>
 
         <!-- Spring Dependencies -->

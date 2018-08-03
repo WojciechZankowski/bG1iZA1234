@@ -27,6 +27,9 @@
         <module>lodomaniak-rating</module>
         <module>lodomaniak-rating-api</module>
         <module>lodomaniak-rating-spi</module>
+        <module>lodomaniak-follow</module>
+        <module>lodomaniak-follow-api</module>
+        <module>lodomaniak-follow-spi</module>
     </modules>
     <packaging>pom</packaging>
 
@@ -149,6 +152,24 @@
             <dependency>
                 <groupId>pl.lodomaniak</groupId>
                 <artifactId>rating-spi</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>pl.lodomaniak</groupId>
+                <artifactId>follow</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>pl.lodomaniak</groupId>
+                <artifactId>follow-api</artifactId>
+                <version>1.0.0-SNAPSHOT</version>
+            </dependency>
+
+            <dependency>
+                <groupId>pl.lodomaniak</groupId>
+                <artifactId>follow-spi</artifactId>
                 <version>1.0.0-SNAPSHOT</version>
             </dependency>
 

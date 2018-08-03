@@ -1,6 +1,9 @@
 <ion-card (click)="onClick()" class="ice-cream-shop">
 
-  <img *ngIf="iceCreamShop" class="card-image-header" src="{{getImg()}}"/>
+  <div *ngIf="iceCreamShop">
+    <like class="flavor-card-like-button" [ratedObjectId]="iceCreamShop.id" [ratingType]="RATING_TYPE"></like>
+    <img class="card-image-header" src="{{getImg()}}"/>
+  </div>
 
   <ion-card-content class="ice-cream-shop">
     <p><b>{{iceCreamShop.company.name}}</b></p>
